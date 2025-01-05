@@ -2,7 +2,19 @@ import gulp from "gulp";
 import autoprefixer from "gulp-autoprefixer";
 import {deleteAsync} from 'del';
 import browserSync from "browser-sync";
-import concat from "concat";
+import concat from "gulp-concat";
+import GulpCleanCss from "gulp-clean-css";
+import sourcemaps from "gulp-sourcemaps";
+import gulpIf from "gulp-if";
+
+var isDev = true;
+var isProd = !isDev;
+
+
+var cssPaths = [
+    "src/css/main.css",
+    "src/css/style.css"
+]
 
 var srcPaths = {
     css: "src/css/**/*.css",
@@ -21,10 +33,14 @@ function clearBuild() {
 }
 
 function css () {
-    return gulp.src(srcPaths.css)
+    return gulp.src(cssPaths)
+    .pipe(gulpIf(isDev, sourcemaps.init()))
+    .pipe(concat("style.css"))
     .pipe(autoprefixer({
         cascade: false
     }))
+    .pipe(gulpIf(isProd, GulpCleanCss({level: 1})))
+    .pipe(gulpIf(isDev, sourcemaps.write()))
     .pipe(gulp.dest(buildPaths.css))
     .pipe(browserSync.stream());
 }
