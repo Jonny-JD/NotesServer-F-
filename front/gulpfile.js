@@ -6,10 +6,10 @@ import concat from "gulp-concat";
 import GulpCleanCss from "gulp-clean-css";
 import sourcemaps from "gulp-sourcemaps";
 import gulpIf from "gulp-if";
+import gulpPurgeCSS from "gulp-purgecss";
 
-var isDev = true;
+var isDev = process.argv.includes("--dev");
 var isProd = !isDev;
-
 
 var cssPaths = [
     "src/css/main.css",
@@ -34,7 +34,10 @@ function clearBuild() {
 
 function css () {
     return gulp.src(cssPaths)
-    .pipe(gulpIf(isDev, sourcemaps.init()))
+    .pipe(gulpIf(isDev, gulpPurgeCSS ({
+        content: [srcPaths.html]
+    })))
+    .pipe(gulpIf(isProd, sourcemaps.init()))
     .pipe(concat("style.css"))
     .pipe(autoprefixer({
         cascade: false
