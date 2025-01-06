@@ -7,6 +7,9 @@ import GulpCleanCss from "gulp-clean-css";
 import sourcemaps from "gulp-sourcemaps";
 import gulpIf from "gulp-if";
 import gulpPurgeCSS from "gulp-purgecss";
+import GulpPostCss from "gulp-postcss";
+
+import postcssSortMediaQueries from "postcss-sort-media-queries";
 
 var isDev = process.argv.includes("--dev");
 var isProd = !isDev;
@@ -33,12 +36,19 @@ function clearBuild() {
 }
 
 function css () {
+    var plugins = [
+        postcssSortMediaQueries({
+            sort: 'desktop-first'
+          })
+    ];
+
     return gulp.src(cssPaths)
     .pipe(gulpIf(isDev, gulpPurgeCSS ({
         content: [srcPaths.html]
     })))
     .pipe(gulpIf(isProd, sourcemaps.init()))
     .pipe(concat("style.css"))
+    .pipe(GulpPostCss(plugins))
     .pipe(autoprefixer({
         cascade: false
     }))
