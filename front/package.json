@@ -20,9 +20,10 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-if": "^3.0.0",
+    "gulp-less": "^5.0.0",
     "gulp-postcss": "^10.0.0",
-    "gulp-purgecss": "^7.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "postcss-sort-media-queries": "^5.2.0"
+    "postcss-sort-media-queries": "^5.2.0",
+    "smart-grid": "^2.1.2"
   }
 }

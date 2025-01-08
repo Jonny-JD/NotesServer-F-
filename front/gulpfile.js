@@ -6,20 +6,22 @@ import concat from "gulp-concat";
 import GulpCleanCss from "gulp-clean-css";
 import sourcemaps from "gulp-sourcemaps";
 import gulpIf from "gulp-if";
-import gulpPurgeCSS from "gulp-purgecss";
 import GulpPostCss from "gulp-postcss";
+import GulpLess from "gulp-less";
+import SmartGrid from "smart-grid";
+
 
 import postcssSortMediaQueries from "postcss-sort-media-queries";
 
 var isDev = process.argv.includes("--dev");
 var isProd = !isDev;
 
-var cssPaths = ["src/css/main.css", "src/css/style.css"];
+//var cssPaths = ["src/css/main.css", "src/css/style.css"];
 
 var srcPaths = {
-  css: "src/css/**/*.css",
+  css: "src/css/**/*.less",
   html: "src/*.html",
-  img: "src/img/*",
+  img: "src/img/*.+(jpg|jpeg|png|svg|gif|ico|JPG|JPEG|PNG|SVG|GIF|ICO)",
 };
 
 var buildPaths = {
@@ -40,21 +42,14 @@ function css() {
   ];
 
   return gulp
-    .src(cssPaths)
-    .pipe(
-      gulpIf(
-        isDev,
-        gulpPurgeCSS({
-          content: [srcPaths.html],
-        })
-      )
-    )
+    .src("src/css/styles.less")
+    .pipe(gulpIf(isDev, sourcemaps.init()))
     .on("error", function () {
         console.log(error.toString());
         this.emit("end");
-      })
-    .pipe(gulpIf(isProd, sourcemaps.init()))
-    .pipe(concat("style.css"))
+    })
+    .pipe(GulpLess())
+    //.pipe(concat("style.css"))
     .pipe(GulpPostCss(plugins))
     .pipe(
       autoprefixer({
@@ -68,7 +63,7 @@ function css() {
 }
 
 function img() {
-  return gulp.src(srcPaths.img).pipe(gulp.dest(buildPaths.img));
+  return gulp.src(srcPaths.img, {encoding: false}).pipe(gulp.dest(buildPaths.img));
 }
 
 function html() {
@@ -78,7 +73,22 @@ function html() {
     .pipe(browserSync.stream());
 }
 
+async function grid () {
+  let settings = {};
+  SmartGrid("src/css",settings);
+}
+
 let build = gulp.series(clearBuild, gulp.parallel(css, img, html));
+
+
+
+
+
+
+
+
+
+
 
 gulp.task("build", build);
 
@@ -94,3 +104,4 @@ gulp.task(
     gulp.watch(srcPaths.html, html);
   })
 );
+gulp.task("grid", grid);
