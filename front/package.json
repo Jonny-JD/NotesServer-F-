@@ -23,7 +23,6 @@
     "gulp-less": "^5.0.0",
     "gulp-postcss": "^10.0.0",
     "gulp-sourcemaps": "^2.6.5",
-    "postcss-sort-media-queries": "^5.2.0",
-    "smart-grid": "^2.1.2"
+    "postcss-sort-media-queries": "^5.2.0"
   }
 }

@@ -2,15 +2,11 @@ import gulp from "gulp";
 import autoprefixer from "gulp-autoprefixer";
 import { deleteAsync } from "del";
 import browserSync from "browser-sync";
-import concat from "gulp-concat";
 import GulpCleanCss from "gulp-clean-css";
 import sourcemaps from "gulp-sourcemaps";
 import gulpIf from "gulp-if";
 import GulpPostCss from "gulp-postcss";
 import GulpLess from "gulp-less";
-import SmartGrid from "smart-grid";
-
-
 import postcssSortMediaQueries from "postcss-sort-media-queries";
 
 var isDev = process.argv.includes("--dev");
@@ -73,22 +69,11 @@ function html() {
     .pipe(browserSync.stream());
 }
 
-async function grid () {
-  let settings = {};
-  SmartGrid("src/css",settings);
-}
 
 let build = gulp.series(clearBuild, gulp.parallel(css, img, html));
 
 
-
-
-
-
-
-
-
-
+//Tasks
 
 gulp.task("build", build);
 
@@ -104,4 +89,4 @@ gulp.task(
     gulp.watch(srcPaths.html, html);
   })
 );
-gulp.task("grid", grid);
+
