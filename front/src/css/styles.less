@@ -1,25 +1,74 @@
 @import "project.less";
 @import "reset.less";
+@import "fonts.less";
 
+@content-width: 80vw;
 
+html {
+  font-family: "Nico Moji";
+}
 
 .container {
-    min-height: 100vh;
-    display: grid;
-    grid-template-areas: "header"
-                          "main"
-                          "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 7fr 1fr ;
-    background-image:url("../img/red_background.png");
-    background-size: cover;
+  width: 80vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 7fr 1fr;
+  background-image: url("../img/red_background.png");
+  background-size: cover;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.header {
+  grid-area: header;
+  box-sizing: border-box;
+  display: block;
+
+  .header-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    .header-left {
+      display: flex;
+      justify-content: space-between;
+    }
+    .header-right {
+      display: flex;
+      justify-content: space-between;
+    }
   }
-  .header {
-    grid-area: header;
+
+  .header-line {
+    margin: auto;
+    .red-line {
+      width: calc(@content-width * 0.9);
+      display: block;
+      margin: auto;
+    }
   }
-  .main {
-    grid-area: main;
-  }
-  .footer {
-    grid-area: footer;
-  }
+}
+.main {
+  grid-area: main;
+}
+.footer {
+  grid-area: footer;
+}
+
+.button {
+  font-family: "Nico Moji";
+  background: linear-gradient(
+    -45deg,
+    transparent 48%,
+    @color_aqua 50%,
+    transparent 52%
+  );
+  background-size: 0.2em 0.2em;
+}
