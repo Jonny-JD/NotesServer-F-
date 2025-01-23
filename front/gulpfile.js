@@ -97,6 +97,6 @@ gulp.task(
     gulp.watch(srcPaths.css, css);
     gulp.watch(srcPaths.html, html);
     gulp.watch(srcPaths.fonts, fonts);
-    gulp.watch(srcPaths.fonts, img);
+    gulp.watch(srcPaths.img, img);
   })
 );
