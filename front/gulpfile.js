@@ -48,7 +48,6 @@ function css() {
         this.emit("end");
       })
       .pipe(GulpLess())
-      //.pipe(concat("style.css"))
       .pipe(GulpPostCss(plugins))
       .pipe(
         autoprefixer({
@@ -98,5 +97,6 @@ gulp.task(
     gulp.watch(srcPaths.css, css);
     gulp.watch(srcPaths.html, html);
     gulp.watch(srcPaths.fonts, fonts);
+    gulp.watch(srcPaths.fonts, img);
   })
 );
