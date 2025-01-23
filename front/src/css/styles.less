@@ -36,6 +36,22 @@ html {
   justify-content: space-between;
   margin-left: 50px;
   margin-right: 50px;
+  position: relative;
+
+  .page-counter {
+    display: block;
+    align-items: first baseline;
+    font-family: "Rajdhali";
+    font-size: 25px;
+    color: @cyber_red;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    .page-page {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
 
   .header-left {
     display: inline-flex;
@@ -71,7 +87,6 @@ html {
   }
 
   .header-button {
-    margin: 0 5px;
     height: 35px;
   }
 
@@ -79,7 +94,7 @@ html {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-end;
     flex-shrink: 0;
     .menu-container {
@@ -90,17 +105,12 @@ html {
       justify-content: space-between;
       margin-top: 9px;
       gap: 75px;
+      margin: 25px auto 0 0;
       .menu-buttons {
         display: flex;
-        gap: 10px;
-      }
-      .page-counter {
-        display: flex;
-        justify-content: flex-end;
-        margin: 20px 0;
-        font-family: "Rajdhali";
-        font-size: 25px;
-        color: @cyber_red;
+        justify-content: space-evenly;
+        
+        gap: 15px;
       }
     }
     .red-bar {
@@ -130,4 +140,28 @@ html {
 
 .footer {
   grid-area: footer;
+}
+
+@media screen and (width < 1260px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    .logo-container {
+      flex-direction: column;
+      .header-button.discover {
+        margin: 30px auto auto auto;
+
+      }
+      .logo-text-wrapper {
+        .officers-text {
+          display: none;
+        }
+      }
+    }
+    .header-right {
+      .menu-container {
+        margin: 60px auto 30px auto;
+      }
+    }
+  }
 }
