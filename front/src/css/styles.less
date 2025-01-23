@@ -6,6 +6,7 @@
 
 html {
   font-family: "Nico Moji";
+  color: @cyber_red;
 }
 
 .wrapper {
@@ -95,7 +96,7 @@ html {
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-shrink: 0;
     .menu-container {
       display: flex;
@@ -109,7 +110,6 @@ html {
       .menu-buttons {
         display: flex;
         justify-content: space-evenly;
-        
         gap: 15px;
       }
     }
@@ -117,7 +117,7 @@ html {
       display: flex;
       box-sizing: border-box;
       .bar {
-        width: 400px;
+        width: 30vw;
       }
     }
   }
@@ -134,27 +134,23 @@ html {
   }
 }
 
-.main {
-  grid-area: main;
-}
-
-.footer {
-  grid-area: footer;
-}
-
 @media screen and (width < 1260px) {
   .header {
     flex-direction: column;
     align-items: center;
-    .logo-container {
-      flex-direction: column;
-      .header-button.discover {
-        margin: 30px auto auto auto;
+    justify-content: space-between;
+    .header-left {
+      margin-top: 20px;
+      .logo-container {
+        flex-direction: column;
+        .header-button.discover {
+          margin: 30px auto auto auto;
 
-      }
-      .logo-text-wrapper {
-        .officers-text {
-          display: none;
+        }
+        .logo-text-wrapper {
+          .officers-text {
+            display: none;
+          }
         }
       }
     }
@@ -163,5 +159,81 @@ html {
         margin: 60px auto 30px auto;
       }
     }
+  }
+}
+
+@media screen  and (max-width: 700px) {
+  .header {
+    .page-counter {
+      display: none;
+    }
+  }
+  .main {
+    .main-header-container {
+      flex-direction: column;
+      justify-content: center;
+      margin: 10px auto 10px auto;
+      .main-gear-container {
+        justify-content: center;
+        align-items: center;
+        .gear-image {
+          width: 100px;
+        }
+        .header-japan {
+          position: relative;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  .main-header-container {
+    display: flex;
+    justify-content: start;
+    margin-left: 3%;
+    margin-right: auto;
+    gap: 10px;
+    .main-gear-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      .header-japan {
+        position: absolute;
+        top: 80px;
+        left: 15px;
+      }
+    }
+    .header-text {
+      display: flex;
+      align-items: center;
+      font-size: 4vw;
+      text-shadow: @cyber_red 1px 0 20px;
+    }
+  }
+  .content-background-cover {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    .content-background {
+      position:relative;
+      width: 90%;
+      left: 3%;
+    }
+  }
+  .main-sec-button {
+    margin-top: 20px;
   }
 }
