@@ -17,7 +17,7 @@ var isProd = !isDev;
 var srcPaths = {
   css: "src/css/**/*.less",
   html: "src/*.html",
-  img: "src/img/*.+(jpg|jpeg|png|svg|gif|ico|JPG|JPEG|PNG|SVG|GIF|ICO)",
+  img: "src/img/**/*.+(jpg|jpeg|png|svg|gif|ico|JPG|JPEG|PNG|SVG|GIF|ICO)",
   fonts: "src/fonts/*",
 };
 
