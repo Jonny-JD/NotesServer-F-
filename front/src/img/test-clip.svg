@@ -1,0 +1,8 @@
+<svg width="93" height="31" viewBox="0 0 93 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <clipPath id="testClip">
+            <path transform="scale(0.75)" d="M92.16 0H0V30.56H89.4752L90.571 28.4L92.1052 25.2L92.16 0Z"/>
+        </clipPath>
+    </defs>
+    <input type="image" class="header-button signum" src="./img/test-clip.svg" />
+</svg>

@@ -5,6 +5,20 @@
 @content-width: 80vw;
 @common-margins: 5%;
 
+.c-button:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
+}
+
+.button-wrapper:hover {
+  filter: drop-shadow(-1px 6px 3px @color_aqua);
+}
+
+.button-wrapper:active {
+  top: .1em;
+  left: .1em;
+  box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+}
+
 html {
   font-family: "Nico Moji";
   color: @cyber_red;
@@ -27,8 +41,12 @@ html {
     "footer";
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 7fr 1fr;
+  background-color: aliceblue;
   background-image: url("../img/red_background.png");
-  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
 }
 
 .header {
@@ -106,17 +124,20 @@ html {
       align-items: center;
       justify-content: space-between;
       margin-top: 9px;
-      gap: 75px;
       margin: 25px auto 0 0;
       .menu-buttons {
         display: flex;
         justify-content: space-evenly;
+        flex-shrink: 0;
+        box-sizing: border-box;
         gap: 15px;
       }
     }
     .red-bar {
       display: flex;
       box-sizing: border-box;
+      width: fit-content;
+      height: fit-content;
       .bar {
         width: 30vw;
       }
@@ -186,6 +207,9 @@ html {
     }
   }
   .main-sec-button {
+    //box-sizing: border-box;
+    display: flex;
+    
     margin-top: 20px;
   }
 }
