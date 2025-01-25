@@ -47,185 +47,193 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.header {
+  grid-area: header;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: @common-margins;
+  margin-right: @common-margins;
+  position: relative;
 
-  .header {
-    grid-area: header;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: @common-margins;
-    margin-right: @common-margins;
-    position: relative;
-
-    .page-counter {
-      display: block;
-      align-items: first baseline;
-      font-family: "Rajdhali";
-      font-size: 25px;
-      position: absolute;
-      top: 30px;
-      right: 0;
-      .page-page {
-        margin-left: 10px;
-        font-size: 20px;
-      }
+  .page-counter {
+    display: block;
+    align-items: first baseline;
+    font-family: "Rajdhali";
+    color: @cyber_swamp;
+    font-size: 25px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    .page-page {
+      margin-left: 10px;
+      font-size: 20px;
     }
+  }
 
-    .header-left {
+  .header-left {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: start;
+    flex-shrink: 0;
+    .logo-container {
       display: inline-flex;
       flex-wrap: nowrap;
       align-items: center;
-      box-sizing: border-box;
-      justify-content: start;
-      flex-shrink: 0;
-      .logo-container {
-        display: inline-flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        .logo {
-          width: 50px;
-          margin-right: 10px;
-        }
-        .logo-text-wrapper {
-          margin-top: 25px;
-          display: flex;
-          flex-direction: column;
-          .logo-text {
-            width: 200px;
-          }
-          .officers-text {
-            margin-top: 10px;
-            width: 110px;
-          }
-        }
+      .logo {
+        width: 50px;
+        margin-right: 10px;
       }
-      .discover {
-        margin-left: 30px;
-      }
-    }
-
-    .header-button {
-      height: 35px;
-    }
-
-    .header-right {
-      display: flex;
-      flex-wrap: nowrap;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-      .menu-container {
-        display: flex;
-        box-sizing: border-box;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 9px;
-        margin: 25px auto 0 0;
-        .menu-buttons {
-          display: flex;
-          justify-content: space-evenly;
-          flex-shrink: 0;
-          box-sizing: border-box;
-          gap: 15px;
-        }
-      }
-      .red-bar {
-        display: flex;
-        box-sizing: border-box;
-        width: fit-content;
-        height: fit-content;
-        .bar {
-          width: 17vw;
-        }
-      }
-    }
-    .red-line {
-      margin: auto;
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      width: 100%;
-      .line {
-        width: 100%;
-      }
-    }
-  }
-
-  .sidebar {
-    grid-area: sidebar;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    margin-left: 2.5vw;
-    .sidebar-header {
-        font-size: 1.3vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-    .note {
+      .logo-text-wrapper {
+        margin-top: 25px;
         display: flex;
         flex-direction: column;
-        align-items: start;
-        justify-content: flex-start;
-        //gap: 5px;
-        font-family: "Rajdhali";
-        .note-item {
-            box-sizing: border-box;
-            display: flex;
-            .note-header.header {
-                display: flex;
-                box-sizing: border-box;
-                text-align: left;
-                margin-bottom: 150px;
-            }
-            .note-tag-header {
-                color: @cyber_swamp;
-                margin-right: 10px;
-            }
-            // .note-tag {
-        
-            // }
-            .note-author-header {
-                color: @cyber_swamp;
-                margin-right: 10px;
-            }
-            // .note-author {
-    
-            // }
+        .logo-text {
+          width: 200px;
         }
-        
+        .officers-text {
+          margin-top: 10px;
+          width: 110px;
+        }
+      }
+    }
+    .discover {
+      margin-left: 30px;
     }
   }
 
-  .main {
-     grid-area: main;
-    // position: relative;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: start;
-    // align-items: center;
-    // gap: 10px;
-    // margin-left: @common-margins;
-    // margin-right: @common-margins;
-    // height: fit-content;
+  .header-button {
+    height: 35px;
   }
 
-  .footer {
-    grid-area: footer;
-    margin-left: @common-margins;
-    margin-right: @common-margins;
-    .footer-line {
+  .header-right {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    .menu-container {
       display: flex;
-      justify-content: center;
-      .red-line {
-        margin: auto;
-        width: 100%;
+      box-sizing: border-box;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 9px;
+      margin: 22px auto 0 0;
+      .menu-buttons {
+        display: flex;
+        justify-content: space-evenly;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        gap: 15px;
       }
+    }
+    .red-bar {
+      display: flex;
+      box-sizing: border-box;
+      width: fit-content;
+      height: fit-content;
+      .bar {
+        width: 17vw;
+      }
+    }
+  }
+  .red-line {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    .line {
+      width: 100%;
+    }
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  gap: 10px;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  .sidebar-header {
+    font-size: 1.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .note {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 3px;
+    font-size: 0.7vw;
+    font-family: "Rajdhali";
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 2px solid @cyber_swamp_dark;
+    letter-spacing: 0.7px;
+    .note-item {
+      box-sizing: border-box;
+      display: flex;
+      margin: 0;
+      .header {
+        text-align: left;
+      }
+      .note-header {
+        //margin-bottom: 5px;
+      }
+      .note-tag-header {
+        color: @cyber_swamp;
+        margin-right: 10px;
+      }
+      .note-tag {
+        color: #fff;
+      }
+      .note-author-header {
+        color: @cyber_swamp;
+        margin-right: 10px;
+      }
+      .note-author {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.main {
+  grid-area: main;
+  // position: relative;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: start;
+  // align-items: center;
+  // gap: 10px;
+  // margin-left: @common-margins;
+  // margin-right: @common-margins;
+  // height: fit-content;
+}
+
+.footer {
+  grid-area: footer;
+  margin-left: @common-margins;
+  margin-right: @common-margins;
+  .footer-line {
+    display: flex;
+    justify-content: center;
+    .red-line {
+      margin: auto;
+      width: 100%;
     }
   }
 }
