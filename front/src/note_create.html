@@ -76,7 +76,32 @@
               <img class="search-button c-button" src="./img/create/search_button.svg">
           </div>
         </sidebar>
-        <main class="main"></main>
+        <main class="main">
+          <div class="new-note-form-wrapper">
+            <form action="" method="get" class="note-form">
+              <div class="form-field">
+                <label for="note-title">Title:</label>
+                <input type="text" name="note-title" id="note-title" required>
+              </div>
+              <div class="form-field">
+                <label for="note-tag">Tag:</label>
+                <input type="text" name="note-tag" id="note-tag" required>
+              </div>
+              <div class="form-field">
+                <label for="note-text"></label>
+                <textarea name="note-text" id="note-text" rows="10" cols="10"></textarea>
+              </div>
+              <div class="form-buttons-wrapper">
+                <div class="button-wrapper">
+                  <img src="./img/create/create_note_button.svg">
+                </div>
+                <div class="button-wrapper">
+                  <img src="./img/create/private_button.svg">
+                </div>
+              </div> 
+            </form>
+          </div>
+        </main>
         <footer class="footer">
           <div class="footer-line">
             <img class="red-line" src="./img/create/footer_line.svg" />

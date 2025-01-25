@@ -3,8 +3,7 @@
 @import "fonts.less";
 
 @content-width: 80vw;
-@common-margins: 5%;
-
+@common-margins: calc(@content-width / 100 * 5);
 .c-button:hover {
   clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
 }
@@ -161,14 +160,15 @@ html {
   justify-content: flex-start;
   box-sizing: border-box;
   gap: 10px;
-  margin-left: 2.5vw;
-  margin-right: 2.5vw;
+  margin-left: @common-margins;
+  margin-right: 5%;
   .sidebar-header {
     font-size: 1.3vw;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: flex-start;
+    margin-bottom: 7px;
+    margin-left: 3%;
   }
   .note {
     display: flex;
@@ -190,9 +190,9 @@ html {
       .header {
         text-align: left;
       }
-      .note-header {
-        //margin-bottom: 5px;
-      }
+      // .note-header {
+      //   //margin-bottom: 5px;
+      // }
       .note-tag-header {
         color: @cyber_swamp;
         margin-right: 10px;
@@ -213,15 +213,56 @@ html {
 
 .main {
   grid-area: main;
-  // position: relative;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: start;
-  // align-items: center;
-  // gap: 10px;
-  // margin-left: @common-margins;
-  // margin-right: @common-margins;
-  // height: fit-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  height: fit-content;
+  margin-top: 35px;
+  margin-right: @common-margins;
+
+  .new-note-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    .note-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      textarea, input {
+        box-sizing: border-box;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        color: #fff;
+        font-family: "Numans";
+        font-weight: 800;
+        font-size: 1.5vw;
+      }
+      textarea {
+        box-sizing: border-box;
+        padding: 2% 3% 3% 0%;
+        resize: none;
+      }
+      label {
+        margin-right: 10px;
+        font-size: 1.3vw;
+      }
+      .form-buttons-wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
+      .form-field {
+        display: flex;
+        border: @cyber_swamp_dark 2px solid;
+        align-items: center;
+      }
+    }
+  }
 }
 
 .footer {
