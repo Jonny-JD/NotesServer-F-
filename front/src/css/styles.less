@@ -158,6 +158,8 @@ html {
   grid-area: main;
   position: relative;
   display: flex;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
   flex-direction: column;
   justify-content: start;
   align-items: center;
@@ -206,8 +208,7 @@ html {
     }
   }
   .main-sec-button {
-    //box-sizing: border-box;
-    display: flex;
+    box-sizing: border-box;
     margin-top: 20px;
   }
 }
@@ -296,6 +297,9 @@ html {
 
 @media screen and (max-width: 410px) {
   .header {
+    .header-button {
+      width: 45vw;
+    }
     .header-left {
       .logo-container {
         .logo {
@@ -306,19 +310,22 @@ html {
             width: 45vw;
           }
         }
-        .header-button.discover {
-          width: 45vw;
-        }
       }
     }
     .header-right {
       .menu-container {
+        margin-top: 10px;
         .menu-buttons {
           .header-button {
             width: 25vw;
           }
         }
       }
+    }
+  }
+  .main {
+    .main-button {
+      width: 30vw;
     }
   }
 }
