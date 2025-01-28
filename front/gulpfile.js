@@ -41,7 +41,7 @@ function css() {
 
   return (
     gulp
-      .src(["src/css/styles.less", "src/css/create_page.less", "src/css/discover_page.less", "src/css/search_page.less"])
+      .src(["src/css/styles.less", "src/css/create_page.less", "src/css/discover_page.less", "src/css/search_page.less", "src/css/note_page.less"])
       .pipe(gulpIf(isDev, sourcemaps.init()))
       .on("error", function () {
         console.log(error.toString());
