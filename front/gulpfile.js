@@ -17,6 +17,7 @@ var isProd = !isDev;
 var srcPaths = {
   css: "src/css/**/*.less",
   html: "src/*.html",
+  js: "src/*.js",
   img: "src/img/**/*.+(jpg|jpeg|png|svg|gif|ico|JPG|JPEG|PNG|SVG|GIF|ICO)",
   fonts: "src/fonts/*",
 };
@@ -80,7 +81,14 @@ function html() {
     .pipe(browserSync.stream());
 }
 
-let build = gulp.series(clearBuild, gulp.parallel(css, img, html, fonts));
+function js() {
+  return gulp
+  .src(srcPaths.js)
+  .pipe(gulp.dest(buildPaths.root))
+  .pipe(browserSync.stream());
+}
+
+let build = gulp.series(clearBuild, gulp.parallel(css, img, html, js, fonts));
 
 //Tasks
 
@@ -98,5 +106,6 @@ gulp.task(
     gulp.watch(srcPaths.html, html);
     gulp.watch(srcPaths.fonts, fonts);
     gulp.watch(srcPaths.img, img);
+    gulp.watch(srcPaths.js, js);
   })
 );
