@@ -1,0 +1,442 @@
+@import "colors.less";
+@import "reset.less";
+@import "fonts.less";
+
+@content-width: 80vw;
+@common-margins: calc(@content-width / 100 * 3);
+
+.cButton:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
+}
+
+.buttonWrapper:hover {
+  filter: drop-shadow(-1px 6px 3px @color_aqua);
+}
+
+.buttonWrapper:active {
+  top: 0.1em;
+  left: 0.1em;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.05) inset;
+}
+
+html {
+  font-family: "Nico Moji", sans-serif;
+  color: @cyber_yellow;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  background-color: #444544;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: @content-width;
+  height: 100vh;
+  overflow: auto;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 3.1fr 13fr;
+  grid-template-rows: 1fr 7fr 1fr;
+  background-color: aliceblue;
+  background-image: url("../../public/img/swamp/background.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  grid-area: header;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: @common-margins;
+  margin-right: @common-margins;
+  position: relative;
+
+  .pageCounter {
+    display: block;
+    align-items: first baseline;
+    font-family: "Rajdhali", sans-serif;
+    color: @cyber_swamp;
+    font-size: 25px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+
+    .pagePage {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
+
+  .headerLeft {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: start;
+    flex-shrink: 0;
+
+    .logoContainer {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      .logo {
+        width: 50px;
+        margin-right: 10px;
+      }
+
+      .logoTextWrapper {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+
+        .logoText {
+          width: 200px;
+        }
+
+        .officersText {
+          margin-top: 10px;
+          width: 110px;
+        }
+      }
+    }
+
+    .discover {
+      margin-left: 30px;
+    }
+  }
+
+  .headerButton {
+    height: 35px;
+  }
+
+  .headerRight {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+
+    .menuContainer {
+      display: flex;
+      box-sizing: border-box;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 22px auto 0 0;
+
+      .menuButtons {
+        display: flex;
+        justify-content: space-evenly;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        gap: 15px;
+      }
+    }
+
+    .redBar {
+      display: flex;
+      box-sizing: border-box;
+      width: fit-content;
+      height: fit-content;
+
+      .bar {
+        width: 17vw;
+      }
+    }
+  }
+
+  .redLine {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+
+    .line {
+      width: 100%;
+    }
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  gap: 10px;
+  margin-left: @common-margins;
+  margin-right: 5%;
+
+  .sidebarHeader {
+    font-size: 1.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 7px;
+    margin-left: 3%;
+  }
+
+  .note {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 3px;
+    font-size: 0.7vw;
+    font-family: "Rajdhali", sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 2px solid @cyber_swamp_dark;
+    letter-spacing: 0.7px;
+
+    .noteItem {
+      box-sizing: border-box;
+      display: flex;
+      margin: 0;
+
+      .header {
+        text-align: left;
+      }
+
+      .noteTagHeader {
+        color: @cyber_swamp;
+        margin-right: 10px;
+      }
+
+      .noteTag {
+        color: #fff;
+      }
+
+      .noteAuthorHeader {
+        color: @cyber_swamp;
+        margin-right: 10px;
+      }
+
+      .noteAuthor {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.main {
+  grid-area: main;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  margin-right: 21%;
+
+  .newNoteFormWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+
+    .noteForm {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+
+      textarea,
+      input {
+        box-sizing: border-box;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        font-family: "Numans", sans-serif;
+        font-weight: 800;
+        font-size: 1.5vw;
+      }
+
+      textarea {
+        box-sizing: border-box;
+        padding: 3% 3% 3% 1%;
+        resize: none;
+        line-height: 3vh;
+      }
+
+      input {
+        box-sizing: border-box;
+        padding: 0.3%;
+      }
+
+      label {
+        margin: 5px;
+        font-size: 1.9vw;
+      }
+
+      .formButtonsWrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+
+      .formField {
+        display: flex;
+        border: @cyber_swamp_dark 2px solid;
+        align-items: center;
+      }
+
+      .noteTextWrapper {
+        height: 65%;
+      }
+    }
+  }
+}
+
+.footer {
+  grid-area: footer;
+  margin-left: @common-margins;
+  margin-right: @common-margins;
+
+  .footerLine {
+    display: flex;
+    justify-content: center;
+
+    .redLine {
+      margin: auto;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (width < 1260px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .headerLeft {
+      margin-top: 20px;
+
+      .logoContainer {
+        flex-direction: column;
+
+        .discover {
+          margin: 15px auto auto auto;
+        }
+
+        .logoTextWrapper {
+          .officersText {
+            align-self: center;
+          }
+        }
+      }
+    }
+
+    .headerRight {
+      .menuContainer {
+        margin: 60px auto 30px auto;
+      }
+    }
+  }
+
+  .main {
+    .mainHeaderContainer {
+      flex-direction: column;
+      justify-content: center;
+      margin: 10px auto 10px auto;
+
+      .mainGearContainer {
+        justify-content: center;
+        align-items: center;
+
+        .gearImage {
+          width: 100px;
+        }
+
+        .headerJapan {
+          position: relative;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    .pageCounter {
+      display: none;
+    }
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    .mainButton {
+      width: 20vw;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    .contentBackgroundCover {
+      .mainText {
+        font-size: 2vw;
+        margin: 4% 4% 4% 12%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .header {
+    .headerButton {
+      width: 45vw;
+    }
+
+    .headerLeft {
+      .logoContainer {
+        .logo {
+          width: 50px;
+        }
+
+        .logoTextWrapper {
+          .logoText {
+            width: 45vw;
+          }
+        }
+
+        .headerButton.discover {
+          width: 45vw;
+        }
+      }
+    }
+
+    .headerRight {
+      .menuContainer {
+        .menuButtons {
+          .headerButton {
+            width: 25vw;
+          }
+        }
+      }
+    }
+  }
+}
