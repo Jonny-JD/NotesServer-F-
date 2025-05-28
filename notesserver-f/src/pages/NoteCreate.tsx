@@ -1,36 +1,48 @@
 import React from "react";
 import cn from "classnames";
-import styles from "../styles/note_page.module.less";
+import styles from "../styles/create_page.module.less";
+import logo from "@/assets/img/swamp/logo.svg";
+import logoText from "@/assets/img/swamp/logo_text.svg";
+import officersText from "@/assets/img/swamp/officers_text.svg";
+import yourNotesButton from "@/assets/img/swamp/your_notes_button.svg";
+import discoverButton from "@/assets/img/swamp/discover_button.svg";
+import logoutButton from "@/assets/img/swamp/logout_button.svg";
+import headerBar from "@/assets/img/swamp/header_bar.svg";
+import topLine from "@/assets/img/swamp/top_line.svg";
+import searchButton from "@/assets/img/swamp/search_button.svg";
+import createNoteButton from "@/assets/img/swamp/create_note_button.svg";
+import privateButton from "@/assets/img/swamp/private_button.svg";
+import footerLine from "@/assets/img/swamp/footer_line.svg";
 
-const NotePage: React.FC = () => {
+const CreateNotePage: React.FC = () => {
   return (
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <header className={styles.header}>
             <div className={styles.pageCounter}>
-              <span>4/5</span>
+              <span>3/5</span>
               <span className={styles.pagePage}>PAGE</span>
             </div>
             <div className={styles.headerLeft}>
               <div className={styles.logoContainer}>
-                <img className={styles.logo} src="/img/swamp/logo.svg" alt="Logo" />
+                <img className={styles.logo} src={logo} alt="Logo" />
                 <div className={styles.logoTextWrapper}>
-                  <img className={styles.logoText} src="/img/swamp/logo_text.svg" alt="Logo Text" />
-                  <img className={styles.officersText} src="/img/swamp/officers_text.svg" alt="Officers Text" />
+                  <img className={styles.logoText} src={logoText} alt="Logo Text" />
+                  <img className={styles.officersText} src={officersText} alt="Officers Text" />
                 </div>
                 <div className={cn(styles.buttonWrapper, styles.discover)}>
                   <input
                       type="image"
-                      className={cn(styles.headerButton, "c-button")}
-                      src="/img/swamp/your_notes_button.svg"
+                      className={cn(styles["header-button"], "c-button")}
+                      src={yourNotesButton}
                       alt="Your Notes"
                   />
                 </div>
                 <div className={cn(styles.buttonWrapper, styles.discover)}>
                   <input
                       type="image"
-                      className={cn(styles.headerButton, "c-button")}
-                      src="/img/swamp/discover_button.svg"
+                      className={cn(styles["header-button"], "c-button")}
+                      src={discoverButton}
                       alt="Discover"
                   />
                 </div>
@@ -42,19 +54,19 @@ const NotePage: React.FC = () => {
                   <div className={styles.buttonWrapper}>
                     <input
                         type="image"
-                        className={cn(styles.headerButton, "c-button")}
-                        src="/img/swamp/logout_button.svg"
+                        className={cn(styles["header-button"], "c-button")}
+                        src={logoutButton}
                         alt="Logout"
                     />
                   </div>
                 </div>
               </div>
               <div className={styles.redBar}>
-                <img className={styles.bar} src="/img/swamp/header_bar.svg" alt="Header Bar" />
+                <img className={styles.bar} src={headerBar} alt="Header Bar" />
               </div>
             </div>
             <div className={styles.redLine}>
-              <img className={styles.line} src="/img/swamp/top_line.svg" alt="Top Line" />
+              <img className={styles.line} src={topLine} alt="Top Line" />
             </div>
           </header>
 
@@ -74,34 +86,40 @@ const NotePage: React.FC = () => {
               </div>
             </div>
             <div className={styles.buttonWrapper}>
-              <img className={cn(styles.searchButton, "c-button")} src="/img/swamp/search_button.svg" alt="Search Button" />
+              <img className={cn(styles["search-button"], "c-button")} src={searchButton} alt="Search" />
             </div>
           </aside>
 
           <main className={styles.main}>
             <div className={styles.newNoteFormWrapper}>
-              <div className={styles.noteForm}>
+              <form className={styles.noteForm} method="get" action="">
                 <div className={styles.formField}>
-                  <span>Title:</span>
-                  <span className={styles.formText}>some title</span>
+                  <label htmlFor="note-title">Title:</label>
+                  <input type="text" name="note-title" id="note-title" required />
                 </div>
                 <div className={styles.formField}>
-                  <span className={styles.tagHeader}>Tag:</span>
-                  <span className={styles.formText}>some tag</span>
+                  <label htmlFor="note-tag">Tag:</label>
+                  <input type="text" name="note-tag" id="note-tag" required />
                 </div>
                 <div className={cn(styles.formField, styles.noteTextWrapper)}>
-                  <div className={styles.noteArea}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit...
+                  <label htmlFor="note-text">Text:</label>
+                  <textarea name="note-text" id="note-text" rows={10} cols={10} />
+                </div>
+                <div className={styles.formButtonsWrapper}>
+                  <div className={styles.buttonWrapper}>
+                    <img src={createNoteButton} alt="Create Note" />
+                  </div>
+                  <div className={styles.buttonWrapper}>
+                    <img src={privateButton} alt="Private Note" />
                   </div>
                 </div>
-                {/* Закомментированные кнопки */}
-              </div>
+              </form>
             </div>
           </main>
 
           <footer className={styles.footer}>
             <div className={styles.footerLine}>
-              <img className={styles.redLine} src="/img/swamp/footer_line.svg" alt="Footer Line" />
+              <img className={styles.redLine} src={footerLine} alt="Footer Line" />
             </div>
           </footer>
         </div>
@@ -109,4 +127,4 @@ const NotePage: React.FC = () => {
   );
 };
 
-export default NotePage;
+export default CreateNotePage;

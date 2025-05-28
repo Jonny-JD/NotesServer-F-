@@ -1,6 +1,18 @@
 import React from "react";
 import cn from "classnames";
 import styles from "../styles/discover_page.module.less";
+import logo from "@/assets/img/swamp/logo.svg";
+import logo_text from "@/assets/img/swamp/logo_text.svg"
+import officers_text from "@/assets/img/swamp/officers_text.svg"
+import your_notes_button from "@/assets/img/swamp/your_notes_button.svg"
+import discover_button from "@/assets/img/swamp/discover_button.svg"
+import logout_button from "@/assets/img/swamp/logout_button.svg"
+import header_bar from "@/assets/img/swamp/header_bar.svg"
+import top_line from "@/assets/img/swamp/top_line.svg"
+import search_button from "@/assets/img/swamp/search_button.svg"
+import footer_line from "@/assets/img/swamp/footer_line.svg"
+
+
 
 const DiscoverPage: React.FC = () => {
   return (
@@ -13,16 +25,16 @@ const DiscoverPage: React.FC = () => {
             </div>
             <div className={styles.headerLeft}>
               <div className={styles.logoContainer}>
-                <img className={styles.logo} src="/img/swamp/logo.svg" alt="Logo" />
+                <img className={styles.logo} src={logo} alt="Logo" />
                 <div className={styles.logoTextWrapper}>
-                  <img className={styles.logoText} src="/img/swamp/logo_text.svg" alt="Logo Text" />
-                  <img className={styles.officersText} src="/img/swamp/officers_text.svg" alt="Officers Text" />
+                  <img className={styles.logoText} src={logo_text} alt="Logo Text" />
+                  <img className={styles.officersText} src={officers_text} alt="Officers Text" />
                 </div>
                 <div className={cn(styles.buttonWrapper, styles.discover)}>
                   <input
                       type="image"
                       className={cn(styles.headerButton, "c-button")}
-                      src="/img/swamp/your_notes_button.svg"
+                      src={your_notes_button}
                       alt="Your Notes"
                   />
                 </div>
@@ -30,7 +42,7 @@ const DiscoverPage: React.FC = () => {
                   <input
                       type="image"
                       className={cn(styles.headerButton, "c-button")}
-                      src="/img/swamp/discover_button.svg"
+                      src={discover_button}
                       alt="Discover"
                   />
                 </div>
@@ -43,18 +55,18 @@ const DiscoverPage: React.FC = () => {
                     <input
                         type="image"
                         className={cn(styles.headerButton, "c-button")}
-                        src="/img/swamp/logout_button.svg"
+                        src={logout_button}
                         alt="Logout"
                     />
                   </div>
                 </div>
               </div>
               <div className={styles.redBar}>
-                <img className={styles.bar} src="/img/swamp/header_bar.svg" alt="Header Bar" />
+                <img className={styles.bar} src={header_bar} alt="Header Bar" />
               </div>
             </div>
             <div className={styles.redLine}>
-              <img className={styles.line} src="/img/swamp/top_line.svg" alt="Top Line" />
+              <img className={styles.line} src={top_line} alt="Top Line" />
             </div>
           </header>
 
@@ -80,7 +92,7 @@ const DiscoverPage: React.FC = () => {
                   type="image"
                   className={cn(styles.searchButton, "c-button")}
                   id="sidebarSearchBtn"
-                  src="/img/swamp/search_button.svg"
+                  src={search_button}
                   alt="Search Button"
               />
             </div>
@@ -122,7 +134,7 @@ const DiscoverPage: React.FC = () => {
 
           <footer className={styles.footer}>
             <div className={styles.footerLine}>
-              <img className={styles.redLine} src="/img/swamp/footer_line.svg" alt="Footer Line" />
+              <img className={styles.redLine} src={footer_line} alt="Footer Line" />
             </div>
           </footer>
         </div>

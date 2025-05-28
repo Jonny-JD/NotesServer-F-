@@ -1,6 +1,18 @@
 import React from "react";
 import cn from "classnames";
 import styles from "../styles/styles.module.less";
+import logo from "@/assets/img/red/logo.svg";
+import logoText from "@/assets/img/red/logo_text.svg";
+import officersText from "@/assets/img/red/officers_text.svg";
+import discoverButton from "@/assets/img/red/discover_button.svg";
+import signUpButton from "@/assets/img/red/sign_up_button.svg";
+import loginButton from "@/assets/img/red/login_button.svg";
+import headerBar from "@/assets/img/red/header_bar.svg";
+import topLine from "@/assets/img/red/top_line.svg";
+import mainGear from "@/assets/img/red/main_gear.svg";
+import japanMain from "@/assets/img/red/japan_main.svg";
+import mainSignUpButton from "@/assets/img/red/main_sign_up_button.svg";
+import footerLine from "@/assets/img/red/footer_line.svg";
 
 const HomePage: React.FC = () => {
     return (
@@ -13,16 +25,16 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className={styles.headerLeft}>
                         <div className={styles.logoContainer}>
-                            <img className={styles.logo} src="/img/red/logo.svg" alt="Logo" />
+                            <img className={styles.logo} src={logo} alt="Logo" />
                             <div className={styles.logoTextWrapper}>
                                 <img
                                     className={styles.logoText}
-                                    src="/img/red/logo_text.svg"
+                                    src={logoText}
                                     alt="Logo Text"
                                 />
                                 <img
                                     className={styles.officersText}
-                                    src="/img/red/officers_text.svg"
+                                    src={officersText}
                                     alt="Officers Text"
                                 />
                             </div>
@@ -30,7 +42,7 @@ const HomePage: React.FC = () => {
                                 <input
                                     type="image"
                                     className={cn(styles.headerButton, styles.cButton)}
-                                    src="/img/red/discover_button.svg"
+                                    src={discoverButton}
                                     alt="Discover Button"
                                 />
                             </div>
@@ -43,7 +55,7 @@ const HomePage: React.FC = () => {
                                     <input
                                         type="image"
                                         className={cn(styles.headerButton, styles.cButton)}
-                                        src="/img/red/sign_up_button.svg"
+                                        src={signUpButton}
                                         alt="Sign Up Button"
                                     />
                                 </div>
@@ -51,7 +63,7 @@ const HomePage: React.FC = () => {
                                     <input
                                         type="image"
                                         className={cn(styles.headerButton, styles.cButton)}
-                                        src="/img/red/login_button.svg"
+                                        src={loginButton}
                                         alt="Login Button"
                                     />
                                 </div>
@@ -60,7 +72,7 @@ const HomePage: React.FC = () => {
                         <div className={styles.redBar}>
                             <img
                                 className={styles.bar}
-                                src="/img/red/header_bar.svg"
+                                src={headerBar}
                                 alt="Header Bar"
                             />
                         </div>
@@ -68,7 +80,7 @@ const HomePage: React.FC = () => {
                     <div className={styles.redLine}>
                         <img
                             className={styles.line}
-                            src="/img/red/top_line.svg"
+                            src={topLine}
                             alt="Top Line"
                         />
                     </div>
@@ -78,12 +90,12 @@ const HomePage: React.FC = () => {
                         <div className={styles.mainGearContainer}>
                             <img
                                 className={styles.gearImage}
-                                src="/img/red/main_gear.svg"
+                                src={mainGear}
                                 alt="Main Gear"
                             />
                             <img
                                 className={styles.headerJapan}
-                                src="/img/red/japan_main.svg"
+                                src={japanMain}
                                 alt="Japan Main"
                             />
                         </div>
@@ -107,7 +119,7 @@ const HomePage: React.FC = () => {
                             <input
                                 type="image"
                                 className={styles.mainButton}
-                                src="/img/red/main_sign_up_button.svg"
+                                src={mainSignUpButton}
                                 alt="Main Sign Up Button"
                             />
                         </div>
@@ -117,7 +129,7 @@ const HomePage: React.FC = () => {
                     <div className={styles.footerLine}>
                         <img
                             className={styles.redLine}
-                            src="/img/red/footer_line.svg"
+                            src={footerLine}
                             alt="Footer Line"
                         />
                     </div>

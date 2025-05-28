@@ -5,7 +5,7 @@
 @content-width: 80vw;
 @common-margins: calc(@content-width / 100 * 3);
 
-.c-button:hover {
+.cButton:hover {
   clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
 }
 
@@ -43,12 +43,13 @@ html {
   grid-template-columns: 3.1fr 13fr;
   grid-template-rows: 1fr 7fr 1fr;
   background-color: aliceblue;
-  background-image: url("../../public/img/swamp/background.png");
+  background-image: url("../assets/img/swamp/background.png");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .header {
   grid-area: header;
   display: inline-flex;
@@ -67,6 +68,7 @@ html {
     position: absolute;
     top: 30px;
     right: 0;
+
     .pagePage {
       margin-left: 10px;
       font-size: 20px;
@@ -80,27 +82,33 @@ html {
     box-sizing: border-box;
     justify-content: start;
     flex-shrink: 0;
+
     .logoContainer {
       display: inline-flex;
       flex-wrap: nowrap;
       align-items: center;
+
       .logo {
         width: 50px;
         margin-right: 10px;
       }
+
       .logoTextWrapper {
         margin-top: 25px;
         display: flex;
         flex-direction: column;
+
         .logoText {
           width: 200px;
         }
+
         .officersText {
           margin-top: 10px;
           width: 110px;
         }
       }
     }
+
     .discover {
       margin-left: 30px;
     }
@@ -117,6 +125,7 @@ html {
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+
     .menuContainer {
       display: flex;
       box-sizing: border-box;
@@ -124,6 +133,7 @@ html {
       align-items: center;
       justify-content: space-between;
       margin: 22px auto 0 0;
+
       .menuButtons {
         display: flex;
         justify-content: space-evenly;
@@ -132,22 +142,26 @@ html {
         gap: 15px;
       }
     }
+
     .redBar {
       display: flex;
       box-sizing: border-box;
       width: fit-content;
       height: fit-content;
+
       .bar {
         width: 17vw;
       }
     }
   }
+
   .redLine {
     margin: auto;
     display: flex;
     justify-content: center;
     margin-top: 10px;
     width: 100%;
+
     .line {
       width: 100%;
     }
@@ -163,13 +177,16 @@ html {
   gap: 10px;
   margin-left: @common-margins;
   margin-right: 5%;
+
   .sidebarHeader {
     font-size: 1.3vw;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-bottom: 7px;
     margin-left: 3%;
   }
+
   .note {
     display: flex;
     flex-direction: column;
@@ -180,28 +197,33 @@ html {
     font-family: "Rajdhali", sans-serif;
     font-weight: 600;
     box-sizing: border-box;
-    margin-top: 10px;
     padding: 5px;
     border: 2px solid @cyber_swamp_dark;
     letter-spacing: 0.7px;
+
     .noteItem {
       box-sizing: border-box;
       display: flex;
       margin: 0;
+
       .header {
         text-align: left;
       }
+
       .noteTagHeader {
         color: @cyber_swamp;
         margin-right: 10px;
       }
+
       .noteTag {
         color: #fff;
       }
+
       .noteAuthorHeader {
         color: @cyber_swamp;
         margin-right: 10px;
       }
+
       .noteAuthor {
         color: #fff;
       }
@@ -217,98 +239,70 @@ html {
   justify-content: start;
   align-items: center;
   gap: 10px;
-  margin-top: 35px;
+  margin-top: 15px;
   margin-right: 21%;
-  .notesListWrapper {
+
+  .searchBlockWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    padding: 25px 30px;
     box-sizing: border-box;
     border: @cyber_swamp_dark solid 2px;
-    position: relative;
-    overflow: hidden;
-    .notesListHeader {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      align-self: center;
-      margin: auto;
-      padding: 20px 0;
-      width: 90%;
-      font-size: 0.9vw;
-      border-bottom: @cyber_swamp_dark 2px solid;
-      .tagHeader {
-        margin-right: 20px;
-      }
-    }
-    .notesList {
-      width: 100%;
-      height: 90%;
+
+    .searchFieldWrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      flex-wrap: nowrap;
-      position: absolute;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      .noteWrapper {
+      gap: 10px;
+      width: 30vw;
+
+      .searchChoice {
         display: flex;
-        flex-direction: row;
-        width: 90%;
-        justify-content: space-between;
-        border-bottom: @cyber_swamp_dark 2px solid;
-        font-family: "Numans", sans-serif;
-        font-weight: 600;
-        .note {
-          padding: 2px 0;
-          .noteItem {
-            box-sizing: border-box;
-            display: flex;
-            margin: 5px 0;
-            font-size: 0.5vw;
-            .header {
-              text-align: left;
-            }
-            .noteTagHeader {
-              color: @cyber_swamp;
-              margin-right: 10px;
-            }
-            .noteTag {
-              color: #fff;
-            }
-            .noteAuthorHeader {
-              color: @cyber_swamp;
-              margin-right: 10px;
-            }
-            .noteAuthor {
-              color: #fff;
-            }
-          }
-          .noteItem.tag {
-            display: none;
-          }
-        }
-        .posted {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          color: @cyber_swamp;
-          font-size: 0.6vw;
+        gap: 15px;
+        justify-content: flex-start;
+        color: @cyber_swamp;
+        font-size: 1.2vw;
+
+        .searchHeader {
+          color: @cyber_yellow;
         }
 
-        .tag {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
+        .radio-toolbar input[type="radio"] {
+          display: none;
+        }
+
+        .radio-toolbar label {
           color: @cyber_swamp;
-          font-size: 0.6vw;
+          cursor: pointer;
+        }
+
+        .radio-toolbar input[type="radio"]:checked + label {
+          color: #fff;
+        }
+      }
+
+      .searchInputWrapper {
+        input {
+          width: 100%;
+          height: 25px;
+          background: none;
+          border: @cyber_swamp_dark 2px solid;
+          font-family: "Numans", sans-serif;
+          font-weight: 600;
+          font-size: 2vh;
+          color: #fff;
+          outline: none;
         }
       }
     }
-    .notesList::-webkit-scrollbar {
-      display: none;
+  }
+
+  .buttonWrapper {
+    .searchButton {
+      margin-top: 20px;
+      width: 7vw;
     }
   }
 }
@@ -317,9 +311,11 @@ html {
   grid-area: footer;
   margin-left: @common-margins;
   margin-right: @common-margins;
+
   .footerLine {
     display: flex;
     justify-content: center;
+
     .redLine {
       margin: auto;
       width: 100%;
@@ -332,13 +328,17 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
     .headerLeft {
       margin-top: 20px;
+
       .logoContainer {
         flex-direction: column;
+
         .discover {
           margin: 15px auto auto auto;
         }
+
         .logoTextWrapper {
           .officersText {
             align-self: center;
@@ -346,28 +346,27 @@ html {
         }
       }
     }
+
     .headerRight {
       .menuContainer {
         margin: 60px auto 30px auto;
       }
     }
   }
+
   .main {
-    .mainHeaderContainer {
-      flex-direction: column;
-      justify-content: center;
-      margin: 10px auto 10px auto;
-      .mainGearContainer {
-        justify-content: center;
-        align-items: center;
-        .gearImage {
-          width: 100px;
+    .searchBlockWrapper {
+      .searchFieldWrapper {
+        .searchChoice {
+          font-size: 1.5vw;
         }
-        .headerJapan {
-          position: relative;
-          top: 0;
-          left: 0;
-        }
+      }
+    }
+
+    .buttonWrapper {
+      .searchButton {
+        margin-top: 20px;
+        width: 10vw;
       }
     }
   }
@@ -379,22 +378,49 @@ html {
       display: none;
     }
   }
+
   .sidebar {
     display: none;
   }
+
   .main {
-    .mainButton {
-      width: 20vw;
+    .searchBlockWrapper {
+      .searchFieldWrapper {
+        width: 100%;
+
+        .searchChoice {
+          font-size: 2.3vw;
+        }
+      }
+    }
+
+    .buttonWrapper {
+      .searchButton {
+        margin-top: 20px;
+        width: 14vw;
+      }
     }
   }
 }
 
 @media screen and (max-width: 600px) {
   .main {
-    .contentBackgroundCover {
-      .mainText {
-        font-size: 2vw;
-        margin: 4% 4% 4% 12%;
+    .searchBlockWrapper {
+      .searchFieldWrapper {
+        width: 100%;
+
+        .searchChoice {
+          flex-direction: column;
+          align-items: center;
+          font-size: 2.8vw;
+        }
+      }
+    }
+
+    .buttonWrapper {
+      .searchButton {
+        margin-top: 20px;
+        width: 20vw;
       }
     }
   }
@@ -405,21 +431,25 @@ html {
     .headerButton {
       width: 45vw;
     }
+
     .headerLeft {
       .logoContainer {
         .logo {
           width: 50px;
         }
+
         .logoTextWrapper {
           .logoText {
             width: 45vw;
           }
         }
+
         .headerButton.discover {
           width: 45vw;
         }
       }
     }
+
     .headerRight {
       .menuContainer {
         .menuButtons {

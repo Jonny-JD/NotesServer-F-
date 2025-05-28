@@ -1,5 +1,15 @@
 import React from "react";
 import styles from "../styles/search_page.module.less";
+import logo from "@/assets/img/swamp/logo.svg";
+import logoText from "@/assets/img/swamp/logo_text.svg";
+import officersText from "@/assets/img/swamp/officers_text.svg";
+import yourNotesButton from "@/assets/img/swamp/your_notes_button.svg";
+import discoverButton from "@/assets/img/swamp/discover_button.svg";
+import logoutButton from "@/assets/img/swamp/logout_button.svg";
+import headerBar from "@/assets/img/swamp/header_bar.svg";
+import topLine from "@/assets/img/swamp/top_line.svg";
+import searchButton from "@/assets/img/swamp/search_button.svg";
+import footerLine from "@/assets/img/swamp/footer_line.svg";
 
 const SearchPage: React.FC = () => {
   return (
@@ -12,16 +22,16 @@ const SearchPage: React.FC = () => {
             </div>
             <div className={styles.headerLeft}>
               <div className={styles.logoContainer}>
-                <img className={styles.logo} src="/img/swamp/logo.svg" alt="Logo" />
+                <img className={styles.logo} src={logo} alt="Logo" />
                 <div className={styles.logoTextWrapper}>
-                  <img className={styles.logoText} src="/img/swamp/logo_text.svg" alt="Logo Text" />
-                  <img className={styles.officersText} src="/img/swamp/officers_text.svg" alt="Officers Text" />
+                  <img className={styles.logoText} src={logoText} alt="Logo Text" />
+                  <img className={styles.officersText} src={officersText} alt="Officers Text" />
                 </div>
                 <div className={`${styles.buttonWrapper} ${styles.discover}`}>
                   <input
                       type="image"
                       className={`${styles.headerButton} ${styles.cButton}`}
-                      src="/img/swamp/your_notes_button.svg"
+                      src={yourNotesButton}
                       alt="Your Notes"
                   />
                 </div>
@@ -29,7 +39,7 @@ const SearchPage: React.FC = () => {
                   <input
                       type="image"
                       className={`${styles.headerButton} ${styles.cButton}`}
-                      src="/img/swamp/discover_button.svg"
+                      src={discoverButton}
                       alt="Discover"
                   />
                 </div>
@@ -42,18 +52,18 @@ const SearchPage: React.FC = () => {
                     <input
                         type="image"
                         className={`${styles.headerButton} ${styles.cButton}`}
-                        src="/img/swamp/logout_button.svg"
+                        src={logoutButton}
                         alt="Logout"
                     />
                   </div>
                 </div>
               </div>
               <div className={styles.redBar}>
-                <img className={styles.bar} src="/img/swamp/header_bar.svg" alt="Header Bar" />
+                <img className={styles.bar} src={headerBar} alt="Header Bar" />
               </div>
             </div>
             <div className={styles.redLine}>
-              <img className={styles.line} src="/img/swamp/top_line.svg" alt="Top Line" />
+              <img className={styles.line} src={topLine} alt="Top Line" />
             </div>
           </header>
 
@@ -73,7 +83,7 @@ const SearchPage: React.FC = () => {
               </div>
             </div>
             <div className={styles.buttonWrapper}>
-              <img className={`${styles.searchButton} ${styles.cButton}`} src="/img/swamp/search_button.svg" alt="Search" />
+              <img className={`${styles.searchButton} ${styles.cButton}`} src={searchButton} alt="Search" />
             </div>
           </aside>
 
@@ -91,13 +101,13 @@ const SearchPage: React.FC = () => {
               </div>
             </div>
             <div className={styles.buttonWrapper}>
-              <img className={`${styles.searchButton} ${styles.cButton}`} src="/img/swamp/search_button.svg" alt="Search Button" />
+              <img className={`${styles.searchButton} ${styles.cButton}`} src={searchButton} alt="Search Button" />
             </div>
           </main>
 
           <footer className={styles.footer}>
             <div className={styles.footerLine}>
-              <img className={styles.redLine} src="/img/swamp/footer_line.svg" alt="Footer Line" />
+              <img className={styles.redLine} src={footerLine} alt="Footer Line" />
             </div>
           </footer>
         </div>
