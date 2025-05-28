@@ -14,7 +14,7 @@ import createNoteButton from "@/assets/img/swamp/create_note_button.svg";
 import privateButton from "@/assets/img/swamp/private_button.svg";
 import footerLine from "@/assets/img/swamp/footer_line.svg";
 
-const CreateNotePage: React.FC = () => {
+const NoteCreatePage: React.FC = () => {
   return (
       <div className={styles.wrapper}>
         <div className={styles.container}>
@@ -127,4 +127,4 @@ const CreateNotePage: React.FC = () => {
   );
 };
 
-export default CreateNotePage;
+export default NoteCreatePage;

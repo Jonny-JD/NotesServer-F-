@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
 
-import Home from "./pages/Home.tsx";
+import Home from "./pages/HomePage.tsx";
+import Register from "./pages/RegisterPage.tsx";
 import Login from "./pages/Login.tsx";
 import Note from "./pages/Note.tsx";
 import NoteCreate from "./pages/NoteCreate.tsx";
 import Search from "./pages/Search.tsx";
-import Discover from "./pages/Discover.tsx";
+import Discover from "./pages/DiscoverPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import NotFound from "./pages/NotFoundPage.tsx";
 
 const App = () => {
     return (
@@ -17,13 +18,13 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                     <Route path="/note/discover" element={<Discover />} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="/note/create" element={<NoteCreate />} />
                     <Route element={<ProtectedRoute />}>
                         <Route path="/note" element={<Note />} />
-                        <Route path="/note/create" element={<NoteCreate />} />
                         <Route path="/note/search" element={<Search />} />
-
                     </Route>
                 </Routes>
             </BrowserRouter>

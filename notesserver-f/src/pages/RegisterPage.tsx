@@ -1,0 +1,213 @@
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import cn from "classnames";
+import styles from "../styles/register_page.module.less";
+import logo from "@/assets/img/red/logo.svg";
+import logoText from "@/assets/img/red/logo_text.svg";
+import officersText from "@/assets/img/red/officers_text.svg";
+import discoverButton from "@/assets/img/red/discover_button.svg";
+import signUpButton from "@/assets/img/red/sign_up_button.svg";
+import loginButton from "@/assets/img/red/login_button.svg";
+import headerBar from "@/assets/img/red/header_bar.svg";
+import topLine from "@/assets/img/red/top_line.svg";
+import mainGear from "@/assets/img/red/main_gear.svg";
+import japanMain from "@/assets/img/red/japan_main.svg";
+import footerLine from "@/assets/img/red/footer_line.svg";
+import registerButton from "@/assets/img/red/register_button.svg"
+
+
+const RegisterPage: React.FC = () => {
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState<string | null>(null);
+
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(null);
+
+        try {
+            const response = await fetch("/api/users", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({username, email, password}),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setError(data.message || "Login failed");
+                return;
+            }
+
+            let navigate = useNavigate();
+            navigate("/login");
+
+        } catch {
+            setError("Network error");
+        }
+    }
+
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <header className={styles.header}>
+                    <div className={styles.pageCounter}>
+                        <span>1/5</span>
+                        <span className={styles.pagePage}>PAGE</span>
+                    </div>
+                    <div className={styles.headerLeft}>
+                        <div className={styles.logoContainer}>
+                            <img className={styles.logo} src={logo} alt="Logo"/>
+                            <div className={styles.logoTextWrapper}>
+                                <img
+                                    className={styles.logoText}
+                                    src={logoText}
+                                    alt="Logo Text"
+                                />
+                                <img
+                                    className={styles.officersText}
+                                    src={officersText}
+                                    alt="Officers Text"
+                                />
+                            </div>
+                            <div className={cn(styles.buttonWrapper, styles.discover)}>
+                                <input
+                                    type="image"
+                                    className={cn(styles.headerButton, styles.cButton)}
+                                    src={discoverButton}
+                                    alt="Discover Button"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.headerRight}>
+                        <div className={styles.menuContainer}>
+                            <div className={styles.menuButtons}>
+                                <div className={styles.buttonWrapper}>
+                                    <input
+                                        type="image"
+                                        className={cn(styles.headerButton, styles.cButton)}
+                                        src={signUpButton}
+                                        alt="Sign Up Button"
+                                    />
+                                </div>
+                                <div className={styles.buttonWrapper}>
+                                    <input
+                                        type="image"
+                                        className={cn(styles.headerButton, styles.cButton)}
+                                        src={loginButton}
+                                        alt="Login Button"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.redBar}>
+                            <img
+                                className={styles.bar}
+                                src={headerBar}
+                                alt="Header Bar"
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.redLine}>
+                        <img
+                            className={styles.line}
+                            src={topLine}
+                            alt="Top Line"
+                        />
+                    </div>
+                </header>
+                <main className={styles.main}>
+                    <div className={styles.mainHeaderContainer}>
+                        <div className={styles.mainGearContainer}>
+                            <img
+                                className={styles.gearImage}
+                                src={mainGear}
+                                alt="Main Gear"
+                            />
+                            <img
+                                className={styles.headerJapan}
+                                src={japanMain}
+                                alt="Japan Main"
+                            />
+                        </div>
+                        <div className={styles.headerText}>
+                            <span>DIGITAL NOTES</span>
+                        </div>
+                    </div>
+                    <div className={styles.contentBackgroundCover}>
+                        <div className={styles.registerForm}>
+                            <form onSubmit={handleSubmit}>
+                                {error && <p style={{color: "red"}}>{error}</p>}
+
+                                <div className={styles.formField}>
+                                    <label htmlFor={username}>Username:</label>
+                                    <input
+                                            type="text"
+                                            name={username}
+                                            id={username}
+                                            value={username}
+                                            onChange={e => setUsername(e.target.value)}
+                                            required
+                                        />
+
+                                </div>
+
+                                <div className={styles.formField}>
+                                    <label htmlFor={email}>Email:</label>
+                                        <input
+                                            type="email"
+                                            name={email}
+                                            id={email}
+                                            value={email}
+                                            onChange={e => setEmail(e.target.value)}
+                                            required
+                                        />
+
+                                </div>
+
+                                <div className={styles.formField}>
+                                    <label htmlFor={password}>Password:</label>
+                                        <input
+                                            type="password"
+                                            name={password}
+                                            id={password}
+                                            value={password}
+                                            onChange={e => setPassword(e.target.value)}
+                                            required
+                                        />
+
+                                </div>
+
+                                <div className={cn(styles.mainSecButton, styles.cButton, styles.buttonWrapper)}>
+                                    <div className={styles.buttonWrapper}>
+                                        <input
+                                            type="image"
+                                            className={styles.mainButton}
+                                            src={registerButton}
+                                            alt="Register Button"
+                                        />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </main>
+                <footer className={styles.footer}>
+                    <div className={styles.footerLine}>
+                        <img
+                            className={styles.redLine}
+                            src={footerLine}
+                            alt="Footer Line"
+                        />
+                    </div>
+                </footer>
+            </div>
+        </div>
+    );
+};
+
+export default RegisterPage;
