@@ -138,47 +138,47 @@ const RegisterPage: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles.contentBackgroundCover}>
-                        <div className={styles.registerForm}>
-                            <form onSubmit={handleSubmit}>
+                        <div className={styles.registerFormWrapper}>
+                            <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
                                 {error && <p style={{color: "red"}}>{error}</p>}
 
                                 <div className={styles.formField}>
-                                    <label htmlFor={username}>Username:</label>
+                                    <label htmlFor="username">Username:</label>
                                     <input
-                                            type="text"
-                                            name={username}
-                                            id={username}
-                                            value={username}
-                                            onChange={e => setUsername(e.target.value)}
-                                            required
-                                        />
-
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        value={username}
+                                        autoComplete="off"
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        required
+                                    />
                                 </div>
 
                                 <div className={styles.formField}>
-                                    <label htmlFor={email}>Email:</label>
-                                        <input
-                                            type="email"
-                                            name={email}
-                                            id={email}
-                                            value={email}
-                                            onChange={e => setEmail(e.target.value)}
-                                            required
-                                        />
-
+                                    <label htmlFor="email">Email:</label>
+                                    <input
+                                        type="email"
+                                        name="email_field" // специально не "email"
+                                        id="email"
+                                        value={email}
+                                        autoComplete="off"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
                                 </div>
 
                                 <div className={styles.formField}>
-                                    <label htmlFor={password}>Password:</label>
-                                        <input
-                                            type="password"
-                                            name={password}
-                                            id={password}
-                                            value={password}
-                                            onChange={e => setPassword(e.target.value)}
-                                            required
-                                        />
-
+                                    <label htmlFor="password">Password:</label>
+                                    <input
+                                        type="password"
+                                        name="password_field" // не "password"
+                                        id="password"
+                                        value={password}
+                                        autoComplete="new-password"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        required
+                                    />
                                 </div>
 
                                 <div className={cn(styles.mainSecButton, styles.cButton, styles.buttonWrapper)}>
