@@ -81,7 +81,7 @@ const RegisterPage: React.FC = () => {
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
-                                    className={cn(styles.headerButton, styles.cButton)}
+                                    className={cn(styles.discoverButton, styles.headerButton,  styles.cButton)}
                                     src={discoverButton}
                                     alt="Discover Button"
                                 />
@@ -172,9 +172,9 @@ const RegisterPage: React.FC = () => {
                                 </div>
 
                                 <div className={styles.mainButtonWrapper}>
-                                    <div className={styles.buttonWrapper}>
+                                    <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
                                         <input
-                                            className={styles.cButton}
+                                            className={cn(styles.headerButton, styles.cButton, styles.loginMainB)}
                                             type="image"
                                             src={registerButton}
                                             alt="Register Button"
