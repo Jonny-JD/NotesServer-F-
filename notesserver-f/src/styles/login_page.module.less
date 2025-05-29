@@ -1,0 +1,693 @@
+@import "colors.less";
+@import "reset.less";
+@import "fonts.less";
+
+@content-width: 80vw;
+@common-margins: 5%;
+
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: @color_green_neon !important;
+  color: @color_green_neon !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+.c-button:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
+}
+
+.buttonWrapper:hover {
+  filter: drop-shadow(-1px 6px 3px @color_aqua);
+}
+
+.buttonWrapper:active {
+  top: 0.1em;
+  left: 0.1em;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.05) inset;
+}
+
+html {
+  font-family: "Nico Moji", sans-serif;
+  color: @cyber_red;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  background-color: #444544;
+}
+
+.container {
+  margin: 0 auto;
+  width: @content-width;
+  height: 100vh;
+  overflow: auto;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 7fr 1fr;
+  background-color: aliceblue;
+  background-image: url("@/assets/img/red/background.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 @common-margins;
+  position: relative;
+
+  .headerButton {
+    width: 25vw;
+  }
+
+  .pageCounter {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    font-family: "Rajdhali", sans-serif;
+    font-size: 25px;
+    color: @cyber_red;
+    align-items: baseline;
+    display: none;
+
+    .pagePage {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
+
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+    .logoContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .logo {
+        width: 15vw;
+      }
+
+      .logoTextWrapper {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        align-content: center;
+        align-items: center;
+
+        .logoText {
+          width: 20vh;
+        }
+
+        .officersText {
+          margin-top: 10px;
+          width: 20vh;
+        }
+      }
+    }
+
+    .discover {
+      width: fit-content;
+      margin: 2vh auto 2vh auto;
+
+      .discoverButton {
+        width: 35vw;
+      }
+    }
+
+
+  }
+
+  .headerRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .menuContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .menuButtons {
+        display: flex;
+        gap: 15px;
+      }
+    }
+
+    .redBar {
+      width: fit-content;
+
+      .bar {
+        width: 30vw;
+      }
+    }
+  }
+
+  .redLine {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .line {
+      width: 100%;
+    }
+  }
+}
+
+.main {
+  grid-area: main;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0 @common-margins;
+  height: fit-content;
+
+  .mainButton {
+    width: 30vw;
+  }
+
+  .mainHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1vh 1vh 4vh 1vh;
+    gap: 10px;
+
+    .mainGearContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+
+      .gearImage {
+        width: 20vw;
+        height: auto;
+      }
+
+      .headerJapan {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 30vw;
+      }
+    }
+
+    .headerText {
+      display: flex;
+      justify-content: center;
+      font-size: 5vw;
+      text-shadow: @cyber_red 1px 0 20px;
+    }
+  }
+
+  .contentBackgroundCover {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    .registerFormWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .registerForm {
+        display: flex;
+        flex-direction: column;
+        gap: 5vw;
+        margin: 3vw;
+
+        .formField {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 2vw;
+          flex-wrap: wrap;
+
+          label {
+            display: flex;
+            justify-content: space-between;
+            font-family: "Nico Moji", sans-serif;
+            font-size: 4.1vw;
+          }
+
+          input {
+            background-color: transparent;
+            color: @color_green_neon;
+            border: 1px solid @cyber_red;
+            border-radius: 2px;
+            font-size: 3vw;
+            width: 40vw;
+            padding: 0.3em 0.5em;
+            .transition-all();
+
+            &:focus {
+              outline: 2px solid @color_aqua;
+            }
+          }
+        }
+      }
+
+    }
+
+    .mainButtonWrapper {
+      display: flex;
+      justify-content: center;
+
+      .buttonWrapper {
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        margin-top: 5vw;
+
+        .loginMainB {
+          flex: 0 0 auto;
+          flex-wrap: nowrap;
+          width: 21vw;
+
+          label {
+            text-align: center;
+            display: block;
+          }
+        }
+
+      }
+
+    }
+  }
+}
+
+.footer {
+  grid-area: footer;
+  margin: 0 @common-margins;
+
+  .footerLine {
+    display: flex;
+    justify-content: center;
+
+    .redLine {
+      margin: auto;
+      width: 100%;
+    }
+  }
+}
+
+
+@media screen and (min-width: 600px) {
+  .header .headerButton {
+    width: 15vw;
+  }
+
+  .main {
+
+    .contentBackgroundCover {
+      .mainButtonWrapper .buttonWrapper {
+        margin-top: 2vh;
+      }
+
+      .mainButtonWrapper .buttonWrapper .loginMainB {
+        width: 15vw;
+      }
+
+      .registerFormWrapper .registerForm {
+        gap: 3vh;
+      }
+
+      .registerFormWrapper .registerForm .formField {
+        label {
+          font-size: 2.5vw;
+        }
+
+        input {
+          font-size: 1.5vw;
+        }
+      }
+    }
+
+    .mainHeaderContainer {
+      margin-bottom: 2vh;
+
+      .headerText {
+        font-size: 4vw;
+      }
+
+      .mainGearContainer .gearImage {
+        width: 15vw;
+      }
+
+      .mainGearContainer .headerJapan {
+        width: 20vw;
+      }
+
+    }
+  }
+
+  .header .headerLeft .discover .discoverButton {
+    width: 28vw;
+  }
+
+}
+
+
+@media screen and (min-width: 768px) {
+
+  .header {
+    .headerLeft .logoContainer .logo {
+      width: 12vw;
+    }
+
+    .headerButton {
+      width: 12vw;
+    }
+  }
+
+
+  .main {
+
+    .contentBackgroundCover {
+      .mainButtonWrapper .buttonWrapper {
+        margin-top: 1.5vh;
+      }
+
+      .mainButtonWrapper .buttonWrapper .loginMainB {
+        width: 12vw;
+      }
+
+      .registerFormWrapper .registerForm {
+        gap: 2vh;
+      }
+
+      .registerFormWrapper .registerForm .formField {
+        label {
+          font-size: 2vw;
+        }
+
+        input {
+          font-size: 1.2vw;
+        }
+      }
+    }
+
+    .mainHeaderContainer {
+      margin-bottom: 1.5vh;
+
+      .headerText {
+        font-size: 3vw;
+      }
+
+      .mainGearContainer .gearImage {
+        width: 12vw;
+      }
+
+      .mainGearContainer .headerJapan {
+        width: 17vw;
+      }
+
+    }
+  }
+
+  .header .headerLeft .discover .discoverButton {
+    width: 25vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    flex-direction: row;
+
+    .headerButton {
+      width: 9vw;
+    }
+
+    .headerLeft {
+      margin-top: 0;
+
+      .discover .discoverButton {
+        width: 15vw;
+      }
+
+      .logoContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1vw;
+
+        .logo {
+          width: 4vw;
+        }
+
+        .logoTextWrapper {
+          align-items: flex-start;
+
+          .logoText {
+            width: 15vw;
+          }
+        }
+      }
+    }
+
+    .headerRight {
+      margin-top: 1.5vh;
+      align-items: unset;
+      .menuContainer {
+        display: inline-block;
+        .menuButtons {
+          gap: unset;
+          justify-content: space-between;
+        }
+      }
+
+      .redBar .bar {
+        width: 20vw;
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+
+    .contentBackgroundCover {
+      .mainButtonWrapper .buttonWrapper {
+        margin-top: 3vh;
+      }
+
+      .mainButtonWrapper .buttonWrapper .loginMainB {
+        width: 10vw;
+      }
+
+      .registerFormWrapper .registerForm {
+        margin-top: 4vh;
+        gap: 1vh;
+      }
+
+      .registerFormWrapper .registerForm .formField {
+        gap: 1.5vh;
+        label {
+          font-size: 1.7vw;
+        }
+
+        input {
+          font-size: 1.2vw;
+          width: 35vw;
+        }
+      }
+    }
+
+    .mainHeaderContainer {
+      margin-bottom: 1.5vh;
+
+      .headerText {
+        font-size: 2.5vw;
+      }
+
+      .mainGearContainer .gearImage {
+        width: 10vw;
+      }
+
+      .mainGearContainer .headerJapan {
+        width: 12vw;
+      }
+
+    }
+  }
+
+  .header .headerLeft .discover .discoverButton {
+    width: 15vw;
+  }
+}
+
+/* Адаптивность с плавными переходами */
+
+//@media screen and (max-width: 1260px) {
+//
+//
+//  .header {
+//    flex-direction: column;
+//    align-items: center;
+//
+//    .headerLeft {
+//      margin-top: 20px;
+//
+//      .logoContainer {
+//        flex-direction: column;
+//
+//        .discover {
+//          margin: 15px auto 0 auto;
+//        }
+//      }
+//    }
+//
+//    .headerRight {
+//      .menuContainer {
+//        margin: 60px auto 30px auto;
+//      }
+//    }
+//  }
+//
+//  .main {
+//    .mainHeaderContainer {
+//      flex-direction: column;
+//
+//      margin: 10px auto;
+//
+//      .mainGearContainer {
+//        justify-content: center;
+//        align-items: center;
+//
+//        .gearImage {
+//          width: 100px;
+//          max-width: 100%;
+//          height: auto;
+//        }
+//
+//        .headerJapan {
+//          position: relative;
+//          top: 0;
+//          left: 0;
+//        }
+//      }
+//    }
+//  }
+//}
+
+//@media screen and (max-width: 800px) {
+//
+//
+//  .header {
+//    .pageCounter {
+//      display: none;
+//    }
+//  }
+//}
+
+//@media screen and (max-width: 600px) {
+//  .loginMainB {
+//    flex: 0 0 auto;
+//    flex-wrap: nowrap;
+//    width: 8vh !important;
+//  }
+//
+//  .main {
+//    .contentBackgroundCover {
+//      width: 90%;
+//
+//
+//      .registerFormWrapper {
+//        .registerForm {
+//          margin: 3vw;
+//          gap: 1.5vw;
+//
+//          .formField {
+//            label {
+//              font-size: 3vw;
+//            }
+//
+//            input {
+//              font-size: 2vw;
+//
+//            }
+//          }
+//        }
+//
+//        .mainSecButton {
+//          margin-top: 4vw;
+//
+//          .button-wrapper {
+//            .mainButton {
+//              width: 40vw;
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//@media screen and (max-width: 410px) {
+//
+//
+//
+//  .header {
+//    .headerButton {
+//      width: 35vw;
+//    }
+//
+//    .headerLeft {
+//      .logoContainer {
+//        .logo {
+//          width: 50px;
+//        }
+//
+//        .logoTextWrapper {
+//          .logoText {
+//            width: 45vw;
+//          }
+//        }
+//      }
+//    }
+//
+//
+//    .headerRight {
+//      .menuContainer {
+//        margin-top: 10px;
+//
+//        .menuButtons {
+//          .headerButton {
+//            width: 25vw;
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//  .main {
+//    .mainButton {
+//      width: 30vw !important;
+//    }
+//  }
+//}

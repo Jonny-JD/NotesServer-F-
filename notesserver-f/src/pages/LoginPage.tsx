@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.tsx";
 import cn from "classnames";
-import styles from "../styles/register_page.module.less";
+import styles from "../styles/login_page.module.less";
 import logo from "@/assets/img/red/logo.svg";
 import logoText from "@/assets/img/red/logo_text.svg";
 import officersText from "@/assets/img/red/officers_text.svg";
@@ -13,26 +14,23 @@ import topLine from "@/assets/img/red/top_line.svg";
 import mainGear from "@/assets/img/red/main_gear.svg";
 import japanMain from "@/assets/img/red/japan_main.svg";
 import footerLine from "@/assets/img/red/footer_line.svg";
-import registerButton from "@/assets/img/red/register_button.svg";
 
-type FormFields = "username" | "email" | "password";
+type FormFields = "username" | "password";
 
-const RegisterPage: React.FC = () => {
+const LoginPage: React.FC = () => {
     const navigate = useNavigate();
+    const { setUserId } = useAuth();
 
     const [form, setForm] = useState<Record<FormFields, string>>({
         username: "",
-        email: "",
         password: "",
     });
 
     const [error, setError] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const name = e.target.name;
-        const value = e.target.value;
-
-        if (name === "username" || name === "email" || name === "password") {
+        const { name, value } = e.target;
+        if (name === "username" || name === "password") {
             setForm((prev) => ({
                 ...prev,
                 [name]: value,
@@ -45,7 +43,7 @@ const RegisterPage: React.FC = () => {
         setError(null);
 
         try {
-            const response = await fetch("/api/users", {
+            const response = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),
@@ -53,11 +51,13 @@ const RegisterPage: React.FC = () => {
 
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message || "Registration failed");
+                setError(data.message || "Login failed");
                 return;
             }
 
-            navigate("/login");
+            const data = await response.json();
+            setUserId(data.userId);
+            navigate("/home");
         } catch {
             setError("Network error");
         }
@@ -81,7 +81,7 @@ const RegisterPage: React.FC = () => {
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
-                                    className={cn(styles.headerButton, styles.cButton)}
+                                    className={cn(styles.discoverButton, styles.headerButton,  styles.cButton)}
                                     src={discoverButton}
                                     alt="Discover Button"
                                 />
@@ -117,6 +117,7 @@ const RegisterPage: React.FC = () => {
                         <img className={styles.line} src={topLine} alt="Top Line" />
                     </div>
                 </header>
+
                 <main className={styles.main}>
                     <div className={styles.mainHeaderContainer}>
                         <div className={styles.mainGearContainer}>
@@ -129,7 +130,11 @@ const RegisterPage: React.FC = () => {
                     </div>
                     <div className={styles.contentBackgroundCover}>
                         <div className={styles.registerFormWrapper}>
-                            <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
+                            <form
+                                className={styles.registerForm}
+                                onSubmit={handleSubmit}
+                                autoComplete="off"
+                            >
                                 {error && <p style={{ color: "red" }}>{error}</p>}
 
                                 <div className={styles.formField}>
@@ -139,21 +144,8 @@ const RegisterPage: React.FC = () => {
                                         name="username"
                                         id="username"
                                         value={form.username}
-                                        autoComplete="off"
                                         onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                                <div className={styles.formField}>
-                                    <label htmlFor="email">Email:</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        value={form.email}
                                         autoComplete="off"
-                                        onChange={handleChange}
                                         required
                                     />
                                 </div>
@@ -165,19 +157,19 @@ const RegisterPage: React.FC = () => {
                                         name="password"
                                         id="password"
                                         value={form.password}
-                                        autoComplete="new-password"
                                         onChange={handleChange}
+                                        autoComplete="current-password"
                                         required
                                     />
                                 </div>
 
                                 <div className={styles.mainButtonWrapper}>
-                                    <div className={styles.buttonWrapper}>
+                                    <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
                                         <input
-                                            className={styles.cButton}
                                             type="image"
-                                            src={registerButton}
-                                            alt="Register Button"
+                                            className={cn(styles.headerButton, styles.cButton, styles.loginMainB)}
+                                            src={loginButton}
+                                            alt="Login Button"
                                         />
                                     </div>
                                 </div>
@@ -185,6 +177,7 @@ const RegisterPage: React.FC = () => {
                         </div>
                     </div>
                 </main>
+
                 <footer className={styles.footer}>
                     <div className={styles.footerLine}>
                         <img className={styles.redLine} src={footerLine} alt="Footer Line" />
@@ -195,4 +188,4 @@ const RegisterPage: React.FC = () => {
     );
 };
 
-export default RegisterPage;
+export default LoginPage;
