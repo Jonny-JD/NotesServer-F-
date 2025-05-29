@@ -2,14 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cn from "classnames";
 import styles from "../styles/register_page.module.less";
-import logo from "@/assets/img/red/logo.svg";
-import logoText from "@/assets/img/red/logo_text.svg";
-import officersText from "@/assets/img/red/officers_text.svg";
-import discoverButton from "@/assets/img/red/discover_button.svg";
-import signUpButton from "@/assets/img/red/sign_up_button.svg";
-import loginButton from "@/assets/img/red/login_button.svg";
-import headerBar from "@/assets/img/red/header_bar.svg";
-import topLine from "@/assets/img/red/top_line.svg";
+import HomeHeader from "../components/HomeHeader.tsx";
 import mainGear from "@/assets/img/red/main_gear.svg";
 import japanMain from "@/assets/img/red/japan_main.svg";
 import footerLine from "@/assets/img/red/footer_line.svg";
@@ -66,57 +59,7 @@ const RegisterPage: React.FC = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-                <header className={styles.header}>
-                    <div className={styles.pageCounter}>
-                        <span>1/5</span>
-                        <span className={styles.pagePage}>PAGE</span>
-                    </div>
-                    <div className={styles.headerLeft}>
-                        <div className={styles.logoContainer}>
-                            <img className={styles.logo} src={logo} alt="Logo" />
-                            <div className={styles.logoTextWrapper}>
-                                <img className={styles.logoText} src={logoText} alt="Logo Text" />
-                                <img className={styles.officersText} src={officersText} alt="Officers Text" />
-                            </div>
-                            <div className={cn(styles.buttonWrapper, styles.discover)}>
-                                <input
-                                    type="image"
-                                    className={cn(styles.headerButton, styles.cButton)}
-                                    src={discoverButton}
-                                    alt="Discover Button"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.headerRight}>
-                        <div className={styles.menuContainer}>
-                            <div className={styles.menuButtons}>
-                                <div className={styles.buttonWrapper}>
-                                    <input
-                                        type="image"
-                                        className={cn(styles.headerButton, styles.cButton)}
-                                        src={signUpButton}
-                                        alt="Sign Up Button"
-                                    />
-                                </div>
-                                <div className={styles.buttonWrapper}>
-                                    <input
-                                        type="image"
-                                        className={cn(styles.headerButton, styles.cButton)}
-                                        src={loginButton}
-                                        alt="Login Button"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.redBar}>
-                            <img className={styles.bar} src={headerBar} alt="Header Bar" />
-                        </div>
-                    </div>
-                    <div className={styles.redLine}>
-                        <img className={styles.line} src={topLine} alt="Top Line" />
-                    </div>
-                </header>
+                <HomeHeader/>
                 <main className={styles.main}>
                     <div className={styles.mainHeaderContainer}>
                         <div className={styles.mainGearContainer}>
@@ -172,9 +115,9 @@ const RegisterPage: React.FC = () => {
                                 </div>
 
                                 <div className={styles.mainButtonWrapper}>
-                                    <div className={styles.buttonWrapper}>
+                                    <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
                                         <input
-                                            className={styles.cButton}
+                                            className={cn(styles.headerButton, styles.cButton, styles.loginMainB)}
                                             type="image"
                                             src={registerButton}
                                             alt="Register Button"
