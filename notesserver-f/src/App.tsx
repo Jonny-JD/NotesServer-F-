@@ -3,7 +3,7 @@ import { AuthProvider } from "./context/AuthContext.tsx";
 
 import Home from "./pages/HomePage.tsx";
 import Register from "./pages/RegisterPage.tsx";
-import Login from "./pages/Login.tsx";
+import Login from "./pages/LoginPage.tsx";
 import Note from "./pages/Note.tsx";
 import NoteCreate from "./pages/NoteCreate.tsx";
 import Search from "./pages/Search.tsx";
