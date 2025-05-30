@@ -3,13 +3,10 @@ import {useNavigate} from "react-router-dom";
 import {useAuth} from "../context/AuthContext.tsx";
 import cn from "classnames";
 import styles from "../styles/page/login_page.module.less";
-import HomeHeader from "../components/HomeHeader.tsx";
 import loginButton from "@/assets/img/red/svg/login_button.svg";
-import mainGear from "@/assets/img/red/svg/main_gear.svg";
-import japanMain from "@/assets/img/red/svg/japan_main.svg";
-import footerLine from "@/assets/img/red/svg/footer_line.svg";
+import RedStyle from "../components/RedStyle.tsx";
 
-const pageNumber = 2;
+const currentPage = 2;
 const totalPages = 7;
 
 type FormFields = "username" | "password";
@@ -61,78 +58,59 @@ const LoginPage: React.FC = () => {
     };
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.container}>
-                <HomeHeader currentPage={pageNumber} totalPages={totalPages}/>
-                <main className={styles.main}>
-                    <div className={styles.mainHeaderContainer}>
-                        <div className={styles.mainGearContainer}>
-                            <img className={styles.gearImage} src={mainGear} alt="Main Gear"/>
-                            <img className={styles.headerJapan} src={japanMain} alt="Japan Main"/>
-                        </div>
-                        <div className={styles.headerText}>
-                            <span>DIGITAL NOTES</span>
-                        </div>
-                    </div>
-                    <div className={styles.contentBackgroundCover}>
-                        <div className={styles.registerFormWrapper}>
-                            <form
-                                className={styles.registerForm}
-                                onSubmit={handleSubmit}
-                                autoComplete="off"
-                            >
-                                {error && <p style={{color: "red"}}>{error}</p>}
+        <RedStyle currentPage={currentPage} totalPages={totalPages}>
+                <div className={styles.contentBackgroundCover}>
+                    <div className={styles.registerFormWrapper}>
+                        <form
+                            className={styles.registerForm}
+                            onSubmit={handleSubmit}
+                            autoComplete="off"
+                        >
+                            {error && <p style={{color: "red"}}>{error}</p>}
 
-                                <div className={styles.formField}>
-                                    <label htmlFor="username">Username:</label>
+                            <div className={styles.formField}>
+                                <label htmlFor="username">Username:</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    maxLength={20}
+                                    value={form.username}
+                                    onChange={handleChange}
+                                    autoComplete="off"
+                                    required
+                                />
+                            </div>
+
+                            <div className={styles.formField}>
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    maxLength={30}
+                                    value={form.password}
+                                    onChange={handleChange}
+                                    autoComplete="current-password"
+                                    required
+                                />
+                            </div>
+
+                            <div className={styles.mainButtonWrapper}>
+                                <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
                                     <input
-                                        type="text"
-                                        name="username"
-                                        id="username"
-                                        maxLength={20}
-                                        value={form.username}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                        required
+                                        type="image"
+                                        className={cn(styles.headerButton, styles.cButton, styles.loginMainB)}
+                                        src={loginButton}
+                                        alt="Login Button"
                                     />
                                 </div>
-
-                                <div className={styles.formField}>
-                                    <label htmlFor="password">Password:</label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        maxLength={30}
-                                        value={form.password}
-                                        onChange={handleChange}
-                                        autoComplete="current-password"
-                                        required
-                                    />
-                                </div>
-
-                                <div className={styles.mainButtonWrapper}>
-                                    <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
-                                        <input
-                                            type="image"
-                                            className={cn(styles.headerButton, styles.cButton, styles.loginMainB)}
-                                            src={loginButton}
-                                            alt="Login Button"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
-                </main>
+                </div>
+        </RedStyle>
 
-                <footer className={styles.footer}>
-                    <div className={styles.footerLine}>
-                        <img className={styles.redLine} src={footerLine} alt="Footer Line"/>
-                    </div>
-                </footer>
-            </div>
-        </div>
     );
 };
 

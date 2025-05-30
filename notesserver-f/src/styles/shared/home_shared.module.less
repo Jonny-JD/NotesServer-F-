@@ -224,86 +224,8 @@ html {
       display: flex;
       justify-content: center;
       font-size: 5vw;
-      color: @cyber_red;
       text-shadow: @cyber_red 1px 0 20px;
-    }
-  }
-
-  .contentBackgroundCover {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-
-    .registerFormWrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .registerForm {
-        display: flex;
-        flex-direction: column;
-        gap: 5vw;
-        margin: 3vw;
-
-        .formField {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          gap: 2vw;
-          flex-wrap: wrap;
-
-          label {
-            display: flex;
-            justify-content: space-between;
-            font-family: "Nico Moji", sans-serif;
-            font-size: 3.1vw;
-          }
-
-          input {
-            background-color: transparent;
-            color: @color_green_neon;
-            border: 1px solid @cyber_red;
-            border-radius: 2px;
-            font-size: 3vw;
-            width: 40vw;
-            padding: 0.3em 0.5em;
-            .transition-all();
-
-            &:focus {
-              outline: 2px solid @cyber_red;
-            }
-            &:active {
-              outline: 2px solid @cyber_red;
-            }
-          }
-        }
-      }
-
-    }
-
-    .mainButtonWrapper {
-      display: flex;
-      justify-content: center;
-
-      .buttonWrapper {
-        display: flex;
-        justify-content: center;
-        width: fit-content;
-        margin-top: 5vw;
-
-        .loginMainB {
-          flex: 0 0 auto;
-          flex-wrap: nowrap;
-          width: 21vw;
-
-          label {
-            text-align: center;
-            display: block;
-          }
-        }
-
-      }
-
+      color: @cyber_red;
     }
   }
 }
@@ -330,30 +252,6 @@ html {
   }
 
   .main {
-
-    .contentBackgroundCover {
-      .mainButtonWrapper .buttonWrapper {
-        margin-top: 2vh;
-      }
-
-      .mainButtonWrapper .buttonWrapper .loginMainB {
-        width: 15vw;
-      }
-
-      .registerFormWrapper .registerForm {
-        gap: 3vh;
-      }
-
-      .registerFormWrapper .registerForm .formField {
-        label {
-          font-size: 2.5vw;
-        }
-
-        input {
-          font-size: 2.5vw;
-        }
-      }
-    }
 
     .mainHeaderContainer {
       margin-bottom: 2vh;
@@ -392,34 +290,7 @@ html {
     }
   }
 
-
   .main {
-
-    .contentBackgroundCover {
-      .mainButtonWrapper .buttonWrapper {
-        margin-top: 1.5vh;
-      }
-
-      .mainButtonWrapper .buttonWrapper .loginMainB {
-        width: 12vw;
-      }
-
-      .registerFormWrapper .registerForm {
-        gap: 2vh;
-      }
-
-      .registerFormWrapper .registerForm .formField {
-        label {
-          font-size: 2vw;
-        }
-
-        input {
-          font-size: 2vw;
-          width: 35vw;
-        }
-      }
-    }
-
     .mainHeaderContainer {
       margin-bottom: 1.5vh;
 
@@ -437,7 +308,6 @@ html {
 
     }
   }
-
   .header .headerLeft .discover .discoverButton {
     width: 25vw;
   }
@@ -505,11 +375,10 @@ html {
   }
 
   .main {
-
     .mainHeaderContainer {
       flex-direction: row;
       margin-bottom: 1.5vh;
-      margin-top: 12vh;
+      margin-top: 11vh;
 
       .headerText {
         justify-content: center;
@@ -526,57 +395,10 @@ html {
       }
 
     }
-
-    .contentBackgroundCover {
-      .registerFormWrapper .registerForm {
-        margin: unset;
-      }
-      .registerFormWrapper .registerForm .formField {
-        gap: 1.5vh;
-
-        label {
-          font-size: 1.7vw;
-        }
-
-        input {
-          font-size: 1.5vw;
-          width: 30vw;
-        }
-      }
-    }
   }
-
 }
 
 @media screen and (min-width: 1280px) {
-  .main {
-
-    .contentBackgroundCover {
-      .mainButtonWrapper .buttonWrapper {
-        margin-top: 3vh;
-      }
-
-      .mainButtonWrapper .buttonWrapper .loginMainB {
-        width: 10vw;
-      }
-
-
-      .registerFormWrapper .registerForm .formField {
-        gap: 1.5vh;
-
-        label {
-          font-size: 1.2vw;
-        }
-
-        input {
-          font-size: 1vw;
-          width: 20vw;
-        }
-      }
-    }
-
-  }
-
   .header .headerLeft .discover .discoverButton {
     width: 12vw;
   }

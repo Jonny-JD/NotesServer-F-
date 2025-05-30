@@ -1,1 +1,204 @@
-@import "../shared/home_shared.module.less";
+@import "@/styles/shared/colors.less";
+@import "@/styles/shared/buttons.less";
+
+@content-width: 80vw;
+@common-margins: 5%;
+
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: @cyber_red !important;
+  color: @cyber_red !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+
+.contentBackgroundCover {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+
+  .registerFormWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .registerForm {
+      display: flex;
+      flex-direction: column;
+      gap: 3vw;
+      margin: 2vw;
+
+      .formField {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2vw;
+        flex-wrap: wrap;
+
+        label {
+          display: flex;
+          justify-content: space-between;
+          font-family: "Nico Moji", sans-serif;
+          font-size: 3vw;
+        }
+
+        input {
+          background-color: transparent;
+          color: @color_green_neon;
+          border: 1px solid @cyber_red;
+          border-radius: 2px;
+          font-size: 2vw;
+          width: 40vw;
+          padding: 0.3em 0.5em;
+          .transition-all();
+
+          &:focus {
+            outline: 2px solid @cyber_red;
+          }
+
+          &:active {
+            outline: 2px solid @cyber_red;
+          }
+        }
+      }
+    }
+
+  }
+
+  .mainButtonWrapper {
+    display: flex;
+    justify-content: center;
+
+    .buttonWrapper {
+      display: flex;
+      justify-content: center;
+      width: fit-content;
+      margin-top: 5vw;
+
+      .loginMainB {
+        flex: 0 0 auto;
+        flex-wrap: nowrap;
+        width: 21vw;
+
+        label {
+          text-align: center;
+          display: block;
+        }
+      }
+
+    }
+
+  }
+}
+
+
+
+
+@media screen and (min-width: 600px) {
+  .contentBackgroundCover {
+    .mainButtonWrapper .buttonWrapper {
+      margin-top: 2vh;
+    }
+
+    .mainButtonWrapper .buttonWrapper .loginMainB {
+      width: 15vw;
+    }
+
+    .registerFormWrapper .registerForm {
+      gap: 3vh;
+    }
+
+    .registerFormWrapper .registerForm .formField {
+      label {
+        font-size: 2vw;
+      }
+
+      input {
+        font-size: 2vw;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .contentBackgroundCover {
+    .mainButtonWrapper .buttonWrapper {
+      margin-top: 1.5vh;
+    }
+
+    .mainButtonWrapper .buttonWrapper .loginMainB {
+      width: 12vw;
+    }
+
+    .registerFormWrapper .registerForm {
+      gap: 2vh;
+    }
+
+    .registerFormWrapper .registerForm .formField {
+      label {
+        font-size: 2vw;
+      }
+
+      input {
+        font-size: 1.5vw;
+        width: 35vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contentBackgroundCover {
+    .registerFormWrapper .registerForm {
+      margin: unset;
+    }
+
+    .registerFormWrapper .registerForm .formField {
+      gap: 1.5vh;
+
+      label {
+        font-size: 1.7vw;
+      }
+
+      input {
+        font-size: 1.5vw;
+        width: 30vw;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 1280px) {
+  .contentBackgroundCover {
+    .mainButtonWrapper .buttonWrapper {
+      margin-top: 3vh;
+    }
+
+    .mainButtonWrapper .buttonWrapper .loginMainB {
+      width: 10vw;
+    }
+
+
+    .registerFormWrapper .registerForm .formField {
+      gap: 1.5vh;
+
+      label {
+        font-size: 1.2vw;
+      }
+
+      input {
+        font-size: 1vw;
+        width: 20vw;
+      }
+    }
+  }
+}
