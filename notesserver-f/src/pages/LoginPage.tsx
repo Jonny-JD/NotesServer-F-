@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.tsx";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../context/AuthContext.tsx";
 import cn from "classnames";
-import styles from "../styles/login_page.module.less";
+import styles from "../styles/page/login_page.module.less";
 import HomeHeader from "../components/HomeHeader.tsx";
-import loginButton from "@/assets/img/red/login_button.svg";
-import mainGear from "@/assets/img/red/main_gear.svg";
-import japanMain from "@/assets/img/red/japan_main.svg";
-import footerLine from "@/assets/img/red/footer_line.svg";
+import loginButton from "@/assets/img/red/svg/login_button.svg";
+import mainGear from "@/assets/img/red/svg/main_gear.svg";
+import japanMain from "@/assets/img/red/svg/japan_main.svg";
+import footerLine from "@/assets/img/red/svg/footer_line.svg";
+
+const pageNumber = 2;
+const totalPages = 7;
 
 type FormFields = "username" | "password";
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
-    const { setUserId } = useAuth();
+    const {setUserId} = useAuth();
 
     const [form, setForm] = useState<Record<FormFields, string>>({
         username: "",
@@ -23,7 +26,7 @@ const LoginPage: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         if (name === "username" || name === "password") {
             setForm((prev) => ({
                 ...prev,
@@ -39,7 +42,7 @@ const LoginPage: React.FC = () => {
         try {
             const response = await fetch("/api/auth/login", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(form),
             });
 
@@ -60,12 +63,12 @@ const LoginPage: React.FC = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-                <HomeHeader />
+                <HomeHeader currentPage={pageNumber} totalPages={totalPages}/>
                 <main className={styles.main}>
                     <div className={styles.mainHeaderContainer}>
                         <div className={styles.mainGearContainer}>
-                            <img className={styles.gearImage} src={mainGear} alt="Main Gear" />
-                            <img className={styles.headerJapan} src={japanMain} alt="Japan Main" />
+                            <img className={styles.gearImage} src={mainGear} alt="Main Gear"/>
+                            <img className={styles.headerJapan} src={japanMain} alt="Japan Main"/>
                         </div>
                         <div className={styles.headerText}>
                             <span>DIGITAL NOTES</span>
@@ -78,7 +81,7 @@ const LoginPage: React.FC = () => {
                                 onSubmit={handleSubmit}
                                 autoComplete="off"
                             >
-                                {error && <p style={{ color: "red" }}>{error}</p>}
+                                {error && <p style={{color: "red"}}>{error}</p>}
 
                                 <div className={styles.formField}>
                                     <label htmlFor="username">Username:</label>
@@ -86,6 +89,7 @@ const LoginPage: React.FC = () => {
                                         type="text"
                                         name="username"
                                         id="username"
+                                        maxLength={20}
                                         value={form.username}
                                         onChange={handleChange}
                                         autoComplete="off"
@@ -99,6 +103,7 @@ const LoginPage: React.FC = () => {
                                         type="password"
                                         name="password"
                                         id="password"
+                                        maxLength={30}
                                         value={form.password}
                                         onChange={handleChange}
                                         autoComplete="current-password"
@@ -123,7 +128,7 @@ const LoginPage: React.FC = () => {
 
                 <footer className={styles.footer}>
                     <div className={styles.footerLine}>
-                        <img className={styles.redLine} src={footerLine} alt="Footer Line" />
+                        <img className={styles.redLine} src={footerLine} alt="Footer Line"/>
                     </div>
                 </footer>
             </div>

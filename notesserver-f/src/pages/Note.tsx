@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import styles from "../styles/note_page.module.less";
+import styles from "../styles/page/note_page.module.less";
 
 import logo from "@/assets/img/swamp/logo.svg";
 import logoText from "@/assets/img/swamp/logo_text.svg";

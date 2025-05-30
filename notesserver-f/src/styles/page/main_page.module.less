@@ -1,0 +1,105 @@
+@import "../shared/home_shared.module.less";
+
+.main {
+  .contentBackgroundCover {
+    background-image: url("../../assets/img/red/background/content_background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    display: flex;
+    box-sizing: border-box;
+
+
+    .mainText {
+      color: @color_aqua;
+      font-family: "Numans", sans-serif;
+      font-size: 2vw;
+      line-height: 1.4em;
+      text-align: left;
+      align-items: center;
+      margin: 2% 2% 2% 7%;
+    }
+  }
+
+  .mainButtonWrapper {
+    margin-top: 3vh;
+
+    .buttonWrapper {
+      .signUpMainB {
+        width: 21vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .main {
+    .contentBackgroundCover .mainText {
+
+    }
+
+    .mainButtonWrapper {
+      .buttonWrapper {
+        .signUpMainB {
+          width: 18vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    .contentBackgroundCover .mainText {
+      font-size: 1.8vw;
+    }
+
+    .mainButtonWrapper {
+      margin-top: 3vh;
+
+      .buttonWrapper {
+        .signUpMainB {
+          width: 15vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    .contentBackgroundCover .mainText {
+      font-size: 1.5vw;
+    }
+    .mainHeaderContainer{
+      margin-top: 10vh;
+    }
+    .mainButtonWrapper {
+      margin-top: 2vh;
+
+      .buttonWrapper {
+        .signUpMainB {
+          width: 11vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+    .mainHeaderContainer{
+      margin-top: 8vh;
+    }
+    .mainButtonWrapper {
+      margin-top: 3vh;
+
+      .buttonWrapper {
+        .signUpMainB {
+          width: 9vw;
+        }
+      }
+    }
+  }
+}

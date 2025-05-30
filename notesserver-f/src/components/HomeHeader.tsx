@@ -1,20 +1,25 @@
-import styles from "../styles/login_page.module.less";
+import styles from "../styles/page/login_page.module.less";
 import cn from "classnames";
 import React from "react";
 
-import logo from "@/assets/img/red/logo.svg";
-import logoText from "@/assets/img/red/logo_text.svg";
-import officersText from "@/assets/img/red/officers_text.svg";
-import discoverButton from "@/assets/img/red/discover_button.svg";
-import signUpButton from "@/assets/img/red/sign_up_button.svg";
-import loginButton from "@/assets/img/red/login_button.svg";
-import headerBar from "@/assets/img/red/header_bar.svg";
-import topLine from "@/assets/img/red/top_line.svg";
+import logo from "@/assets/img/red/svg/logo.svg";
+import logoText from "@/assets/img/red/svg/logo_text.svg";
+import officersText from "@/assets/img/red/svg/officers_text.svg";
+import discoverButton from "@/assets/img/red/svg/discover_button.svg";
+import signUpButton from "@/assets/img/red/svg/sign_up_button.svg";
+import loginButton from "@/assets/img/red/svg/login_button.svg";
+import headerBar from "@/assets/img/red/svg/header_bar.svg";
+import topLine from "@/assets/img/red/svg/top_line.svg";
 
-const HomeHeader: React.FC = () => (
+interface HomeHeaderProps {
+    currentPage: number;
+    totalPages: number;
+}
+
+const HomeHeader: React.FC<HomeHeaderProps> = ({currentPage, totalPages}) => (
     <header className={styles.header}>
         <div className={styles.pageCounter}>
-            <span>1/5</span>
+            <span>{currentPage}/{totalPages}</span>
             <span className={styles.pagePage}>PAGE</span>
         </div>
         <div className={styles.headerLeft}>
