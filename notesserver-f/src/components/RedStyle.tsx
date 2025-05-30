@@ -5,6 +5,7 @@ import sideNumber from "@/assets/img/red/svg/side_number.svg";
 import HomeHeader from "./HomeHeader.tsx";
 import mainGear from "@/assets/img/red/svg/main_gear.svg";
 import japanMain from "@/assets/img/red/svg/japan_main.svg";
+import redNumber from "@/assets/img/red/svg/side_number.svg";
 
 interface RedStyleProps {
     children: React.ReactNode;
@@ -27,6 +28,7 @@ const RedStyle: React.FC<RedStyleProps> = ({children, currentPage, totalPages}) 
                         <span>DIGITAL NOTES</span>
                     </div>
                 </div>
+                <img className={styles.redNumber} src={redNumber} alt="Red Number"/>
 
                 {children}
 

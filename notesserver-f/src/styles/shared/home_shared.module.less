@@ -80,7 +80,7 @@ html {
 
   .pagePage {
     margin-left: 10px;
-    font-size: 1.5vw;
+    font-size: 1vw;
   }
 }
 
@@ -90,11 +90,12 @@ html {
   right: 0;
   top: 30px;
   font-family: "Rajdhali", sans-serif;
-  font-size: 1.8vw;
+  font-size: 1.3vw;
   color: @cyber_red;
   align-items: baseline;
   display: none;
 }
+
 .headerLeft {
   display: flex;
   align-items: center;
@@ -230,6 +231,13 @@ html {
   }
 }
 
+.redNumber {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 30%;
+}
+
 .footer {
   grid-area: footer;
   margin: 0 @common-margins;
@@ -267,8 +275,8 @@ html {
       .mainGearContainer .headerJapan {
         width: 20vw;
       }
-
     }
+
   }
 
   .header .headerLeft .discover .discoverButton {
@@ -308,6 +316,7 @@ html {
 
     }
   }
+
   .header .headerLeft .discover .discoverButton {
     width: 25vw;
   }
@@ -320,11 +329,14 @@ html {
     }
 
   }
+
   .header {
     flex-direction: row;
+
     .pageCounter {
       display: unset;
     }
+
     .headerButton {
       width: 7vw;
     }
@@ -332,24 +344,30 @@ html {
     .headerLeft {
       margin-top: 0;
 
-      .discover .discoverButton {
-        width: 12vw;
+      .discover  {
+        margin-left: 3vw;
+        .discoverButton{
+          width: 12vw;
+        }
       }
 
       .logoContainer {
         flex-direction: row;
         justify-content: space-between;
-        gap: 1vw;
+        gap: 10px;
 
         .logo {
-          width: 4vw;
+          width: 2vw;
         }
 
         .logoTextWrapper {
           align-items: flex-start;
+          .officersText {
+
+          }
 
           .logoText {
-            width: 15vw;
+            width: 10vw;
           }
         }
       }
@@ -369,7 +387,7 @@ html {
       }
 
       .redBar .bar {
-        width: 30vw;
+        width: 22vw;
       }
     }
   }
@@ -400,6 +418,19 @@ html {
 
 @media screen and (min-width: 1280px) {
   .header .headerLeft .discover .discoverButton {
-    width: 12vw;
+    width: 11vw;
+  }
+  .header .headerRight  {
+
+      .menuContainer {
+
+        .menuButtons .buttonWrapper .headerButton {
+          width: 6vw;
+        }
+      }
+
+      .redBar .bar {
+        width: 22vw;
+    }
   }
 }
