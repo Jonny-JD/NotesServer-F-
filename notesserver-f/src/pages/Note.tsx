@@ -2,16 +2,16 @@ import React from "react";
 import cn from "classnames";
 import styles from "../styles/page/note_page.module.less";
 
-import logo from "@/assets/img/swamp/logo.svg";
-import logoText from "@/assets/img/swamp/logo_text.svg";
-import officersText from "@/assets/img/swamp/officers_text.svg";
-import yourNotesButton from "@/assets/img/swamp/your_notes_button.svg";
-import discoverButton from "@/assets/img/swamp/discover_button.svg";
-import logoutButton from "@/assets/img/swamp/logout_button.svg";
-import headerBar from "@/assets/img/swamp/header_bar.svg";
-import topLine from "@/assets/img/swamp/top_line.svg";
-import searchButton from "@/assets/img/swamp/search_button.svg";
-import footerLine from "@/assets/img/swamp/footer_line.svg";
+import logo from "@/assets/img/swamp/svg/logo.svg";
+import logoText from "@/assets/img/swamp/svg/logo_text.svg";
+import officersText from "@/assets/img/swamp/svg/officers_text.svg";
+import yourNotesButton from "@/assets/img/swamp/svg/your_notes_button.svg";
+import discoverButton from "@/assets/img/swamp/svg/discover_button.svg";
+import logoutButton from "@/assets/img/swamp/svg/logout_button.svg";
+import headerBar from "@/assets/img/swamp/svg/header_bar.svg";
+import topLine from "@/assets/img/swamp/svg/top_line.svg";
+import searchButton from "@/assets/img/swamp/svg/search_button.svg";
+import footerLine from "@/assets/img/swamp/svg/footer_line.svg";
 
 const NotePage: React.FC = () => {
   return (

@@ -1,16 +1,16 @@
 import React from "react";
 import cn from "classnames";
 import styles from "../styles/page/discover_page.module.less";
-import logo from "@/assets/img/swamp/logo.svg";
-import logo_text from "@/assets/img/swamp/logo_text.svg"
-import officers_text from "@/assets/img/swamp/officers_text.svg"
-import your_notes_button from "@/assets/img/swamp/your_notes_button.svg"
-import discover_button from "@/assets/img/swamp/discover_button.svg"
-import logout_button from "@/assets/img/swamp/logout_button.svg"
-import header_bar from "@/assets/img/swamp/header_bar.svg"
-import top_line from "@/assets/img/swamp/top_line.svg"
-import search_button from "@/assets/img/swamp/search_button.svg"
-import footer_line from "@/assets/img/swamp/footer_line.svg"
+import logo from "@/assets/img/swamp/svg/logo.svg";
+import logo_text from "@/assets/img/swamp/svg/logo_text.svg"
+import officers_text from "@/assets/img/swamp/svg/officers_text.svg"
+import your_notes_button from "@/assets/img/swamp/svg/your_notes_button.svg"
+import discover_button from "@/assets/img/swamp/svg/discover_button.svg"
+import logout_button from "@/assets/img/swamp/svg/logout_button.svg"
+import header_bar from "@/assets/img/swamp/svg/header_bar.svg"
+import top_line from "@/assets/img/swamp/svg/top_line.svg"
+import search_button from "@/assets/img/swamp/svg/search_button.svg"
+import footer_line from "@/assets/img/swamp/svg/footer_line.svg"
 
 
 
