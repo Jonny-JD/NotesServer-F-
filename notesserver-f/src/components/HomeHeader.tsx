@@ -1,4 +1,4 @@
-import styles from "../styles/login_page.module.less";
+import styles from "../styles/page/login_page.module.less";
 import cn from "classnames";
 import React from "react";
 

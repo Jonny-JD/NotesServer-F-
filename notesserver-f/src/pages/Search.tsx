@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/search_page.module.less";
+import styles from "../styles/page/search_page.module.less";
 import logo from "@/assets/img/swamp/logo.svg";
 import logoText from "@/assets/img/swamp/logo_text.svg";
 import officersText from "@/assets/img/swamp/officers_text.svg";

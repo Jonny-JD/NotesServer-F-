@@ -1,0 +1,99 @@
+@import "../shared/home_shared.module.less";
+
+.main {
+  .contentBackgroundCover {
+    background-image: url("../../assets/img/red/content_background.svg");
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    display: flex;
+    padding: 1vw 1vw;
+    box-sizing: border-box;
+
+    .mainText {
+      color: @color_aqua;
+      font-family: "Nico Moji", sans-serif;
+      font-size: 1.5vw;
+      line-height: 1.4em;
+      text-align: left;
+      align-items: center;
+      margin: 0 3% 0 4%;
+    }
+  }
+
+  .mainButtonWrapper {
+    margin-top: 3vh;
+
+    .buttonWrapper {
+      .signUpMainB {
+        width: 21vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .main {
+    .contentBackgroundCover .mainText {
+
+    }
+
+    .mainButtonWrapper {
+      .buttonWrapper {
+        .signUpMainB {
+          width: 18vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    .contentBackgroundCover .mainText {
+
+    }
+
+    .mainButtonWrapper {
+      margin-top: 3vh;
+
+      .buttonWrapper {
+        .signUpMainB {
+          width: 15vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    .mainButtonWrapper {
+      margin-top: 2vh;
+
+      .buttonWrapper {
+        .signUpMainB {
+          width: 11vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+    .contentBackgroundCover .mainText {
+
+    }
+    .mainButtonWrapper {
+      margin-top: 3vh;
+
+      .buttonWrapper {
+        .signUpMainB {
+          width: 9vw;
+        }
+      }
+    }
+  }
+}

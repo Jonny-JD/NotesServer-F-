@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
 
-import Home from "./pages/HomePage.tsx";
+import Home from "./pages/MainPage.tsx";
 import Register from "./pages/RegisterPage.tsx";
 import Login from "./pages/LoginPage.tsx";
 import Note from "./pages/Note.tsx";

@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import styles from "../styles/discover_page.module.less";
+import styles from "../styles/page/discover_page.module.less";
 import logo from "@/assets/img/swamp/logo.svg";
 import logo_text from "@/assets/img/swamp/logo_text.svg"
 import officers_text from "@/assets/img/swamp/officers_text.svg"

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import cn from "classnames";
-import styles from "../styles/register_page.module.less";
+import styles from "../styles/page/register_page.module.less";
 import HomeHeader from "../components/HomeHeader.tsx";
 import mainGear from "@/assets/img/red/main_gear.svg";
 import japanMain from "@/assets/img/red/japan_main.svg";
@@ -40,7 +40,7 @@ const RegisterPage: React.FC = () => {
         try {
             const response = await fetch("/api/users", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(form),
             });
 
@@ -63,8 +63,8 @@ const RegisterPage: React.FC = () => {
                 <main className={styles.main}>
                     <div className={styles.mainHeaderContainer}>
                         <div className={styles.mainGearContainer}>
-                            <img className={styles.gearImage} src={mainGear} alt="Main Gear" />
-                            <img className={styles.headerJapan} src={japanMain} alt="Japan Main" />
+                            <img className={styles.gearImage} src={mainGear} alt="Main Gear"/>
+                            <img className={styles.headerJapan} src={japanMain} alt="Japan Main"/>
                         </div>
                         <div className={styles.headerText}>
                             <span>DIGITAL NOTES</span>
@@ -73,7 +73,7 @@ const RegisterPage: React.FC = () => {
                     <div className={styles.contentBackgroundCover}>
                         <div className={styles.registerFormWrapper}>
                             <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
-                                {error && <p style={{ color: "red" }}>{error}</p>}
+                                {error && <p style={{color: "red"}}>{error}</p>}
 
                                 <div className={styles.formField}>
                                     <label htmlFor="username">Username:</label>
@@ -81,6 +81,7 @@ const RegisterPage: React.FC = () => {
                                         type="text"
                                         name="username"
                                         id="username"
+                                        maxLength={20}
                                         value={form.username}
                                         autoComplete="off"
                                         onChange={handleChange}
@@ -94,6 +95,7 @@ const RegisterPage: React.FC = () => {
                                         type="email"
                                         name="email"
                                         id="email"
+                                        maxLength={50}
                                         value={form.email}
                                         autoComplete="off"
                                         onChange={handleChange}
@@ -107,6 +109,7 @@ const RegisterPage: React.FC = () => {
                                         type="password"
                                         name="password"
                                         id="password"
+                                        maxLength={30}
                                         value={form.password}
                                         autoComplete="new-password"
                                         onChange={handleChange}
@@ -130,7 +133,7 @@ const RegisterPage: React.FC = () => {
                 </main>
                 <footer className={styles.footer}>
                     <div className={styles.footerLine}>
-                        <img className={styles.redLine} src={footerLine} alt="Footer Line" />
+                        <img className={styles.redLine} src={footerLine} alt="Footer Line"/>
                     </div>
                 </footer>
             </div>
