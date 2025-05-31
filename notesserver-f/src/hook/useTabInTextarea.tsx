@@ -4,8 +4,6 @@ const useTabInTextarea = () => {
     useEffect(() => {
         const handleTab = (e: KeyboardEvent) => {
             const target = e.target as HTMLElement;
-
-            // Обрабатываем только <textarea>
             if (
                 e.key === "Tab" &&
                 target.tagName === "TEXTAREA"

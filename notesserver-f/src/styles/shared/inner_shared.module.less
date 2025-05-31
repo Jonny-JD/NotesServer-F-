@@ -1,5 +1,4 @@
 @import "colors.module.less";
-@import "../shared/reset.less";
 @import "../shared/fonts.less";
 
 @content-width: 80vw;
@@ -8,7 +7,7 @@
 
 html {
   font-family: "Nico Moji", sans-serif;
-  color: @cyber_yellow;
+  color: @cyber_yellow !important;
 }
 
 .wrapper {
@@ -46,6 +45,7 @@ html {
   gap: 10px;
   margin-left: @common-margins;
   margin-right: 5%;
+  color: @cyber_yellow;
 
   .sidebarHeader {
     font-size: 1.3vw;

@@ -1,7 +1,7 @@
 @import "colors.module.less";
-@import "reset.less";
+@import "reset.module.less";
 @import "fonts.less";
-@import "reset.less";
+@import "reset.module.less";
 
 @content-width: 80vw;
 @common-margins: 5%;
@@ -15,7 +15,6 @@ textarea:-webkit-autofill,
 select:-webkit-autofill {
   background-color: transparent !important;
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: @cyber_red !important;
   color: @cyber_red !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
@@ -36,7 +35,7 @@ select:-webkit-autofill {
 
 html {
   font-family: "Nico Moji", sans-serif;
-  color: @cyber_red;
+  color: @cyber_red !important;
 }
 
 .wrapper {
