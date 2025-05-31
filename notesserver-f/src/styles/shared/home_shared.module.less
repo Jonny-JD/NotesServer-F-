@@ -1,4 +1,4 @@
-@import "colors.less";
+@import "colors.module.less";
 @import "reset.less";
 @import "fonts.less";
 @import "reset.less";
@@ -63,122 +63,6 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.header {
-  grid-area: header;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 @common-margins;
-  position: relative;
-
-  .headerButton {
-    width: 20vw;
-  }
-
-  .pagePage {
-    margin-left: 10px;
-    font-size: 1vw;
-  }
-}
-
-
-.pageCounter {
-  position: absolute;
-  right: 0;
-  top: 30px;
-  font-family: "Rajdhali", sans-serif;
-  font-size: 1.3vw;
-  color: @cyber_red;
-  align-items: baseline;
-  display: none;
-}
-
-.headerLeft {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-
-  .logoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .logo {
-      width: 10vw;
-    }
-
-    .logoTextWrapper {
-      margin-top: 25px;
-      display: flex;
-      flex-direction: column;
-      width: fit-content;
-      align-content: center;
-      align-items: center;
-
-      .logoText {
-        width: 20vh;
-      }
-
-      .officersText {
-        margin-top: 10px;
-        width: 20vh;
-      }
-    }
-  }
-
-  .discover {
-    width: fit-content;
-    margin: 2vh auto 2vh auto;
-
-    .discoverButton {
-      width: 35vw;
-    }
-  }
-
-
-}
-
-.headerRight {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  .menuContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .menuButtons {
-      display: flex;
-      gap: 15px;
-    }
-  }
-
-  .redBar {
-    width: fit-content;
-    margin-top: 0.3vh;
-
-    .bar {
-      width: 30vw;
-    }
-  }
-}
-
-.redLine {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-
-  .line {
-    width: 100%;
-  }
-}
-
 
 .main {
   grid-area: main;
@@ -255,12 +139,9 @@ html {
 
 
 @media screen and (min-width: 600px) {
-  .header .headerButton {
-    width: 15vw;
-  }
+
 
   .main {
-
     .mainHeaderContainer {
       margin-bottom: 2vh;
 
@@ -279,22 +160,10 @@ html {
 
   }
 
-  .header .headerLeft .discover .discoverButton {
-    width: 28vw;
-  }
-
 }
 
 
 @media screen and (min-width: 768px) {
-
-  .header {
-
-    .headerButton {
-      width: 12vw;
-    }
-  }
-
   .main {
     .mainHeaderContainer {
       margin-bottom: 1.5vh;
@@ -313,79 +182,12 @@ html {
 
     }
   }
-
-  .header .headerLeft .discover .discoverButton {
-    width: 25vw;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .wrapper .container {
     .pageCounter {
       display: unset;
-    }
-
-  }
-
-  .header {
-    flex-direction: row;
-
-    .pageCounter {
-      display: unset;
-    }
-
-    .headerButton {
-      width: 7vw;
-    }
-
-    .headerLeft {
-      margin-top: 0;
-
-      .discover  {
-        margin-left: 3vw;
-        .discoverButton{
-          width: 13vw;
-        }
-      }
-
-      .logoContainer {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 10px;
-
-        .logo {
-          width: 4vw;
-        }
-
-        .logoTextWrapper {
-          align-items: flex-start;
-          .officersText {
-
-          }
-
-          .logoText {
-            width: 14vw;
-          }
-        }
-      }
-    }
-
-    .headerRight {
-      margin-top: 1.5vh;
-      align-items: unset;
-
-      .menuContainer {
-        display: inline-block;
-
-        .menuButtons {
-          gap: 1vw;
-          justify-content: left;;
-        }
-      }
-
-      .redBar .bar {
-        width: 22vw;
-      }
     }
   }
 
@@ -414,20 +216,5 @@ html {
 }
 
 @media screen and (min-width: 1280px) {
-  .header .headerLeft .discover .discoverButton {
-    width: 11vw;
-  }
-  .header .headerRight  {
 
-      .menuContainer {
-
-        .menuButtons .buttonWrapper .headerButton {
-          width: 6vw;
-        }
-      }
-
-      .redBar .bar {
-        width: 22vw;
-    }
-  }
 }
