@@ -26,9 +26,9 @@ const App = () => {
                     <Route path="/note/discover" element={<Discover />} />
                     <Route path="*" element={<NotFound />} />
                     <Route path="/note/create" element={<NoteCreate />} />
+                    <Route path="/note" element={<Note />} />
+                    <Route path="/note/search" element={<Search />} />
                     <Route element={<ProtectedRoute />}>
-                        <Route path="/note" element={<Note />} />
-                        <Route path="/note/search" element={<Search />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

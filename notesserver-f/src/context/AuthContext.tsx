@@ -1,21 +1,28 @@
 
 import { createContext, useState, type ReactNode, useContext } from "react";
 
+interface UserReadDto {
+    id: string;
+    username: string;
+    email: string;
+    roles: Set<string>; // или string[] — в зависимости от реализации
+}
+
 interface AuthContextType {
-    userId: string | null;
-    setUserId: (id: string | null) => void;
+    user: UserReadDto | null;
+    setUser: (user: UserReadDto | null) => void;
     isLoggedIn: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [userId, setUserId] = useState<string | null>(null);
+    const [user, setUser] = useState<UserReadDto | null>(null);
 
     const value = {
-        userId,
-        setUserId,
-        isLoggedIn: !!userId,
+        user,
+        setUser,
+        isLoggedIn: !!user,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
