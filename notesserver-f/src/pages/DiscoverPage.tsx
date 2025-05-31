@@ -1,109 +1,22 @@
 import React from "react";
 import cn from "classnames";
 import styles from "../styles/page/discover_page.module.less";
-import logo from "@/assets/img/swamp/svg/logo.svg";
-import logo_text from "@/assets/img/swamp/svg/logo_text.svg"
-import officers_text from "@/assets/img/swamp/svg/officers_text.svg"
-import your_notes_button from "@/assets/img/swamp/svg/your_notes_button.svg"
-import discover_button from "@/assets/img/swamp/svg/discover_button.svg"
-import logout_button from "@/assets/img/swamp/svg/logout_button.svg"
-import header_bar from "@/assets/img/swamp/svg/header_bar.svg"
-import top_line from "@/assets/img/swamp/svg/top_line.svg"
-import search_button from "@/assets/img/swamp/svg/search_button.svg"
-import footer_line from "@/assets/img/swamp/svg/footer_line.svg"
+import SwampStyle from "../components/SwampStyle.tsx";
 
+
+const currentPage = 5;
+const totalPages = 7;
 
 
 const DiscoverPage: React.FC = () => {
   return (
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <header className={styles.header}>
-            <div className={styles.pageCounter}>
-              <span>2/5</span>
-              <span className={styles.pagePage}>PAGE</span>
-            </div>
-            <div className={styles.headerLeft}>
-              <div className={styles.logoContainer}>
-                <img className={styles.logo} src={logo} alt="Logo" />
-                <div className={styles.logoTextWrapper}>
-                  <img className={styles.logoText} src={logo_text} alt="Logo Text" />
-                  <img className={styles.officersText} src={officers_text} alt="Officers Text" />
-                </div>
-                <div className={cn(styles.buttonWrapper, styles.discover)}>
-                  <input
-                      type="image"
-                      className={cn(styles.headerButton, "c-button")}
-                      src={your_notes_button}
-                      alt="Your Notes"
-                  />
-                </div>
-                <div className={cn(styles.buttonWrapper, styles.discover)}>
-                  <input
-                      type="image"
-                      className={cn(styles.headerButton, "c-button")}
-                      src={discover_button}
-                      alt="Discover"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className={styles.headerRight}>
-              <div className={styles.menuContainer}>
-                <div className={styles.menuButtons}>
-                  <div className={styles.buttonWrapper}>
-                    <input
-                        type="image"
-                        className={cn(styles.headerButton, "c-button")}
-                        src={logout_button}
-                        alt="Logout"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className={styles.redBar}>
-                <img className={styles.bar} src={header_bar} alt="Header Bar" />
-              </div>
-            </div>
-            <div className={styles.redLine}>
-              <img className={styles.line} src={top_line} alt="Top Line" />
-            </div>
-          </header>
 
-          <aside className={styles.sidebar} id="sidebarDiscover">
-            <div className={styles.sidebarHeader}>FRESH NOTES</div>
-            <div className={styles.sidebarNotelistWrapper} id="sidebarNotelistWrapper">
-              <div className={styles.note}>
-                <div className={cn(styles.noteItem, styles.header)}>
-                  <span className={styles.noteHeader}>I need more ennies MutherFuckers!</span>
-                </div>
-                <div className={cn(styles.noteItem, styles.tag)}>
-                  <span className={styles.noteTagHeader}>Tag:</span>
-                  <span className={styles.noteTag}>Ennie problems</span>
-                </div>
-                <div className={cn(styles.noteItem, styles.author)}>
-                  <span className={styles.noteAuthorHeader}>Author:</span>
-                  <span className={styles.noteAuthor}>FreshDog@cbr.com</span>
-                </div>
-              </div>
-            </div>
-            <div className={styles.buttonWrapper}>
-              <input
-                  type="image"
-                  className={cn(styles.searchButton, "c-button")}
-                  id="sidebarSearchBtn"
-                  src={search_button}
-                  alt="Search Button"
-              />
-            </div>
-          </aside>
-
+      <SwampStyle currentPage={currentPage} totalPages={totalPages}>
           <main className={styles.main}>
             <div className={styles.notesListWrapper}>
               <div className={styles.notesListHeader}>
-                <div>Newest notes</div>
+                <div>Note</div>
                 <div>Posted</div>
-                <div className={styles.tagHeader}>Tag</div>
               </div>
               <div className={styles.notesList}>
                 <div className={styles.noteWrapper}>
@@ -124,21 +37,11 @@ const DiscoverPage: React.FC = () => {
                     <span className={styles.postedDate}>07.12.2027</span>
                     <span className={styles.postedTime}>10:37</span>
                   </div>
-                  <div className={styles.tag}>
-                    <span className={styles.postedTag}>Enni problems</span>
-                  </div>
                 </div>
               </div>
             </div>
           </main>
-
-          <footer className={styles.footer}>
-            <div className={styles.footerLine}>
-              <img className={styles.redLine} src={footer_line} alt="Footer Line" />
-            </div>
-          </footer>
-        </div>
-      </div>
+      </SwampStyle>
   );
 };
 

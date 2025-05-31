@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import InnerHeader from "./InnerHeader";
 import styles from "../styles/shared/inner_shared.module.less";
+import { useNavigate } from "react-router-dom";
 
 import cn from "classnames";
 import footerLine from "@/assets/img/swamp/svg/footer_line.svg";
@@ -30,6 +31,7 @@ interface NoteReadDto {
 
 const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPages}) => {
     const [freshNotes, setFreshNotes] = useState<NoteReadDto[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadFreshNotes = async () => {
@@ -49,6 +51,10 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
 
         void loadFreshNotes();
     }, []);
+
+    const goToSearch = () => {
+        navigate("/note/search");
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -71,8 +77,16 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
                             </div>
                         </div>
                     ))}
-                    <div className={styles.buttonWrapper}>
-                        <img className={cn(styles.cButton, styles.searchButton)} src={searchButton} alt="Search"/>
+                    <div>
+                        <div className={styles.buttonWrapper}>
+                            <input
+                                type="image"
+                                className={cn(styles.cButton, styles.searchButton)}
+                                src={searchButton}
+                                alt="Search"
+                                onClick={goToSearch}
+                            />
+                        </div>
                     </div>
                 </aside>
 

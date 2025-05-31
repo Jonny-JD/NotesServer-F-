@@ -1,5 +1,6 @@
 @import "colors.module.less";
 @import "../shared/fonts.less";
+@import "../shared/buttons/buttons_inner.module.less";
 
 @content-width: 80vw;
 @common-margins: calc(@content-width / 100 * 3);
@@ -85,7 +86,7 @@ html {
       }
 
       .noteTag {
-        color: #fff;
+        color: @color_ivory;
       }
 
       .noteAuthorHeader {
@@ -94,8 +95,14 @@ html {
       }
 
       .noteAuthor {
-        color: #fff;
+        color: @color_ivory;
       }
+    }
+  }
+  .buttonWrapper {
+    width: fit-content;
+    input {
+      width: 7vw;
     }
   }
 }
@@ -136,6 +143,7 @@ html {
 @media screen and (min-width: 1280px) {
   .sidebar {
     display: flex;
+    flex-direction: column;
   }
 }
 
