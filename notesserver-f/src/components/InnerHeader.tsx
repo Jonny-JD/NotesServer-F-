@@ -1,4 +1,4 @@
-import styles from "../styles/shared/inner_shared.module.less";
+import styles from "../styles/shared/header/inner_header.module.less";
 import cn from "classnames";
 import React from "react";
 
@@ -30,21 +30,23 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({currentPage, totalPages}) => (
                     <img className={styles.logoText} src={logoText} alt="Logo Text"/>
                     <img className={styles.officersText} src={officersText} alt="Officers Text"/>
                 </div>
-                <div className={cn(styles.buttonWrapper, styles.discover)}>
-                    <input
-                        type="image"
-                        className={cn(styles.headerButton, styles.cButton, styles.yourNotesButton)}
-                        src={yourNotesButton}
-                        alt="Your Notes"
-                    />
-                </div>
-                <div className={cn(styles.buttonWrapper, styles.discover)}>
-                    <input
-                        type="image"
-                        className={cn(styles.headerButton, styles.cButton, styles.discoverButton)}
-                        src={discoverButton}
-                        alt="Discover"
-                    />
+                <div className={styles.discoverContainer}>
+                    <div className={cn(styles.buttonWrapper, styles.discover)}>
+                        <input
+                            type="image"
+                            className={cn(styles.headerButton, styles.cButton, styles.yourNotesButton)}
+                            src={yourNotesButton}
+                            alt="Your Notes"
+                        />
+                    </div>
+                    <div className={cn(styles.buttonWrapper, styles.discover)}>
+                        <input
+                            type="image"
+                            className={cn(styles.headerButton, styles.cButton, styles.discoverButton)}
+                            src={discoverButton}
+                            alt="Discover"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

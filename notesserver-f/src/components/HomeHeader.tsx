@@ -1,4 +1,4 @@
-import styles from "../styles/shared/home_shared.module.less";
+import styles from "../styles/shared/header/home_header.module.less";
 import cn from "classnames";
 import React from "react";
 
@@ -10,6 +10,7 @@ import signUpButton from "@/assets/img/red/svg/sign_up_button.svg";
 import loginButton from "@/assets/img/red/svg/login_button.svg";
 import headerBar from "@/assets/img/red/svg/header_bar.svg";
 import topLine from "@/assets/img/red/svg/top_line.svg";
+
 
 interface HomeHeaderProps {
     currentPage: number;

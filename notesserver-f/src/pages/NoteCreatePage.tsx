@@ -17,11 +17,11 @@ const NoteCreatePage: React.FC = () => {
                 <div className={styles.newNoteFormWrapper}>
                     <form className={styles.noteForm} method="get" action="">
                         <div className={styles.formField}>
-                            <label htmlFor="note-title">Title:</label>
+                            <label htmlFor="note-title">title:</label>
                             <input type="text" name="note-title" id="note-title" required/>
                         </div>
                         <div className={styles.formField}>
-                            <label htmlFor="note-tag">Tag:</label>
+                            <label htmlFor="note-tag">tag:</label>
                             <input type="text" name="note-tag" id="note-tag" required/>
                         </div>
                         <div className={cn(styles.formField, styles.noteTextWrapper)}>

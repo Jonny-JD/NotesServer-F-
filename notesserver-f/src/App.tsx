@@ -5,13 +5,17 @@ import Home from "./pages/MainPage.tsx";
 import Register from "./pages/RegisterPage.tsx";
 import Login from "./pages/LoginPage.tsx";
 import Note from "./pages/Note.tsx";
-import NoteCreate from "./pages/NoteCreate.tsx";
+import NoteCreate from "./pages/NoteCreatePage.tsx";
 import Search from "./pages/Search.tsx";
 import Discover from "./pages/DiscoverPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFoundPage.tsx";
+import useRestrictToExtendedLatin from "./hook/useRestrictToExtendedLatin.tsx";
+import useTabInTextarea from "./hook/useTabInTextarea.tsx";
 
 const App = () => {
+    useRestrictToExtendedLatin();
+    useTabInTextarea();
     return (
         <AuthProvider>
             <BrowserRouter>
