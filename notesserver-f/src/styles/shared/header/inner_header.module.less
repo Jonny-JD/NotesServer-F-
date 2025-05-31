@@ -3,20 +3,29 @@
 @import "@/styles/shared/buttons/buttons_inner.module.less";
 
 
-
 .pageCounter {
   color: @cyber_yellow;
+}
+
+.header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
+  width: 27vw;
+}
+
+
+@media screen and (min-width: 600px) {
+  .header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
+    width: 20vw;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .header {
     .headerLeft .discoverContainer {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
       margin-top: 1.5vw;
-      margin-left: 1vw;
-      gap: 0.5vw;
+      margin-left: 3vw;
+      gap: 2vw;
 
       .buttonWrapper {
         margin: 0;
@@ -33,17 +42,18 @@
 @media screen and (min-width: 1280px) {
   .header {
     .headerLeft .discoverContainer {
-      flex-direction: row;
       gap: 2vw;
       margin-top: 0;
       margin-bottom: 0.2vw;
       margin-left: 3vw;
+
       .buttonWrapper {
         .yourNotesButton {
-          width: 8vw;
+          width: 8.7vw;
         }
+
         .discoverButton {
-          width: 10.5vw;
+          width: 11.8vw;
         }
       }
     }

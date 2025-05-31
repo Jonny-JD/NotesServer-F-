@@ -24,10 +24,10 @@ html {
   overflow: auto;
   display: grid;
   grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
-  grid-template-columns: 3.1fr 13fr;
+    "header header header"
+    "leftSideBar main rightSideBar"
+    "footer footer footer";
+  grid-template-columns: 3fr 9fr 2.58fr;
   grid-template-rows: 1fr 7fr 1fr;
   background-color: aliceblue;
   background-image: url("../../assets/img/swamp/background.png");
@@ -38,14 +38,19 @@ html {
 }
 
 .sidebar {
-  grid-area: sidebar;
   display: none;
+  width: 80%;
+  align-self: flex-start;
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
   gap: 10px;
-  margin-left: @common-margins;
-  margin-right: 5%;
+}
+
+.leftSidebar {
+  gap: 10px;
   color: @cyber_yellow;
 
   .sidebarHeader {
@@ -107,6 +112,12 @@ html {
   }
 }
 
+.rightSidebar {
+  grid-area: rightSideBar;
+  display: none;
+  flex-direction: column;
+}
+
 .footer {
   grid-area: footer;
   margin-left: @common-margins;
@@ -143,7 +154,6 @@ html {
 @media screen and (min-width: 1280px) {
   .sidebar {
     display: flex;
-    flex-direction: column;
   }
 }
 

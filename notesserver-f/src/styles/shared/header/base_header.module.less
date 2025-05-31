@@ -1,6 +1,7 @@
 @import "@/styles/shared/colors.module.less";
 
-@common-margins: 5%;
+@content-width: 80vw;
+@common-margins: calc(@content-width / 100 * 3);
 
 .header {
   grid-area: header;
@@ -44,7 +45,7 @@
     align-items: center;
 
     .logo {
-      width: 10vw;
+      width: 8vw;
     }
 
     .logoTextWrapper {
@@ -56,12 +57,12 @@
       align-items: center;
 
       .logoText {
-        width: 20vh;
+        width: 15vh;
       }
 
       .officersText {
         margin-top: 10px;
-        width: 20vh;
+        width: 15vh;
       }
     }
   }
@@ -169,18 +170,18 @@
         gap: 10px;
 
         .logo {
-          width: 4vw;
+          width: 3vw;
         }
 
         .logoTextWrapper {
           align-items: flex-start;
 
           .officersText {
-
+            width: 8.5vw;
           }
 
           .logoText {
-            width: 14vw;
+            width: 13vw;
           }
         }
       }

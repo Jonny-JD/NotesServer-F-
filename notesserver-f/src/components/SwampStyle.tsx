@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import InnerHeader from "./InnerHeader";
 import styles from "../styles/shared/inner_shared.module.less";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import cn from "classnames";
 import footerLine from "@/assets/img/swamp/svg/footer_line.svg";
@@ -60,7 +60,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <InnerHeader currentPage={currentPage} totalPages={totalPages}/>
-                <aside className={styles.sidebar}>
+                <aside className={cn(styles.sidebar, styles.leftSidebar)}>
                     <div className={styles.sidebarHeader}>FRESH NOTES</div>
                     {freshNotes.map(note => (
                         <div key={note.id} className={styles.note}>
@@ -92,6 +92,9 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
 
                 {children}
 
+                <aside className={cn(styles.sidebar, styles.rightSidebar)}>
+
+                </aside>
                 <footer className={styles.footer}>
                     <div className={styles.footerLine}>
                         <img className={styles.redLine} src={footerLine} alt="Footer Line"/>
