@@ -29,7 +29,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
     };
 
     const goToYourNotes = () => {
-        navigate("/your-notes"); // Замени на нужный путь
+        navigate("/your-notes"); // Замени на нужный путь  //TODO create page your notes
     };
 
     const goToDiscover = () => {
