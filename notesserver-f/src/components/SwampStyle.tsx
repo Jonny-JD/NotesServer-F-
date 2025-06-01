@@ -21,16 +21,16 @@ interface UserReadDto {
     roles: string[];
 }
 
-interface NoteReadDto {
+interface NotePreviewDto {
     id: number;
     title: string;
-    text: string;
     tag: string;
     author: UserReadDto;
+    link: string;
 }
 
 const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPages}) => {
-    const [freshNotes, setFreshNotes] = useState<NoteReadDto[]>([]);
+    const [freshNotes, setFreshNotes] = useState<NotePreviewDto[]>([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
                     console.error("Failed to load fresh notes:", res.statusText);
                     return;
                 }
-                const data: NoteReadDto[] = await res.json();
+                const data: NotePreviewDto[] = await res.json();
                 setFreshNotes(data);
             } catch (e) {
                 console.error("Error loading fresh notes:", e);
@@ -56,6 +56,10 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         navigate("/note/search");
     }
 
+    const goToNote = (noteLink: string) => {
+        navigate(`/api/notes/${noteLink}`);
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -63,7 +67,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
                 <aside className={cn(styles.sidebar, styles.leftSidebar)}>
                     <div className={styles.sidebarHeader}>FRESH NOTES</div>
                     {freshNotes.map(note => (
-                        <div key={note.id} className={styles.note}>
+                        <div key={note.id} className={styles.note} onClick={() => goToNote(note.id.toString())}>
                             <div className={cn(styles.noteItem, styles.header)}>
                                 <span className={styles.noteHeader}>{note.title}</span>
                             </div>
