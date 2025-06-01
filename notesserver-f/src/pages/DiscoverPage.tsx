@@ -16,7 +16,7 @@ interface NotePreviewDto {
     title: string;
     tag: string;
     author: UserReadDto;
-    postedAt: string; // ISO string — время создания/публикации заметки
+    postedAt: string;
 }
 
 const currentPage = 5;
@@ -72,7 +72,6 @@ const DiscoverPage: React.FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Скролл хендлер для автоподгрузки
     const handleScroll = async () => {
         if (!notesListRef.current || loading || !hasMore) return;
 
