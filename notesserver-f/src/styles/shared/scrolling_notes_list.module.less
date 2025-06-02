@@ -1,5 +1,11 @@
 @import "colors.module";
 
+
+.notesListWrapper .notesList .scrollList .noteWrapper .note .noteItem .noteHeader {
+  color: @cyber_yellow;
+}
+
+
 .notesListWrapper {
   width: 100%;
   height: 50vh;
@@ -73,24 +79,27 @@
           &:hover {
             filter: drop-shadow(-1px 6px 3px @cyber_swamp);
             cursor: pointer;
+
           }
 
           .noteItem {
             display: flex;
             margin: 3px 0;
             gap: 0.5vw;
+            color: @color_ivory;
 
-            .header {
-              text-align: left;
+            .noteHeader {
+              color: @cyber_yellow;
             }
 
-            .noteTag {
-              color: @color_ivory;
+            .noteTagHeader {
+              color: @cyber_swamp;
             }
 
-            .noteAuthor {
-              color: @color_ivory;
+            .noteAuthorHeader {
+              color: @cyber_swamp;
             }
+
           }
         }
 
@@ -172,6 +181,7 @@
 @media screen and (min-width: 1024px) {
   .notesListWrapper {
     height: 70vh;
+
     .notesListHeader {
       font-size: 2.5vw;
     }
@@ -185,6 +195,7 @@
 @media screen and (min-width: 1280px) {
   .notesListWrapper {
     height: 70vh;
+
     .notesListHeader {
       font-size: 1.5vw;
     }
