@@ -24,14 +24,13 @@
 }
 
 .pageCounter {
-  position: absolute;
-  right: 0;
-  top: 30px;
   font-family: "Rajdhali", sans-serif;
-  font-size: 1.3vw;
+  font-size: 1.6vw;
   color: @cyber_red;
   align-items: baseline;
   display: none;
+  margin-top: auto;
+  margin-bottom: 0.4vh;
 }
 
 .headerLeft {
@@ -67,9 +66,17 @@
     }
   }
 
+  .discoverContainer {
+    display: flex;
+    flex-direction: column;
+    .buttonWrapper {
+      align-self: flex-end;
+    }
+  }
+
   .discover {
     width: fit-content;
-    margin: 2vh auto 2vh auto;
+    margin: 1vh auto 0 auto;
 
     .discoverButton {
       width: 35vw;
@@ -84,6 +91,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1vw;
 
   .menuContainer {
     display: flex;
@@ -97,8 +105,10 @@
   }
 
   .redBar {
+    display: flex;
+    align-items: baseline;
     width: fit-content;
-    margin-top: 0.3vh;
+    margin-top: 0.4vh;
 
     .bar {
       width: 30vw;
@@ -144,9 +154,13 @@
 @media screen and (min-width: 1024px) {
   .header {
     flex-direction: row;
+    align-items: baseline;
 
     .pageCounter {
-      display: unset;
+      display: flex;
+      .pagePage {
+
+      }
     }
 
     .headerButton {
@@ -196,13 +210,20 @@
 
         .menuButtons {
           gap: 1vw;
-          justify-content: left;;
+          justify-content: left;
         }
       }
 
       .redBar .bar {
         width: 22vw;
       }
+    }
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .header .headerRight {
+    .redBar .bar {
+      width: 17vw;
     }
   }
 }
@@ -225,3 +246,4 @@
     }
   }
 }
+

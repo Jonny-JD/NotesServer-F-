@@ -71,7 +71,7 @@ const NoteCreatePage: React.FC = () => {
                         {success && <p style={{ color: "green" }}>Note created successfully!</p>}
 
                         <div className={styles.formField}>
-                            <label htmlFor="note-title">title:</label>
+                            <label htmlFor="note-title">Title:</label>
                             <input
                                 type="text"
                                 name="note-title"
@@ -82,7 +82,7 @@ const NoteCreatePage: React.FC = () => {
                             />
                         </div>
                         <div className={styles.formField}>
-                            <label htmlFor="note-tag">tag:</label>
+                            <label htmlFor="note-tag">Tag:</label>
                             <input
                                 type="text"
                                 name="note-tag"

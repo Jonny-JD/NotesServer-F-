@@ -37,10 +37,6 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({currentPage, totalPages}) => {
     return (
 
         <header className={styles.header}>
-            <div className={styles.pageCounter}>
-                <span>{currentPage}/{totalPages}</span>
-                <span className={styles.pagePage}>PAGE</span>
-            </div>
             <div className={styles.headerLeft}>
                 <div className={styles.logoContainer}>
                     <img className={styles.logo} src={logo} alt="Logo"/>
@@ -79,6 +75,10 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({currentPage, totalPages}) => {
                                 alt="Login Button"
                                 onClick={goToLogin}
                             />
+                        </div>
+                        <div className={styles.pageCounter}>
+                            <span>{currentPage}/{totalPages}</span>
+                            <span className={styles.pagePage}>PAGE</span>
                         </div>
                     </div>
                 </div>

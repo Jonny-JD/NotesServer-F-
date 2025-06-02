@@ -70,10 +70,6 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
 
     return (
         <header className={styles.header}>
-            <div className={styles.pageCounter}>
-                <span>{currentPage}/{totalPages}</span>
-                <span className={styles.pagePage}>PAGE</span>
-            </div>
             <div className={styles.headerLeft}>
                 {error && <p style={{color: "red"}}>{error}</p>}
                 <div className={styles.logoContainer}>
@@ -130,6 +126,10 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                                 alt="Logout"
                                 onClick={handleLogout}
                             />
+                        </div>
+                        <div className={styles.pageCounter}>
+                            <span>{currentPage}/{totalPages}</span>
+                            <span className={styles.pagePage}>PAGE</span>
                         </div>
                     </div>
                 </div>

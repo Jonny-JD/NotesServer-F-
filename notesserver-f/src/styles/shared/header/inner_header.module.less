@@ -7,6 +7,16 @@
   color: @cyber_yellow;
 }
 
+.headerRight {
+  .menuContainer {
+    .menuButtons {
+      display: flex;
+      justify-content: space-between !important;
+      gap: 15px;
+    }
+  }
+}
+
 .header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
   width: 27vw;
 }
@@ -14,7 +24,7 @@
 
 @media screen and (min-width: 600px) {
   .header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
-    width: 20vw;
+    width: 19vw;
   }
 }
 
@@ -22,6 +32,7 @@
   .header {
     .headerLeft .discoverContainer {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       margin-top: 1.5vw;
       margin-left: 3vw;
@@ -46,20 +57,20 @@
   .header {
     .headerLeft .discoverContainer {
       gap: 2vw;
-      margin-top: 0;
+      margin-top: 2vw;
       margin-bottom: 0.2vw;
       margin-left: 3vw;
 
       .buttonWrapper {
         .yourNotesButton {
-          width: 8.7vw;
+          width: 8vw;
         }
         .searchButton {
-          width: 6.6vw;
+          width: 6vw;
         }
 
         .discoverButton {
-          width: 11.8vw;
+          width: 10.5vw;
         }
       }
     }

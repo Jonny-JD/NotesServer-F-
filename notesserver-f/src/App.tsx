@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext.tsx";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {AuthProvider} from "./context/AuthContext.tsx";
 
 import Home from "./pages/MainPage.tsx";
 import Register from "./pages/RegisterPage.tsx";
@@ -20,15 +20,16 @@ const App = () => {
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/registration" element={<Register />} />
-                    <Route path="*" element={<NotFound />} />
-                    <Route element={<ProtectedRoute />}>
-                        <Route path="/note/discover" element={<Discover />} />
-                        <Route path="/note/create" element={<NoteCreate />} />
-                        <Route path="/note" element={<Note />} />
-                        <Route path="/note/search" element={<Search />} />
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/registration" element={<Register/>}/>
+                    <Route path="*" element={<NotFound/>}/>
+                    <Route element={<ProtectedRoute/>}>
+                        <Route path="/note/discover" element={<Discover/>}/>
+                        <Route path="/note/create" element={<NoteCreate/>}/>
+                        <Route path="/note" element={<Note/>}/>
+                        <Route path="/note/:id" element={<Note/>}/>
+                        <Route path="/note/search" element={<Search/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

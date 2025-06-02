@@ -46,18 +46,21 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         void loadFreshNotes();
     }, []);
 
-    const goToNote = (noteLink: string) => {
-        navigate(`/api/notes/${noteLink}`);
-    }
-
+    const goToNote = (noteId: number | string) => {
+        navigate(`/note/${noteId}`);
+    };
+    const goToDiscover = () => {
+        console.log("clicked!");
+        navigate("/note/discover");
+    };
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <InnerHeader currentPage={currentPage} totalPages={totalPages}/>
                 <aside className={cn(styles.sidebar, styles.leftSidebar)}>
-                    <div className={styles.sidebarHeader}>FRESH NOTES</div>
+                    <div className={styles.sidebarHeader} onClick={goToDiscover}>FRESH NOTES</div>
                     {freshNotes.map(note => (
-                        <div key={note.id} className={styles.note} onClick={() => goToNote(note.id.toString())}>
+                        <div key={note.id} className={styles.note} onClick={() => goToNote(note.id)}>
                             <div className={cn(styles.noteItem, styles.header)}>
                                 <span className={styles.noteHeader}>{note.title}</span>
                             </div>

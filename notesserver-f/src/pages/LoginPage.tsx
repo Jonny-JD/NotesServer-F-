@@ -50,13 +50,10 @@ const LoginPage: React.FC = () => {
                 return;
             }
 
-            // ✅ получаем весь UserReadDto
             const userFromBackend = await response.json();
 
-            // ✅ сохраняем пользователя целиком в контекст
             setUser(userFromBackend);
 
-            // 🔁 переход на главную
             navigate("/note/discover");
         } catch {
             setError("Network error");

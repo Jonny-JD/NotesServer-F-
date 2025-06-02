@@ -28,6 +28,7 @@ while (maxWidth <= 8000) {
     multiplier += 0.08;
 }
 
+
 const ScrollingNotesList: React.FC = () => {
     const [notes, setNotes] = useState<NotePreviewDto[]>([]);
     const [loading, setLoading] = useState(false);
@@ -72,10 +73,6 @@ const ScrollingNotesList: React.FC = () => {
         [loading, hasMore]
     );
 
-    const goToNote = (noteLink: string) => {
-        navigate(`/api/notes/${noteLink}`);
-    }
-
     useEffect(() => {
         const width = window.innerWidth;
         const size = sizes.find((s) => width <= s.maxWidth);
@@ -95,6 +92,10 @@ const ScrollingNotesList: React.FC = () => {
         if (visibleStopIndex >= notes.length - 1 && !loading && hasMore) {
             void loadNotes(fromTime);
         }
+    };
+
+    const goToNote = (noteId: number | string) => {
+        navigate(`/note/${noteId}`);
     };
 
     return (
@@ -118,7 +119,7 @@ const ScrollingNotesList: React.FC = () => {
                                 const note = notes[index];
                                 return (
                                     <div style={style} key={note.id} className={styles.noteWrapper}>
-                                        <div className={styles.note} onClick={() => goToNote(note.id.toString())}>
+                                        <div className={styles.note} onClick={() => goToNote(note.id)}>
                                             <div className={cn(styles.noteItem, styles.header)}>
                                                 <span className={styles.noteHeader}>{note.title}</span>
                                             </div>
