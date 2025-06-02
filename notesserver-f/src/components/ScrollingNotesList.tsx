@@ -1,9 +1,10 @@
-import React, {useCallback, useEffect, useState} from "react";
-import styles from "../styles/shared/scrolling_notes_list.module.less"
-import {FixedSizeList as List} from "react-window";
+import React, { useCallback, useEffect, useState } from "react";
+import styles from "../styles/shared/scrolling_notes_list.module.less";
+import { FixedSizeList as List } from "react-window";
 import cn from "classnames";
-import {formatISO} from "date-fns";
-import {useElementHeight} from "../hook/useElementHeight.tsx";
+import { formatISO } from "date-fns";
+import { useElementHeight } from "../hook/useElementHeight.tsx";
+import { useResponsiveRatio } from "../hook/useResponsiveRatio.tsx"; // импорт нового хука
 
 
 interface NotePreviewDto {
@@ -26,15 +27,14 @@ while (maxWidth <= 8000) {
     multiplier += 0.08;
 }
 
-
 const ScrollingNotesList: React.FC = () => {
     const [notes, setNotes] = useState<NotePreviewDto[]>([]);
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
     const [fromTime, setFromTime] = useState<string>(formatISO(new Date()));
     const [containerRef, listHeight] = useElementHeight<HTMLDivElement>();
+    const ratio = useResponsiveRatio();
     const [itemHeight, setItemHeight] = useState(70);
-
 
     const loadNotes = useCallback(
         async (from: string) => {
@@ -69,34 +69,20 @@ const ScrollingNotesList: React.FC = () => {
         [loading, hasMore]
     );
 
-
     useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth;
-            const ratio = window.innerWidth > window.innerHeight
-                ? window.innerWidth / window.innerHeight
-                : window.innerHeight / window.innerWidth;
+        const width = window.innerWidth;
+        const size = sizes.find((s) => width <= s.maxWidth);
 
-            const size = sizes.find((s) => width <= s.maxWidth);
-
-            if (size) {
-                setItemHeight(ratio * size.multiplier * 100);
-            } else {
-                setItemHeight(70); // дефолтное значение
-            }
-        };
-
-        handleResize(); // начальный расчёт
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
+        if (size) {
+            setItemHeight(ratio * size.multiplier * 100);
+        } else {
+            setItemHeight(70);
+        }
+    }, [ratio]);
 
     useEffect(() => {
         void loadNotes(fromTime);
     }, []);
-
 
     const handleItemsRendered = ({ visibleStopIndex }: { visibleStopIndex: number }) => {
         if (visibleStopIndex >= notes.length - 1 && !loading && hasMore) {
@@ -111,57 +97,58 @@ const ScrollingNotesList: React.FC = () => {
                 <div>Posted</div>
             </div>
             <div ref={containerRef} className={styles.notesList}>
-                {listHeight > 0 && (<List
-                    className={styles.scrollList}
-                    height={listHeight}
-                    itemCount={notes.length + (hasMore ? 0 : 1)}
-                    itemSize={itemHeight}
-                    width="100%"
-                    onItemsRendered={handleItemsRendered}
-                >
-                    {({index, style}) => {
-                        if (index < notes.length) {
-                            const note = notes[index];
-                            return (
-                                <div style={style} key={note.id} className={styles.noteWrapper}>
-                                    <div className={styles.note}>
-                                        <div className={cn(styles.noteItem, styles.header)}>
-                                            <span className={styles.noteHeader}>{note.title}</span>
+                {listHeight > 0 && (
+                    <List
+                        className={styles.scrollList}
+                        height={listHeight}
+                        itemCount={notes.length + (hasMore ? 0 : 1)}
+                        itemSize={itemHeight}
+                        width="100%"
+                        onItemsRendered={handleItemsRendered}
+                    >
+                        {({ index, style }) => {
+                            if (index < notes.length) {
+                                const note = notes[index];
+                                return (
+                                    <div style={style} key={note.id} className={styles.noteWrapper}>
+                                        <div className={styles.note}>
+                                            <div className={cn(styles.noteItem, styles.header)}>
+                                                <span className={styles.noteHeader}>{note.title}</span>
+                                            </div>
+                                            <div className={cn(styles.noteItem, styles.tag)}>
+                                                <span className={styles.noteTagHeader}>Tag:</span>
+                                                <span className={styles.noteTag}>{note.tag}</span>
+                                            </div>
+                                            <div className={cn(styles.noteItem, styles.author)}>
+                                                <span className={styles.noteAuthorHeader}>Author:</span>
+                                                <span className={styles.noteAuthor}>{note.author}</span>
+                                            </div>
                                         </div>
-                                        <div className={cn(styles.noteItem, styles.tag)}>
-                                            <span className={styles.noteTagHeader}>Tag:</span>
-                                            <span className={styles.noteTag}>{note.tag}</span>
-                                        </div>
-                                        <div className={cn(styles.noteItem, styles.author)}>
-                                            <span className={styles.noteAuthorHeader}>Author:</span>
-                                            <span className={styles.noteAuthor}>{note.author}</span>
+                                        <div className={styles.posted}>
+                      <span className={styles.postedDate}>
+                        {new Date(note.createdAt).toLocaleDateString()}
+                      </span>
+                                            <span className={styles.postedTime}>
+                        {new Date(note.createdAt).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                        })}
+                      </span>
                                         </div>
                                     </div>
-                                    <div className={styles.posted}>
-                                                <span className={styles.postedDate}>
-                                                    {new Date(note.createdAt).toLocaleDateString()}
-                                                </span>
-                                        <span className={styles.postedTime}>
-                                                    {new Date(note.createdAt).toLocaleTimeString([], {
-                                                        hour: "2-digit",
-                                                        minute: "2-digit",
-                                                    })}
-                                                </span>
+                                );
+                            } else {
+                                return (
+                                    <div style={style} className={styles.lastElementWrapper}>
+                                        <div className={styles.lastMessage}>
+                                            <span>No more notes</span>
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        } else {
-                            // Показываем сообщение "No more notes" в конце списка
-                            return (
-                                <div style={style} className={styles.lastElementWrapper}>
-                                    <div className={styles.lastMessage}>
-                                        <span>No more notes</span>
-                                    </div>
-                                </div>
-                            );
-                        }
-                    }}
-                </List>)}
+                                );
+                            }
+                        }}
+                    </List>
+                )}
                 {loading && (
                     <div className={styles.lastElementWrapper}>
                         <div className={styles.lastMessage}>
@@ -171,7 +158,7 @@ const ScrollingNotesList: React.FC = () => {
                 )}
             </div>
         </div>
-    )
+    );
 };
 
 export default ScrollingNotesList;
