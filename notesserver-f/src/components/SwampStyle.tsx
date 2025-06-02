@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 
 import cn from "classnames";
 import footerLine from "@/assets/img/swamp/svg/footer_line.svg";
-import searchButton from "@/assets/img/swamp/svg/search_button.svg";
 import {formatISO} from "date-fns"; // убедись, что установлен date-fns
 
 interface SwampStyleProps {
@@ -47,10 +46,6 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         void loadFreshNotes();
     }, []);
 
-    const goToSearch = () => {
-        navigate("/note/search");
-    }
-
     const goToNote = (noteLink: string) => {
         navigate(`/api/notes/${noteLink}`);
     }
@@ -76,17 +71,6 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
                             </div>
                         </div>
                     ))}
-                    <div>
-                        <div className={styles.buttonWrapper}>
-                            <input
-                                type="image"
-                                className={cn(styles.cButton, styles.searchButton)}
-                                src={searchButton}
-                                alt="Search"
-                                onClick={goToSearch}
-                            />
-                        </div>
-                    </div>
                 </aside>
 
                 {children}

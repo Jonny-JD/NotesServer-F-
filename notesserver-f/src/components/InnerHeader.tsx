@@ -3,11 +3,13 @@ import cn from "classnames";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.tsx";
+import { useLocation } from "react-router-dom";
 
 import logo from "@/assets/img/swamp/svg/logo.svg";
 import logoText from "@/assets/img/swamp/svg/logo_text.svg";
 import officersText from "@/assets/img/swamp/svg/officers_text.svg";
 import yourNotesButton from "@/assets/img/swamp/svg/your_notes_button.svg";
+import searchButton from "@/assets/img/swamp/svg/search_button.svg";
 import discoverButton from "@/assets/img/swamp/svg/discover_button.svg";
 import logoutButton from "@/assets/img/swamp/svg/logout_button.svg";
 import headerBar from "@/assets/img/swamp/svg/header_bar.svg";
@@ -23,8 +25,11 @@ interface InnerHeaderProps {
 const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) => {
     const { setUser } = useAuth();
     const navigate = useNavigate();
-
     const [error, setError] = useState<string | null>(null);
+    const location = useLocation();
+    const path = location.pathname;
+
+
 
     const handleLogout = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -58,6 +63,11 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
         navigate("/note/discover"); // Замени на нужный путь
     };
 
+    const goToSearch = () => {
+        navigate("/note/search"); // Замени на нужный путь
+    };
+
+
     return (
         <header className={styles.header}>
             <div className={styles.pageCounter}>
@@ -73,24 +83,39 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                         <img className={styles.officersText} src={officersText} alt="Officers Text" />
                     </div>
                     <div className={styles.discoverContainer}>
-                        <div className={cn(styles.buttonWrapper, styles.discover)}>
-                            <input
-                                type="image"
-                                className={cn(styles.headerButton, styles.cButton, styles.yourNotesButton)}
-                                src={yourNotesButton}
-                                alt="Your Notes"
-                                onClick={goToYourNotes}
-                            />
-                        </div>
-                        <div className={cn(styles.buttonWrapper, styles.discover)}>
-                            <input
-                                type="image"
-                                className={cn(styles.headerButton, styles.cButton, styles.discoverButton)}
-                                src={discoverButton}
-                                alt="Discover"
-                                onClick={goToDiscover}
-                            />
-                        </div>
+                        {path !== "/note/search" && (
+                            <div className={cn(styles.buttonWrapper, styles.discover)}>
+                                <input
+                                    type="image"
+                                    className={cn(styles.headerButton, styles.cButton, styles.searchButton)}
+                                    src={searchButton}
+                                    alt="Your Notes"
+                                    onClick={goToSearch}
+                                />
+                            </div>
+                        )}
+                        {path !== "/your-notes" && (
+                            <div className={cn(styles.buttonWrapper, styles.discover)}>
+                                <input
+                                    type="image"
+                                    className={cn(styles.headerButton, styles.cButton, styles.yourNotesButton)}
+                                    src={yourNotesButton}
+                                    alt="Your Notes"
+                                    onClick={goToYourNotes}
+                                />
+                            </div>
+                        )}
+                        {path !== "/note/discover" && (
+                            <div className={cn(styles.buttonWrapper, styles.discover)}>
+                                <input
+                                    type="image"
+                                    className={cn(styles.headerButton, styles.cButton, styles.discoverButton)}
+                                    src={discoverButton}
+                                    alt="Discover"
+                                    onClick={goToDiscover}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

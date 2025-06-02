@@ -34,7 +34,8 @@
       display: flex;
       flex-direction: column;
       gap: 1vw;
-      margin: 1.5vw 0 1.5vw 2vw;
+      width: 100%;
+      margin: 1.5vw 2vw 1.5vw 2vw;
 
       .searchChoice {
         display: flex;
@@ -75,6 +76,9 @@
     .searchButton {
       margin-top: 3vw;
       width: 17vw;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -85,6 +89,7 @@
     .searchBlockWrapper {
       font-size: 2vw;
       .searchFieldWrapper {
+        width: 60%;
         .searchInputWrapper input {
           font-size: 2vw;
         }
@@ -105,6 +110,7 @@
     .searchBlockWrapper {
       font-size: 1.5vw;
       .searchFieldWrapper {
+        width: 50%;
         .searchInputWrapper input {
           font-size: 1.5vw;
         }
