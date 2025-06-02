@@ -27,6 +27,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
     const [freshNotes, setFreshNotes] = useState<NotePreviewDto[]>([]);
     const navigate = useNavigate();
 
+
     useEffect(() => {
         const loadFreshNotes = async () => {
             try {

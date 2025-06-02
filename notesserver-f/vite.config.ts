@@ -20,7 +20,7 @@ export default defineConfig({
             "/api": {
                 target: "http://localhost:8080", // ✅ только домен и порт
                 changeOrigin: true,
-                rewrite: path => path.replace(/^\/api/, "/api/v1"), // ✅ явно подставляем /api/v1
+                rewrite: path => path.replace(/^\/api/, "/api/v1"),
             },
         },
     },
