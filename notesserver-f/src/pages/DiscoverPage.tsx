@@ -1,22 +1,16 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, {useEffect, useState, useRef, useCallback} from "react";
 import cn from "classnames";
 import styles from "../styles/page/discover_page.module.less";
 import SwampStyle from "../components/SwampStyle.tsx";
-import { formatISO } from "date-fns";
+import {formatISO} from "date-fns";
 
-interface UserReadDto {
-    id: number;
-    username: string;
-    email: string;
-    roles: string[];
-}
 
 interface NotePreviewDto {
     id: number;
     title: string;
     tag: string;
-    author: UserReadDto;
-    postedAt: string;
+    author: string;
+    createdAt: string;
 }
 
 const currentPage = 5;
@@ -38,7 +32,7 @@ const DiscoverPage: React.FC = () => {
             if (loading || !hasMore) return;
             setLoading(true);
             try {
-                const res = await fetch(`/api/fresh?from=${encodeURIComponent(from)}&limit=${PAGE_SIZE}`);
+                const res = await fetch(`/api/notes/fresh?from=${encodeURIComponent(from)}&limit=${PAGE_SIZE}`);
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
                     setLoading(false);
@@ -52,7 +46,7 @@ const DiscoverPage: React.FC = () => {
                 setNotes((prev) => [...prev, ...newNotes]);
 
                 if (newNotes.length > 0) {
-                    const lastNoteTime = newNotes[newNotes.length - 1].postedAt;
+                    const lastNoteTime = newNotes[newNotes.length - 1].createdAt;
                     setFromTime(lastNoteTime);
                 }
             } catch (e) {
@@ -68,14 +62,14 @@ const DiscoverPage: React.FC = () => {
         async function fetchNotes() {
             await loadNotes(fromTime);
         }
+
         void fetchNotes();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleScroll = async () => {
         if (!notesListRef.current || loading || !hasMore) return;
 
-        const { scrollTop, scrollHeight, clientHeight } = notesListRef.current;
+        const {scrollTop, scrollHeight, clientHeight} = notesListRef.current;
         if (scrollHeight - scrollTop <= clientHeight + 50) {
             await loadNotes(fromTime);
         }
@@ -93,7 +87,7 @@ const DiscoverPage: React.FC = () => {
                         className={styles.notesList}
                         ref={notesListRef}
                         onScroll={handleScroll}
-                        style={{ overflowY: "auto", maxHeight: "70vh" }}
+                        style={{overflowY: "auto", maxHeight: "70vh"}}
                     >
                         {notes.map((note) => (
                             <div key={note.id} className={styles.noteWrapper}>
@@ -107,16 +101,19 @@ const DiscoverPage: React.FC = () => {
                                     </div>
                                     <div className={cn(styles.noteItem, styles.author)}>
                                         <span className={styles.noteAuthorHeader}>Author:</span>
-                                        <span className={styles.noteAuthor}>{note.author.email}</span>
+                                        <span className={styles.noteAuthor}>{note.author}</span>
                                     </div>
                                 </div>
                                 <div className={styles.posted}>
-                  <span className={styles.postedDate}>
-                    {new Date(note.postedAt).toLocaleDateString()}
-                  </span>
-                                    <span className={styles.postedTime}>
-                    {new Date(note.postedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                  </span>
+                                      <span className={styles.postedDate}>
+                                        {new Date(note.createdAt).toLocaleDateString()}
+                                      </span>
+                                      <span className={styles.postedTime}>
+                                        {new Date(note.createdAt).toLocaleTimeString([], {
+                                            hour: "2-digit",
+                                            minute: "2-digit"
+                                        })}
+                                      </span>
                                 </div>
                             </div>
                         ))}

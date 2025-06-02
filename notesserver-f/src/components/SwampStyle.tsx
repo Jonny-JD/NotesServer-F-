@@ -14,18 +14,12 @@ interface SwampStyleProps {
     totalPages: number;
 }
 
-interface UserReadDto {
-    id: number;
-    username: string;
-    email: string;
-    roles: string[];
-}
 
 interface NotePreviewDto {
     id: number;
     title: string;
     tag: string;
-    author: UserReadDto;
+    author: string;
     link: string;
 }
 
@@ -37,7 +31,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         const loadFreshNotes = async () => {
             try {
                 const now = formatISO(new Date());
-                const res = await fetch(`/api/fresh?from=${encodeURIComponent(now)}`);
+                const res = await fetch(`/api/notes/fresh?from=${encodeURIComponent(now)}`);
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
                     return;
@@ -77,7 +71,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
                             </div>
                             <div className={cn(styles.noteItem, styles.author)}>
                                 <span className={styles.noteAuthorHeader}>Author:</span>
-                                <span className={styles.noteAuthor}>{note.author.email}</span>
+                                <span className={styles.noteAuthor}>{note.author}</span>
                             </div>
                         </div>
                     ))}
