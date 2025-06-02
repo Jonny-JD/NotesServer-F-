@@ -1,6 +1,6 @@
 import styles from "../styles/shared/header/inner_header.module.less";
 import cn from "classnames";
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.tsx";
 
@@ -18,15 +18,37 @@ interface InnerHeaderProps {
     totalPages: number;
 }
 
+
+
 const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) => {
     const { setUser } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.clear();
-        setUser(null);
-        navigate("/");
+    const [error, setError] = useState<string | null>(null);
+
+    const handleLogout = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(null);
+
+        try {
+            const response = await fetch("/api/auth/logout", {
+                method: "POST",
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setError(data.message || "Logout failed");
+                return;
+            }
+
+            localStorage.clear();
+            setUser(null);
+            navigate("/");
+        } catch {
+            setError("Network error");
+        }
     };
+
 
     const goToYourNotes = () => {
         navigate("/your-notes"); // Замени на нужный путь  //TODO create page your notes
@@ -43,6 +65,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                 <span className={styles.pagePage}>PAGE</span>
             </div>
             <div className={styles.headerLeft}>
+                {error && <p style={{color: "red"}}>{error}</p>}
                 <div className={styles.logoContainer}>
                     <img className={styles.logo} src={logo} alt="Logo" />
                     <div className={styles.logoTextWrapper}>

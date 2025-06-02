@@ -8,7 +8,7 @@ import RedStyle from "../components/RedStyle.tsx";
 const currentPage = 3;
 const totalPages = 7;
 
-type FormFields = "username" | "email" | "password";
+type FormFields = "username" | "email" | "rawPassword";
 
 const RegisterPage: React.FC = () => {
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const RegisterPage: React.FC = () => {
     const [form, setForm] = useState<Record<FormFields, string>>({
         username: "",
         email: "",
-        password: "",
+        rawPassword: "",
     });
 
     const [error, setError] = useState<string | null>(null);
@@ -25,7 +25,7 @@ const RegisterPage: React.FC = () => {
         const name = e.target.name;
         const value = e.target.value;
 
-        if (name === "username" || name === "email" || name === "password") {
+        if (name === "username" || name === "email" || name === "rawPassword") {
             setForm((prev) => ({
                 ...prev,
                 [name]: value,
@@ -91,13 +91,13 @@ const RegisterPage: React.FC = () => {
                             </div>
 
                             <div className={styles.formField}>
-                                <label htmlFor="password">Password:</label>
+                                <label htmlFor="rawPassword">Password:</label>
                                 <input
                                     type="password"
-                                    name="password"
-                                    id="password"
+                                    name="rawPassword"
+                                    id="rawPassword"
                                     maxLength={30}
-                                    value={form.password}
+                                    value={form.rawPassword}
                                     autoComplete="new-password"
                                     onChange={handleChange}
                                     required

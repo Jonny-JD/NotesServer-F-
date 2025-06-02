@@ -4,18 +4,12 @@ import styles from "../styles/page/discover_page.module.less";
 import SwampStyle from "../components/SwampStyle.tsx";
 import { formatISO } from "date-fns";
 
-interface UserReadDto {
-    id: number;
-    username: string;
-    email: string;
-    roles: string[];
-}
 
 interface NotePreviewDto {
     id: number;
     title: string;
     tag: string;
-    author: UserReadDto;
+    author: string;
     postedAt: string;
 }
 
@@ -38,7 +32,7 @@ const DiscoverPage: React.FC = () => {
             if (loading || !hasMore) return;
             setLoading(true);
             try {
-                const res = await fetch(`/api/fresh?from=${encodeURIComponent(from)}&limit=${PAGE_SIZE}`);
+                const res = await fetch(`/api/notes/fresh?from=${encodeURIComponent(from)}&limit=${PAGE_SIZE}`);
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
                     setLoading(false);
@@ -69,7 +63,6 @@ const DiscoverPage: React.FC = () => {
             await loadNotes(fromTime);
         }
         void fetchNotes();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleScroll = async () => {
@@ -107,7 +100,7 @@ const DiscoverPage: React.FC = () => {
                                     </div>
                                     <div className={cn(styles.noteItem, styles.author)}>
                                         <span className={styles.noteAuthorHeader}>Author:</span>
-                                        <span className={styles.noteAuthor}>{note.author.email}</span>
+                                        <span className={styles.noteAuthor}>{note.author}</span>
                                     </div>
                                 </div>
                                 <div className={styles.posted}>

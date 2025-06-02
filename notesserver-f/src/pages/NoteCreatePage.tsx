@@ -15,7 +15,7 @@ const NoteCreatePage: React.FC = () => {
 
     const [title, setTitle] = useState("");
     const [tag, setTag] = useState("");
-    const [text, setText] = useState("");
+    const [content, setContent] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
 
@@ -28,6 +28,8 @@ const NoteCreatePage: React.FC = () => {
             return;
         }
 
+        console.log("User ID:", user);
+
         try {
             const response = await fetch("/api/notes", {
                 method: "POST",
@@ -35,8 +37,8 @@ const NoteCreatePage: React.FC = () => {
                 body: JSON.stringify({
                     title,
                     tag,
-                    text,
-                    author: user, // 👈 передаём весь UserReadDto
+                    content,
+                    author: user,
                 }),
             });
 
@@ -48,7 +50,7 @@ const NoteCreatePage: React.FC = () => {
 
             setTitle("");
             setTag("");
-            setText("");
+            setContent("");
             setSuccess(true);
         } catch {
             setError("Network error");
@@ -97,8 +99,8 @@ const NoteCreatePage: React.FC = () => {
                                 id="note-text"
                                 rows={10}
                                 cols={10}
-                                value={text}
-                                onChange={(e) => setText(e.target.value)}
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
                             />
                         </div>
                         <div className={styles.formButtonsWrapper}>

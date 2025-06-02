@@ -41,6 +41,7 @@ const LoginPage: React.FC = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),
+                credentials: "include"
             });
 
             if (!response.ok) {
@@ -56,7 +57,7 @@ const LoginPage: React.FC = () => {
             setUser(userFromBackend);
 
             // 🔁 переход на главную
-            navigate("/home");
+            navigate("/note/discover");
         } catch {
             setError("Network error");
         }

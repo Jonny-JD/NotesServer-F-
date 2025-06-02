@@ -1,28 +1,55 @@
+import { createContext, useState, useContext, useEffect } from "react";
+import type { ReactNode } from "react";
 
-import { createContext, useState, type ReactNode, useContext } from "react";
-
-interface UserReadDto {
-    id: string;
+interface Username {
+    id: number;
     username: string;
-    email: string;
-    roles: Set<string>; // или string[] — в зависимости от реализации
 }
 
 interface AuthContextType {
-    user: UserReadDto | null;
-    setUser: (user: UserReadDto | null) => void;
+    user: Username | null;
+    setUser: (user: Username | null) => void;
     isLoggedIn: boolean;
+    loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState<UserReadDto | null>(null);
+    const [user, setUser] = useState<Username | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("/api/auth/me", {
+            method: "GET",
+            credentials: "include",
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error("Unauthorized");
+                return res.json();
+            })
+            .then((data) => {
+                console.log("Fetched user data:", data);
+                console.log("typeof data.id:", typeof data.id);
+                console.log("Object.keys(data):", Object.keys(data));
+                setUser({
+                    id: data.id,
+                    username: data.username,
+                });
+            })
+            .catch(() => {
+                setUser(null);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
 
     const value = {
         user,
         setUser,
         isLoggedIn: !!user,
+        loading,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
