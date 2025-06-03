@@ -56,15 +56,15 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
 
 
     const goToYourNotes = () => {
-        navigate("/your-notes"); // Замени на нужный путь  //TODO create page your notes
+        navigate("/notes/my");
     };
 
     const goToDiscover = () => {
-        navigate("/note/discover"); // Замени на нужный путь
+        navigate("/notes/discover");
     };
 
     const goToSearch = () => {
-        navigate("/note/search"); // Замени на нужный путь
+        navigate("/notes/search");
     };
 
 
@@ -79,7 +79,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                         <img className={styles.officersText} src={officersText} alt="Officers Text" />
                     </div>
                     <div className={styles.discoverContainer}>
-                        {path !== "/note/search" && (
+                        {path !== "/notes/search" && (
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
@@ -90,7 +90,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                                 />
                             </div>
                         )}
-                        {path !== "/your-notes" && (
+                        {path !== "/my" && (
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
@@ -101,7 +101,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                                 />
                             </div>
                         )}
-                        {path !== "/note/discover" && (
+                        {path !== "/notes/discover" && (
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"

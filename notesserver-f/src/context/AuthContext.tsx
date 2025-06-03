@@ -1,14 +1,14 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import type { ReactNode } from "react";
 
-interface Username {
+interface User {
     id: number;
     username: string;
 }
 
 interface AuthContextType {
-    user: Username | null;
-    setUser: (user: Username | null) => void;
+    user: User | null;
+    setUser: (user: User | null) => void;
     isLoggedIn: boolean;
     loading: boolean;
 }
@@ -16,7 +16,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState<Username | null>(null);
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

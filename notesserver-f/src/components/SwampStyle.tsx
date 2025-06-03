@@ -31,7 +31,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         const loadFreshNotes = async () => {
             try {
                 const now = formatISO(new Date());
-                const res = await fetch(`/api/notes/fresh?from=${encodeURIComponent(now)}`);
+                const res = await fetch(`/api/notes/search?from=${encodeURIComponent(now)}`);
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
                     return;
@@ -47,11 +47,11 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
     }, []);
 
     const goToNote = (noteId: number | string) => {
-        navigate(`/note/${noteId}`);
+        navigate(`/notes/${noteId}`);
     };
     const goToDiscover = () => {
         console.log("clicked!");
-        navigate("/note/discover");
+        navigate("/notes/discover");
     };
     return (
         <div className={styles.wrapper}>

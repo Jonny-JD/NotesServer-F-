@@ -5,8 +5,7 @@ import cn from "classnames";
 import {formatISO} from "date-fns";
 import {useElementHeight} from "../hook/useElementHeight.tsx";
 import {useResponsiveRatio} from "../hook/useResponsiveRatio.tsx";
-import {useNavigate} from "react-router-dom"; // импорт нового хука
-
+import {useNavigate} from "react-router-dom";
 
 interface NotePreviewDto {
     id: number;
@@ -29,7 +28,7 @@ while (maxWidth <= 8000) {
 }
 
 
-const ScrollingNotesList: React.FC = () => {
+const ScrollingNotesListUserNotes: React.FC = () => {
     const [notes, setNotes] = useState<NotePreviewDto[]>([]);
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
@@ -46,7 +45,7 @@ const ScrollingNotesList: React.FC = () => {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `/api/notes/fresh?from=${encodeURIComponent(from)}&limit=${PAGE_SIZE}`
+                    `/api/notes/user-notes?from=${encodeURIComponent(from)}`
                 );
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
@@ -95,7 +94,7 @@ const ScrollingNotesList: React.FC = () => {
     };
 
     const goToNote = (noteId: number | string) => {
-        navigate(`/note/${noteId}`);
+        navigate(`/notes/${noteId}`);
     };
 
     return (
@@ -170,4 +169,4 @@ const ScrollingNotesList: React.FC = () => {
     );
 };
 
-export default ScrollingNotesList;
+export default ScrollingNotesListUserNotes;

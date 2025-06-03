@@ -31,7 +31,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({currentPage, totalPages}) => {
     };
 
     const goToDiscover = () => {
-        navigate("/note/discover"); // Замени на нужный путь
+        navigate("/notes/discover"); // Замени на нужный путь
     };
 
     return (

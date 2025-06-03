@@ -1,7 +1,7 @@
 
 import styles from "../styles/page/discover_page.module.less";
 import SwampStyle from "../components/SwampStyle.tsx";
-import ScrollingNotesList from "../components/ScrollingNotesList.tsx";
+import ScrollingNotesListDiscover from "../components/ScrollingNotesListDiscover.tsx";
 import React from "react";
 
 
@@ -15,7 +15,7 @@ const DiscoverPage: React.FC = () => {
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
             <main className={styles.main}>
-                <ScrollingNotesList></ScrollingNotesList>
+                <ScrollingNotesListDiscover></ScrollingNotesListDiscover>
             </main>
         </SwampStyle>
     );

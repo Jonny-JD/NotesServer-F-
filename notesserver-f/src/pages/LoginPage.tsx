@@ -54,7 +54,7 @@ const LoginPage: React.FC = () => {
 
             setUser(userFromBackend);
 
-            navigate("/note/discover");
+            navigate("/notes/discover");
         } catch {
             setError("Network error");
         }

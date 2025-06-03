@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import cn from "classnames";
 import styles from "../styles/page/create_page.module.less";
 import SwampStyle from "../components/SwampStyle.tsx";
-import { useAuth } from "../context/AuthContext.tsx";
+import {useAuth} from "../context/AuthContext.tsx";
 
 import createNoteButton from "@/assets/img/swamp/svg/create_note_button.svg";
 import privateButton from "@/assets/img/swamp/svg/private_button.svg";
@@ -11,13 +11,14 @@ const currentPage = 5;
 const totalPages = 7;
 
 const NoteCreatePage: React.FC = () => {
-    const { user } = useAuth(); // 👈 получаем текущего пользователя
+    const {user} = useAuth(); // 👈 получаем текущего пользователя
 
     const [title, setTitle] = useState("");
     const [tag, setTag] = useState("");
     const [content, setContent] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
+    const [isPrivate, setIsPrivate] = useState(false);
 
     const handleCreateNote = async () => {
         setError(null);
@@ -33,12 +34,13 @@ const NoteCreatePage: React.FC = () => {
         try {
             const response = await fetch("/api/notes", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
                     title,
                     tag,
                     content,
                     author: user,
+                    isPrivate,
                 }),
             });
 
@@ -67,8 +69,8 @@ const NoteCreatePage: React.FC = () => {
             <main className={styles.main}>
                 <div className={styles.newNoteFormWrapper}>
                     <form className={styles.noteForm} onSubmit={handleSubmit}>
-                        {error && <p style={{ color: "red" }}>{error}</p>}
-                        {success && <p style={{ color: "green" }}>Note created successfully!</p>}
+                        {error && <p style={{color: "red"}}>{error}</p>}
+                        {success && <p style={{color: "green"}}>Note created successfully!</p>}
 
                         <div className={styles.formField}>
                             <label htmlFor="note-title">Title:</label>
@@ -109,15 +111,15 @@ const NoteCreatePage: React.FC = () => {
                                     src={createNoteButton}
                                     alt="Create Note"
                                     onClick={handleSubmit}
-                                    style={{ cursor: "pointer" }}
+                                    style={{cursor: "pointer"}}
                                 />
                             </div>
                             <div className={styles.buttonWrapper}>
-                                <img
-                                    src={privateButton}
-                                    alt="Private Note"
-                                    onClick={() => alert("Private note feature coming soon")}
-                                    style={{ cursor: "pointer" }}
+                                <img className={cn(styles.isPrivateButton, {[styles.isPrivateButtonActive]: isPrivate})}
+                                     src={privateButton}
+                                     alt="Private Note"
+                                     onClick={() => setIsPrivate(!isPrivate)}
+                                     style={{cursor: "pointer"}}
                                 />
                             </div>
                         </div>

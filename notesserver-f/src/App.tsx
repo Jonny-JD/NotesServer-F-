@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFoundPage.tsx";
 import useRestrictToExtendedLatin from "./hook/useRestrictToExtendedLatin.tsx";
 import useTabInTextarea from "./hook/useTabInTextarea.tsx";
+import UserNotesPage from "./pages/UserNotesPage.tsx";
 
 const App = () => {
     useRestrictToExtendedLatin();
@@ -25,11 +26,12 @@ const App = () => {
                     <Route path="/registration" element={<Register/>}/>
                     <Route path="*" element={<NotFound/>}/>
                     <Route element={<ProtectedRoute/>}>
-                        <Route path="/note/discover" element={<Discover/>}/>
-                        <Route path="/note/create" element={<NoteCreate/>}/>
-                        <Route path="/note" element={<Note/>}/>
-                        <Route path="/note/:id" element={<Note/>}/>
-                        <Route path="/note/search" element={<Search/>}/>
+                        <Route path="/notes/discover" element={<Discover/>}/>
+                        <Route path="/notes/create" element={<NoteCreate/>}/>
+                        <Route path="/notes" element={<Note/>}/>
+                        <Route path="/notes/:id" element={<Note/>}/>
+                        <Route path="/notes/search" element={<Search/>}/>
+                        <Route path="/notes/my" element={<UserNotesPage/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>
