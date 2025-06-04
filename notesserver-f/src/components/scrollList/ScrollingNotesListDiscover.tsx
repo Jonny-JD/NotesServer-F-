@@ -1,11 +1,12 @@
 import React, {useCallback, useEffect, useState} from "react";
-import styles from "../styles/shared/scrolling_notes_list.module.less";
+import styles from "../../styles/shared/scrolling_notes_list.module.less";
 import {FixedSizeList as List} from "react-window";
 import cn from "classnames";
 import {formatISO} from "date-fns";
-import {useElementHeight} from "../hook/useElementHeight.tsx";
-import {useResponsiveRatio} from "../hook/useResponsiveRatio.tsx";
-import {useNavigate} from "react-router-dom";
+import {useElementHeight} from "../../hook/useElementHeight.tsx";
+import {useResponsiveRatio} from "../../hook/useResponsiveRatio.tsx";
+import {useNavigate} from "react-router-dom"; // импорт нового хука
+
 
 interface NotePreviewDto {
     id: number;
@@ -28,7 +29,7 @@ while (maxWidth <= 8000) {
 }
 
 
-const ScrollingNotesListUserNotes: React.FC = () => {
+const ScrollingNotesListDiscover: React.FC = () => {
     const [notes, setNotes] = useState<NotePreviewDto[]>([]);
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
@@ -45,7 +46,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `/api/notes/user-notes?from=${encodeURIComponent(from)}`
+                    `/api/notes/search?from=${encodeURIComponent(from)}`
                 );
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
@@ -169,4 +170,4 @@ const ScrollingNotesListUserNotes: React.FC = () => {
     );
 };
 
-export default ScrollingNotesListUserNotes;
+export default ScrollingNotesListDiscover;

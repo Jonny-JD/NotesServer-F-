@@ -6,7 +6,7 @@ import searchButton from "@/assets/img/swamp/svg/search_button.svg";
 import SwampStyle from "../components/SwampStyle.tsx";
 
 import cn from "classnames";
-import ScrollingNotesListSearchNotes from "../components/ScrollingNotesListSearchNotes";
+import ScrollingNotesListSearchNotes from "../components/scrollList/ScrollingNotesListSearchNotes.tsx";
 
 const currentPage = 7;
 const totalPages = 8;

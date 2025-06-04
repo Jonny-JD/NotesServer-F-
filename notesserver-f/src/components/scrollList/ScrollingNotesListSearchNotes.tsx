@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
-import styles from "../styles/shared/scrolling_notes_list_search.module.less";
+import styles from "../../styles/shared/scrolling_notes_list_search.module.less";
 import {FixedSizeList as List} from "react-window";
 import cn from "classnames";
 import {formatISO} from "date-fns";
-import {useElementHeight} from "../hook/useElementHeight.tsx";
-import {useResponsiveRatio} from "../hook/useResponsiveRatio.tsx";
+import {useElementHeight} from "../../hook/useElementHeight.tsx";
+import {useResponsiveRatio} from "../../hook/useResponsiveRatio.tsx";
 import {useNavigate} from "react-router-dom";
 
 interface NotePreviewDto {

@@ -1,4 +1,4 @@
-import styles from "../styles/shared/header/home_header.module.less";
+import styles from "../../styles/shared/header/home_header.module.less";
 import cn from "classnames";
 import React from "react";
 

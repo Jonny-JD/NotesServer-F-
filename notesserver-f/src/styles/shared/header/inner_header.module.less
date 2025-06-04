@@ -17,37 +17,52 @@
   }
 }
 
-.header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
-  width: 27vw;
+.header {
+  .headerLeft .discoverContainer {
+    margin-top: 2vw;
+    .buttonWrapper {
+      margin-top: 1.5vw;
+
+      .headerButton {
+        width: 23vw;
+      }
+    }
+  }
 }
 
 
 @media screen and (min-width: 600px) {
-  .header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
-    width: 19vw;
+  .header {
+    .headerLeft .discoverContainer .buttonWrapper .headerButton {
+      width: 20vw;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    .headerLeft .discoverContainer .buttonWrapper .headerButton {
+      width: 17vw;
+    }
   }
 }
 
 @media screen and (min-width: 1024px) {
   .header {
+    gap: 1vw;
+    .headerLeft .discoverContainer .buttonWrapper .headerButton {
+      width: 8.1vw;
+    }
+  }
+
+  .header {
     .headerLeft .discoverContainer {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-top: 1.5vw;
-      margin-left: 3vw;
-      gap: 2vw;
+      gap: 1.5vw;
+      margin-left: 1.5vw;
 
-      .buttonWrapper {
-        margin: 0;
-
-        .yourNotesButton {
-          width: 10vw;
-        }
-        .searchButton {
-          width: 7.4vw;
-        }
-      }
     }
   }
 }
@@ -55,23 +70,20 @@
 
 @media screen and (min-width: 1280px) {
   .header {
+    .headerLeft .discoverContainer .buttonWrapper .headerButton {
+      width: 7vw;
+    }
+  }
+
+
+  .header {
     .headerLeft .discoverContainer {
-      gap: 2vw;
+      gap: 1vw;
       margin-top: 2vw;
       margin-bottom: 0.2vw;
-      margin-left: 3vw;
-
+      margin-left: 2.3vw;
       .buttonWrapper {
-        .yourNotesButton {
-          width: 8vw;
-        }
-        .searchButton {
-          width: 6vw;
-        }
-
-        .discoverButton {
-          width: 10.5vw;
-        }
+        margin: 0;
       }
     }
   }

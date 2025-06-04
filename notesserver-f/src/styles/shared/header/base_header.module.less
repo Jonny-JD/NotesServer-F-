@@ -14,7 +14,7 @@
   position: relative;
 
   .headerButton {
-    width: 20vw;
+    width: 23vw;
   }
 
   .pagePage {
@@ -31,6 +31,7 @@
   display: none;
   margin-top: auto;
   margin-bottom: 0.4vh;
+  justify-self: flex-end;
 }
 
 .headerLeft {
@@ -69,6 +70,7 @@
   .discoverContainer {
     display: flex;
     flex-direction: column;
+
     .buttonWrapper {
       align-self: flex-end;
     }
@@ -76,11 +78,7 @@
 
   .discover {
     width: fit-content;
-    margin: 1vh auto 0 auto;
-
-    .discoverButton {
-      width: 35vw;
-    }
+    margin: 3vh auto 0 auto;
   }
 
 
@@ -91,7 +89,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1vw;
+  margin-top: 1.5vw;
 
   .menuContainer {
     display: flex;
@@ -130,11 +128,7 @@
 @media screen and (min-width: 600px) {
   .header {
     .headerButton {
-      width: 15vw;
-    }
-
-    .headerLeft .discover .discoverButton {
-      width: 28vw;
+      width: 20vw;
     }
   }
 }
@@ -142,26 +136,20 @@
 @media screen and (min-width: 768px) {
   .header {
     .headerButton {
-      width: 12vw;
-    }
-
-    .headerLeft .discover .discoverButton {
-      width: 25vw;
+      width: 17vw;
     }
   }
 }
 
 @media screen and (min-width: 1024px) {
+  .pageCounter {
+    display: flex;
+    margin-left: 5vw;
+  }
+
   .header {
     flex-direction: row;
     align-items: baseline;
-
-    .pageCounter {
-      display: flex;
-      .pagePage {
-
-      }
-    }
 
     .headerButton {
       width: 7vw;
@@ -169,14 +157,6 @@
 
     .headerLeft {
       margin-top: 0;
-
-      .discover {
-        margin-left: 3vw;
-
-        .discoverButton {
-          width: 13vw;
-        }
-      }
 
       .logoContainer {
         flex-direction: row;
@@ -214,35 +194,43 @@
         }
       }
 
-      .redBar .bar {
-        width: 22vw;
+      .redBar {
+        width: 100%;
+        .bar {
+          width: 100%;
+        }
       }
     }
   }
 }
+
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .header .headerRight {
+    .menuContainer {
+
+      .menuButtons .buttonWrapper .headerButton {
+        width: 8.1vw;
+      }
+    }
+
     .redBar .bar {
-      width: 17vw;
+      width: 100%;
     }
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .header .headerLeft .discover .discoverButton {
-    width: 11vw;
-  }
-  .header .headerRight  {
+  .header .headerRight {
 
     .menuContainer {
 
       .menuButtons .buttonWrapper .headerButton {
-        width: 6vw;
+        width: 7vw;
       }
     }
 
     .redBar .bar {
-      width: 22vw;
+      width: 100%;
     }
   }
 }

@@ -1,7 +1,7 @@
 
 import styles from "../styles/page/discover_page.module.less";
 import SwampStyle from "../components/SwampStyle.tsx";
-import ScrollingNotesListUserNotes from "../components/ScrollingNotesListUserNotes.tsx";
+import ScrollingNotesListUserNotes from "../components/scrollList/ScrollingNotesListUserNotes.tsx";
 import React from "react";
 
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import InnerHeader from "./InnerHeader";
+import InnerHeader from "./header/InnerHeader.tsx";
 import styles from "../styles/shared/inner_shared.module.less";
 import {useNavigate} from "react-router-dom";
 

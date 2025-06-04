@@ -1,8 +1,8 @@
-import styles from "../styles/shared/header/inner_header.module.less";
+import styles from "../../styles/shared/header/inner_header.module.less";
 import cn from "classnames";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.tsx";
+import { useAuth } from "../../context/AuthContext.tsx";
 import { useLocation } from "react-router-dom";
 
 import logo from "@/assets/img/swamp/svg/logo.svg";
@@ -11,6 +11,7 @@ import officersText from "@/assets/img/swamp/svg/officers_text.svg";
 import yourNotesButton from "@/assets/img/swamp/svg/your_notes_button.svg";
 import searchButton from "@/assets/img/swamp/svg/search_button.svg";
 import discoverButton from "@/assets/img/swamp/svg/discover_button.svg";
+import newNoteButon from "@/assets/img/swamp/svg/new_note_Button.svg";
 import logoutButton from "@/assets/img/swamp/svg/logout_button.svg";
 import headerBar from "@/assets/img/swamp/svg/header_bar.svg";
 import topLine from "@/assets/img/swamp/svg/top_line.svg";
@@ -66,6 +67,9 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
     const goToSearch = () => {
         navigate("/notes/search");
     };
+    const goToNoteCreate = () => {
+        navigate("/notes/create");
+    };
 
 
     return (
@@ -83,7 +87,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
-                                    className={cn(styles.headerButton, styles.cButton, styles.searchButton)}
+                                    className={cn(styles.headerButton, styles.cButton)}
                                     src={searchButton}
                                     alt="Your Notes"
                                     onClick={goToSearch}
@@ -94,7 +98,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
-                                    className={cn(styles.headerButton, styles.cButton, styles.yourNotesButton)}
+                                    className={cn(styles.headerButton, styles.cButton)}
                                     src={yourNotesButton}
                                     alt="Your Notes"
                                     onClick={goToYourNotes}
@@ -105,13 +109,22 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                             <div className={cn(styles.buttonWrapper, styles.discover)}>
                                 <input
                                     type="image"
-                                    className={cn(styles.headerButton, styles.cButton, styles.discoverButton)}
+                                    className={cn(styles.headerButton, styles.cButton)}
                                     src={discoverButton}
                                     alt="Discover"
                                     onClick={goToDiscover}
                                 />
                             </div>
                         )}
+                        <div className={cn(styles.buttonWrapper, styles.discover)}>
+                            <input
+                                type="image"
+                                className={cn(styles.headerButton, styles.cButton)}
+                                src={newNoteButon}
+                                alt="New Note"
+                                onClick={goToNoteCreate}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

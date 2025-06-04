@@ -4,14 +4,46 @@
 .pageCounter {
   color: @cyber_red;
   align-self: flex-end !important;
-  margin-left: auto;
+  margin-left: 5vw;
 }
 
 .headerRight {
   .menuContainer {
     .menuButtons {
       display: flex;
-      gap: 15px;
+      gap: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .headerLeft .discover {
+    width: fit-content;
+    margin: 2vh auto 0 20%;
+    .headerButton {
+      width: 11vw;
+    }
+  }
+  .header .headerRight {
+    .menuContainer .menuButtons {
+      .buttonWrapper .headerButton {
+        width: 9vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .headerLeft .discover {
+    width: fit-content;
+    margin: 2vh auto 0 10%;
+    .headerButton {
+      width: 8vw;
+    }
+  }
+  .header .headerRight {
+    .menuContainer .menuButtons .buttonWrapper .headerButton {
+      width: 8vw;
     }
   }
 }
