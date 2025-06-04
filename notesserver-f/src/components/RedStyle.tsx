@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/shared/home_shared.module.less";
 import footerLine from "@/assets/img/red/svg/footer_line.svg";
 import sideNumber from "@/assets/img/red/svg/side_number.svg";
-import HomeHeader from "./HomeHeader.tsx";
+import HomeHeader from "./header/HomeHeader.tsx";
 import mainGear from "@/assets/img/red/svg/main_gear.svg";
 import japanMain from "@/assets/img/red/svg/japan_main.svg";
 import redNumber from "@/assets/img/red/svg/side_number.svg";

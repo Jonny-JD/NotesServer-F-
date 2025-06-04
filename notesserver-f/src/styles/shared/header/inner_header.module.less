@@ -21,10 +21,19 @@
   width: 27vw;
 }
 
+.header .headerLeft .discoverContainer .buttonWrapper .newNoteButton {
+  width: 24vw;
+}
+
 
 @media screen and (min-width: 600px) {
-  .header .headerLeft .discoverContainer .buttonWrapper .yourNotesButton {
-    width: 19vw;
+  .header .headerLeft .discoverContainer .buttonWrapper {
+    .yourNotesButton {
+      width: 19vw;
+    }
+    .newNoteButton {
+      width: 16vw;
+    }
   }
 }
 
@@ -35,17 +44,22 @@
       flex-direction: row;
       justify-content: space-between;
       margin-top: 1.5vw;
-      margin-left: 3vw;
-      gap: 2vw;
+      margin-left: 1vw;
+      gap: 1vw;
 
       .buttonWrapper {
         margin: 0;
-
-        .yourNotesButton {
-          width: 10vw;
-        }
         .searchButton {
-          width: 7.4vw;
+          width: 6.8vw;
+        }
+        .yourNotesButton {
+          width: 8.8vw;
+        }
+        .newNoteButton {
+          width: 7.3vw;
+        }
+        .discoverButton {
+          width: 12.1vw;
         }
       }
     }
@@ -56,21 +70,23 @@
 @media screen and (min-width: 1280px) {
   .header {
     .headerLeft .discoverContainer {
-      gap: 2vw;
+      gap: 1vw;
       margin-top: 2vw;
       margin-bottom: 0.2vw;
-      margin-left: 3vw;
-
+      margin-left: 1vw;
       .buttonWrapper {
-        .yourNotesButton {
-          width: 8vw;
-        }
+        margin: 0;
         .searchButton {
-          width: 6vw;
+          width: 5.8vw;
         }
-
+        .yourNotesButton {
+          width: 7.7vw;
+        }
+        .newNoteButton {
+          width: 6.4vw;
+        }
         .discoverButton {
-          width: 10.5vw;
+          width: 10.3vw;
         }
       }
     }
