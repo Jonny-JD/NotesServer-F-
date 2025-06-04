@@ -5,7 +5,7 @@ import SwampStyle from "../components/SwampStyle.tsx";
 import {useParams} from "react-router-dom";
 
 const currentPage = 5;
-const totalPages = 7;
+const totalPages = 8;
 
 
 interface NoteAuthorDto {

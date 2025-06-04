@@ -5,8 +5,8 @@ import ScrollingNotesListUserNotes from "../components/ScrollingNotesListUserNot
 import React from "react";
 
 
-const currentPage = 5;
-const totalPages = 7;
+const currentPage = 8;
+const totalPages = 8;
 
 
 const UserNotesPage: React.FC = () => {

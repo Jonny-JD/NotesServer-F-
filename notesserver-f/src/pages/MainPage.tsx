@@ -4,9 +4,12 @@ import styles from "../styles/page/main_page.module.less";
 import RedStyle from "../components/RedStyle.tsx";
 import mainSignUpButton from "@/assets/img/red/svg/main_sign_up_button.svg";
 
+const currentPage = 1;
+const totalPages = 8;
+
 const MainPage: React.FC = () => {
     return (
-        <RedStyle currentPage={1} totalPages={7}>
+        <RedStyle currentPage={currentPage} totalPages={totalPages}>
             <div className={styles.contentBackgroundCover}>
                 <div className={styles.mainText}>
                     <p>

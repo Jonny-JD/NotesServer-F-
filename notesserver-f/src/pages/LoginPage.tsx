@@ -7,13 +7,13 @@ import loginButton from "@/assets/img/red/svg/login_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 
 const currentPage = 2;
-const totalPages = 7;
+const totalPages = 8;
 
 type FormFields = "username" | "password";
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
-    const { setUser } = useAuth(); // ✅ заменено с setUserId на setUser
+    const { setUser } = useAuth();
 
     const [form, setForm] = useState<Record<FormFields, string>>({
         username: "",

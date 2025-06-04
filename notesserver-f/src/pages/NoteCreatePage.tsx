@@ -7,8 +7,8 @@ import {useAuth} from "../context/AuthContext.tsx";
 import createNoteButton from "@/assets/img/swamp/svg/create_note_button.svg";
 import privateButton from "@/assets/img/swamp/svg/private_button.svg";
 
-const currentPage = 5;
-const totalPages = 7;
+const currentPage = 4;
+const totalPages = 8;
 
 const NoteCreatePage: React.FC = () => {
     const {user} = useAuth(); // 👈 получаем текущего пользователя

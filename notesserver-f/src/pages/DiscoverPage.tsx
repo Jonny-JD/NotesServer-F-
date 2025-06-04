@@ -5,13 +5,11 @@ import ScrollingNotesListDiscover from "../components/ScrollingNotesListDiscover
 import React from "react";
 
 
-const currentPage = 5;
-const totalPages = 7;
+const currentPage = 6;
+const totalPages = 8;
 
 
 const DiscoverPage: React.FC = () => {
-
-
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
             <main className={styles.main}>

@@ -6,7 +6,7 @@ import registerButton from "@/assets/img/red/svg/register_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 
 const currentPage = 3;
-const totalPages = 7;
+const totalPages = 8;
 
 type FormFields = "username" | "email" | "rawPassword";
 

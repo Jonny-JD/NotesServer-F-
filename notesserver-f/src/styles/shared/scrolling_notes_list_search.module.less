@@ -1,0 +1,76 @@
+@import "colors.module";
+@import "scrolling_notes_list.module";
+
+
+.notesListWrapper {
+  height: 70%;
+  margin-bottom: 5vh;
+}
+
+
+@media screen and (min-width: 500px) {
+  .notesListWrapper {
+    height: 60%;
+    .notesListHeader {
+      font-size: 1.9vw;
+    }
+
+    .notesList .scrollList .noteWrapper {
+      font-size: 1.6vw;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .notesListWrapper {
+    .notesListHeader {
+      font-size: 1.7vw;
+    }
+
+    .notesList .scrollList .noteWrapper {
+      font-size: 1.4vw;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .notesListWrapper {
+    height: 50%;
+    .notesListHeader {
+      font-size: 1.5vw;
+    }
+
+    .notesList .scrollList .noteWrapper {
+      font-size: 1.2vw;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .notesListWrapper {
+    height: 60%;
+
+    .notesListHeader {
+      font-size: 1.5vw;
+    }
+
+    .notesList .scrollList .noteWrapper {
+      font-size: 1vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .notesListWrapper {
+    height: 55%;
+
+    .notesListHeader {
+      font-size: 1vw;
+    }
+
+    .notesList .scrollList .noteWrapper {
+      font-size: 0.8vw;
+    }
+  }
+}
