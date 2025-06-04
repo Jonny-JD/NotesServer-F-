@@ -1,18 +1,12 @@
 @import "colors.module";
 
-
-.notesListWrapper .notesList .scrollList .noteWrapper .note .noteItem .noteHeader {
-  color: @cyber_yellow;
-}
-
-
 .notesListWrapper {
   width: 100%;
   height: 50vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: @cyber_swamp_dark solid 2px;
+  border: 2px solid @cyber_swamp_dark;
   position: relative;
   overflow: hidden;
 
@@ -20,13 +14,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-self: center;
     box-sizing: border-box;
     width: 100%;
     padding: 1vw;
     font-size: 2vw;
     font-weight: 600;
-    border-bottom: @cyber_swamp_dark 2px solid;
+    border-bottom: 2px solid @cyber_swamp_dark;
 
     .tagHeader {
       margin-right: 20px;
@@ -58,14 +51,13 @@
         height: 0;
       }
 
-
       .noteWrapper {
         display: flex;
         flex-direction: row;
         width: 100%;
         box-sizing: border-box;
         justify-content: space-between;
-        border-bottom: @cyber_swamp_dark 2px solid;
+        border-bottom: 2px solid @cyber_swamp_dark;
         font-family: "Numans", sans-serif;
         font-size: 2vw;
         padding: 0 1vw;
@@ -75,11 +67,11 @@
           flex-direction: column;
           justify-content: center;
           margin: 1.5vw 0;
+          cursor: pointer;
+          transition: filter 0.3s ease;
 
           &:hover {
             filter: drop-shadow(-1px 6px 3px @cyber_swamp);
-            cursor: pointer;
-
           }
 
           .noteItem {
@@ -92,14 +84,10 @@
               color: @cyber_yellow;
             }
 
-            .noteTagHeader {
-              color: @cyber_swamp;
-            }
-
+            .noteTagHeader,
             .noteAuthorHeader {
               color: @cyber_swamp;
             }
-
           }
         }
 
@@ -140,7 +128,12 @@
   }
 }
 
+// Цвет для .noteHeader в верхнем селекторе
+.notesListWrapper .notesList .scrollList .noteWrapper .note .noteItem .noteHeader {
+  color: @cyber_yellow;
+}
 
+// Медиазапросы с уменьшением font-size для плавного масштабирования
 @media screen and (min-width: 500px) {
   .notesListWrapper {
     .notesListHeader {
@@ -176,7 +169,6 @@
     }
   }
 }
-
 
 @media screen and (min-width: 1024px) {
   .notesListWrapper {

@@ -2,9 +2,9 @@
 @import "../colors.module.less";
 @import "@/styles/shared/buttons/buttons_inner.module.less";
 
-
 .pageCounter {
   color: @cyber_yellow;
+  margin-left: 0;
 }
 
 .headerRight {
@@ -13,23 +13,36 @@
       display: flex;
       justify-content: space-between !important;
       gap: 15px;
+      margin-bottom: 2vw;
     }
   }
 }
 
 .header {
-  .headerLeft .discoverContainer {
-    margin-top: 2vw;
-    .buttonWrapper {
-      margin-top: 1.5vw;
+  .headerLeft {
+    .discoverContainer {
+      margin-top: 2vw;
+      display: flex;
+      flex-direction: row;
+      gap: 2vw;
+      flex-wrap: wrap;
 
-      .headerButton {
-        width: 23vw;
+      .buttonWrapper {
+        margin-top: 1.5vw;
+
+        .headerButton {
+          width: 23vw;
+          transition: width 0.3s ease;
+        }
+
+        &.pushDown {
+          align-self: flex-end;
+          margin-top: 0;
+        }
       }
     }
   }
 }
-
 
 @media screen and (min-width: 600px) {
   .header {
@@ -41,8 +54,11 @@
 
 @media screen and (min-width: 768px) {
   .header {
+    .headerButton {
+      width: 15vw;
+    }
     .headerLeft .discoverContainer .buttonWrapper .headerButton {
-      width: 17vw;
+      width: 15vw;
     }
   }
 }
@@ -50,41 +66,57 @@
 @media screen and (min-width: 1024px) {
   .header {
     gap: 1vw;
-    .headerLeft .discoverContainer .buttonWrapper .headerButton {
-      width: 8.1vw;
+
+    .headerLeft {
+      .discoverContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5vw;
+        margin-left: 1vw;
+
+        .buttonWrapper {
+          margin-top: 0;
+
+          .headerButton {
+            width: 8.1vw;
+          }
+        }
+      }
     }
-  }
 
-  .header {
-    .headerLeft .discoverContainer {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 1.5vw;
-      margin-left: 1.5vw;
-
+    .headerRight {
+      width: 15vw;
+      .menuButtons {
+        margin-bottom: 0;
+      }
     }
   }
 }
 
-
 @media screen and (min-width: 1280px) {
-  .header {
-    .headerLeft .discoverContainer .buttonWrapper .headerButton {
-      width: 7vw;
-    }
+  .pageCounter {
+    margin-left: 3vw;
   }
 
-
   .header {
-    .headerLeft .discoverContainer {
-      gap: 1vw;
-      margin-top: 2vw;
-      margin-bottom: 0.2vw;
-      margin-left: 2.3vw;
-      .buttonWrapper {
-        margin: 0;
+    .headerLeft {
+      .discoverContainer {
+        gap: 1vw;
+        margin-top: 2vw;
+        margin-bottom: 0.2vw;
+        margin-left: 2.3vw;
+        .buttonWrapper {
+          margin: 0;
+
+          .headerButton {
+            width: 7vw;
+          }
+        }
       }
+    }
+
+    .headerRight {
+      width: 20vw;
     }
   }
 }

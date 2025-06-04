@@ -2,16 +2,19 @@
 @import "@/styles/shared/colors.module.less";
 @import "@/styles/shared/buttons/buttons_home.module.less";
 
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
 .contentBackgroundCover {
   background-image: url("../../assets/img/red/background/content_background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
-
   width: 80%;
-
   display: flex;
   box-sizing: border-box;
+  flex-direction: column;
 
   .mainText {
     color: @color_aqua;
@@ -19,82 +22,61 @@
     font-size: 2vw;
     line-height: 1.4em;
     text-align: left;
-    align-items: center;
     margin: 2% 2% 2% 7%;
   }
-
 }
 
 .mainButtonWrapper {
   margin-top: 3vh;
+  display: flex;
+  justify-content: center;
 
   .buttonWrapper {
     .signUpMainB {
       width: 21vw;
+      .transition-all();
     }
   }
 }
 
+// ----------------- Media Queries -----------------
 
 @media screen and (min-width: 600px) {
-  .contentBackgroundCover {
-    .mainButtonWrapper .buttonWrapper {
-      margin-top: 2vh;
+  .mainButtonWrapper {
+    margin-top: 2vh;
+
+    .buttonWrapper .signUpMainB {
+      width: 15vw;
     }
-
-  }
-
-  .mainButtonWrapper .buttonWrapper .signUpMainB {
-    width: 15vw;
   }
 }
-
 
 @media screen and (min-width: 768px) {
   .contentBackgroundCover .mainText {
     font-size: 1.8vw;
-
   }
 
-  .mainButtonWrapper {
-    margin-top: 3vh;
-
-    .buttonWrapper {
-      .signUpMainB {
-        width: 12vw;
-      }
-    }
+  .mainButtonWrapper .buttonWrapper .signUpMainB {
+    width: 12vw;
   }
 }
 
 @media screen and (min-width: 1024px) {
+  .contentBackgroundCover .mainText {
+    font-size: 1.5vw;
+  }
 
-  .contentBackgroundCover {
-    .mainText {
+  .mainButtonWrapper {
+    margin-top: 2vh;
 
-      font-size: 1.5vw;
-    }
-
-    .mainButtonWrapper {
-      margin-top: 2vh;
-
-      .buttonWrapper {
-        .signUpMainB {
-          width: 11vw;
-        }
-      }
+    .buttonWrapper .signUpMainB {
+      width: 11vw;
     }
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .mainButtonWrapper {
-    margin-top: 2vh;
-
-    .buttonWrapper {
-      .signUpMainB {
-        width: 10vw;
-      }
-    }
+  .mainButtonWrapper .buttonWrapper .signUpMainB {
+    width: 10vw;
   }
 }

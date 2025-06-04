@@ -24,12 +24,18 @@ const PAGE_SIZE = 10;
 
 const sizes: { maxWidth: number; multiplier: number; }[] = [];
 let maxWidth = 400;
-let multiplier = 0.24;
+let multiplier = 0.21;
 
 while (maxWidth <= 8000) {
-    sizes.push({maxWidth, multiplier});
-    maxWidth += 100;
-    multiplier += 0.08;
+    if (maxWidth > 600 && maxWidth < 800){
+        multiplier += 0.3;
+        sizes.push({maxWidth, multiplier});
+        maxWidth += 100;
+    } else {
+        sizes.push({maxWidth, multiplier});
+        maxWidth += 100;
+        multiplier += 0.08;
+    }
 }
 
 const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps> = ({searchBy, searchValue}) => {

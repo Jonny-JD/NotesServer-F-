@@ -1,16 +1,24 @@
 @import "colors.module";
 @import "scrolling_notes_list.module";
 
-
 .notesListWrapper {
   height: 70%;
   margin-bottom: 5vh;
-}
 
+  // Общие стили для заголовка и элементов списка
+  .notesListHeader {
+    font-size: 2vw; // базовый размер
+  }
+
+  .notesList .scrollList .noteWrapper {
+    font-size: 2vw; // базовый размер
+  }
+}
 
 @media screen and (min-width: 500px) {
   .notesListWrapper {
     height: 60%;
+
     .notesListHeader {
       font-size: 1.9vw;
     }
@@ -35,7 +43,8 @@
 
 @media screen and (min-width: 800px) {
   .notesListWrapper {
-    height: 50%;
+    height: 47%;
+
     .notesListHeader {
       font-size: 1.5vw;
     }
@@ -45,7 +54,6 @@
     }
   }
 }
-
 
 @media screen and (min-width: 1024px) {
   .notesListWrapper {

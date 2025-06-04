@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.tsx";
 import cn from "classnames";
 import styles from "../styles/page/login_page.module.less";
 import loginButton from "@/assets/img/red/svg/login_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
+import ErrorMessage from "../components/message/ErrorMessage.tsx";
 
 const currentPage = 2;
 const totalPages = 8;
@@ -21,6 +22,16 @@ const LoginPage: React.FC = () => {
     });
 
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (error) {
+            const timeout = setTimeout(() => {
+                setError(null);
+            }, 3000);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [error]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -46,14 +57,19 @@ const LoginPage: React.FC = () => {
 
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message || "Login failed");
+
+                const errorMessage =
+                    data?.errors?.validation ??
+                    data?.message ??
+                    data?.error ??
+                    "Login failed";
+
+                setError(errorMessage);
                 return;
             }
 
             const userFromBackend = await response.json();
-
             setUser(userFromBackend);
-
             navigate("/notes/discover");
         } catch {
             setError("Network error");
@@ -64,13 +80,12 @@ const LoginPage: React.FC = () => {
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
             <div className={styles.contentBackgroundCover}>
                 <div className={styles.registerFormWrapper}>
+                    {error && <ErrorMessage message={error} />}
                     <form
                         className={styles.registerForm}
                         onSubmit={handleSubmit}
                         autoComplete="off"
                     >
-                        {error && <p style={{ color: "red" }}>{error}</p>}
-
                         <div className={styles.formField}>
                             <label htmlFor="username">Username:</label>
                             <input

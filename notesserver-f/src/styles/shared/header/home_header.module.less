@@ -12,38 +12,53 @@
     .menuButtons {
       display: flex;
       gap: 10px;
-    }
-  }
-}
 
-@media screen and (min-width: 1024px){
-  .headerLeft .discover {
-    width: fit-content;
-    margin: 2vh auto 0 20%;
-    .headerButton {
-      width: 11vw;
-    }
-  }
-  .header .headerRight {
-    .menuContainer .menuButtons {
-      .buttonWrapper .headerButton {
-        width: 9vw;
+      .buttonWrapper {
+        .headerButton {
+          width: auto;
+          transition: width 0.3s ease;
+        }
       }
     }
   }
 }
 
-@media screen and (min-width: 1280px){
-  .headerLeft .discover {
+.headerLeft {
+  .discover {
     width: fit-content;
-    margin: 2vh auto 0 10%;
+    margin: 2vh auto 0;
+
+    .headerButton {
+      width: auto;
+      transition: width 0.3s ease;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .headerLeft .discover {
+    margin-left: 20%;
+
+    .headerButton {
+      width: 11vw;
+    }
+  }
+
+  .headerRight .menuContainer .menuButtons .buttonWrapper .headerButton {
+    width: 9vw;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .headerLeft .discover {
+    margin-left: 10%;
+
     .headerButton {
       width: 8vw;
     }
   }
-  .header .headerRight {
-    .menuContainer .menuButtons .buttonWrapper .headerButton {
-      width: 8vw;
-    }
+
+  .headerRight .menuContainer .menuButtons .buttonWrapper .headerButton {
+    width: 8vw;
   }
 }

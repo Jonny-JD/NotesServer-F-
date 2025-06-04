@@ -5,7 +5,6 @@
 @content-width: 80vw;
 @common-margins: calc(@content-width / 100 * 3);
 
-
 html {
   font-family: "Nico Moji", sans-serif;
   color: @cyber_yellow !important;
@@ -17,8 +16,7 @@ html {
 }
 
 .container {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: @content-width;
   height: 100vh;
   overflow: auto;
@@ -42,8 +40,7 @@ html {
   width: 75%;
   height: 80%;
   align-self: flex-start;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
@@ -59,32 +56,33 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 7px;
-    margin-left: 3%;
+    margin: 0 0 7px 3%;
+    cursor: pointer;
+    transition: filter 0.3s ease;
 
     &:hover {
       filter: drop-shadow(-1px 6px 3px @cyber_swamp);
-      cursor: pointer;
     }
   }
 
   .note {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 3px;
-    font-size: 0.7vw;
+    font-size: 1vw;
     font-family: "Rajdhali", sans-serif;
     font-weight: 600;
     box-sizing: border-box;
     padding: 5px 5px 5px 10px;
     border: 2px solid @cyber_swamp_dark;
     letter-spacing: 0.7px;
+    cursor: pointer;
+    transition: filter 0.3s ease;
 
     &:hover {
       filter: drop-shadow(-1px 6px 3px @cyber_swamp);
-      cursor: pointer;
     }
 
     .noteItem {
@@ -96,27 +94,22 @@ html {
         text-align: left;
       }
 
-      .noteTagHeader {
-        color: @cyber_swamp;
-        margin-right: 10px;
-      }
-
-      .noteTag {
-        color: @color_ivory;
-      }
-
+      .noteTagHeader,
       .noteAuthorHeader {
         color: @cyber_swamp;
         margin-right: 10px;
       }
 
+      .noteTag,
       .noteAuthor {
         color: @color_ivory;
       }
     }
   }
+
   .buttonWrapper {
     width: fit-content;
+
     input {
       width: 7vw;
     }
@@ -131,8 +124,7 @@ html {
 
 .footer {
   grid-area: footer;
-  margin-left: @common-margins;
-  margin-right: @common-margins;
+  margin: 0 @common-margins;
 
   .footerLine {
     display: flex;
@@ -145,7 +137,6 @@ html {
   }
 }
 
-
 @media screen and (min-width: 600px) {
 
 }
@@ -155,6 +146,9 @@ html {
 }
 
 @media screen and (min-width: 1024px) {
+  .sidebar {
+    display: flex;
+  }
   .wrapper .container {
     .pageCounter {
       display: unset;
@@ -163,8 +157,7 @@ html {
 }
 
 @media screen and (min-width: 1280px) {
-  .sidebar {
-    display: flex;
+  .leftSidebar .note {
+    font-size: 0.7vw;
   }
 }
-

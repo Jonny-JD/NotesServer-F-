@@ -116,7 +116,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                                 />
                             </div>
                         )}
-                        <div className={cn(styles.buttonWrapper, styles.discover)}>
+                        <div className={cn(styles.buttonWrapper, styles.discover, styles.pushDown)}>
                             <input
                                 type="image"
                                 className={cn(styles.headerButton, styles.cButton)}

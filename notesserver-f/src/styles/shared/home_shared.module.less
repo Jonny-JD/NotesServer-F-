@@ -1,7 +1,6 @@
 @import "colors.module.less";
 @import "reset.module.less";
 @import "fonts.less";
-@import "reset.module.less";
 
 @content-width: 80vw;
 @common-margins: 5%;
@@ -19,18 +18,27 @@ select:-webkit-autofill {
   transition: background-color 9999s ease-in-out 0s !important;
 }
 
-.c-button:hover {
-  clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
+.c-button {
+  transition: clip-path 0.3s ease-in-out;
+
+  &:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 82.8%, 97.2% 100%, 0 100%);
+  }
 }
 
-.buttonWrapper:hover {
-  filter: drop-shadow(-1px 6px 3px @color_aqua);
-}
+.buttonWrapper {
+  transition: filter 0.3s ease-in-out, box-shadow 0.15s ease-in-out, top 0.1s ease-in-out, left 0.1s ease-in-out;
 
-.buttonWrapper:active {
-  top: 0.1em;
-  left: 0.1em;
-  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.05) inset;
+  &:hover {
+    filter: drop-shadow(-1px 6px 3px @color_aqua);
+  }
+
+  &:active {
+    top: 0.1em;
+    left: 0.1em;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.05) inset;
+    position: relative;
+  }
 }
 
 html {
@@ -75,6 +83,7 @@ html {
 
   .mainButton {
     width: 30vw;
+    transition: width 0.3s ease-in-out;
   }
 
   .mainHeaderContainer {
@@ -94,6 +103,7 @@ html {
       .gearImage {
         width: 20vw;
         height: auto;
+        transition: width 0.3s ease-in-out;
       }
 
       .headerJapan {
@@ -101,6 +111,7 @@ html {
         top: 0;
         left: 0;
         width: 30vw;
+        transition: width 0.3s ease-in-out;
       }
     }
 
@@ -110,6 +121,7 @@ html {
       font-size: 5vw;
       text-shadow: @cyber_red 1px 0 20px;
       color: @cyber_red;
+      transition: font-size 0.3s ease-in-out;
     }
   }
 }
@@ -136,10 +148,9 @@ html {
   }
 }
 
+// Media queries
 
 @media screen and (min-width: 600px) {
-
-
   .main {
     .mainHeaderContainer {
       margin-bottom: 2vh;
@@ -148,19 +159,18 @@ html {
         font-size: 4vw;
       }
 
-      .mainGearContainer .gearImage {
-        width: 15vw;
-      }
+      .mainGearContainer {
+        .gearImage {
+          width: 15vw;
+        }
 
-      .mainGearContainer .headerJapan {
-        width: 20vw;
+        .headerJapan {
+          width: 20vw;
+        }
       }
     }
-
   }
-
 }
-
 
 @media screen and (min-width: 768px) {
   .main {
@@ -171,14 +181,15 @@ html {
         font-size: 3vw;
       }
 
-      .mainGearContainer .gearImage {
-        width: 12vw;
-      }
+      .mainGearContainer {
+        .gearImage {
+          width: 12vw;
+        }
 
-      .mainGearContainer .headerJapan {
-        width: 17vw;
+        .headerJapan {
+          width: 17vw;
+        }
       }
-
     }
   }
 }
@@ -201,18 +212,15 @@ html {
         font-size: 4vw;
       }
 
-      .mainGearContainer .gearImage {
-        width: 6vw;
-      }
+      .mainGearContainer {
+        .gearImage {
+          width: 6vw;
+        }
 
-      .mainGearContainer .headerJapan {
-        width: 7vw;
+        .headerJapan {
+          width: 7vw;
+        }
       }
-
     }
   }
-}
-
-@media screen and (min-width: 1280px) {
-
 }

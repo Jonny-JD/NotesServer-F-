@@ -11,16 +11,18 @@
 }
 
 .main {
-  color: @cyber_yellow;
   grid-column: 1 / -1;
   width: 80%;
+  margin: auto;
   position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: auto;
   gap: 10px;
+
+  color: @cyber_yellow;
   font-family: "Rajdhali", sans-serif;
 
   .newNoteFormWrapper {
@@ -35,43 +37,64 @@
       flex-direction: column;
       gap: 10px;
       height: 100%;
+
       font-size: 2.5vw;
       margin-top: 2vw;
-
-      textarea,
-      input {
-        box-sizing: border-box;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        width: 100%;
-        height: 100%;
-        color: @color_ivory;
-        font-family: "Rajdhali", sans-serif;
-        font-weight: 500;
-        letter-spacing: 0.02em;
-        font-size: inherit;
-      }
-
-      textarea {
-        box-sizing: border-box;
-        padding: 2% 0.5%;
-        resize: none;
-        line-height: 3vh;
-
-      }
-
-      input {
-        box-sizing: border-box;
-        padding: 1%;
-        font-weight: bold;
-      }
 
       label {
         font-size: inherit;
         font-weight: bold;
         letter-spacing: 0.01em;
         color: @cyber_yellow;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        box-sizing: border-box;
+
+        color: @color_ivory;
+        font-family: "Rajdhali", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        font-size: inherit;
+
+        transition: border 0.3s ease, background-color 0.3s ease;
+      }
+
+      input {
+        padding: 1%;
+        font-weight: bold;
+        transition: border-color 0.3s ease, color 0.3s ease;
+
+        &:focus {
+          border-color: @cyber_yellow;
+          color: @cyber_yellow;
+        }
+      }
+
+      textarea {
+        padding: 2% 0.5%;
+        resize: none;
+        line-height: 3vh;
+        transition: border-color 0.3s ease, color 0.3s ease;
+
+      }
+
+      .formField {
+        display: flex;
+        align-items: center;
+        padding: 1% 2% 0.5% 2%;
+        border: 2px solid @cyber_swamp_dark;
+        font-family: "Rajdhali", sans-serif;
+      }
+
+      .noteTextWrapper {
+        height: 65%;
       }
 
       .formButtonsWrapper {
@@ -82,33 +105,24 @@
         .buttonWrapper {
           img {
             width: 25vw;
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.05);
+            }
           }
 
           .isPrivateButtonActive {
             background: fade(@cyber_yellow, 10%);
-
+            transition: background-color 0.3s ease;
           }
         }
-      }
-
-      .formField {
-        display: flex;
-        font-family: "Rajdhali", sans-serif;
-        border: @cyber_swamp_dark 2px solid;
-        align-items: center;
-        padding: 1% 2% 0.5% 2%;
-      }
-
-      .noteTextWrapper {
-        height: 65%;
       }
     }
   }
 }
 
-@media screen and (min-width: 600px) {
-
-}
+// ---------- Media Queries ----------
 
 @media screen and (min-width: 768px) {
   .main .newNoteFormWrapper .noteForm {

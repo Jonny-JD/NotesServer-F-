@@ -24,10 +24,9 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: fit-content;
-    margin-top: 3vw;
     box-sizing: border-box;
-    border: @cyber_swamp_dark solid 2px;
+    margin-top: 3vw;
+    border: 2px solid @cyber_swamp_dark;
     font-size: 2.2vw;
 
     .searchFieldWrapper {
@@ -35,7 +34,7 @@
       flex-direction: column;
       gap: 1vw;
       width: 100%;
-      margin: 1.5vw 2vw 1.5vw 2vw;
+      margin: 1.5vw 2vw;
 
       .searchChoice {
         display: flex;
@@ -47,10 +46,12 @@
           color: @cyber_yellow;
         }
 
-        .byTitle, .byTag {
+        .byTitle,
+        .byTag {
           cursor: pointer;
           border-radius: 4px;
           user-select: none;
+          transition: color 0.3s ease, font-weight 0.3s ease;
         }
 
         .selected {
@@ -63,10 +64,16 @@
         input {
           width: 100%;
           background: none;
-          border: @cyber_swamp_dark 2px solid;
+          border: 2px solid @cyber_swamp_dark;
           color: @color_ivory;
           font-size: 2.5vw;
           outline: none;
+          transition: border-color 0.3s ease, color 0.3s ease;
+
+          &:focus {
+            border-color: @cyber_yellow;
+            color: @cyber_yellow;
+          }
         }
       }
     }
@@ -74,49 +81,57 @@
 
   .buttonWrapper {
     .searchButton {
-      margin-top: 1vw;
-      margin-bottom: 1vw;
+      margin: 1vw 0;
       width: 17vw;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
       &:hover {
-        cursor: pointer;
+        /* Можно добавить какой-то эффект, если есть дизайн */
       }
     }
   }
 }
 
-
 @media screen and (min-width: 600px) {
   .main {
     .searchBlockWrapper {
       font-size: 2vw;
+
       .searchFieldWrapper {
         width: 60%;
+
         .searchInputWrapper input {
           font-size: 2vw;
         }
       }
     }
+
     .buttonWrapper {
       .searchButton {
-        margin-top: 3vw;
+        margin-top: 1.5vw;
         width: 15vw;
       }
     }
   }
 }
 
-
 @media screen and (min-width: 1024px) {
   .main {
+    grid-area: main;
+    width: 100%;
     .searchBlockWrapper {
       font-size: 1.5vw;
+
       .searchFieldWrapper {
         width: 50%;
+
         .searchInputWrapper input {
           font-size: 1.5vw;
         }
       }
     }
+
     .buttonWrapper {
       .searchButton {
         width: 10vw;
@@ -127,16 +142,18 @@
 
 @media screen and (min-width: 1280px) {
   .main {
-    grid-area: main;
-    width: 100%;
+
+
     .searchBlockWrapper {
       font-size: 1vw;
+
       .searchFieldWrapper {
         .searchInputWrapper input {
           font-size: 1vw;
         }
       }
     }
+
     .buttonWrapper {
       .searchButton {
         margin-top: 1vw;

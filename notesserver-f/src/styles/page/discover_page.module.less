@@ -3,19 +3,22 @@
 @import "../shared/fonts.less";
 
 .main {
-  color: @cyber_yellow;
   grid-column: 1 / -1;
+  margin: auto;
   width: 80%;
   position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: auto;
   gap: 10px;
-  font-family: "Rajdhali", sans-serif;
-}
 
+  color: @cyber_yellow;
+  font-family: "Rajdhali", sans-serif;
+
+  transition: width 0.3s ease, color 0.3s ease;
+}
 
 @media screen and (min-width: 1280px) {
   .main {
