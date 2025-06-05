@@ -3,11 +3,18 @@ import cn from "classnames";
 import styles from "../styles/page/main_page.module.less";
 import RedStyle from "../components/RedStyle.tsx";
 import mainSignUpButton from "@/assets/img/red/svg/main_sign_up_button.svg";
+import {useNavigate} from "react-router-dom";
 
 const currentPage = 1;
 const totalPages = 8;
 
 const MainPage: React.FC = () => {
+    const navigate = useNavigate();
+
+    const goToRegistration = () => {
+        navigate("/registration"); // Замени на нужный путь
+    };
+
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
             <div className={styles.contentBackgroundCover}>
@@ -29,6 +36,7 @@ const MainPage: React.FC = () => {
                             className={cn(styles.headerButton, styles.cButton, styles.signUpMainB)}
                             src={mainSignUpButton}
                             alt="Main Sign Up Button"
+                            onClick={goToRegistration}
                         />
                     </div>
                 </div>

@@ -59,7 +59,14 @@ const NoteCreatePage: React.FC = () => {
 
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message || "Failed to create note");
+
+                const errorMessage =
+                    data?.errors?.validation ??
+                    data?.message ??
+                    data?.error ??
+                    "Failed to create note";
+
+                setError(errorMessage);
                 return;
             }
 

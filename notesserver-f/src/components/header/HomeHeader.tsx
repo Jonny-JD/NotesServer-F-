@@ -22,16 +22,19 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({currentPage, totalPages}) => {
     const navigate = useNavigate();
 
 
+    const goToHome = () => {
+        navigate("/");
+    };
     const goToLogin = () => {
-        navigate("/login"); // Замени на нужный путь
+        navigate("/login");
     };
 
     const goToRegistration = () => {
-        navigate("/registration"); // Замени на нужный путь
+        navigate("/registration");
     };
 
     const goToDiscover = () => {
-        navigate("/notes/discover"); // Замени на нужный путь
+        navigate("/notes/discover");
     };
 
     return (
@@ -41,7 +44,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({currentPage, totalPages}) => {
                 <div className={styles.logoContainer}>
                     <img className={styles.logo} src={logo} alt="Logo"/>
                     <div className={styles.logoTextWrapper}>
-                        <img className={styles.logoText} src={logoText} alt="Logo Text"/>
+                        <img className={styles.logoText} src={logoText} alt="Logo Text" onClick={goToHome} />
                         <img className={styles.officersText} src={officersText} alt="Officers Text"/>
                     </div>
                     <div className={cn(styles.buttonWrapper, styles.discover)}>
