@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import cn from "classnames";
 import styles from "../styles/page/register_page.module.less";
 import registerButton from "@/assets/img/red/svg/register_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
+import ErrorMessage from "../components/message/ErrorMessage.tsx";
 
 const currentPage = 3;
 const totalPages = 8;
@@ -20,6 +21,16 @@ const RegisterPage: React.FC = () => {
     });
 
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (error) {
+            const timeout = setTimeout(() => {
+                setError(null);
+            }, 4000);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [error]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
@@ -46,7 +57,14 @@ const RegisterPage: React.FC = () => {
 
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message || "Registration failed");
+
+                const errorMessage =
+                    data?.errors?.user ??
+                    data?.message ??
+                    data?.error ??
+                    "Registration failed";
+
+                setError(errorMessage);
                 return;
             }
 
@@ -60,8 +78,8 @@ const RegisterPage: React.FC = () => {
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
                 <div className={styles.contentBackgroundCover}>
                     <div className={styles.registerFormWrapper}>
+                        {error && <ErrorMessage message={error} />}
                         <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
-                            {error && <p style={{color: "red"}}>{error}</p>}
                             <div className={styles.formField}>
                                 <label htmlFor="username">Username:</label>
                                 <input
@@ -105,9 +123,9 @@ const RegisterPage: React.FC = () => {
                             </div>
 
                             <div className={styles.mainButtonWrapper}>
-                                <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
+                                <div className={styles.buttonWrapper}>
                                     <input
-                                        className={cn(styles.headerButton, styles.cButton, styles.loginMainB)}
+                                        className={cn(styles.headerButton, styles.cButton, styles.registerMainB)}
                                         type="image"
                                         src={registerButton}
                                         alt="Register Button"

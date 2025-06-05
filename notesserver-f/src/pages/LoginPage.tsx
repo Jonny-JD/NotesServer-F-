@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
         if (error) {
             const timeout = setTimeout(() => {
                 setError(null);
-            }, 3000);
+            }, 4000);
 
             return () => clearTimeout(timeout);
         }
@@ -79,10 +79,10 @@ const LoginPage: React.FC = () => {
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
             <div className={styles.contentBackgroundCover}>
-                <div className={styles.registerFormWrapper}>
+                <div className={styles.loginFormWrapper}>
                     {error && <ErrorMessage message={error} />}
                     <form
-                        className={styles.registerForm}
+                        className={styles.loginForm}
                         onSubmit={handleSubmit}
                         autoComplete="off"
                     >

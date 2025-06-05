@@ -78,15 +78,32 @@ select:-webkit-autofill {
       width: fit-content;
       margin-top: clamp(2vh, 5vw, 4vh);
 
-      .loginMainB {
+      .registerMainB {
         flex: 0 0 auto;
-        width: clamp(10vw, 15vw, 21vw);
-
-        label {
-          text-align: center;
-          display: block;
-        }
+        width: 20vw;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contentBackgroundCover .mainButtonWrapper .buttonWrapper {
+    margin-top: 2vw;
+    margin-bottom: 3vw;
+    .registerMainB {
+      flex: 0 0 auto;
+      width: 17vw;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contentBackgroundCover .mainButtonWrapper .buttonWrapper {
+    margin-top: 2vw;
+    margin-bottom: 4vw;
+    .registerMainB {
+      flex: 0 0 auto;
+      width: clamp(10vw, 12vw, 14vh);
     }
   }
 }
