@@ -85,7 +85,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
 
     useEffect(() => {
         void loadNotes(fromTime);
-    }, []);
+    }, [fromTime, loadNotes]);
 
     const handleItemsRendered = ({visibleStopIndex}: { visibleStopIndex: number }) => {
         if (visibleStopIndex >= notes.length - 1 && !loading && hasMore) {

@@ -6,7 +6,7 @@ const sanitizeInput = (value: string) =>
     [...value].filter(char => EXTENDED_LATIN_CHAR_REGEX.test(char)).join("");
 
 const showTooltip = (input: HTMLElement, message: string) => {
-    if ((input as any).dataset.tooltipShown === "true") return;
+    if (input.dataset.tooltipShown === "true") return;
 
     const tooltip = document.createElement("div");
     tooltip.className = "input-tooltip";
@@ -30,11 +30,11 @@ const showTooltip = (input: HTMLElement, message: string) => {
     });
 
     document.body.appendChild(tooltip);
-    (input as any).dataset.tooltipShown = "true";
+    input.dataset.tooltipShown = "true";
 
     setTimeout(() => {
         tooltip.remove();
-        delete (input as any).dataset.tooltipShown;
+        delete input.dataset.tooltipShown;
     }, 3000);
 };
 

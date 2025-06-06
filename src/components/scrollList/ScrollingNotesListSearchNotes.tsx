@@ -49,15 +49,6 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
 
     const fromTimeRef = useRef<string>(formatISO(new Date()));
 
-    useEffect(() => {
-        setNotes([]);
-        setHasMore(true);
-        const now = formatISO(new Date());
-        fromTimeRef.current = now;
-        loadNotes(now, true).then(() => {
-        }).catch(console.error);
-    }, [searchBy, searchValue]);
-
     const loadNotes = useCallback(
         async (from: string, initialLoad = false) => {
             if (loading) return;
@@ -92,6 +83,15 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
         },
         [loading, hasMore, searchBy, searchValue]
     );
+
+    useEffect(() => {
+        setNotes([]);
+        setHasMore(true);
+        const now = formatISO(new Date());
+        fromTimeRef.current = now;
+        loadNotes(now, true).then(() => {
+        }).catch(console.error);
+    }, [searchBy, searchValue, loadNotes]);
 
     useEffect(() => {
         const width = window.innerWidth;

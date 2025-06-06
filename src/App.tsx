@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {AuthProvider} from "./context/AuthContext.tsx";
+import {AuthProvider} from "./context/AuthProvider.tsx";
 
 import Home from "./pages/MainPage.tsx";
 import Register from "./pages/RegisterPage.tsx";
