@@ -38,8 +38,10 @@ const NotePage: React.FC = () => {
                 }
                 const data: NoteReadDto = await res.json();
                 setNote(data);
-            } catch (e: any) {
-                setError(e.message || "Unknown error");
+            } catch (e) {
+                if(e instanceof Error) {
+                    setError(e.message || "Unknown error");
+                }
             } finally {
                 setLoading(false);
             }
