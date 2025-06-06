@@ -11,7 +11,7 @@ import officersText from "@/assets/img/swamp/svg/officers_text.svg";
 import yourNotesButton from "@/assets/img/swamp/svg/your_notes_button.svg";
 import searchButton from "@/assets/img/swamp/svg/search_button.svg";
 import discoverButton from "@/assets/img/swamp/svg/discover_button.svg";
-import newNoteButon from "@/assets/img/swamp/svg/new_note_Button.svg";
+import newNoteButon from "@/assets/img/swamp/svg/new_note_button.svg";
 import logoutButton from "@/assets/img/swamp/svg/logout_button.svg";
 import headerBar from "@/assets/img/swamp/svg/header_bar.svg";
 import topLine from "@/assets/img/swamp/svg/top_line.svg";
