@@ -45,7 +45,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `/api/notes/user-notes?from=${encodeURIComponent(from)}`
+                    `${import.meta.env.VITE_API_BASE}/notes/user-notes?from=${encodeURIComponent(from)}`
                 );
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);

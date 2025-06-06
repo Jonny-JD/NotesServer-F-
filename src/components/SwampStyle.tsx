@@ -31,7 +31,7 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         const loadFreshNotes = async () => {
             try {
                 const now = formatISO(new Date());
-                const res = await fetch(`/api/notes/search?from=${encodeURIComponent(now)}`);
+                const res = await fetch(`${import.meta.env.VITE_API_BASE}/notes/search?from=${encodeURIComponent(now)}`);
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);
                     return;

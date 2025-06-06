@@ -6,7 +6,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/api/auth/me", {
+        fetch(`${import.meta.env.VITE_API_BASE}/auth/me`, {
             method: "GET",
             credentials: "include",
             headers: {

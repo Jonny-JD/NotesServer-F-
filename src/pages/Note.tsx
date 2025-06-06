@@ -32,7 +32,7 @@ const NotePage: React.FC = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const res = await fetch(`/api/notes/${id}`);
+                const res = await fetch(`${import.meta.env.VITE_API_BASE}/notes/${id}`);
                 if (!res.ok) {
                     console.error("Failed to load note");
                 }

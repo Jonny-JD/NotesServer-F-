@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/shared/message/approve_message.module.less"
+import styles from "/src/styles/shared/message/approve_message.module.less"
 
 type ErrorMessageProps = {
     message: string;

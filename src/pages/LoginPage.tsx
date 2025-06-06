@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
         if (error) {
             const timeout = setTimeout(() => {
                 setError(null);
-            }, 4000);
+            }, 20000);
 
             return () => clearTimeout(timeout);
         }
@@ -48,7 +48,7 @@ const LoginPage: React.FC = () => {
         setError(null);
 
         try {
-            const response = await fetch("/api/auth/login", {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE}/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),

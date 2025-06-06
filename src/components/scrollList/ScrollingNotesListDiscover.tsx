@@ -20,12 +20,18 @@ const PAGE_SIZE = 10;
 
 const sizes: { maxWidth: number; multiplier: number; }[] = [];
 let maxWidth = 400;
-let multiplier = 0.24;
+let multiplier = 0.21;
 
 while (maxWidth <= 8000) {
-    sizes.push({maxWidth, multiplier});
-    maxWidth += 100;
-    multiplier += 0.08;
+    if (maxWidth > 600 && maxWidth < 800){
+        multiplier += 0.3;
+        sizes.push({maxWidth, multiplier});
+        maxWidth += 100;
+    } else {
+        sizes.push({maxWidth, multiplier});
+        maxWidth += 100;
+        multiplier += 0.08;
+    }
 }
 
 
@@ -46,7 +52,7 @@ const ScrollingNotesListDiscover: React.FC = () => {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `/api/notes/search?from=${encodeURIComponent(from)}`
+                    `${import.meta.env.VITE_API_BASE}/notes/search?from=${encodeURIComponent(from)}`
                 );
                 if (!res.ok) {
                     console.error("Failed to load fresh notes:", res.statusText);

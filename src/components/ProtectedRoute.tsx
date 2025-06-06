@@ -6,16 +6,14 @@ const ProtectedRoute: React.FC = () => {
     const { isLoggedIn, loading } = useAuth();
 
     if (loading) {
-        // Можно вернуть лоадер, пока идет проверка
+        //TODO loader
         return <div>Loading...</div>;
     }
 
     if (!isLoggedIn) {
-        // Не авторизован - редирект на логин
         return <Navigate to="/login" replace />;
     }
 
-    // Авторизован - рендерим вложенные роуты
     return <Outlet />;
 };
 

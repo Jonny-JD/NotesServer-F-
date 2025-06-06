@@ -4,6 +4,11 @@ import path from 'path';
 
 export default defineConfig({
     plugins: [react()],
+    css: {
+        modules: {
+            generateScopedName: '[name]__[local]__[hash:base64:5]',
+        },
+    },
     server: {
         proxy: {
             '/api': {
@@ -14,6 +19,7 @@ export default defineConfig({
             }
         },
     },
+
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),

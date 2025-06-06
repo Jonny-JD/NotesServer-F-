@@ -64,7 +64,7 @@ html {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 7fr 1fr;
   background-color: aliceblue;
-  background-image: url("@/assets/img/red/background/background.png");
+  background-image: url("../../assets/img/red/background/background.png");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -130,8 +130,8 @@ html {
 .redNumber {
   position: absolute;
   left: 0;
-  top: 47%;
-  height: 30%;
+  top: 25%;
+  height: 15%;
 }
 
 .footer {
@@ -149,7 +149,6 @@ html {
   }
 }
 
-// Media queries
 
 @media screen and (min-width: 600px) {
   .main {
@@ -170,6 +169,10 @@ html {
         }
       }
     }
+  }
+  .redNumber {
+    position: absolute;
+    height: 25%;
   }
 }
 
@@ -196,8 +199,7 @@ html {
 
   .redNumber {
     position: absolute;
-    top: 40%;
-    height: 40%;
+    height: 30%;
   }
 }
 
@@ -236,5 +238,9 @@ html {
         }
       }
     }
+  }
+  .redNumber {
+    position: absolute;
+    height: 35%;
   }
 }

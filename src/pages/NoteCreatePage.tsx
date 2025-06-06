@@ -13,7 +13,7 @@ const currentPage = 4;
 const totalPages = 8;
 
 const NoteCreatePage: React.FC = () => {
-    const {user} = useAuth(); // 👈 получаем текущего пользователя
+    const {user} = useAuth();
 
     const [title, setTitle] = useState("");
     const [tag, setTag] = useState("");
@@ -45,7 +45,7 @@ const NoteCreatePage: React.FC = () => {
         console.log("User ID:", user);
 
         try {
-            const response = await fetch("/api/notes", {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE}/notes`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

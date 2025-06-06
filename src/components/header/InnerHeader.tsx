@@ -37,7 +37,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
         setError(null);
 
         try {
-            const response = await fetch("/api/auth/logout", {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE}/auth/logout`, {
                 method: "POST",
             });
 

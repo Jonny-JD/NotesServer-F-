@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from "../../styles/shared/scrolling_notes_list_search.module.less";
 import {FixedSizeList as List} from "react-window";
 import cn from "classnames";
@@ -27,7 +27,7 @@ let maxWidth = 400;
 let multiplier = 0.21;
 
 while (maxWidth <= 8000) {
-    if (maxWidth > 600 && maxWidth < 800){
+    if (maxWidth > 600 && maxWidth < 800) {
         multiplier += 0.3;
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
@@ -49,49 +49,50 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
 
     const fromTimeRef = useRef<string>(formatISO(new Date()));
 
-    const loadNotes = useCallback(
-        async (from: string, initialLoad = false) => {
-            if (loading) return;
-            if (!hasMore && !initialLoad) return;
-            setLoading(true);
-            try {
-                const params = new URLSearchParams();
-                params.set("from", from);
-                params.set(searchBy, searchValue);
+    const fetchNotes = async (from: string, initialLoad = false) => {
+        if (loading) return;
+        if (!hasMore && !initialLoad) return;
 
-                const res = await fetch(`/api/notes/search?${params.toString()}`);
-                if (!res.ok) {
-                    console.error("Failed to load fresh notes:", res.statusText);
-                    return;
-                }
-                const newNotes: NotePreviewDto[] = await res.json();
+        setLoading(true);
+        try {
+            const params = new URLSearchParams();
+            params.set("from", from);
+            params.set(searchBy, searchValue);
 
-                if (newNotes.length < PAGE_SIZE) {
-                    setHasMore(false);
-                }
-
-                setNotes(prev => initialLoad ? newNotes : [...prev, ...newNotes]);
-
-                if (newNotes.length > 0) {
-                    fromTimeRef.current = newNotes[newNotes.length - 1].createdAt;
-                }
-            } catch (e) {
-                console.error("Error loading fresh notes:", e);
-            } finally {
-                setLoading(false);
+            const res = await fetch(`${import.meta.env.VITE_API_BASE}/notes/search?${params.toString()}`);
+            if (!res.ok) {
+                console.error("Failed to load fresh notes:", res.statusText);
+                return;
             }
-        },
-        [loading, hasMore, searchBy, searchValue]
-    );
+
+            const newNotes: NotePreviewDto[] = await res.json();
+
+            if (newNotes.length < PAGE_SIZE) {
+                setHasMore(false);
+            }
+
+            setNotes(prev => initialLoad ? newNotes : [...prev, ...newNotes]);
+
+            if (newNotes.length > 0) {
+                fromTimeRef.current = newNotes[newNotes.length - 1].createdAt;
+            }
+        } catch (e) {
+            console.error("Error loading fresh notes:", e);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        setNotes([]);
-        setHasMore(true);
-        const now = formatISO(new Date());
-        fromTimeRef.current = now;
-        loadNotes(now, true).then(() => {
-        }).catch(console.error);
-    }, [searchBy, searchValue, loadNotes]);
+        const run = async () => {
+            setNotes([]);
+            setHasMore(true);
+            const now = formatISO(new Date());
+            fromTimeRef.current = now;
+            await fetchNotes(now, true);
+        }
+        run().catch(console.error);
+    }, [searchBy, searchValue]);
 
     useEffect(() => {
         const width = window.innerWidth;
@@ -103,10 +104,9 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
         }
     }, [ratio]);
 
-    const handleItemsRendered = ({visibleStopIndex}: { visibleStopIndex: number }) => {
+    const handleItemsRendered = async ({visibleStopIndex}: { visibleStopIndex: number }) => {
         if (visibleStopIndex >= notes.length - 1 && !loading && hasMore) {
-            loadNotes(fromTimeRef.current).then(() => {
-            }).catch(console.error);
+            await fetchNotes(fromTimeRef.current);
         }
     };
 
@@ -125,7 +125,7 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
                     <List
                         className={styles.scrollList}
                         height={listHeight}
-                        itemCount={notes.length + 1} // всегда +1 для заглушки
+                        itemCount={notes.length + 1}
                         itemSize={itemHeight}
                         width="100%"
                         onItemsRendered={handleItemsRendered}
@@ -163,7 +163,6 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
                                     </div>
                                 );
                             } else {
-                                // Последний элемент — заглушка с загрузкой или сообщением
                                 return (
                                     <div style={style} className={styles.lastElementWrapper} key="last-element">
                                         <div className={styles.lastMessage}>
