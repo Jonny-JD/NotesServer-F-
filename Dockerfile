@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
-COPY . .
+COPY notesserver-f .
 RUN npm run build
 
 FROM nginx:alpine
