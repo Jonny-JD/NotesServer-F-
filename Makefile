@@ -13,8 +13,5 @@ clean:
 	docker rm -f $(APP_NAME)-container || true
 	docker rmi -f $(IMAGE_NAME) || true
 
-login:
-	echo docker login -u "$$DOCKERHUB_USERNAME" --password "$$DOCKERHUB_TOKEN"
-
-push: login
+push:
 	docker push $(IMAGE_NAME)
