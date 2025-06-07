@@ -4,9 +4,6 @@ IMAGE_NAME=$(DOCKERHUB_USERNAME)/$(APP_NAME):latest
 .PHONY: build docker-run clean login push
 
 build:
-	npm install
-	npm run clean
-	npm run build
 	docker build -t ${IMAGE_NAME} .
 
 docker-run:
