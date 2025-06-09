@@ -9,14 +9,8 @@ export default defineConfig({
             generateScopedName: '[name]__[local]__[hash:base64:5]',
         },
     },
-    server: {
-        proxy: {
-            '/api': {
-                target: 'https://cyber-notes.com',
-                rewrite: path => path.replace(/^\/api/, "/api/v1"),
-            },
-
-        },
+    build: {
+        minify: false,
     },
     resolve: {
         alias: {
