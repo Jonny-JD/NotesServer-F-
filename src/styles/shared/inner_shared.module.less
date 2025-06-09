@@ -52,7 +52,7 @@ html {
   color: @cyber_yellow;
 
   .sidebarHeader {
-    font-size: 1.3vw;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -71,7 +71,7 @@ html {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 3px;
-    font-size: 1vw;
+    font-size: 0.6rem;
     font-family: "Rajdhali", sans-serif;
     font-weight: 600;
     box-sizing: border-box;
@@ -124,7 +124,7 @@ html {
 
 .footer {
   grid-area: footer;
-  margin: 3vw @common-margins 0 @common-margins;
+  margin: 2vw @common-margins 0 @common-margins;
 
   .footerLine {
     display: flex;
@@ -157,7 +157,12 @@ html {
 }
 
 @media screen and (min-width: 1280px) {
-  .leftSidebar .note {
-    font-size: 0.7vw;
+  .leftSidebar {
+    .sidebarHeader {
+      font-size: 1.2rem;
+    }
+    .note {
+      font-size: 0.7vw;
+    }
   }
 }
