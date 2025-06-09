@@ -3,9 +3,6 @@
 @import "@/styles/shared/buttons/buttons_home.module.less";
 
 @content-width: 90%;
-@input-width: clamp(18rem, 35vw, 40vw);
-@input-font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-@label-font-size: clamp(1rem, 2.5vw, 1.5rem);
 
 .transition-all {
   transition: all 0.3s ease-in-out;
@@ -35,18 +32,18 @@ select:-webkit-autofill {
       display: flex;
       flex-direction: column;
       gap: clamp(1rem, 3vw, 2rem);
-      margin: clamp(0.5rem, 2vw, 1.5rem);
+      margin: clamp(0.5rem, 1.5vw, 1rem);
 
       .formField {
         display: flex;
         flex-direction: column;
-        gap: clamp(0.8rem, 2vw, 1.2rem);
+        gap: 1vw;
 
         label {
           display: flex;
           justify-content: space-between;
           font-family: "Nico Moji", sans-serif;
-          font-size: @label-font-size;
+          font-size: 3.5vw;
         }
 
         input {
@@ -54,8 +51,8 @@ select:-webkit-autofill {
           color: @color_green_neon;
           border: 1px solid @cyber_red;
           border-radius: 2px;
-          font-size: @input-font-size;
-          width: @input-width;
+          font-size: 3vw;
+          width: 47vw;
           padding: 0.3em 0.5em;
           .transition-all();
 
@@ -86,13 +83,14 @@ select:-webkit-autofill {
   }
 }
 
-@media screen and (min-width: 768px) {
-  .contentBackgroundCover .mainButtonWrapper .buttonWrapper {
-    margin-top: 2vw;
-    margin-bottom: 3vw;
-    .registerMainB {
-      flex: 0 0 auto;
-      width: 17vw;
+@media screen and (min-width: 600px) {
+  .contentBackgroundCover .registerFormWrapper .registerForm .formField {
+    label {
+      font-size: 2.5vw;
+    }
+    input {
+      font-size: 2.5vw;
+      width: 40vw;
     }
   }
 }
@@ -100,10 +98,42 @@ select:-webkit-autofill {
 @media screen and (min-width: 768px) {
   .contentBackgroundCover .mainButtonWrapper .buttonWrapper {
     margin-top: 2vw;
-    margin-bottom: 4vw;
     .registerMainB {
       flex: 0 0 auto;
       width: clamp(10vw, 12vw, 14vh);
+    }
+  }
+  .contentBackgroundCover .registerFormWrapper .registerForm .formField {
+    label {
+      font-size: 2vw;
+    }
+    input {
+      font-size: 2vw;
+      width: 35vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contentBackgroundCover .registerFormWrapper .registerForm .formField {
+    label {
+      font-size: 2vw;
+    }
+    input {
+      font-size: 1.5vw;
+      width: 30vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .contentBackgroundCover .registerFormWrapper .registerForm .formField {
+    label {
+      font-size: 1.2vw;
+    }
+    input {
+      font-size: 1.2vw;
+      width: 27vw;
     }
   }
 }
