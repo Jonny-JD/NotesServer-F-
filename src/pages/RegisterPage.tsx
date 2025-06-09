@@ -27,7 +27,7 @@ const RegisterPage: React.FC = () => {
         if (error) {
             const timeout = setTimeout(() => {
                 setError(null);
-            }, 4000);
+            }, 5000);
 
             return () => clearTimeout(timeout);
         }
@@ -61,6 +61,7 @@ const RegisterPage: React.FC = () => {
 
                 const errorMessage =
                     data?.errors?.user ??
+                    data?.errors?.validation ??
                     data?.message ??
                     data?.error ??
                     "Registration failed";

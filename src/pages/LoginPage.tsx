@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
         if (error) {
             const timeout = setTimeout(() => {
                 setError(null);
-            }, 20000);
+            }, 5000);
 
             return () => clearTimeout(timeout);
         }
