@@ -9,6 +9,11 @@
   transition: all 0.3s ease-in-out;
 }
 
+.scrollContainer {
+  display: grid !important;
+  grid-area: main;
+}
+
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
@@ -130,8 +135,8 @@ html {
 .redNumber {
   position: absolute;
   left: 0;
-  top: 25%;
-  height: 15%;
+  top: 50%;
+  height: 35%;
 }
 
 .footer {
@@ -221,11 +226,17 @@ html {
     }
   }
 
+  .main , .scrollContainer {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
   .main {
     justify-content: center;
     .mainHeaderContainer {
       flex-direction: row;
-      margin-bottom: 5.5vh;
+      margin-top: auto;
+      margin-bottom: auto;
 
       .headerText {
         justify-content: center;
