@@ -5,6 +5,7 @@ import styles from "../styles/page/register_page.module.less";
 import registerButton from "@/assets/img/red/svg/register_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 const currentPage = 3;
 const totalPages = 8;
@@ -76,6 +77,7 @@ const RegisterPage: React.FC = () => {
 
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
+            <ScrollContainer hideScrollbars={true}>
                 <div className={styles.contentBackgroundCover}>
                     <div className={styles.registerFormWrapper}>
                         {error && <ErrorMessage message={error} />}
@@ -135,6 +137,7 @@ const RegisterPage: React.FC = () => {
                         </form>
                     </div>
                 </div>
+            </ScrollContainer>
         </RedStyle>
     );
 };
