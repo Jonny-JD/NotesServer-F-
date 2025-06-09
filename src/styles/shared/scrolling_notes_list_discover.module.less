@@ -17,7 +17,7 @@
     box-sizing: border-box;
     width: 100%;
     padding: 1vw;
-    font-size: 2vw;
+    font-size: 0.8rem;
     font-weight: 600;
     border-bottom: 2px solid @cyber_swamp_dark;
 
@@ -59,7 +59,7 @@
         justify-content: space-between;
         border-bottom: 2px solid @cyber_swamp_dark;
         font-family: "Numans", sans-serif;
-        font-size: 2vw;
+        font-size: 0.5rem;
         padding: 0 1vw;
 
         .note {
@@ -128,32 +128,20 @@
   }
 }
 
-// Цвет для .noteHeader в верхнем селекторе
+
 .notesListWrapper .notesList .scrollList .noteWrapper .note .noteItem .noteHeader {
   color: @cyber_yellow;
 }
 
-// Медиазапросы с уменьшением font-size для плавного масштабирования
-@media screen and (min-width: 500px) {
+
+@media screen and (min-width: 600px) {
   .notesListWrapper {
     .notesListHeader {
-      font-size: 1.9vw;
+      font-size: 1rem;
     }
 
     .notesList .scrollList .noteWrapper {
-      font-size: 1.6vw;
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .notesListWrapper {
-    .notesListHeader {
-      font-size: 1.7vw;
-    }
-
-    .notesList .scrollList .noteWrapper {
-      font-size: 1.4vw;
+      font-size: 0.7rem;
     }
   }
 }
@@ -161,11 +149,11 @@
 @media screen and (min-width: 800px) {
   .notesListWrapper {
     .notesListHeader {
-      font-size: 1.5vw;
+      font-size: 1.5rem;
     }
 
     .notesList .scrollList .noteWrapper {
-      font-size: 1.2vw;
+      font-size: 0.8rem;
     }
   }
 }
@@ -173,14 +161,6 @@
 @media screen and (min-width: 1024px) {
   .notesListWrapper {
     height: 70vh;
-
-    .notesListHeader {
-      font-size: 2.5vw;
-    }
-
-    .notesList .scrollList .noteWrapper {
-      font-size: 1vw;
-    }
   }
 }
 
@@ -189,11 +169,11 @@
     height: 70vh;
 
     .notesListHeader {
-      font-size: 1.5vw;
+      font-size: 2rem;
     }
 
     .notesList .scrollList .noteWrapper {
-      font-size: 0.8vw;
+      font-size: 0.95rem;
     }
   }
 }

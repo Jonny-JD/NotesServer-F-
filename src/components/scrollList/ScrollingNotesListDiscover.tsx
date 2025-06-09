@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import styles from "../../styles/shared/scrolling_notes_list.module.less";
+import styles from "../../styles/shared/scrolling_notes_list_discover.module.less";
 import {FixedSizeList as List} from "react-window";
 import cn from "classnames";
 import {formatISO} from "date-fns";
