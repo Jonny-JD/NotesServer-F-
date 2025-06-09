@@ -45,7 +45,7 @@
     align-items: center;
 
     .logo {
-      width: 8vw;
+      width: clamp(10vw, 9vw, 12vw);
     }
 
     .logoTextWrapper {
@@ -57,12 +57,12 @@
       align-items: center;
 
       .logoText {
-        width: 15vh;
+        width: clamp(24vw, 28vw, 35vw);
       }
 
       .officersText {
         margin-top: 10px;
-        width: 15vh;
+        width: 25vw;
       }
     }
   }
@@ -196,6 +196,7 @@
 
       .redBar {
         width: 100%;
+
         .bar {
           width: 100%;
         }
