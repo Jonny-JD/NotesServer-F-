@@ -26,6 +26,10 @@
   }
 }
 
+.headerLeft .logoContainer .logo {
+  width: clamp(12vw, 8.8vw, 17vw);
+}
+
 .headerLeft {
   .discover {
     width: fit-content;
@@ -48,6 +52,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .header .headerLeft .logoContainer .logo {
+    width: 5vw;
+  }
+
   .headerLeft .discover {
     margin-left: 20%;
 
