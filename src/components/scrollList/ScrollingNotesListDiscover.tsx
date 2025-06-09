@@ -20,17 +20,27 @@ const PAGE_SIZE = 10;
 
 const sizes: { maxWidth: number; multiplier: number; }[] = [];
 let maxWidth = 400;
-let multiplier = 0.21;
+let multiplier = 0.215;
 
 while (maxWidth <= 8000) {
-    if (maxWidth > 600 && maxWidth < 800){
+    if (maxWidth > 400 && maxWidth < 600){
+        multiplier -= 0.01;
+        sizes.push({maxWidth, multiplier});
+        maxWidth += 100;
+    }
+    else if (maxWidth > 600 && maxWidth < 800){
         multiplier += 0.3;
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
-    } else {
+    } else if(maxWidth > 800 && maxWidth < 1280) {
+        multiplier -= 0.01;
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
-        multiplier += 0.08;
+    }
+    else {
+        sizes.push({maxWidth, multiplier});
+        maxWidth += 100;
+        multiplier += 0.085;
     }
 }
 

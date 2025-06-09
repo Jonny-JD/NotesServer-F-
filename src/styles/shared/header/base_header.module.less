@@ -45,7 +45,7 @@
     align-items: center;
 
     .logo {
-      width: clamp(10vw, 9vw, 12vw);
+      width: clamp(12vw, 8.8vw, 17vw);
     }
 
     .logoTextWrapper {
@@ -57,12 +57,13 @@
       align-items: center;
 
       .logoText {
-        width: clamp(24vw, 28vw, 35vw);
+        width: 35vw;
       }
 
       .officersText {
         margin-top: 10px;
-        width: 25vw;
+        margin-bottom: 10px;
+        width: 35vw;
       }
     }
   }
@@ -130,7 +131,27 @@
     .headerButton {
       width: 20vw;
     }
+
+    .headerLeft .logoContainer {
+      .logo {
+        width: clamp(12vw, 8.8vw, 17vw);
+      }
+
+      .logoTextWrapper .logoText {
+        width: 30vw;
+      }
+
+      .officersText {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 30vw;
+      }
+
+
+    }
   }
+
+
 }
 
 @media screen and (min-width: 768px) {
