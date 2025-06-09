@@ -119,7 +119,7 @@ html {
     .headerText {
       display: flex;
       justify-content: center;
-      font-size: 5vw;
+      font-size: 2vh;
       text-shadow: @cyber_red 1px 0 20px;
       color: @cyber_red;
       transition: font-size 0.3s ease-in-out;
@@ -161,16 +161,16 @@ html {
       margin-bottom: 2vh;
 
       .headerText {
-        font-size: 4vw;
+        font-size: 2vh;
       }
 
       .mainGearContainer {
         .gearImage {
-          width: 15vw;
+          width: 10vh;
         }
 
         .headerJapan {
-          width: 20vw;
+          width: 12vh;
         }
       }
     }
@@ -187,16 +187,16 @@ html {
       margin-bottom: 1.5vh;
 
       .headerText {
-        font-size: 3vw;
+        font-size: 2.5vh;
       }
 
       .mainGearContainer {
         .gearImage {
-          width: 12vw;
+          width: 10vh;
         }
 
         .headerJapan {
-          width: 17vw;
+          width: 14vh;
         }
       }
     }
@@ -217,7 +217,7 @@ html {
   }
   .wrapper .container {
     .pageCounter {
-      display: unset;
+      display: flex;
     }
   }
 
@@ -230,16 +230,16 @@ html {
       .headerText {
         justify-content: center;
         align-items: center;
-        font-size: 4vw;
+        font-size: 5vh;
       }
 
       .mainGearContainer {
         .gearImage {
-          width: 6vw;
+          width: 6vh;
         }
 
         .headerJapan {
-          width: 7vw;
+          width: 9vh;
         }
       }
     }
@@ -247,5 +247,30 @@ html {
   .redNumber {
     position: absolute;
     height: 35%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+    .mainHeaderContainer {
+      flex-direction: row;
+      margin-bottom: 3.5vh;
+
+      .headerText {
+        justify-content: center;
+        align-items: center;
+        font-size: 6.5vh;
+      }
+
+      .mainGearContainer {
+        .gearImage {
+          width: 10vh;
+        }
+
+        .headerJapan {
+          width: 12vh;
+        }
+      }
+    }
   }
 }
