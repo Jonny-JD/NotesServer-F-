@@ -3,7 +3,7 @@ import styles from "../styles/page/note_page.module.less";
 
 import SwampStyle from "../components/SwampStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import editNoteButton from "../assets/img/swamp/svg/edit_note_button.svg";
 import cn from "classnames";
 import deleteNoteButton from "../assets/img/swamp/svg/delete_note_button.svg";
@@ -33,6 +33,7 @@ const NotePage: React.FC = () => {
     const {id} = useParams();
     const [note, setNote] = useState<NoteReadDto | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -67,6 +68,22 @@ const NotePage: React.FC = () => {
         return error && <ErrorMessage message={error}/>
     }
 
+    const handleDelete = async () => {
+        if (window.confirm("Are you sure you want to delete this note?")) {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_BASE}/notes/${note?.id}`, {
+                    method: "DELETE",
+                });
+                if (response.ok) {
+                    navigate("/notes/my"); // Вернуться в список своих заметок после удаления
+                } else {
+                    alert("Failed to delete note.");
+                }
+            } catch {
+                alert("Error while deleting note.");
+            }
+        }
+    };
 
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
@@ -107,6 +124,7 @@ const NotePage: React.FC = () => {
                                      src={deleteNoteButton}
                                      alt="Delete Note"
                                      style={{cursor: "pointer"}}
+                                     onClick={handleDelete}
                                 />
                             </div>
                         </div>
