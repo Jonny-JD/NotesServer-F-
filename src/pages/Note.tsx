@@ -3,7 +3,10 @@ import styles from "../styles/page/note_page.module.less";
 
 import SwampStyle from "../components/SwampStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
+import editNoteButton from "../assets/img/swamp/svg/edit_note_button.svg";
+import cn from "classnames";
+import deleteNoteButton from "../assets/img/swamp/svg/delete_note_button.svg";
 
 const currentPage = 5;
 const totalPages = 8;
@@ -24,6 +27,8 @@ interface NoteReadDto {
 
 
 const NotePage: React.FC = () => {
+    const location = useLocation();
+    const fromUserNotesList = location.state?.fromUserNotesList ?? false;
 
     const {id} = useParams();
     const [note, setNote] = useState<NoteReadDto | null>(null);
@@ -87,7 +92,27 @@ const NotePage: React.FC = () => {
                             {note.content}
                         </div>
                     </div>
+                    {fromUserNotesList && (
+                        <div className={styles.formButtonsWrapper}>
+                            <div className={styles.buttonWrapper}>
+                                <img
+                                    className={cn(styles.editButton)}
+                                    src={editNoteButton}
+                                    alt="Edit Note"
+                                    style={{cursor: "pointer"}}
+                                />
+                            </div>
+                            <div className={cn(styles.buttonWrapper, styles.deleteButtonWrapper)}>
+                                <img className={cn(styles.deleteButton)}
+                                     src={deleteNoteButton}
+                                     alt="Delete Note"
+                                     style={{cursor: "pointer"}}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
+
             </main>
         </SwampStyle>
     );

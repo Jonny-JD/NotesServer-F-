@@ -79,7 +79,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
                     setFromTime(lastNoteTime);
                 }
             } catch (e) {
-                console.error("Error loading fresh notes:", e);
+                console.error("Error loading your notes:", e);
             } finally {
                 setLoading(false);
                 setInitialLoading(false);
@@ -112,7 +112,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
     };
 
     const goToNote = (noteId: number | string) => {
-        navigate(`/notes/${noteId}`);
+        navigate(`/notes/${noteId}`, { state: { fromUserNotesList: true } });
     };
 
     return (

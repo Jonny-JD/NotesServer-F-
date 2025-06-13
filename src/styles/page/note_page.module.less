@@ -21,7 +21,7 @@
     width: 100%;
     height: 60vh;
     gap: 10px;
-    font-size: 3vw;
+    font-size: 0.9rem;
 
     .noteHeader {
       .formText {
@@ -67,7 +67,7 @@
         color: @color_ivory;
         font-family: "Numans", sans-serif;
         font-weight: 400;
-        font-size: clamp(14px, 1.5vw, 18px);
+        font-size: 0.9rem;
         line-height: clamp(1.4em, 2.5vw, 2em);
         box-sizing: border-box;
         text-align: left;
@@ -78,18 +78,60 @@
       }
     }
   }
+
+  .formButtonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    .buttonWrapper {
+      img {
+        width: 20vw;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    .deleteButtonWrapper:hover{
+      filter: drop-shadow(-1px 6px 3px @cyber_red)
+    }
+  }
 }
 
 @media screen and (min-width: 600px) {
   .main .noteForm {
-    height: 61vh;
-    font-size: 2vw;
+    font-size: 1.2rem;
+
+    .noteTextWrapper {
+      .noteArea {
+        font-size: 1.2rem;
+      }
+    }
+
+    .formButtonsWrapper .buttonWrapper img {
+      width: 17vw;
+    }
   }
 }
 
 @media screen and (min-width: 768px) {
-  .main .noteForm {
-    font-size: 2.2vw
+  .main {
+    .noteForm {
+      font-size: 1.2rem;
+      height: 50vh;
+
+      .noteTextWrapper {
+        .noteArea {
+          font-size: 1.2rem;
+        }
+      }
+
+      .formButtonsWrapper .buttonWrapper img {
+        width: 14vw;
+      }
+    }
   }
 }
 
@@ -97,21 +139,42 @@
   .main {
     grid-area: main;
     width: 100%;
+  }
 
+  .main {
     .noteForm {
-      height: 85vh;
-      font-size: clamp(1vw, 1.2vw, 1.5vw);
+      font-size: 1.5rem;
+      height: 100%;
+
+      .noteTextWrapper {
+        .noteArea {
+          font-size: 1.5rem;
+        }
+      }
+
+      .formButtonsWrapper .buttonWrapper img {
+        width: 12vw;
+      }
     }
   }
 }
 
 @media screen and (min-width: 1280px) {
   .main .noteForm {
+    font-size: 1.6rem;
     margin-top: 0;
     height: 75vh;
+
+    .formButtonsWrapper .buttonWrapper img {
+      width: 8vw;
+    }
+
     .noteTextWrapper {
       margin-top: 1vw;
       margin-bottom: 0;
+      .noteArea {
+        font-size: 1.6rem;
+      }
     }
   }
 }
