@@ -5,7 +5,7 @@ import cn from "classnames";
 import {formatISO} from "date-fns";
 import {useElementHeight} from "../../hook/useElementHeight.tsx";
 import {useResponsiveRatio} from "../../hook/useResponsiveRatio.tsx";
-import {useNavigate} from "react-router-dom"; // импорт нового хука
+import {useNavigate} from "react-router-dom";
 
 
 interface NotePreviewDto {
@@ -54,6 +54,7 @@ const ScrollingNotesListDiscover: React.FC = () => {
     const ratio = useResponsiveRatio();
     const [itemHeight, setItemHeight] = useState(70);
     const navigate = useNavigate();
+    const [initialLoading, setInitialLoading] = useState(true);
 
 
     const loadNotes = useCallback(
@@ -61,15 +62,15 @@ const ScrollingNotesListDiscover: React.FC = () => {
             if (loading || !hasMore) return;
             setLoading(true);
             try {
-                const res = await fetch(
+                const response = await fetch(
                     `${import.meta.env.VITE_API_BASE}/notes/search?from=${encodeURIComponent(from)}`
                 );
-                if (!res.ok) {
-                    console.error("Failed to load fresh notes:", res.statusText);
+                if (!response.ok) {
+                    console.error("Failed to load fresh notes:", response.statusText);
                     setLoading(false);
                     return;
                 }
-                const newNotes: NotePreviewDto[] = await res.json();
+                const newNotes: NotePreviewDto[] = await response.json();
 
                 if (newNotes.length < PAGE_SIZE) {
                     setHasMore(false);
@@ -84,6 +85,7 @@ const ScrollingNotesListDiscover: React.FC = () => {
                 console.error("Error loading fresh notes:", e);
             } finally {
                 setLoading(false);
+                setInitialLoading(false);
             }
         },
         [loading, hasMore]
@@ -101,8 +103,10 @@ const ScrollingNotesListDiscover: React.FC = () => {
     }, [ratio]);
 
     useEffect(() => {
-        void loadNotes(fromTime);
-    }, [fromTime, loadNotes]);
+        if (initialLoading) {
+            void loadNotes(fromTime);
+        }
+    }, [initialLoading, fromTime, loadNotes]);
 
     const handleItemsRendered = ({visibleStopIndex}: { visibleStopIndex: number }) => {
         if (visibleStopIndex >= notes.length - 1 && !loading && hasMore) {

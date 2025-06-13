@@ -22,21 +22,19 @@ let maxWidth = 400;
 let multiplier = 0.24;
 
 while (maxWidth <= 8000) {
-    if (maxWidth > 400 && maxWidth < 600){
+    if (maxWidth > 400 && maxWidth < 600) {
         multiplier -= 0.01;
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
-    }
-    else if (maxWidth > 600 && maxWidth < 800){
+    } else if (maxWidth > 600 && maxWidth < 800) {
         multiplier += 0.3;
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
-    } else if(maxWidth > 800 && maxWidth < 1280) {
+    } else if (maxWidth > 800 && maxWidth < 1280) {
         multiplier -= 0.01;
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
-    }
-    else {
+    } else {
         sizes.push({maxWidth, multiplier});
         maxWidth += 100;
         multiplier += 0.085;
@@ -53,6 +51,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
     const ratio = useResponsiveRatio();
     const [itemHeight, setItemHeight] = useState(70);
     const navigate = useNavigate();
+    const [initialLoading, setInitialLoading] = useState(true);
 
 
     const loadNotes = useCallback(
@@ -83,6 +82,7 @@ const ScrollingNotesListUserNotes: React.FC = () => {
                 console.error("Error loading fresh notes:", e);
             } finally {
                 setLoading(false);
+                setInitialLoading(false);
             }
         },
         [loading, hasMore]
@@ -100,8 +100,10 @@ const ScrollingNotesListUserNotes: React.FC = () => {
     }, [ratio]);
 
     useEffect(() => {
-        void loadNotes(fromTime);
-    }, [fromTime, loadNotes]);
+        if (initialLoading) {
+            void loadNotes(fromTime);
+        }
+    }, [initialLoading, fromTime, loadNotes]);
 
     const handleItemsRendered = ({visibleStopIndex}: { visibleStopIndex: number }) => {
         if (visibleStopIndex >= notes.length - 1 && !loading && hasMore) {

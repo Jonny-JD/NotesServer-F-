@@ -57,6 +57,7 @@ const ScrollingNotesListSearchNotes: React.FC<ScrollingNotesListSearchNotesProps
     const [itemHeight, setItemHeight] = useState(70);
     const navigate = useNavigate();
 
+
     const fromTimeRef = useRef<string>(formatISO(new Date()));
 
     const fetchNotes = async (from: string, initialLoad = false) => {
