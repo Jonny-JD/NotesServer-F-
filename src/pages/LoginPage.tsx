@@ -6,7 +6,6 @@ import styles from "../styles/page/login_page.module.less";
 import loginButton from "@/assets/img/red/svg/login_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
-import Loader from "../components/Loader.tsx";
 
 const currentPage = 2;
 const totalPages = 8;
@@ -16,7 +15,6 @@ type FormFields = "username" | "password";
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
     const {setUser} = useAuth();
-    const [loading, setLoading] = useState(true);
 
 
     const [form, setForm] = useState<Record<FormFields, string>>({
@@ -79,19 +77,6 @@ const LoginPage: React.FC = () => {
         }
     };
 
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-
-    if (loading) {
-        return <Loader/>;
-    }
 
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>

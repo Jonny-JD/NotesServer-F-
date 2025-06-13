@@ -5,7 +5,6 @@ import styles from "../styles/page/register_page.module.less";
 import registerButton from "@/assets/img/red/svg/register_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
-import Loader from "../components/Loader.tsx";
 
 
 const currentPage = 3;
@@ -23,7 +22,6 @@ const RegisterPage: React.FC = () => {
     });
 
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (error) {
@@ -77,19 +75,6 @@ const RegisterPage: React.FC = () => {
             setError("Network error");
         }
     };
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-
-    if (loading) {
-        return <Loader/>;
-    }
 
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>

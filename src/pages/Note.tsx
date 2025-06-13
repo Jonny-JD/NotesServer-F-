@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import styles from "../styles/page/note_page.module.less";
 
 import SwampStyle from "../components/SwampStyle.tsx";
-import Loader from "../components/Loader.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
 import {useParams} from "react-router-dom";
 
@@ -28,7 +27,6 @@ const NotePage: React.FC = () => {
 
     const {id} = useParams();
     const [note, setNote] = useState<NoteReadDto | null>(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -51,8 +49,6 @@ const NotePage: React.FC = () => {
                 if (e instanceof Error) {
                     setError(e.message || "Unknown error");
                 }
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -61,18 +57,6 @@ const NotePage: React.FC = () => {
         }
     }, [id]);
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-
-    if (loading) {
-        return <Loader/>;
-    }
 
     if (!note) {
         return error && <ErrorMessage message={error}/>

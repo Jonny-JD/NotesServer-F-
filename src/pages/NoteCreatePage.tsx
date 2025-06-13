@@ -8,7 +8,6 @@ import createNoteButton from "@/assets/img/swamp/svg/create_note_button.svg";
 import privateButton from "@/assets/img/swamp/svg/private_button.svg";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
 import ApproveMessage from "../components/message/ApproveMessage.tsx";
-import Loader from "../components/Loader.tsx";
 
 const currentPage = 4;
 const totalPages = 8;
@@ -21,7 +20,6 @@ const NoteCreatePage: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
     const [isPrivate, setIsPrivate] = useState(false);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (error || success) {
@@ -85,18 +83,6 @@ const NoteCreatePage: React.FC = () => {
         await handleCreateNote();
     };
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-
-    if (loading) {
-        return <Loader/>;
-    }
 
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>

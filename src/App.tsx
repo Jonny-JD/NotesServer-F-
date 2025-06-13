@@ -13,29 +13,33 @@ import NotFound from "./pages/NotFoundPage.tsx";
 import useRestrictToExtendedLatin from "./hook/useRestrictToExtendedLatin.tsx";
 import useTabInTextarea from "./hook/useTabInTextarea.tsx";
 import UserNotesPage from "./pages/UserNotesPage.tsx";
+import GlobalLoader from "./components/GlobalLoader.tsx";
 
 const App = () => {
     useRestrictToExtendedLatin();
     useTabInTextarea();
     return (
-        <AuthProvider>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/registration" element={<Register/>}/>
-                    <Route path="*" element={<NotFound/>}/>
-                    <Route element={<ProtectedRoute/>}>
-                        <Route path="/notes/discover" element={<Discover/>}/>
-                        <Route path="/notes/create" element={<NoteCreate/>}/>
-                        <Route path="/notes" element={<Note/>}/>
-                        <Route path="/notes/:id" element={<Note/>}/>
-                        <Route path="/notes/search" element={<Search/>}/>
-                        <Route path="/notes/my" element={<UserNotesPage/>}/>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </AuthProvider>
+        <>
+            <GlobalLoader />
+            <AuthProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/registration" element={<Register/>}/>
+                        <Route path="*" element={<NotFound/>}/>
+                        <Route element={<ProtectedRoute/>}>
+                            <Route path="/notes/discover" element={<Discover/>}/>
+                            <Route path="/notes/create" element={<NoteCreate/>}/>
+                            <Route path="/notes" element={<Note/>}/>
+                            <Route path="/notes/:id" element={<Note/>}/>
+                            <Route path="/notes/search" element={<Search/>}/>
+                            <Route path="/notes/my" element={<UserNotesPage/>}/>
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </AuthProvider>
+        </>
     );
 };
 

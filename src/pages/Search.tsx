@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 import styles from "../styles/page/search_page.module.less";
 
@@ -7,7 +7,7 @@ import SwampStyle from "../components/SwampStyle.tsx";
 
 import cn from "classnames";
 import ScrollingNotesListSearchNotes from "../components/scrollList/ScrollingNotesListSearchNotes.tsx";
-import Loader from "../components/Loader.tsx";
+
 
 const currentPage = 7;
 const totalPages = 8;
@@ -19,7 +19,6 @@ const SearchPage: React.FC = () => {
         searchBy: "title" | "tag";
         searchValue: string
     } | null>(null);
-    const [loading, setLoading] = useState(true);
 
 
     const handleSearchClick = () => {
@@ -28,18 +27,6 @@ const SearchPage: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-
-    if (loading) {
-        return <Loader/>;
-    }
 
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
@@ -86,7 +73,6 @@ const SearchPage: React.FC = () => {
                     />
                 </div>
 
-                {/* Рендерим список, только если есть поисковый запрос */}
                 {submittedSearch && (
                     <ScrollingNotesListSearchNotes searchBy={submittedSearch.searchBy}
                                                    searchValue={submittedSearch.searchValue}/>
