@@ -25,23 +25,22 @@ const MainPage: React.FC = () => {
         navigate("/registration");
     };
 
-    if (loading) {
-        return <Loader />;
-    }
 
     return (
-        <RedStyle currentPage={currentPage} totalPages={totalPages}>
-            <div className={styles.contentBackgroundCover}>
-                <div className={styles.mainText}>
-                    <p>
-                        In the neon haze of future megacities, digital notes are your
-                        cybernetic edge, pulsing with the speed of data streams.
-                        Harness the power of your mind with our next-gen note
-                        system—crafted for the fast-paced, tech-driven world. Capture,
-                        organize, and access your thoughts anytime, anywhere.
-                    </p>
+        <>
+            {loading && <Loader/>}
+            <RedStyle currentPage={currentPage} totalPages={totalPages}>
+                <div className={styles.contentBackgroundCover}>
+                    <div className={styles.mainText}>
+                        <p>
+                            In the neon haze of future megacities, digital notes are your
+                            cybernetic edge, pulsing with the speed of data streams.
+                            Harness the power of your mind with our next-gen note
+                            system—crafted for the fast-paced, tech-driven world. Capture,
+                            organize, and access your thoughts anytime, anywhere.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
                 <div className={styles.mainButtonWrapper}>
                     <div className={cn(styles.buttonWrapper, styles.loginButtonWrapper)}>
@@ -55,7 +54,8 @@ const MainPage: React.FC = () => {
                     </div>
                 </div>
 
-        </RedStyle>
+            </RedStyle>
+        </>
     );
 };
 
