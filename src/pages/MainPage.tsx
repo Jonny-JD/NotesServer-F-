@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Loader from "../components/Loader.tsx";
 import cn from "classnames";
 import styles from "../styles/page/main_page.module.less";
 import RedStyle from "../components/RedStyle.tsx";
 import mainSignUpButton from "@/assets/img/red/svg/main_sign_up_button.svg";
 import { useNavigate } from "react-router-dom";
-import Loader from "../components/Loader.tsx";
 
 const currentPage = 1;
 const totalPages = 8;
@@ -14,22 +14,33 @@ const MainPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let timeoutId: ReturnType<typeof setTimeout>;
+
         const handleLoad = () => {
-            setTimeout(() => {
-            setLoading(false)
-            }, 1000);
+            console.log("Load event fired");
+            setLoading(false);
+            clearTimeout(timeoutId);
         };
 
+        console.log("Document readyState:", document.readyState);
+
         if (document.readyState === "complete") {
-            handleLoad()
-            setLoading(false);
+            // Если уже загружено, сразу выключаем лоадер
+            handleLoad();
         } else {
-            // иначе ждём полной загрузки
             window.addEventListener("load", handleLoad);
+
+            // Фоллбек: через 5 секунд убираем лоадер в любом случае, чтобы не зависать
+            timeoutId = setTimeout(() => {
+                console.warn("Fallback timeout triggered — hiding loader");
+                setLoading(false);
+                window.removeEventListener("load", handleLoad);
+            }, 5000);
         }
 
         return () => {
             window.removeEventListener("load", handleLoad);
+            clearTimeout(timeoutId);
         };
     }, []);
 
@@ -47,10 +58,10 @@ const MainPage: React.FC = () => {
                 <div className={styles.mainText}>
                     <p>
                         In the neon haze of future megacities, digital notes are your
-                        cybernetic edge, pulsing with the speed of data streams.
-                        Harness the power of your mind with our next-gen note
-                        system—crafted for the fast-paced, tech-driven world. Capture,
-                        organize, and access your thoughts anytime, anywhere.
+                        cybernetic edge, pulsing with the speed of data streams. Harness the
+                        power of your mind with our next-gen note system—crafted for the
+                        fast-paced, tech-driven world. Capture, organize, and access your
+                        thoughts anytime, anywhere.
                     </p>
                 </div>
             </div>
