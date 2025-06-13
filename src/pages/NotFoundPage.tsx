@@ -9,7 +9,6 @@ import officersText from "@/assets/img/red/svg/officers_text.svg";
 import topLine from "@/assets/img/red/svg/top_line.svg";
 
 
-
 const NotFoundPage: React.FC = () => {
     return (
         <div className={pageStyles.wrapper}>
@@ -39,7 +38,6 @@ const NotFoundPage: React.FC = () => {
             </div>
         </div>
     )
-
 
 
 };

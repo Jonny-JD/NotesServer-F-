@@ -1,19 +1,33 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import cn from "classnames";
 import styles from "../styles/page/main_page.module.less";
 import RedStyle from "../components/RedStyle.tsx";
 import mainSignUpButton from "@/assets/img/red/svg/main_sign_up_button.svg";
 import {useNavigate} from "react-router-dom";
+import Loader from "../components/Loader.tsx";
 
 const currentPage = 1;
 const totalPages = 8;
 
 const MainPage: React.FC = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, []);
 
     const goToRegistration = () => {
-        navigate("/registration"); // Замени на нужный путь
+        navigate("/registration");
     };
+
+    if (loading) {
+        return <Loader />;
+    }
 
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>

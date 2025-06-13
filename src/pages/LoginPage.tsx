@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.tsx";
+import React, {useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../context/AuthContext.tsx";
 import cn from "classnames";
 import styles from "../styles/page/login_page.module.less";
 import loginButton from "@/assets/img/red/svg/login_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
+import Loader from "../components/Loader.tsx";
 
 const currentPage = 2;
 const totalPages = 8;
@@ -14,7 +15,9 @@ type FormFields = "username" | "password";
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
-    const { setUser } = useAuth();
+    const {setUser} = useAuth();
+    const [loading, setLoading] = useState(true);
+
 
     const [form, setForm] = useState<Record<FormFields, string>>({
         username: "",
@@ -34,7 +37,7 @@ const LoginPage: React.FC = () => {
     }, [error]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         if (name === "username" || name === "password") {
             setForm((prev) => ({
                 ...prev,
@@ -50,7 +53,7 @@ const LoginPage: React.FC = () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_BASE}/auth/login`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(form),
                 credentials: "include"
             });
@@ -76,11 +79,25 @@ const LoginPage: React.FC = () => {
         }
     };
 
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
+
+    if (loading) {
+        return <Loader/>;
+    }
+
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
             <div className={styles.contentBackgroundCover}>
                 <div className={styles.loginFormWrapper}>
-                    {error && <ErrorMessage message={error} />}
+                    {error && <ErrorMessage message={error}/>}
                     <form
                         className={styles.loginForm}
                         onSubmit={handleSubmit}

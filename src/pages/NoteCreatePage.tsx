@@ -8,19 +8,20 @@ import createNoteButton from "@/assets/img/swamp/svg/create_note_button.svg";
 import privateButton from "@/assets/img/swamp/svg/private_button.svg";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
 import ApproveMessage from "../components/message/ApproveMessage.tsx";
+import Loader from "../components/Loader.tsx";
 
 const currentPage = 4;
 const totalPages = 8;
 
 const NoteCreatePage: React.FC = () => {
     const {user} = useAuth();
-
     const [title, setTitle] = useState("");
     const [tag, setTag] = useState("");
     const [content, setContent] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
     const [isPrivate, setIsPrivate] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (error || success) {
@@ -84,13 +85,26 @@ const NoteCreatePage: React.FC = () => {
         await handleCreateNote();
     };
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
+
+    if (loading) {
+        return <Loader/>;
+    }
+
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
             <main className={styles.main}>
                 <div className={styles.newNoteFormWrapper}>
                     <form className={styles.noteForm} onSubmit={handleSubmit}>
                         {error && <ErrorMessage message={error}/>}
-                        {success && <ApproveMessage message={"Note successfully created"} />}
+                        {success && <ApproveMessage message={"Note successfully created"}/>}
 
                         <div className={styles.formField}>
                             <label htmlFor="note-title">Title:</label>
