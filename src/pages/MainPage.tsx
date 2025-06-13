@@ -15,11 +15,13 @@ const MainPage: React.FC = () => {
 
     useEffect(() => {
         const handleLoad = () => {
-            setLoading(false);
+            setTimeout(() => {
+            setLoading(false)
+            }, 1000);
         };
 
         if (document.readyState === "complete") {
-            // если уже всё загружено
+            handleLoad()
             setLoading(false);
         } else {
             // иначе ждём полной загрузки
