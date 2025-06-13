@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 
 import styles from "../styles/page/search_page.module.less";
 
@@ -7,6 +7,7 @@ import SwampStyle from "../components/SwampStyle.tsx";
 
 import cn from "classnames";
 import ScrollingNotesListSearchNotes from "../components/scrollList/ScrollingNotesListSearchNotes.tsx";
+import Loader from "../components/Loader.tsx";
 
 const currentPage = 7;
 const totalPages = 8;
@@ -14,14 +15,31 @@ const totalPages = 8;
 const SearchPage: React.FC = () => {
     const [searchBy, setSearchBy] = useState<"title" | "tag">("title");
     const [searchValue, setSearchValue] = useState("");
-    const [submittedSearch, setSubmittedSearch] = useState<{ searchBy: "title" | "tag"; searchValue: string } | null>(null);
+    const [submittedSearch, setSubmittedSearch] = useState<{
+        searchBy: "title" | "tag";
+        searchValue: string
+    } | null>(null);
+    const [loading, setLoading] = useState(true);
 
 
     const handleSearchClick = () => {
         if (searchValue.trim()) {
-            setSubmittedSearch({ searchBy, searchValue: searchValue.trim() });
+            setSubmittedSearch({searchBy, searchValue: searchValue.trim()});
         }
     };
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
+
+    if (loading) {
+        return <Loader/>;
+    }
 
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
@@ -31,13 +49,13 @@ const SearchPage: React.FC = () => {
                         <div className={styles.searchChoice}>
                             <span className={styles.searchHeader}>Search by:</span>
                             <span
-                                className={cn(styles.byTitle, { [styles.selected]: searchBy === "title" })}
+                                className={cn(styles.byTitle, {[styles.selected]: searchBy === "title"})}
                                 onClick={() => setSearchBy("title")}
                             >
                 Title
               </span>
                             <span
-                                className={cn(styles.byTag, { [styles.selected]: searchBy === "tag" })}
+                                className={cn(styles.byTag, {[styles.selected]: searchBy === "tag"})}
                                 onClick={() => setSearchBy("tag")}
                             >
                 Tag
@@ -48,7 +66,12 @@ const SearchPage: React.FC = () => {
                                 type="search"
                                 value={searchValue}
                                 onChange={(e) => setSearchValue(e.target.value)}
-                                onKeyDown={(e) => { if(e.key === 'Enter') { e.preventDefault(); handleSearchClick(); }}}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault();
+                                        handleSearchClick();
+                                    }
+                                }}
                             />
                         </div>
                     </div>
@@ -59,13 +82,14 @@ const SearchPage: React.FC = () => {
                         src={searchButton}
                         alt="Search Button"
                         onClick={handleSearchClick}
-                        style={{ cursor: "pointer" }}
+                        style={{cursor: "pointer"}}
                     />
                 </div>
 
                 {/* Рендерим список, только если есть поисковый запрос */}
                 {submittedSearch && (
-                    <ScrollingNotesListSearchNotes searchBy={submittedSearch.searchBy} searchValue={submittedSearch.searchValue} />
+                    <ScrollingNotesListSearchNotes searchBy={submittedSearch.searchBy}
+                                                   searchValue={submittedSearch.searchValue}/>
                 )}
             </main>
         </SwampStyle>

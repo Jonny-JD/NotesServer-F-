@@ -17,7 +17,7 @@ html {
 
 .container {
   margin: 0 auto;
-  width: @content-width;
+  width: 100%;
   height: 100vh;
   overflow: auto;
   display: grid;
@@ -27,7 +27,6 @@ html {
     "footer footer footer";
   grid-template-columns: 3fr 9fr 2.58fr;
   grid-template-rows: 1fr 7fr 1fr;
-  background-color: aliceblue;
   background-image: url("../../assets/img/swamp/background.png");
   background-attachment: fixed;
   background-position: center;
@@ -146,6 +145,8 @@ html {
 }
 
 @media screen and (min-width: 1024px) {
+
+
   .sidebar {
     display: flex;
   }
@@ -157,6 +158,12 @@ html {
 }
 
 @media screen and (min-width: 1280px) {
+  .footer {
+    margin: 0 @common-margins 0 @common-margins;
+  }
+  .container {
+    width: @content-width;
+  };
   .leftSidebar {
     .sidebarHeader {
       font-size: 1.2rem;

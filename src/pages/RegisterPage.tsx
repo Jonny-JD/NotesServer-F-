@@ -5,6 +5,7 @@ import styles from "../styles/page/register_page.module.less";
 import registerButton from "@/assets/img/red/svg/register_button.svg";
 import RedStyle from "../components/RedStyle.tsx";
 import ErrorMessage from "../components/message/ErrorMessage.tsx";
+import Loader from "../components/Loader.tsx";
 
 
 const currentPage = 3;
@@ -22,6 +23,7 @@ const RegisterPage: React.FC = () => {
     });
 
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (error) {
@@ -76,67 +78,80 @@ const RegisterPage: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
+
+    if (loading) {
+        return <Loader/>;
+    }
+
     return (
         <RedStyle currentPage={currentPage} totalPages={totalPages}>
-                <div className={styles.contentBackgroundCover}>
-                    <div className={styles.registerFormWrapper}>
-                        {error && <ErrorMessage message={error} />}
-                        <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
-                            <div className={styles.formField}>
-                                <label htmlFor="username">Username:</label>
+            <div className={styles.contentBackgroundCover}>
+                <div className={styles.registerFormWrapper}>
+                    {error && <ErrorMessage message={error}/>}
+                    <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
+                        <div className={styles.formField}>
+                            <label htmlFor="username">Username:</label>
+                            <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                maxLength={20}
+                                value={form.username}
+                                autoComplete="off"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className={styles.formField}>
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                maxLength={50}
+                                value={form.email}
+                                autoComplete="off"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className={styles.formField}>
+                            <label htmlFor="rawPassword">Password:</label>
+                            <input
+                                type="password"
+                                name="rawPassword"
+                                id="rawPassword"
+                                maxLength={30}
+                                value={form.rawPassword}
+                                autoComplete="new-password"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className={styles.mainButtonWrapper}>
+                            <div className={styles.buttonWrapper}>
                                 <input
-                                    type="text"
-                                    name="username"
-                                    id="username"
-                                    maxLength={20}
-                                    value={form.username}
-                                    autoComplete="off"
-                                    onChange={handleChange}
-                                    required
+                                    className={cn(styles.headerButton, styles.cButton, styles.registerMainB)}
+                                    type="image"
+                                    src={registerButton}
+                                    alt="Register Button"
                                 />
                             </div>
-
-                            <div className={styles.formField}>
-                                <label htmlFor="email">Email:</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    maxLength={50}
-                                    value={form.email}
-                                    autoComplete="off"
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div className={styles.formField}>
-                                <label htmlFor="rawPassword">Password:</label>
-                                <input
-                                    type="password"
-                                    name="rawPassword"
-                                    id="rawPassword"
-                                    maxLength={30}
-                                    value={form.rawPassword}
-                                    autoComplete="new-password"
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div className={styles.mainButtonWrapper}>
-                                <div className={styles.buttonWrapper}>
-                                    <input
-                                        className={cn(styles.headerButton, styles.cButton, styles.registerMainB)}
-                                        type="image"
-                                        src={registerButton}
-                                        alt="Register Button"
-                                    />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
         </RedStyle>
     );
 };

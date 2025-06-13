@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import styles from "../styles/page/note_page.module.less";
 
 import SwampStyle from "../components/SwampStyle.tsx";
+import Loader from "../components/Loader.tsx";
+import ErrorMessage from "../components/message/ErrorMessage.tsx";
 import {useParams} from "react-router-dom";
 
 const currentPage = 5;
@@ -32,14 +34,21 @@ const NotePage: React.FC = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const res = await fetch(`${import.meta.env.VITE_API_BASE}/notes/${id}`);
-                if (!res.ok) {
-                    console.error("Failed to load note");
+                const response = await fetch(`${import.meta.env.VITE_API_BASE}/notes/${id}`);
+                if (!response.ok) {
+                    const data = await response.json();
+                    const errorMessage =
+                        data?.errors?.validation ??
+                        data?.message ??
+                        data?.error ??
+                        "Note not found.";
+
+                    setError(errorMessage);
                 }
-                const data: NoteReadDto = await res.json();
+                const data: NoteReadDto = await response.json();
                 setNote(data);
             } catch (e) {
-                if(e instanceof Error) {
+                if (e instanceof Error) {
                     setError(e.message || "Unknown error");
                 }
             } finally {
@@ -52,22 +61,28 @@ const NotePage: React.FC = () => {
         }
     }, [id]);
 
-    if (loading) {
-        return <div>Loading note...</div>;
-    }
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
 
-    if (error) {
-        return <div>Error loading note: {error}</div>;
+        return () => clearTimeout(timeout);
+    }, []);
+
+
+    if (loading) {
+        return <Loader/>;
     }
 
     if (!note) {
-        return <div>Note not found</div>;
+        return error && <ErrorMessage message={error}/>
     }
 
 
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
             <main className={styles.main}>
+                {error && <ErrorMessage message={error}/>}
                 <div className={styles.noteForm}>
                     <div className={styles.noteTextWrapper}>
                         <div className={styles.noteHeader}>
