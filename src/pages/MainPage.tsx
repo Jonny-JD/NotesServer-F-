@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Loader from "../components/Loader.tsx";
 import cn from "classnames";
 import styles from "../styles/page/main_page.module.less";
@@ -13,34 +13,49 @@ const MainPage: React.FC = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
+    // Сохраняем время старта лоадера
+    const startTimeRef = useRef(Date.now());
+
     useEffect(() => {
         let timeoutId: ReturnType<typeof setTimeout>;
+        let minLoadingTimeoutId: ReturnType<typeof setTimeout>;
+
+        const hideLoader = () => {
+            const elapsed = Date.now() - startTimeRef.current;
+            const remaining = 1000 - elapsed; // 1000 мс = 1 секунда минимум
+
+            if (remaining > 0) {
+                // Ждём остаток до 1 секунды
+                minLoadingTimeoutId = setTimeout(() => setLoading(false), remaining);
+            } else {
+                setLoading(false);
+            }
+        };
 
         const handleLoad = () => {
             console.log("Load event fired");
-            setLoading(false);
             clearTimeout(timeoutId);
+            hideLoader();
         };
 
-        console.log("Document readyState:", document.readyState);
-
         if (document.readyState === "complete") {
-            // Если уже загружено, сразу выключаем лоадер
-            handleLoad();
+            // Уже загружено - скрываем лоадер с задержкой, если нужно
+            hideLoader();
         } else {
             window.addEventListener("load", handleLoad);
 
-            // Фоллбек: через 5 секунд убираем лоадер в любом случае, чтобы не зависать
+            // Фоллбек: через 5 секунд убираем лоадер (с задержкой)
             timeoutId = setTimeout(() => {
                 console.warn("Fallback timeout triggered — hiding loader");
-                setLoading(false);
                 window.removeEventListener("load", handleLoad);
+                hideLoader();
             }, 5000);
         }
 
         return () => {
             window.removeEventListener("load", handleLoad);
             clearTimeout(timeoutId);
+            clearTimeout(minLoadingTimeoutId);
         };
     }, []);
 
