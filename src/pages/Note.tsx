@@ -6,7 +6,8 @@ import ErrorMessage from "../components/message/ErrorMessage.tsx";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import editNoteButton from "../assets/img/swamp/svg/edit_note_button.svg";
 import deleteNoteButton from "../assets/img/swamp/svg/delete_note_button.svg";
-import privateButton from "../assets/img/swamp/svg/private_button.svg";
+import privateButton from "../assets/img/swamp/svg/private_edit_button.svg";
+import saveButton from "../assets/img/swamp/svg/save_button.svg";
 import cn from "classnames";
 
 const currentPage = 5;
@@ -194,21 +195,21 @@ const NotePage: React.FC = () => {
                                             onClick={() => setIsPrivate(!isPrivate)}
                                         />
                                     </div>
-                                    <div className={styles.buttonWrapper}>
-                                        <button
-                                            type="button"
-                                            onClick={handleSave}
+                                    <div className={cn(styles.buttonWrapper, styles.saveButton)}>
+                                        <img
+                                            src={saveButton}
+                                            alt="Save note"
                                             style={{cursor: "pointer"}}
-                                        >
-                                            Save
-                                        </button>
+                                            onClick={handleSave}
+
+                                        />
                                     </div>
                                 </>
                             ) : (
                                 <>
                                     <div className={styles.buttonWrapper}>
                                         <img
-                                            className={cn(styles.editButton)}
+                                            className={styles.editButton}
                                             src={editNoteButton}
                                             alt="Edit Note"
                                             style={{cursor: "pointer"}}
@@ -217,7 +218,7 @@ const NotePage: React.FC = () => {
                                     </div>
                                     <div className={cn(styles.buttonWrapper, styles.deleteButtonWrapper)}>
                                         <img
-                                            className={cn(styles.deleteButton)}
+                                            className={styles.deleteButton}
                                             src={deleteNoteButton}
                                             alt="Delete Note"
                                             style={{cursor: "pointer"}}
