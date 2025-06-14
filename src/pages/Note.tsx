@@ -89,7 +89,16 @@ const NotePage: React.FC = () => {
                 if (response.ok) {
                     navigate("/notes/my");
                 } else {
-                    alert("Failed to delete note.");
+                    const data = await response.json();
+
+                    const errorMessage =
+                        data?.errors?.validation ??
+                        data?.message ??
+                        data?.error ??
+                        "Failed to delete note";
+
+                    setError(errorMessage);
+                    return;
                 }
             } catch {
                 alert("Error while deleting note.");
@@ -114,7 +123,14 @@ const NotePage: React.FC = () => {
 
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message || "Failed to update note");
+
+                const errorMessage =
+                    data?.errors?.validation ??
+                    data?.message ??
+                    data?.error ??
+                    "Failed to update note";
+
+                setError(errorMessage);
                 return;
             }
 
@@ -127,13 +143,13 @@ const NotePage: React.FC = () => {
     };
 
     if (!note) {
-        return error && <ErrorMessage message={error} />;
+        return error && <ErrorMessage message={error}/>;
     }
 
     return (
         <SwampStyle currentPage={currentPage} totalPages={totalPages}>
             <main className={styles.main}>
-                {error && <ErrorMessage message={error} />}
+                {error && <ErrorMessage message={error}/>}
                 <div className={styles.noteForm}>
                     <div className={styles.noteTextWrapper}>
                         <div className={styles.noteHeader}>

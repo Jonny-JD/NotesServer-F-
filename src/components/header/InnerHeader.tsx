@@ -15,6 +15,7 @@ import newNoteButon from "@/assets/img/swamp/svg/new_note_button.svg";
 import logoutButton from "@/assets/img/swamp/svg/logout_button.svg";
 import headerBar from "@/assets/img/swamp/svg/header_bar.svg";
 import topLine from "@/assets/img/swamp/svg/top_line.svg";
+import ErrorMessage from "../message/ErrorMessage.tsx";
 
 interface InnerHeaderProps {
     currentPage: number;
@@ -75,7 +76,6 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
     return (
         <header className={styles.header}>
             <div className={styles.headerLeft}>
-                {error && <p style={{color: "red"}}>{error}</p>}
                 <div className={styles.logoContainer}>
                     <img className={styles.logo} src={logo} alt="Logo" />
                     <div className={styles.logoTextWrapper}>
@@ -125,6 +125,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ currentPage, totalPages }) =>
                                 onClick={goToNoteCreate}
                             />
                         </div>
+                        {error && <ErrorMessage message={error}/>}
                     </div>
                 </div>
             </div>

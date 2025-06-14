@@ -50,7 +50,6 @@ const SwampStyle: React.FC<SwampStyleProps> = ({children, currentPage, totalPage
         navigate(`/notes/${noteId}`);
     };
     const goToDiscover = () => {
-        console.log("clicked!");
         navigate("/notes/discover");
     };
     return (
