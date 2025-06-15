@@ -67,8 +67,7 @@ html {
     "main"
     "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 7fr 1fr;
-  background-color: aliceblue;
+  grid-template-rows: 1fr 8fr 1fr;
   background-image: url("../../assets/img/red/background/background.png");
   background-attachment: fixed;
   background-position: center;
@@ -83,9 +82,9 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   margin: 0 @common-margins;
   height: fit-content;
+  gap: 3vw;
 
   .mainButton {
     width: 30vw;
@@ -135,7 +134,7 @@ html {
 .redNumber {
   position: absolute;
   left: 0;
-  top: 30%;
+  top: 35%;
   height: 25%;
 }
 
@@ -145,8 +144,9 @@ html {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  height: fit-content;
   align-self: center;
-  margin-top: auto;
+  margin-top: 10vh;
 
   .footerLine {
     display: flex;
@@ -253,6 +253,9 @@ html {
         }
       }
     }
+  }
+  .footer {
+    margin-top: auto;
   }
 }
 
