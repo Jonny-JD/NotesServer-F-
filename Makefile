@@ -15,3 +15,6 @@ clean:
 
 push:
 	docker push $(IMAGE_NAME)
+
+kube-update-deployment:
+	kubectl set image deployment/frontend frontend=${IMAGE_NAME} -n prod
