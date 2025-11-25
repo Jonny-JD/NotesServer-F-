@@ -17,9 +17,10 @@ clean:
 push:
 	docker push $(IMAGE_NAME)
 
-IMAGE_NAME=$(IMAGE_NAME) \
-	envsubst < infra/k8s/prod/frontend-test-deployment.yaml \
-	| kubectl apply -f -
+kube-deploy:
+	IMAGE_NAME=$(IMAGE_NAME) \
+		envsubst < infra/k8s/frontend-test-deployment.yaml \
+		| kubectl apply -f -
 
 kube-update-deployment:
 	kubectl set image deployment/frontend frontend=${IMAGE_NAME} -n prod
