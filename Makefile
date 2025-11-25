@@ -1,5 +1,6 @@
 APP_NAME=notes-frontend
-IMAGE_NAME=$(DOCKERHUB_USERNAME)/$(APP_NAME):latest
+IMAGE_NAME=$(DOCKERHUB_USERNAME)/$(APP_NAME):$(GITHUB_SHA)
+export GITHUB_SHA
 
 .PHONY: build docker-run clean login push
 
