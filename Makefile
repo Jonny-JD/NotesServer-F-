@@ -2,7 +2,7 @@ APP_NAME=notes-frontend
 IMAGE_NAME=$(DOCKERHUB_USERNAME)/$(APP_NAME):$(GITHUB_SHA)
 export GITHUB_SHA
 
-.PHONY: build docker-run clean kube-update-deployment push kube-deploy
+.PHONY: build docker-run clean push
 
 build:
 	docker build -t ${IMAGE_NAME} .
@@ -16,11 +16,3 @@ clean:
 
 push:
 	docker push $(IMAGE_NAME)
-
-kube-deploy:
-	IMAGE_NAME=$(IMAGE_NAME) \
-		envsubst < infra/k8s/frontend-test-deployment.yaml \
-		| kubectl apply -f -
-
-kube-update-deployment:
-	kubectl set image deployment/frontend frontend=${IMAGE_NAME} -n prod
