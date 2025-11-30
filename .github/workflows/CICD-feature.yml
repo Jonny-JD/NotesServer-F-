@@ -19,18 +19,18 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }}
           
         
-        - name: Run make build
+        - name: Run make build-feature
           env: 
             DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
             DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
             GITHUB_SHA: ${{ github.sha }}
-          run: make build
+          run: make build-feature
 
-        - name: Run make push
+        - name: Run make push-feature
           env: 
               DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
               DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          run: make push
+          run: make push-feature
           
         - name: Notify infra repo to deploy
           run: |
