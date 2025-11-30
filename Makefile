@@ -1,11 +1,15 @@
 APP_NAME=notes-frontend
 IMAGE_NAME=$(DOCKERHUB_USERNAME)/$(APP_NAME):$(GITHUB_SHA)
+IMAGE_NAME_TEST=$(DOCKERHUB_USERNAME)/$(APP_NAME):$(GITHUB_SHA)-test
 export GITHUB_SHA
 
-.PHONY: build docker-run clean push
+.PHONY: build docker-run clean push build-test push-test
 
 build:
 	docker build -t ${IMAGE_NAME} .
+
+build-test:
+	docker build -t ${IMAGE_NAME_TEST} .
 
 docker-run:
 	docker run -p 80:80 --name $(APP_NAME)-container $(IMAGE_NAME)
@@ -16,3 +20,6 @@ clean:
 
 push:
 	docker push $(IMAGE_NAME)
+
+push-test:
+	docker push $(IMAGE_NAME_TEST)
