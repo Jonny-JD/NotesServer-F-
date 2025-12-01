@@ -4,7 +4,7 @@ IMAGE_NAME_TEST=$(DOCKERHUB_USERNAME)/$(APP_NAME):$(GITHUB_SHA)-test
 IMAGE_NAME_FEATURE=$(DOCKERHUB_USERNAME)/$(APP_NAME):$(GITHUB_SHA)-feature
 export GITHUB_SHA
 
-.PHONY: build docker-run clean push build-test build-feature push-test push-feature
+.PHONY: build docker-run clean push build-test build-feature push-test push-feature test-c
 
 build:
 	docker build -t ${IMAGE_NAME} .
