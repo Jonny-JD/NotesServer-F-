@@ -1,7 +1,6 @@
 import * as React from "react";
-import type {DeviceTypes} from "../types.ts";
 
-export const Main: React.FC<DeviceTypes> = () => (
+export const Main: React.FC = () => (
     <main className="main">
 
     </main>

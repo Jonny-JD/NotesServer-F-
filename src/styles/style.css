@@ -31,21 +31,33 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 10%;
 }
 
 .logo {
-    transform: translateY(25%);
-    z-index: 1;
-    width: calc(100vw * 0.65);
+    width: calc(100vw * 0.5);
+    position: relative;
+    display: block;
+
 }
 
 .header-line, .footer-line {
     width: 100%;
 }
 
+picture {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
 .main {
     flex: 1;
-    background-image: url("../assets/mobile/svg/elements/gear_bg.svg");
+    background-image: url("../assets/gear_bg.png");
+    background-size: contain;
+    background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -54,14 +66,23 @@ html, body {
     min-height: 7%;
 }
 
-@media screen and (max-width: 600px) {
-    .main {
-        background-image: url("../assets/tablet/svg/elements/gear_bg.svg");
+@media screen and (min-width: 480px) {
+
+    .logo {
+        width: calc(100vw * 0.55);
     }
 }
 
-@media screen and (max-width: 1024px) {
-    .main {
-        background-image: url("../assets/desktop/svg/elements/gear_bg.svg");
+@media screen and (min-width: 740px) {
+    .logo {
+        width: calc(100vw * 0.45);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .logo {
+        width: calc(100vw * 0.3);
+        margin-top: 1%;
     }
 }
