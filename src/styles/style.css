@@ -1,0 +1,67 @@
+
+:root {
+    --main-bg-color: #090A03;
+    --cyber-sea-color: #07596E;
+    --cyber-sand-color: #C9684D;
+    --cyber-pink-color: #E82E5A;
+    --cyber-red-color: #D43C37;
+    --cyber-cyan-color: #64E6F4;
+    --cyber-shrimp-color: #E85D5A;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+.wrapper {
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    transform: translateY(25%);
+    z-index: 1;
+    width: calc(100vw * 0.65);
+}
+
+.header-line, .footer-line {
+    width: 100%;
+}
+
+.main {
+    flex: 1;
+    background-image: url("../assets/mobile/svg/elements/gear_bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.footer {
+    min-height: 7%;
+}
+
+@media screen and (max-width: 600px) {
+    .main {
+        background-image: url("../assets/tablet/svg/elements/gear_bg.svg");
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .main {
+        background-image: url("../assets/desktop/svg/elements/gear_bg.svg");
+    }
+}

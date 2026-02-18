@@ -1,45 +1,37 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {AuthProvider} from "./context/AuthProvider.tsx";
 
-import Home from "./pages/MainPage.tsx";
-import Register from "./pages/RegisterPage.tsx";
-import Login from "./pages/LoginPage.tsx";
-import Note from "./pages/Note.tsx";
-import NoteCreate from "./pages/NoteCreatePage.tsx";
-import Search from "./pages/Search.tsx";
-import Discover from "./pages/DiscoverPage.tsx";
-import ProtectedRoute from "./components/ProtectedRoute.tsx";
-import NotFound from "./pages/NotFoundPage.tsx";
-import useRestrictToExtendedLatin from "./hook/useRestrictToExtendedLatin.tsx";
-import useTabInTextarea from "./hook/useTabInTextarea.tsx";
-import UserNotesPage from "./pages/UserNotesPage.tsx";
-import GlobalLoader from "./components/GlobalLoader.tsx";
+import {Wrapper} from "./components/wrapper/Wrapper.tsx";
+import type {DeviceTypes} from "./components/types.ts";
+import {useEffect, useState} from "react";
+
 
 const App = () => {
-    useRestrictToExtendedLatin();
-    useTabInTextarea();
+
+    const [device, setDevice] = useState<DeviceTypes>({device: 'mobile'});
+
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width < 600) {
+                setDevice({device: 'mobile'});
+            } else if (width < 1024) {
+                setDevice({device: 'tablet'});
+            } else {
+                setDevice({device: 'desktop'});
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+    }, [device]);
+
     return (
-        <>
-            <GlobalLoader />
-            <AuthProvider>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/registration" element={<Register/>}/>
-                        <Route path="*" element={<NotFound/>}/>
-                        <Route path="/notes/discover" element={<Discover/>}/>
-                        <Route path="/notes/:id" element={<Note/>}/>
-                        <Route element={<ProtectedRoute/>}>
-                            <Route path="/notes/create" element={<NoteCreate/>}/>
-                            <Route path="/notes" element={<Note/>}/>
-                            <Route path="/notes/search" element={<Search/>}/>
-                            <Route path="/notes/my" element={<UserNotesPage/>}/>
-                        </Route>
-                    </Routes>
-                </BrowserRouter>
-            </AuthProvider>
-        </>
+
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Wrapper device={device.device}/>}/>
+            </Routes>
+        </BrowserRouter>
+
     );
 };
 
