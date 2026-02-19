@@ -1,0 +1,45 @@
+.main-content{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--cyber-cyan-color);
+}
+
+.greeting-text {
+    border: 20px solid transparent;
+    border-image: url("../../assets/mobile/svg/elements/curved-frame.svg") 25 stretch;
+    margin-top: 2rem;
+    width: calc(100vmin - 5rem);
+}
+
+p {
+    padding: 0 0.5rem;
+    margin: 0;
+}
+
+.interaction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 480px) {
+    .greeting-text {
+        border-image: url("../../assets/mobile/svg/elements/curved-frame.svg") 25 stretch;
+    }
+}
+@media screen and (min-width: 740px) {
+    .greeting-text {
+        border-image: url("../../assets/tablet/svg/elements/curved-frame.svg") 25 stretch;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+   .greeting-text {
+       border-image: url("../../assets/desktop/svg/elements/curved-frame.svg") 25 stretch;
+   }
+
+}

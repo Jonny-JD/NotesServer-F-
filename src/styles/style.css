@@ -7,6 +7,7 @@
     --cyber-red-color: #D43C37;
     --cyber-cyan-color: #64E6F4;
     --cyber-shrimp-color: #E85D5A;
+    --cyber-ivory-color: #dae3e1;
 }
 
 @font-face {
@@ -24,8 +25,113 @@ html, body {
     font-weight: normal;
     font-size: calc(12px + 1vmin);
     line-height: calc(10px + 3vmin);
+    color: var(--cyber-sea-color);
 }
 
+
+button {
+    border: 10px solid transparent;
+    border-image: url("../assets/buttons/button.svg") 18 stretch;
+    font-family: "Rajdhali", sans-serif;
+    font-weight: bolder;
+    font-size: calc(8px + 1vmin);
+    color: var(--cyber-cyan-color);
+    background: transparent;
+    margin-top: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.21s all;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 94% 100%, 0 100%);
+    width: calc(120 * 1px);
+    min-width: max-content;
+    padding: 0.2rem 1rem;
+}
+
+button:hover {
+    filter: drop-shadow(0 0 0 var(--cyber-cyan-color));
+}
+
+button:active {
+    filter: drop-shadow(0 0 3px var(--cyber-cyan-color));
+}
+
+.footer {
+    min-height: 7%;
+    position: sticky;
+    bottom: 0;
+    margin-bottom: 5vmin;
+    margin-top: 3%;
+    background-color: var(--main-bg-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+}
+
+.form-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    width: fit-content;
+}
+
+input {
+    background: none;
+    border: 8px solid;
+    border-image: url("../assets/input.svg") 15 stretch;
+    color: var(--cyber-ivory-color);
+    font-weight: bold;
+    font-size: calc(12px + 1vmin);
+    text-shadow: 0 0 1px var(--cyber-ivory-color);
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+
+label {
+    font-weight: bold;
+    color: var(--cyber-sea-color);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 10%;
+    position: sticky;
+    top: 0;
+    background-color: var(--main-bg-color);
+}
+
+.header-line, .footer-line {
+    width: 100%;
+}
+
+.logo {
+    width: calc(100vmin * 0.6);
+    position: relative;
+    display: block;
+
+}
+
+.main {
+    flex: 1;
+    background-image: url("../assets/gear_bg.png");
+    background-size: contain;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 p {
 
@@ -41,6 +147,16 @@ p {
     hyphens: auto;
 }
 
+
+
+picture {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
 #root {
     height: 100%;
 }
@@ -53,69 +169,20 @@ p {
     min-height: 100%;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 10%;
-    position: sticky;
-    top: 0;
-    background-color: var(--main-bg-color);
-}
-
-.logo {
-    width: calc(100vmin * 0.6);
-    position: relative;
-    display: block;
-
-}
-
-.header-line, .footer-line {
-    width: 100%;
-}
-
-picture {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-}
-
-.main {
-    flex: 1;
-    background-image: url("../assets/gear_bg.png");
-    background-size: contain;
-    background-attachment: scroll;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.footer {
-    min-height: 7%;
-    position: sticky;
-    bottom: 0;
-    margin-bottom: 5vmin;
-    margin-top: 3%;
-    background-color: var(--main-bg-color);
-}
-
 @media screen and (min-width: 480px) {
-
     .logo {
         width: calc(100vmin * 0.55);
     }
 }
 
 @media screen and (min-width: 740px) {
+
     .logo {
         width: calc(100vw * 0.4);
     }
 }
 
 @media screen and (min-width: 1024px) {
-
     .logo {
         width: calc(100vw * 0.25);
         margin-top: 1%;
