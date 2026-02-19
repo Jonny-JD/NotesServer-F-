@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import path from 'node:path';
 
 export default defineConfig({
     plugins: [react()],
     css: {
         modules: {
             generateScopedName: '[name]__[local]__[hash:base64:5]',
+            localsConvention: 'camelCase',
         },
     },
     server: {

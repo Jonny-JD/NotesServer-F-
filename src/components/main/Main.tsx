@@ -1,7 +1,8 @@
-import * as React from "react";
 
-export const Main: React.FC = () => (
+import type {ReactNode} from "react";
+
+export const Main = ({children}: {children: ReactNode}) => (
     <main className="main">
-
+        {children}
     </main>
 )

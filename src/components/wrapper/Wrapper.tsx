@@ -1,14 +1,13 @@
 import {Header} from "../header/Header.tsx";
-import {Main} from "../main/Main.tsx";
 import {Footer} from "../footer/Footer.tsx";
-import * as React from "react";
 import "../../styles/style.css";
+import type {ReactNode} from "react";
 
-export const Wrapper: React.FC = () => (
+export const Wrapper= ({children}: {children: ReactNode}) => (
     (
         <div className="wrapper">
             <Header />
-            <Main />
+            {children}
             <Footer />
         </div>
     )

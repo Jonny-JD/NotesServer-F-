@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-import {Wrapper} from "./components/wrapper/Wrapper.tsx";
+import {GreetingPage} from "./pages/GreetingPage.tsx";
+import {MainPage} from "./pages/MainPage.tsx";
 
 
 const App = () => {
@@ -9,7 +10,8 @@ const App = () => {
 
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Wrapper/>}/>
+                <Route path="/" element={<GreetingPage/>}/>
+                <Route path="/main" element={<MainPage/>}/>
             </Routes>
         </BrowserRouter>
 

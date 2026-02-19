@@ -9,10 +9,36 @@
     --cyber-shrimp-color: #E85D5A;
 }
 
+@font-face {
+    font-family: "Rajdhali";
+    src: url("../assets/fonts/Rajdhani-Regular.woff2") format("woff2"), url("../assets/fonts/Rajdhani-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: "Rajdhali", sans-serif;
+    font-weight: normal;
+    font-size: calc(12px + 1vmin);
+    line-height: calc(10px + 3vmin);
+}
+
+
+p {
+
+    -moz-hyphens: auto;
+
+    -ms-hyphens: auto;
+    -ms-hyphenate-limit-chars: 6 3 3;
+    -ms-hyphenate-limit-lines: 2;
+    -ms-hyphenate-limit-zone: 8%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    hyphens: auto;
 }
 
 #root {
@@ -23,7 +49,8 @@ html, body {
     background-color: var(--main-bg-color);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: fit-content;
+    min-height: 100%;
 }
 
 .header {
@@ -32,10 +59,13 @@ html, body {
     align-items: center;
     justify-content: center;
     min-height: 10%;
+    position: sticky;
+    top: 0;
+    background-color: var(--main-bg-color);
 }
 
 .logo {
-    width: calc(100vw * 0.5);
+    width: calc(100vmin * 0.6);
     position: relative;
     display: block;
 
@@ -64,25 +94,30 @@ picture {
 
 .footer {
     min-height: 7%;
+    position: sticky;
+    bottom: 0;
+    margin-bottom: 5vmin;
+    margin-top: 3%;
+    background-color: var(--main-bg-color);
 }
 
 @media screen and (min-width: 480px) {
 
     .logo {
-        width: calc(100vw * 0.55);
+        width: calc(100vmin * 0.55);
     }
 }
 
 @media screen and (min-width: 740px) {
     .logo {
-        width: calc(100vw * 0.45);
+        width: calc(100vw * 0.4);
     }
 }
 
 @media screen and (min-width: 1024px) {
 
     .logo {
-        width: calc(100vw * 0.3);
+        width: calc(100vw * 0.25);
         margin-top: 1%;
     }
 }
