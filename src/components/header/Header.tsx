@@ -1,7 +1,7 @@
 import headerLineDesktop from "../../assets/desktop/svg/elements/header_line.svg";
 import headerLineTablet from "../../assets/tablet/svg/elements/header_line.svg";
 import headerLineMobile from "../../assets/mobile/svg/elements/header_line.svg";
-import logoMobile from "../../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 import type {ReactNode} from "react";
 
 export const Header = (): ReactNode => {
@@ -10,7 +10,7 @@ export const Header = (): ReactNode => {
 
         <header className="header">
             <picture>
-                <img className="logo" src={logoMobile} alt="logo"/>
+                <img className="logo" src={logo} alt="logo"/>
             </picture>
 
             <picture>
