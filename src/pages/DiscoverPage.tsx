@@ -11,7 +11,7 @@ export const DiscoverPage = (): JSX.Element => {
                 <div className={styles.mainContent}>
                 </div>
                 <div className={styles.interaction}>
-                    <FilterBlock/>
+                    <FilterBlock header={"FILTER BY:"} fieldNames={["TAG", "TITLE", "AUTHOR", "DATE"]}/>
                 </div>
             </div>
         </Wrapper>

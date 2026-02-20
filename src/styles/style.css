@@ -124,6 +124,10 @@ input {
     text-shadow: 0 0 1px var(--cyber-ivory-color);
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
 
 input:focus-visible {
     outline: none;
@@ -171,7 +175,7 @@ label {
 }
 
 .options-form-label {
-    color: var(--cyber-shrimp-color);
+    color: var(--cyber-pink-color);
 }
 
 p {
