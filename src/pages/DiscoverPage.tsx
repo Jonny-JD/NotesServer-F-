@@ -1,7 +1,7 @@
 import type {JSX} from "react";
 import {Wrapper} from "../components/wrapper/Wrapper.tsx";
 import styles from "../styles/pages/DiscoverPage.module.css"
-import {FilterBlock} from "../components/main/FilterBlock.tsx";
+import {OptionsBlock} from "../components/main/OptionsBlock.tsx";
 
 
 export const DiscoverPage = (): JSX.Element => {
@@ -11,7 +11,7 @@ export const DiscoverPage = (): JSX.Element => {
                 <div className={styles.mainContent}>
                 </div>
                 <div className={styles.interaction}>
-                    <FilterBlock header={"FILTER BY:"} fieldNames={["TAG", "TITLE", "AUTHOR", "DATE"]}/>
+                    <OptionsBlock header={"FILTER BY:"} fieldNames={["TAG", "TITLE", "AUTHOR", "DATE"]} buttonName={"FILTER"}/>
                 </div>
             </div>
         </Wrapper>

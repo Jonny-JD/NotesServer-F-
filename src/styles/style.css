@@ -28,10 +28,27 @@ html, body {
     color: var(--cyber-sea-color);
 }
 
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+    align-content: center;
+    padding: 1rem;
+}
+
+.aside-interaction-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+aside button {
+    width: 100%;
+}
 
 button {
     border: 10px solid transparent;
-    border-image: url("../assets/buttons/button.svg") 18 stretch;
+    border-image: url("../assets/buttons/button.svg") 20 stretch;
     font-family: "Rajdhali", sans-serif;
     font-weight: bolder;
     font-size: calc(8px + 1vmin);
@@ -47,6 +64,11 @@ button {
     min-width: max-content;
     padding: 0.2rem 1rem;
     height: fit-content;
+    z-index: 0;
+}
+
+button.red-button {
+    color: var(--cyber-shrimp-color);
 }
 
 button:hover {
@@ -55,6 +77,15 @@ button:hover {
 
 button:active {
     filter: drop-shadow(0 0 3px var(--cyber-cyan-color));
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    min-height: 100%;
+    flex: 1;
+
 }
 
 .footer {
@@ -86,7 +117,7 @@ form {
 .filter-block {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     align-self: center;
     margin-top: 1rem;
@@ -108,6 +139,7 @@ form {
     position: sticky;
     top: 0;
     background-color: var(--main-bg-color);
+    z-index: 10;
 }
 
 .header-line, .footer-line {
@@ -148,7 +180,7 @@ label {
 
 .main {
     flex: 1;
-    background-image: url("../assets/gear_bg.png");
+    background-image: url("../assets/gear_bg.svg");
     background-size: contain;
     background-attachment: scroll;
     background-repeat: no-repeat;
@@ -264,8 +296,6 @@ picture {
     transform: translateX(1.5rem);
 }
 
-
-
 .wrapper {
     background-color: var(--main-bg-color);
     display: flex;
@@ -281,11 +311,11 @@ picture {
 }
 
 @media screen and (min-width: 740px) {
-
     .logo {
         width: calc(100vw * 0.4);
     }
 }
+
 
 @media screen and (min-width: 1024px) {
     .logo {
