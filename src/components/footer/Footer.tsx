@@ -2,9 +2,21 @@
 import footerLineDesktop from "../../assets/desktop/svg/elements/footer_line.svg";
 import footerLineTablet from "../../assets/tablet/svg/elements/footer_line.svg";
 import footerLineMobile from "../../assets/mobile/svg/elements/footer_line.svg";
-import type {ReactNode} from "react";
+import {type ReactNode, useEffect, useState} from "react";
+import {Dropdown} from "./Dropdown.tsx";
 
 export const Footer = (): ReactNode => {
+
+    const [showAside, setShowAside] = useState(window.innerWidth <= 1024);
+
+    useEffect(() => {
+        const onResize = () => setShowAside(window.innerWidth <= 1024);
+        window.addEventListener("resize", onResize);
+        return (() => window.removeEventListener("resize", onResize));
+    },[])
+
+
+
     return (
         <footer className="footer">
             <picture>
@@ -12,6 +24,7 @@ export const Footer = (): ReactNode => {
                 <source media="(min-width: 480px)" srcSet={footerLineTablet} />
                 <img className="footer-line" src={footerLineMobile} alt="footer-line" />
             </picture>
+            {showAside && <Dropdown/>}
         </footer>
     )
 }

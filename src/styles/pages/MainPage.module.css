@@ -17,11 +17,3 @@
         width: fit-content;
     }
 }
-
-@media screen and (min-width: 1024px) {
-
-    .logo {
-        width: calc(100vw * 0.25);
-        margin-top: 1%;
-    }
-}

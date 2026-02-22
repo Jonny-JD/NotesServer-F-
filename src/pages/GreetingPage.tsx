@@ -1,5 +1,4 @@
 import styles from "../styles/pages/GreetingPage.module.css"
-import {Wrapper} from "../components/wrapper/Wrapper.tsx";
 import type {JSX} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -8,7 +7,7 @@ export const GreetingPage = (): JSX.Element => {
 
     const navigate = useNavigate();
     return (
-        <Wrapper>
+        <>
             <div className={styles.mainContent}>
                 <div className={styles.greetingText}>
                     <p>
@@ -26,6 +25,6 @@ export const GreetingPage = (): JSX.Element => {
                     CONNECT
                 </button>
             </div>
-        </Wrapper>
+        </>
     );
 };

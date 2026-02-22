@@ -88,11 +88,30 @@ button:active {
 
 }
 
+.dropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-button {
+    display: flex;
+    border: none;
+    background-image: url("../assets/buttons/dropdown.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: calc(7vmin);
+    height: calc(7vmin);
+    margin: 0;
+}
+
 .footer {
     min-height: 7%;
     position: sticky;
     bottom: 0;
-    margin-bottom: 5vmin;
+    margin-bottom: 2vmin;
     margin-top: 3%;
     background-color: var(--main-bg-color);
 }
@@ -318,6 +337,9 @@ picture {
 
 
 @media screen and (min-width: 1024px) {
+    footer {
+        margin-bottom: 5vmin;
+    }
     .logo {
         width: calc(100vw * 0.25);
         margin-top: 1%;
