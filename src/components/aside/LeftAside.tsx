@@ -1,26 +1,24 @@
 import type {JSX} from "react";
+import type {MenuOption} from "../types.ts";
 
 
-export const LeftAside = (): JSX.Element => {
+export const LeftAside = (props: {menuOptions: MenuOption[]}): JSX.Element => {
+
+    const isLoggedIn = true; //TODO auth
+
+    const visibleOptions = props.menuOptions.filter(menuOption => !menuOption.requiresLogin || isLoggedIn);
+
     return (
         <aside>
             <div className={"aside-interaction-buttons"}>
-                <button>
-                    DISCOVER
-                </button>
-                <button>
-                    MY NOTES
-                </button>
-                <button>
-                    CREATE
-                </button>
-                <button>
-                    PROFILE
-                </button>
+                {visibleOptions.map((option) =>(
+                    <button key={option.label}
+                            onClick={(e) => option.onClick(e)}>
+                        {option.label}
+                    </button>
+                )
+                )}
             </div>
-            <button className={"red-button"}>
-                LOGOUT
-            </button>
         </aside>
     )
 }

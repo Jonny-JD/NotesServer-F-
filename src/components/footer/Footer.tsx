@@ -4,8 +4,10 @@ import footerLineTablet from "../../assets/tablet/svg/elements/footer_line.svg";
 import footerLineMobile from "../../assets/mobile/svg/elements/footer_line.svg";
 import {type ReactNode, useEffect, useState} from "react";
 import {Dropdown} from "./Dropdown.tsx";
+import type {MenuOption} from "../types.ts";
 
-export const Footer = (): ReactNode => {
+export const Footer = (props: {menuOptions: MenuOption[]}): ReactNode => {
+
 
     const [showAside, setShowAside] = useState(window.innerWidth <= 1024);
 
@@ -24,7 +26,7 @@ export const Footer = (): ReactNode => {
                 <source media="(min-width: 480px)" srcSet={footerLineTablet} />
                 <img className="footer-line" src={footerLineMobile} alt="footer-line" />
             </picture>
-            {showAside && <Dropdown/>}
+            {showAside && <Dropdown menuOptions={props.menuOptions}/>}
         </footer>
     )
 }

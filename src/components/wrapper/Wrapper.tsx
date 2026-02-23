@@ -3,11 +3,13 @@ import {Footer} from "../footer/Footer.tsx";
 import "../../styles/style.css";
 import {type JSX, useEffect, useState} from "react";
 import {Main} from "../main/Main.tsx";
+import type {MenuOption} from "../types.ts";
 
 
 type Props = {
     children: JSX.Element;
     aside?: JSX.Element;
+    menuOptions: MenuOption[];
 }
 
 export const Wrapper = (props: Props) => {
@@ -17,7 +19,7 @@ export const Wrapper = (props: Props) => {
         const onResize = () => setShowPanel(window.innerWidth > 1024);
         window.addEventListener("resize", onResize);
         return (() => window.removeEventListener("resize", onResize));
-    },[]);
+    }, []);
 
     return (
         <div className="wrapper">
@@ -26,7 +28,7 @@ export const Wrapper = (props: Props) => {
                 {showPanel && props.aside}
                 <Main>{props.children}</Main>
             </div>
-            <Footer/>
+            <Footer menuOptions={props.menuOptions}/>
         </div>
     );
 };
