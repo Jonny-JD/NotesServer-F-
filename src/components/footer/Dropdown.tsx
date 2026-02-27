@@ -28,7 +28,11 @@ export const Dropdown = (props: { menuOptions: MenuOption[] }): JSX.Element => {
                 <div className={"dropdown-options"}>
                     {visibleOptions.map((option) => (
 
-                            <button key={option.label} type={"button"} className={"dropdown-option"} onClick={(e) => {
+                            <button key={option.label} type={"button"}
+                                    className={option.label.toLowerCase() === "logout"
+                                        ? "dropdown-option red-button"
+                                        : "dropdown-option" }
+                                    onClick={(e) => {
                                 option.onClick(e);
                                 setIsOpen(false);
                             }} id={option.label}>{option.label}</button>

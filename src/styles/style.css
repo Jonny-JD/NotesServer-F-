@@ -190,6 +190,8 @@ input {
     font-weight: bold;
     font-size: calc(12px + 1vmin);
     text-shadow: 0 0 1px var(--cyber-ivory-color);
+    font-family: "Rajdhali", sans-serif;
+
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {

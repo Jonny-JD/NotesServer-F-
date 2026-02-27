@@ -1,9 +1,9 @@
 import {type JSX, useState} from "react";
-import styles from "../styles/pages/DiscoverPage.module.css"
+import styles from "../styles/pages/MyNotesPage.module.css"
 import {OptionsBlock} from "../components/main/OptionsBlock.tsx";
 
 
-export const DiscoverPage = (): JSX.Element => {
+export const MyNotesPage = (): JSX.Element => {
     const [filter, setFilter] = useState(false);
 
     return (
@@ -12,12 +12,12 @@ export const DiscoverPage = (): JSX.Element => {
             </div>
             <div className={styles.interaction}>
                 {filter && <OptionsBlock header={"FILTER BY:"}
-                               fieldNames={["TAG", "TITLE", "AUTHOR", "DATE"]}
-                               buttonName={"FILTER"}
-                               onSubmit={(data) => {
-                                   console.log(data);
-                                   setFilter(!filter);
-                               }}/>}
+                                         fieldNames={["TAG", "TITLE", "DATE"]}
+                                         buttonName={"FILTER"}
+                                         onSubmit={(data) => {
+                                             console.log(data);
+                                             setFilter(!filter);
+                                         }}/>}
 
                 {!filter && <button onClick={(() => setFilter(!filter))}>FILTER</button>}
             </div>

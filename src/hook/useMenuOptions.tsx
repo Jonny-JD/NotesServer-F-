@@ -22,12 +22,12 @@ export const useMenuOptions = ():MenuOption[] => {
         },
         {
             label: "MY NOTES",
-            onClick: () =>  navigate("/edit"), //TODO
+            onClick: () =>  navigate("/my"),
             requiresLogin: true,
         },
         {
             label: "PROFILE",
-            onClick: () =>  navigate("/edit"), //TODO
+            onClick: () =>  navigate("/profile"),
             requiresLogin: true
         },
         {

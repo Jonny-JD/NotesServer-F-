@@ -10,6 +10,8 @@ import {EditNotePage} from "./pages/EditNotePage.tsx";
 import {NotePage} from "./pages/NotePage.tsx";
 import {SimpleLayout} from "./components/SimpleLayout.tsx";
 import {MainLayout} from "./components/MainLayout.tsx";
+import {MyNotesPage} from "./pages/MyNotesPage.tsx";
+import {ProfilePage} from "./pages/ProfilePage.tsx";
 
 const App = () => {
 
@@ -25,6 +27,8 @@ const App = () => {
                 </Route>
                 <Route element={<MainLayout/>}>
                     <Route path="/discover" element={<DiscoverPage/>}/>
+                    <Route path="/my" element={<MyNotesPage/>}/>
+                    <Route path="/profile" element={<ProfilePage/>}/>
                     <Route path="/create" element={<CreatePage/>}/>
                     <Route path="/edit" element={<EditNotePage/>}/>
                     <Route path="/note" element={<NotePage/>}/>

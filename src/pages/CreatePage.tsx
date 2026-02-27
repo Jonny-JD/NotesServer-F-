@@ -12,8 +12,11 @@ export const CreatePage = (): JSX.Element => {
             <div className={styles.interaction}>
                 <OptionsBlock header={"NOTE OPTIONS:"}
                               fieldNames={["TAG", "TITLE", "PRIVATE"]}
-                              buttonName={"CREATE"}/>
+                              buttonName={"CREATE"}
+                              onSubmit={(data) => console.log(data)}/>
             </div>
         </div>
     );
 }
+
+//TODO fetch

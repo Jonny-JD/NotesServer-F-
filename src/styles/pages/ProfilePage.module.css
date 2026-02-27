@@ -1,0 +1,64 @@
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 7vmax;
+}
+
+.profile-form {
+    justify-self: center;
+    order: 2;
+    display: flex;
+
+}
+
+
+.profile-form-cell {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-form-cell input {
+    font-weight: unset;
+    background: none;
+    color: var(--cyber-ivory-color);
+    font-size: calc(12px + 1vmin);
+    text-shadow: 0 0 1px var(--cyber-ivory-color);
+    margin-left: auto;
+    flex: 1;
+}
+
+
+.profile-form-cell span {
+    font-weight: bold;
+    color: var(--cyber-ivory-color);
+}
+
+.profile-form-label {
+    width: 120px;
+    color: var(--cyber-sand-color);
+    font-weight: bold;
+
+}
+
+
+
+.profile-form-cell button {
+    margin-top: 0;
+    width: 30%;
+    height: fit-content;
+}
+
+.password-form-cell input {
+    font-weight: unset;
+}
+
+.password-change-button {
+    width: fit-content;
+    border: none;
+    margin-top: 0;
+    padding: 0;
+}

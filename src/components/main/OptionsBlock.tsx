@@ -1,12 +1,32 @@
-import {type JSX} from "react";
+import type {JSX, SubmitEvent} from "react";
+
+type OptionsBlockProps = {
+    header: string;
+    fieldNames: string[];
+    buttonName: string;
+    onSubmit: (data: Record<string, unknown>) => void;
+};
 
 
 export const OptionsBlock =
-    ({header, fieldNames, buttonName}: { header: string, fieldNames: string[], buttonName: string }): JSX.Element => {
+    ({header, fieldNames, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
+
+        const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+
+            const data: Record<string, unknown> = {};
+
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            onSubmit(data);
+        }
 
         return (
             <div className={"filter-block"}>
-                <form id={"form"}>
+                <form id={"form"} onSubmit={handleSubmit}>
                     <span className={"options-form-header"}>{header}</span>
 
                     {fieldNames.map((item) => {

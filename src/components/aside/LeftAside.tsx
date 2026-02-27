@@ -12,7 +12,9 @@ export const LeftAside = (props: {menuOptions: MenuOption[]}): JSX.Element => {
         <aside>
             <div className={"aside-interaction-buttons"}>
                 {visibleOptions.map((option) =>(
-                    <button key={option.label}
+                    <button className={option.label.toLowerCase() === "logout" ? "red-button" : ""}
+                            style={option.label.toLowerCase() === "logout"? {marginTop: "10vmin"} : {}}
+                            key={option.label}
                             onClick={(e) => option.onClick(e)}>
                         {option.label}
                     </button>
