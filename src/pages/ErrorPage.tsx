@@ -1,7 +1,7 @@
 import type {JSX} from "react";
 import {useRouteError} from "react-router-dom";
 import {Wrapper} from "../components/wrapper/Wrapper.tsx";
-import {useMenuOptions} from "../hook/useMenuOptions.tsx";
+import {useMenuOptions} from "../hook/useMenuOptions.ts";
 import styles from "../styles/pages/ErrorPage.module.css"
 import {LeftAside} from "../components/aside/LeftAside.tsx";
 

@@ -6,7 +6,7 @@ import {GreetingPage} from "./pages/GreetingPage.tsx";
 import {MainPage} from "./pages/MainPage.tsx";
 import {LoginPage} from "./pages/LoginPage.tsx";
 import {RegisterPage} from "./pages/RegisterPage.tsx";
-import {MainLayout} from "./components/MainLayout.tsx";
+import {AuthLayout} from "./components/AuthLayout.tsx";
 import {DiscoverPage} from "./pages/DiscoverPage.tsx";
 import {MyNotesPage} from "./pages/MyNotesPage.tsx";
 import {ProfilePage} from "./pages/ProfilePage.tsx";
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ]
     },
     {
-        element: <MainLayout/>,
+        element: <AuthLayout/>,
         errorElement: <ErrorPage/>,
         children: [
             {

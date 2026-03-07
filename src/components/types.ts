@@ -9,3 +9,10 @@ export interface MenuOption {
     onClick: (e: MouseEvent<HTMLButtonElement>) => void | Promise<void>,
     requiresLogin: boolean
 }
+
+
+export interface User {
+    id: string,
+    username: string,
+    email: string,
+}
