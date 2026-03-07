@@ -1,9 +1,17 @@
 import type {MenuOption} from "../components/types.ts";
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "./useAuth.ts";
 
 
 export const useMenuOptions = ():MenuOption[] => {
     const navigate = useNavigate();
+    const {setTokenState} = useAuth();
+
+    const handleLogout = () => {
+        setTokenState(null);
+        navigate("/login");
+    }
+
     return [
         {
             label: "DISCOVER",
@@ -32,7 +40,7 @@ export const useMenuOptions = ():MenuOption[] => {
         },
         {
             label: "LOGOUT",
-            onClick: () =>  navigate("/logout"), //TODO
+            onClick: () =>  handleLogout(),
             requiresLogin: true
         },
 
