@@ -1,14 +1,16 @@
 import {type JSX, useState} from "react";
 import styles from "../styles/pages/ProfilePage.module.css";
+import {useAuth} from "../hook/useAuth.ts";
 
 
 export const ProfilePage = (): JSX.Element => {
-
+    const {user} = useAuth();
     //TODO password and form submit
     const [formType, setFormType] = useState<'user_info' | 'password'>('user_info');
 
-    const username: string = "Jimmy_test";
-    const email: string = "test@mail.com"
+    const username: string | undefined = user?.username;
+    const email: string | undefined = user?.email;
+    console.log(email);
 
     return (
         <div className={styles.mainContent}>

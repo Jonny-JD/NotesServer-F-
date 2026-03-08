@@ -8,7 +8,7 @@ import type {MenuOption} from "../types.ts";
 
 type Props = {
     children: JSX.Element;
-    aside?: JSX.Element;
+    aside?: JSX.Element[];
     menuOptions: MenuOption[];
 }
 
@@ -25,8 +25,9 @@ export const Wrapper = (props: Props) => {
         <div className="wrapper">
             <Header/>
             <div className="content-wrapper">
-                {showPanel && props.aside}
+                {showPanel && props.aside?.[0]}
                 <Main>{props.children}</Main>
+                {showPanel && props.aside?.[1]}
             </div>
             <Footer menuOptions={props.menuOptions}/>
         </div>

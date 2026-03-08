@@ -3,6 +3,7 @@ import {Outlet} from "react-router-dom";
 import type {MenuOption} from "./types.ts";
 import {useMenuOptions} from "../hook/useMenuOptions.ts";
 import {LeftAside} from "./aside/LeftAside.tsx";
+import {RightAside} from "./aside/RightAside.tsx";
 
 
 export const SimpleLayout = () => {
@@ -10,7 +11,13 @@ export const SimpleLayout = () => {
     const menuOptions: MenuOption[] = useMenuOptions();
 
     return (
-        <Wrapper menuOptions={menuOptions} aside={<LeftAside menuOptions={menuOptions}/>}>
+        <Wrapper menuOptions={menuOptions}
+                 aside={
+                     [
+                         <LeftAside key="left" menuOptions={menuOptions}/>,
+                         <RightAside key="right"/>
+                     ]
+                 }>
             <Outlet/>
         </Wrapper>
 

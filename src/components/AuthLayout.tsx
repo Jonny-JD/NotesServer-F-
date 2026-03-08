@@ -4,20 +4,27 @@ import {LeftAside} from "./aside/LeftAside.tsx";
 import type {MenuOption} from "./types.ts";
 import {useMenuOptions} from "../hook/useMenuOptions.ts";
 import {useAuth} from "../hook/useAuth.ts";
+import {RightAside} from "./aside/RightAside.tsx";
 
 
 export const AuthLayout = () => {
-    const {token} = useAuth();
+    const {user} = useAuth();
 
 
     const menuOptions: MenuOption[] = useMenuOptions();
 
-    if (token) {
-        return <Navigate to={"/login"} />
+    if (!user) {
+        return <Navigate to={"/login"}/>
     }
     return (
-        <Wrapper aside={<LeftAside menuOptions={menuOptions}/>} menuOptions={menuOptions}>
-            <Outlet />
+        <Wrapper menuOptions={menuOptions}
+                 aside={
+                     [
+                         <LeftAside key="left" menuOptions={menuOptions}/>,
+                         <RightAside key="right"/>
+                     ]
+                 }>
+            <Outlet/>
         </Wrapper>
 
     )

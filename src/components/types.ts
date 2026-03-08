@@ -8,6 +8,7 @@ export interface MenuOption {
     label: string,
     onClick: (e: MouseEvent<HTMLButtonElement>) => void | Promise<void>,
     requiresLogin: boolean
+    requiresLogout?: boolean
 }
 
 
