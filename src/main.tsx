@@ -14,60 +14,63 @@ import {CreatePage} from "./pages/CreatePage.tsx";
 import {EditNotePage} from "./pages/EditNotePage.tsx";
 import {NotePage} from "./pages/NotePage.tsx";
 import {ErrorPage} from "./pages/ErrorPage.tsx";
-
+import AuthProvider from "./auth/AuthProvider.tsx";
 
 const router = createBrowserRouter([
     {
-        element: <SimpleLayout/>,
-        errorElement: <ErrorPage/>,
-        children: [
+        element: <AuthProvider/>,
+        children: [{
+            element: <SimpleLayout/>,
+            errorElement: <ErrorPage/>,
+            children: [
+                {
+                    path: "/",
+                    element: <GreetingPage/>
+                },
+                {
+                    path: "/main",
+                    element: <MainPage/>
+                },
+                {
+                    path: "/login",
+                    element: <LoginPage/>
+                },
+                {
+                    path: "/register",
+                    element: <RegisterPage/>
+                },
+                {
+                    path: "/discover",
+                    element: <DiscoverPage/>
+                },
+                {
+                    path: "/create",
+                    element: <CreatePage/>
+                },
+            ]
+        },
             {
-                path: "/",
-                element: <GreetingPage/>
-            },
-            {
-                path: "/main",
-                element: <MainPage/>
-            },
-            {
-                path: "/login",
-                element: <LoginPage/>
-            },
-            {
-                path: "/register",
-                element: <RegisterPage/>
-            },
-        ]
-    },
-    {
-        element: <AuthLayout/>,
-        errorElement: <ErrorPage/>,
-        children: [
-            {
-                path: "/discover",
-                element: <DiscoverPage/>
-            },
-            {
-                path: "/my",
-                element: <MyNotesPage/>
-            },
-            {
-                path: "/profile",
-                element: <ProfilePage/>
-            },
-            {
-                path: "/create",
-                element: <CreatePage/>
-            },
-            {
-                path: "/edit",
-                element: <EditNotePage/>
-            },
-            {
-                path: "/note",
-                element: <NotePage/>
-            },
-        ],
+                element: <AuthLayout/>,
+                errorElement: <ErrorPage/>,
+                children: [
+                    {
+                        path: "/my",
+                        element: <MyNotesPage/>
+                    },
+                    {
+                        path: "/profile",
+                        element: <ProfilePage/>
+                    },
+                    {
+                        path: "/edit",
+                        element: <EditNotePage/>
+                    },
+                    {
+                        path: "/note",
+                        element: <NotePage/>
+                    },
+                ],
+            }]
     }
 ])
 

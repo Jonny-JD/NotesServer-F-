@@ -1,10 +1,29 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
 
-export default defineConfig(async ({mode}) => {
-    if (mode === 'development') {
-        const config = await import('./vite.config.dev.ts');
-        return config.default;
-    }
-    const configCurrent = await import('./vite.config.prod.ts');
-    return configCurrent.default;
+export default defineConfig({
+    plugins: [react()],
+    css: {
+        modules: {
+            generateScopedName: '[name]__[local]__[hash:base64:5]',
+            localsConvention: 'camelCase',
+        },
+    },
+    server: {
+        host: true,
+        proxy: {
+            '/api/v1': {
+                target: 'http://localhost:8080',
+                changeOrigin: true,
+                secure: false,
+            }
+        },
+    },
+
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        },
+    },
 });

@@ -1,15 +1,14 @@
 import {type JSX, useState} from "react";
 import styles from "../styles/pages/LoginPage.module.css"
 import {useAuth} from "../hook/useAuth.ts";
-import axios from "axios";
+import api from "../api/axios.ts";
 import {useNavigate} from "react-router-dom";
 import React from "react";
 
 
 export const LoginPage = (): JSX.Element => {
 
-    const baseUrl: string = import.meta.env.API_BASE_URL;
-    const {setTokenState} = useAuth();
+    const {setCurrentUser} = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -18,8 +17,8 @@ export const LoginPage = (): JSX.Element => {
     const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
         try {
-            const response = await axios.post(baseUrl, {username, password});
-            setTokenState(response.data.token);
+            const response = await api.post("/auth/login", {username, password});
+            setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
             navigate("/discover")
 
         } catch (error) {

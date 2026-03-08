@@ -1,13 +1,14 @@
 import {createContext} from "react";
+import type {User} from "../components/types.ts";
 
 interface AuthContextType {
-    token: string | null,
-    setTokenState: (newToken: string | null) => void
+    user: User | null;
+    setCurrentUser: (user: User | null) => void;
 }
 
 
 export const AuthContext = createContext<AuthContextType>({
-    token: null,
-    setTokenState: () => {
-    },
+    user: null,
+    setCurrentUser: () => {
+    }
 });
