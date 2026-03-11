@@ -1,22 +1,34 @@
-
-import {useEffect, useMemo, useState} from "react";
-import {Outlet} from "react-router-dom";
-import { AuthContext } from "./AuthContext";
+import {useCallback, useEffect, useMemo, useState} from "react";
+import {Outlet, useNavigate} from "react-router-dom";
+import {AuthContext} from "./AuthContext";
 import type {User} from "../components/types.ts";
-
+import api from "../api/axios.ts";
 
 
 const AuthProvider = () => {
+
+    const navigate = useNavigate();
 
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem("user");
         return storedUser ? JSON.parse(storedUser) : null;
     });
 
-
-    const setCurrentUser = (newUser: User | null) => {
+    const setCurrentUser = useCallback((newUser: User | null) => {
         setUser(newUser);
-    }
+    }, []);
+
+    const login = useCallback(async (username: string | null, password: string | null) => {
+        const response = await api.post("/auth/login", {username, password});
+        setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
+    }, [setCurrentUser]);
+
+
+    const logout = useCallback(async () => {
+        await api.post("/auth/logout");
+        setCurrentUser(null);
+        navigate("/login");
+    }, [navigate, setCurrentUser]);
 
 
     useEffect(() => {
@@ -29,8 +41,10 @@ const AuthProvider = () => {
 
     const contextValue = useMemo(() => ({
         user,
-        setCurrentUser
-    }), [user]);
+        setCurrentUser,
+        login,
+        logout,
+    }), [user, login, logout, setCurrentUser]);
 
     return (
         <AuthContext.Provider value={contextValue}>

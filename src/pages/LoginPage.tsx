@@ -1,14 +1,13 @@
 import {type JSX, useState} from "react";
 import styles from "../styles/pages/LoginPage.module.css"
 import {useAuth} from "../hook/useAuth.ts";
-import api from "../api/axios.ts";
 import {useNavigate} from "react-router-dom";
 import React from "react";
 
 
 export const LoginPage = (): JSX.Element => {
 
-    const {setCurrentUser} = useAuth();
+    const {login} = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -17,8 +16,7 @@ export const LoginPage = (): JSX.Element => {
     const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
         try {
-            const response = await api.post("/auth/login", {username, password});
-            setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
+            await login(username, password);
             navigate("/discover")
 
         } catch (error) {

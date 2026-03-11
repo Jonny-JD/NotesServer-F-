@@ -1,17 +1,14 @@
 import type {MenuOption} from "../components/types.ts";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "./useAuth.ts";
-import api from "../api/axios.ts";
 
 
 export const useMenuOptions = ():MenuOption[] => {
     const navigate = useNavigate();
-    const {setCurrentUser} = useAuth();
+    const {logout} = useAuth();
 
     const handleLogout = async () => {
-        await api.post("/auth/logout");
-        setCurrentUser(null);
-        navigate("/login");
+        logout();
     }
 
     return [

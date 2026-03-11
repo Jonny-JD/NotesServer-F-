@@ -6,7 +6,7 @@ import type {User} from "../components/types.ts";
 
 
 export const ProfilePage = (): JSX.Element => {
-    const {user, setCurrentUser} = useAuth();
+    const {user, setCurrentUser, logout} = useAuth();
     const [newEmail, setNewEmail] = useState<string>("");
     const [newPassword, setNewPassword] = useState<string>("");
     const [currentPassword, setCurrentPassword] = useState("");
@@ -24,7 +24,7 @@ export const ProfilePage = (): JSX.Element => {
                 id: user?.id,
                 email: newEmail
             });
-            setCurrentUser(response.data)
+            setCurrentUser(response.data);
         } catch (error) {
             console.error(error);
         }
@@ -43,6 +43,8 @@ export const ProfilePage = (): JSX.Element => {
                 currentPassword,
                 newPassword
             });
+            logout();
+
         } catch (error) {
             console.error(error);
         }
