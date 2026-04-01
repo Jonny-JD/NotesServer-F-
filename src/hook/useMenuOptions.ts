@@ -39,6 +39,12 @@ export const useMenuOptions = ():MenuOption[] => {
             requiresLogout: true
         },
         {
+            label: "SIGN UP",
+            onClick: () =>  navigate("/register"),
+            requiresLogin: false,
+            requiresLogout: true
+        },
+        {
             label: "LOGOUT",
             onClick: () =>  handleLogout(),
             requiresLogin: true
