@@ -1,7 +1,7 @@
 import type {JSX} from "react";
 import styles from "../styles/pages/CreatePage.module.css"
 import {OptionsBlock} from "../components/main/OptionsBlock.tsx";
-
+import api from "../api/axios.ts";
 
 export const CreatePage = (): JSX.Element => {
     return (
@@ -13,7 +13,10 @@ export const CreatePage = (): JSX.Element => {
                 <OptionsBlock header={"NOTE OPTIONS:"}
                               fieldNames={["TAG", "TITLE", "PRIVATE"]}
                               buttonName={"CREATE"}
-                              onSubmit={(data) => console.log(data)}/>
+                              onSubmit={async (data) => {
+                                  await api.post(JSON.stringify(data));
+                              }
+                              }/>
             </div>
         </div>
     );

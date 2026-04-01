@@ -1,20 +1,19 @@
 import React, {type JSX, useState} from "react";
 import styles from "../styles/pages/RegisterPage.module.css";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import api from "../api/axios.ts";
 
 
 export const RegisterPage = (): JSX.Element => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const baseUrl = import.meta.env.API_BASE_URL;
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
         try {
-            await axios.post(baseUrl, {username, email, password});
+            await api.post("users", {username, email, rawPassword: password});
             navigate("/login");
         }
         catch (error) {

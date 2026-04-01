@@ -1,4 +1,4 @@
-import type {JSX, SubmitEvent} from "react";
+import React, {type JSX} from "react";
 
 type OptionsBlockProps = {
     header: string;
@@ -11,7 +11,7 @@ type OptionsBlockProps = {
 export const OptionsBlock =
     ({header, fieldNames, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
 
-        const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+        const handleSubmit = (e: React.BaseSyntheticEvent) => {
             e.preventDefault();
             const formData = new FormData(e.currentTarget);
 
@@ -39,7 +39,11 @@ export const OptionsBlock =
                                 <div key={item} className={"options-form-cell"}>
                                     <label className={"options-form-label"} htmlFor={"switch"}>{item}:</label>
                                     <div className={"switch"}>
-                                        <input className={"switch-input"} type={"checkbox"} id={"switch"}/>
+                                        <input
+                                            className={"switch-input"}
+                                            type={"checkbox"}
+                                            id={"switch"}
+                                            name={"private"}/>
                                         <span className={"move"}></span>
                                     </div>
                                 </div>)
@@ -48,7 +52,11 @@ export const OptionsBlock =
                         return (
                             <div key={item} className={"options-form-cell"}>
                                 <label className={"options-form-label"} htmlFor={item.toLowerCase()}>{item}:</label>
-                                <input className={"options-form-input"} type={type} id={item.toLowerCase()}/>
+                                <input
+                                    className={"options-form-input"}
+                                    type={type}
+                                    id={item.toLowerCase()}
+                                    name={item.toLowerCase()}/>
                             </div>)
                     })}
                 </form>
