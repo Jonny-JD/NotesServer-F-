@@ -237,6 +237,12 @@ label {
 
 }
 
+.lazy-scroll-list {
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
 .main {
     flex: 1;
     background-image: url("../assets/gear_bg.svg");

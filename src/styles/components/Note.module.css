@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    gap: 0.5rem;
+    gap: 0.7rem;
     position: relative;
     font-size: calc(10px + 1vmin);
     line-height: calc(6px + 3vmin);
@@ -46,4 +46,11 @@
 
 .note-ico {
     width: 0.8rem;
+}
+
+
+@media screen and (min-width: 740px) {
+    .note{
+        gap: 0.3rem;
+    }
 }
