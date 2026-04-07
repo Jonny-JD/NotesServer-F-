@@ -17,3 +17,11 @@ export interface User {
     username: string,
     email: string,
 }
+
+export interface NotePreviewDto {
+    id: number;
+    title: string;
+    tag: string;
+    author: string;
+    createdAt: string;
+}

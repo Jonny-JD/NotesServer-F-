@@ -1,0 +1,49 @@
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0.5rem;
+    position: relative;
+    font-size: calc(10px + 1vmin);
+    line-height: calc(6px + 3vmin);
+}
+
+.note-data-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.note-date {
+    font-size: calc(8px + 1vmin);
+}
+
+.note-field {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: fit-content;
+    color: var(--cyber-cyan-color);
+}
+
+.note-field.note-header {
+    color: var(--cyber-sand-color);
+    font-size: calc(12px + 1vmin);
+}
+
+.note-underscore-container {
+    width: 100%;
+    position: relative;
+}
+
+.note-underscore {
+    width: 100%;
+}
+
+.note-ico {
+    width: 0.8rem;
+}
