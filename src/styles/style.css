@@ -44,7 +44,8 @@ aside {
     align-items: center;
     align-content: center;
     padding: 1rem;
-    width: 8%;
+    width: 15%;
+    box-sizing: border-box;
 }
 
 .aside-interaction-buttons {
@@ -245,6 +246,10 @@ label {
     background-position: center;
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
 }
 
 .move {

@@ -18,10 +18,16 @@
     align-items: center;
     border: 20px solid;
     border-image: url("../../assets/mobile/svg/elements/discover_frame.svg") 25 stretch;
-    width: 90%;
+    width: 100%;
     flex: 1;
+    gap: 0.2rem;
     background: transparent;
     min-height: 100vmin;
+    max-height: 100vmin;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .interaction {

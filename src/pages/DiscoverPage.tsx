@@ -11,6 +11,29 @@ export const DiscoverPage = (): JSX.Element => {
         <div className={styles.contentWrapper}>
             <div className={styles.mainContent}>
                 <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
+                <NotePreview id={1} title={"test"} tag={"test"} author={"test"} createdAt={"17.01.24"}/>
             </div>
             <div className={styles.interaction}>
                 {filter && <OptionsBlock header={"FILTER BY:"}
