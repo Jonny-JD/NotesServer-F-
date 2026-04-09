@@ -246,14 +246,12 @@ label {
 .main {
     flex: 1;
     background-image: url("../assets/gear_bg.svg");
-    background-size: contain;
     background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
     align-items: center;
     width: fit-content;
 }

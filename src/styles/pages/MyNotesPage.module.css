@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
 }
 
 
@@ -17,11 +17,18 @@
     justify-self: center;
     align-items: center;
     border: 20px solid;
-    border-image: url("../../assets/mobile/svg/elements/discover_frame.svg") 25 stretch;
-    width: 90%;
+    border-image: url("../../assets/mobile/svg/elements/discover_frame.svg") 20 stretch;
+    width: 100%;
     flex: 1;
+    gap: 0.2rem;
     background: transparent;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     min-height: 100vmin;
+    max-height: 150vmin;
+
 }
 
 .interaction {
@@ -30,20 +37,26 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
-    width: 85%;
+    width: 95%;
 
 }
 
 @media screen and (min-width: 740px) and (min-height: 740px) {
     .main-content {
         border: 40px solid;
-        border-image: url("../../assets/mobile/svg/elements/discover_frame.svg") 25 stretch;
+        border-image: url("../../assets/mobile/svg/elements/discover_frame.svg") 20 stretch;
         min-height: 0;
+        max-height: 90vmin;
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
     .main-content {
         min-height: 0;
+        max-height: 50vmin;
+    }
+
+    .content-wrapper {
+        width: 100%;
     }
 }

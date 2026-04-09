@@ -20,10 +20,28 @@ function RowComponent({
     );
 }
 
-export const LazyScrollNotes = ({ notes }: { notes: NotePreviewDto[] }): ReactNode => {
-    const rowHeight = 80;
+interface Props {
+    notes: NotePreviewDto[];
+    onLoadMore: () => void;
+}
+
+export const LazyScrollNotes = ({notes, onLoadMore}: Props): ReactNode => {
+    const rowHeight = 100;
+
 
     return (
-        <List className={"lazy-scroll-list"} rowComponent={RowComponent} rowCount={notes.length} rowHeight={rowHeight} rowProps={{notes}} style={{ height: "100%", width: "100%" }}/>
+        <List
+            className={"lazy-scroll-list"}
+            rowComponent={RowComponent}
+            rowCount={notes.length}
+            rowHeight={rowHeight}
+            rowProps={{notes}}
+            style={{width: "100%"}}
+            onRowsRendered={(visibleRows) => {
+                if (visibleRows.stopIndex >= notes.length - 1) {
+                    onLoadMore();
+                }
+            }}
+        />
     )
 }

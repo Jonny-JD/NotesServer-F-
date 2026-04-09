@@ -13,9 +13,18 @@ export interface MenuOption {
 
 
 export interface User {
-    id: string,
+    id: number,
     username: string,
     email: string,
+}
+
+export interface Note {
+    id: string;
+    title: string;
+    tag: string;
+    content: string;
+    author: NoteAuthorDto;
+    isPrivate: boolean;
 }
 
 export interface NotePreviewDto {
@@ -24,4 +33,9 @@ export interface NotePreviewDto {
     tag: string;
     author: string;
     createdAt: string;
+}
+
+export interface NoteAuthorDto {
+    id: number;
+    name: string;
 }

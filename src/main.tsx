@@ -11,7 +11,6 @@ import {DiscoverPage} from "./pages/DiscoverPage.tsx";
 import {MyNotesPage} from "./pages/MyNotesPage.tsx";
 import {ProfilePage} from "./pages/ProfilePage.tsx";
 import {CreatePage} from "./pages/CreatePage.tsx";
-import {EditNotePage} from "./pages/EditNotePage.tsx";
 import {NotePage} from "./pages/NotePage.tsx";
 import {ErrorPage} from "./pages/ErrorPage.tsx";
 import AuthProvider from "./auth/AuthProvider.tsx";
@@ -62,11 +61,7 @@ const router = createBrowserRouter([
                         element: <ProfilePage/>
                     },
                     {
-                        path: "/edit",
-                        element: <EditNotePage/>
-                    },
-                    {
-                        path: "/note",
+                        path: "/notes/:id",
                         element: <NotePage/>
                     },
                 ],

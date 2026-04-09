@@ -2,7 +2,7 @@ import type {JSX} from "react";
 import styles from "../styles/pages/EditNotePage.module.css"
 
 
-export const EditNotePage = (): JSX.Element => {
+export const NotePage = (): JSX.Element => {
     return (
         <div className={styles.contentWrapper}>
             <div className={styles.mainContent}>

@@ -9,8 +9,7 @@ This is the frontend part of my personal note-taking web application. It allows 
 - React  
 - Vite (build tool)  
 - TypeScript  
-- React Router  
-- LESS (for styling)  
+- React Router
 - nginx (serving static files)
 
 ---
