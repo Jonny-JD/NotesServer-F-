@@ -7,6 +7,15 @@ import userIcon from "../assets/icons/user_icon.svg";
 import calendarIcon from "../assets/icons/calendar_icon.svg";
 
 
+async function copyLink() {
+    await navigator.clipboard.writeText(globalThis.location.href);
+    const btn = document.getElementById("copy-button");
+    if (btn) {
+        btn.textContent = "link copied";
+        setTimeout(() => btn.textContent = "get link", 1000);
+    }
+}
+
 export const NotePage = (): JSX.Element => {
     const {id} = useParams();
     const [note, setNote] = useState<Note | null>(null);
@@ -30,6 +39,8 @@ export const NotePage = (): JSX.Element => {
             fetchNote().catch(e => console.error(e));
         }
     }, [id]);
+
+
 
     return (
         <div className={styles.contentWrapper}>
@@ -57,7 +68,7 @@ export const NotePage = (): JSX.Element => {
                 </div>
                 <div className={styles.right}>
                     <div className={styles.noteField}>
-                        <button className={`${styles.topButtons} ${styles.button}`}>get link</button>
+                        <button className={`${styles.topButtons} ${styles.button}`} id={"copy-button"} onClick={copyLink}>get link</button>
                     </div>
                 </div>
             </div>

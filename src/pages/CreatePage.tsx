@@ -38,5 +38,3 @@ export const CreatePage = (): JSX.Element => {
         </div>
     );
 }
-
-//TODO fetch
