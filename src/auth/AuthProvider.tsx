@@ -25,8 +25,8 @@ const AuthProvider = () => {
 
 
     const logout = useCallback(async () => {
-        await api.post("/auth/logout");
         setCurrentUser(null);
+        await api.post("/auth/logout");
         navigate("/login");
     }, [navigate, setCurrentUser]);
 

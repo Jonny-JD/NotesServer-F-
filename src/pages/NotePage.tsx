@@ -5,6 +5,7 @@ import type {Note} from "../components/types";
 import api from "../api/axios.ts";
 import userIcon from "../assets/icons/user_icon.svg";
 import calendarIcon from "../assets/icons/calendar_icon.svg";
+import {useAuth} from "../hook/useAuth.ts";
 
 
 async function copyLink() {
@@ -18,12 +19,14 @@ async function copyLink() {
 
 export const NotePage = (): JSX.Element => {
     const {id} = useParams();
+    const {user} = useAuth()
     const [note, setNote] = useState<Note | null>(null);
     const author = note?.author.username;
     const title = note?.title;
     const tag = note?.tag ?? "none";
     const createdAt = note?.createdAt ?? "00.00.00";
     const noteText = note?.content;
+    const [isNoteOwner, setIsNoteOwner] = useState<boolean>(false) ;
 
 
     useEffect(() => {
@@ -31,6 +34,7 @@ export const NotePage = (): JSX.Element => {
             try {
                 const response = await api.get(`/notes/${id}`);
                 setNote(response.data);
+                setIsNoteOwner(response.data.author.id === user?.id);
             } catch (e) {
                 console.error(e);
             }
@@ -38,7 +42,7 @@ export const NotePage = (): JSX.Element => {
         if (id) {
             fetchNote().catch(e => console.error(e));
         }
-    }, [id]);
+    }, [id, user?.id]);
 
 
 
@@ -75,9 +79,10 @@ export const NotePage = (): JSX.Element => {
             <div className={styles.mainContent}>
                 <div className={styles.noteText}>{noteText}</div>
             </div>
-            <div className={styles.interaction}>
-                <button>GET LINK</button>
-            </div>
+            {isNoteOwner && <div className={styles.interaction}>
+                <button>EDIT</button>
+                <button className={"red-button"}>DELETE</button>
+            </div>}
         </div>
     );
 }

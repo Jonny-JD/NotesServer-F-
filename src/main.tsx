@@ -46,6 +46,10 @@ const router = createBrowserRouter([
                     path: "/create",
                     element: <CreatePage/>
                 },
+                {
+                    path: "/notes/:id",
+                    element: <NotePage/>
+                },
             ]
         },
             {
@@ -59,10 +63,6 @@ const router = createBrowserRouter([
                     {
                         path: "/profile",
                         element: <ProfilePage/>
-                    },
-                    {
-                        path: "/notes/:id",
-                        element: <NotePage/>
                     },
                 ],
             }]
