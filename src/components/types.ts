@@ -25,17 +25,18 @@ export interface Note {
     content: string;
     author: NoteAuthorDto;
     isPrivate: boolean;
+    createdAt: string;
 }
 
 export interface NotePreviewDto {
     id: number;
-    title: string;
-    tag: string;
+    title?: string;
+    tag?: string;
     author: string;
     createdAt: string;
 }
 
 export interface NoteAuthorDto {
     id: number;
-    name: string;
+    username: string;
 }

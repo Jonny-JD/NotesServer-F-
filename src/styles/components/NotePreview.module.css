@@ -1,9 +1,9 @@
 .note {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-around;
     width: 100%;
-    gap: 0.7rem;
+    height: 100%;
     position: relative;
     font-size: calc(10px + 1vmin);
     line-height: calc(6px + 3vmin);
@@ -31,7 +31,7 @@
 }
 
 .note-field.note-header {
-    color: var(--cyber-sand-color);
+    color: var(--cyber-pink-color);
     font-size: calc(12px + 1vmin);
 }
 

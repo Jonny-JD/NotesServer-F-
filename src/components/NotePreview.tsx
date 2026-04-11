@@ -1,6 +1,6 @@
 import type {ReactNode} from "react";
 import type {NotePreviewDto} from "./types.ts";
-import styles from "../styles/components/Note.module.css"
+import styles from "../styles/components/NotePreview.module.css"
 import userIcon from "../assets/icons/user_icon.svg";
 import calendarIcon from "../assets/icons/calendar_icon.svg";
 import noteUnderscore from "../assets/note_underscore.svg";
@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 
 export const NotePreview = (props: NotePreviewDto): ReactNode => {
     const noteId = props.id;
-    const title = props.title;
+    const title = props.title?? "Untitled";
     const author = props.author;
     const createdAt = props.createdAt;
     const navigate = useNavigate();
@@ -21,10 +21,8 @@ export const NotePreview = (props: NotePreviewDto): ReactNode => {
 
 
     return (
-        <div className={styles.note}>
-            <div
-                className={`${styles.noteHeader} ${styles.noteField}`}
-                onClick={() => goToNote(noteId)}>
+        <div className={styles.note} onClick={() => goToNote(noteId)}>
+            <div className={`${styles.noteHeader} ${styles.noteField}`}>
                 {title}
             </div>
             <div className={styles.noteDataWrapper}>

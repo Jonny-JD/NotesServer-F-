@@ -3,11 +3,18 @@ import styles from "../styles/pages/NotePage.module.css"
 import {useParams} from "react-router-dom";
 import type {Note} from "../components/types";
 import api from "../api/axios.ts";
+import userIcon from "../assets/icons/user_icon.svg";
+import calendarIcon from "../assets/icons/calendar_icon.svg";
 
 
 export const NotePage = (): JSX.Element => {
     const {id} = useParams();
     const [note, setNote] = useState<Note | null>(null);
+    const author = note?.author.username;
+    const title = note?.title;
+    const createdAt = note?.createdAt ?? "00.00.00";
+    const noteText = note?.content;
+
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -25,8 +32,24 @@ export const NotePage = (): JSX.Element => {
 
     return (
         <div className={styles.contentWrapper}>
+            <div className={styles.noteDescription}>
+                <div className={`${styles.noteHeader} ${styles.noteField}`}>
+                    {title}
+                </div>
+                <div className={styles.noteDataWrapper}>
+                    <div className={styles.noteField}>
+                        <img className={styles.noteIco} src={userIcon} alt={"user_ico"}/>
+                        <span>{author}</span>
+                    </div>
+
+                    <div className={styles.noteField}>
+                        <img className={styles.noteIco} src={calendarIcon} alt={"calendar_ico"}/>
+                        <span className={styles.noteDate}>{new Date(createdAt).toDateString()}</span>
+                    </div>
+                </div>
+            </div>
             <div className={styles.mainContent}>
-                <div>{note?.content}</div>
+                <div className={styles.noteText}>{noteText}</div>
             </div>
             <div className={styles.interaction}>
                 <button>GET LINK</button>
