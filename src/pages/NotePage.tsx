@@ -12,6 +12,7 @@ export const NotePage = (): JSX.Element => {
     const [note, setNote] = useState<Note | null>(null);
     const author = note?.author.username;
     const title = note?.title;
+    const tag = note?.tag ?? "none";
     const createdAt = note?.createdAt ?? "00.00.00";
     const noteText = note?.content;
 
@@ -32,7 +33,7 @@ export const NotePage = (): JSX.Element => {
 
     return (
         <div className={styles.contentWrapper}>
-            <div className={styles.noteDescription}>
+            <div className={styles.noteDetails}>
                 <div className={`${styles.noteHeader} ${styles.noteField}`}>
                     {title}
                 </div>
@@ -45,6 +46,18 @@ export const NotePage = (): JSX.Element => {
                     <div className={styles.noteField}>
                         <img className={styles.noteIco} src={calendarIcon} alt={"calendar_ico"}/>
                         <span className={styles.noteDate}>{new Date(createdAt).toDateString()}</span>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.topButtons}>
+                <div className={styles.left}>
+                    <div className={styles.noteField}>
+                        <span>tag: {tag}</span>
+                    </div>
+                </div>
+                <div className={styles.right}>
+                    <div className={styles.noteField}>
+                        <button className={`${styles.topButtons} ${styles.button}`}>get link</button>
                     </div>
                 </div>
             </div>

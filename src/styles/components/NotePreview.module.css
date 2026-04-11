@@ -12,7 +12,7 @@
 .note-data-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .note-date {
@@ -33,6 +33,12 @@
 .note-field.note-header {
     color: var(--cyber-pink-color);
     font-size: calc(12px + 1vmin);
+    text-decoration: none;
+}
+
+.note-header:hover {
+    text-shadow: var(--cyber-pink-color) 1px 1px 1px;
+    font-weight: bold;
 }
 
 .note-underscore-container {

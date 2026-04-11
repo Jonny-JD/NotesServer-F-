@@ -60,7 +60,7 @@ aside button {
 
 button {
     border: 10px solid transparent;
-    border-image: url("../assets/buttons/button.svg") 20 stretch;
+    border-image: url("../assets/buttons/common_button_frame.svg") 20 stretch;
     font-family: "Rajdhali", sans-serif;
     font-weight: bolder;
     font-size: calc(8px + 1vmin);
