@@ -4,6 +4,8 @@ import "../../styles/style.css";
 import {type JSX, useEffect, useState} from "react";
 import {Main} from "../main/Main.tsx";
 import type {MenuOption} from "../types.ts";
+import useRestrictToExtendedLatinWithTooltip from "../../hook/useRestrictToExtendedLatinWithTooltip.ts";
+import useTabInTextarea from "../../hook/useTabInTextarea.ts";
 
 
 type Props = {
@@ -14,6 +16,8 @@ type Props = {
 
 export const Wrapper = (props: Props) => {
     const [showPanel, setShowPanel] = useState(window.innerWidth > 1024);
+    useRestrictToExtendedLatinWithTooltip();
+    useTabInTextarea();
 
     useEffect(() => {
         const onResize = () => setShowPanel(window.innerWidth > 1024);
