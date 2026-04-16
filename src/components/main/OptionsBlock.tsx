@@ -1,4 +1,4 @@
-import React, {type JSX} from "react";
+import React, {type JSX, useEffect, useState} from "react";
 
 type OptionsBlockProps = {
     header: string;
@@ -9,21 +9,33 @@ type OptionsBlockProps = {
 
 
 export const OptionsBlock =
-    ({header, fields, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
+    ({header, fields: initialFields, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
+        const [localFields, setLocalFields] = useState(initialFields);
 
+        useEffect(() => {
+            setLocalFields(initialFields);
+        }, [initialFields]);
+
+        const handleChange = (name: string, value: string | boolean) => {
+            setLocalFields(prev => prev.map(item => {
+                const key = Object.keys(item)[0];
+                if (key === name) {
+                    return { [key]: value };
+                }
+                return item;
+            }));
+        };
 
         const handleSubmit = (e: React.BaseSyntheticEvent) => {
             e.preventDefault();
-            const formData = new FormData(e.currentTarget);
 
-            const data: Record<string, unknown> = {};
-
-            formData.forEach((value, key) => {
-                data[key] = value;
+            const dataToSubmit: Record<string, unknown> = {};
+            localFields.forEach(item => {
+                const key = Object.keys(item)[0];
+                dataToSubmit[key] = item[key];
             });
-
-            onSubmit(data);
-        }
+            onSubmit(dataToSubmit);
+        };
 
 
         return (
@@ -31,7 +43,7 @@ export const OptionsBlock =
                 <form id={"form"} onSubmit={handleSubmit}>
                     <span className={"options-form-header"}>{header}</span>
 
-                    {fields.map((item) => {
+                    {localFields.map((item) => {
                         let type = "text";
                         const fieldName = Object.keys(item)[0];
                         const fieldValue = item[fieldName];
@@ -41,15 +53,16 @@ export const OptionsBlock =
                         if (fieldName.toUpperCase() === "PRIVATE") {
                             return (
                                 <div key={fieldName} className={"options-form-cell"}>
-                                    <label className={"options-form-label"} htmlFor={"switch"}>{fieldName.toUpperCase()}:</label>
+                                    <label className={"options-form-label"}
+                                           htmlFor={fieldName.toLowerCase()}>{fieldName.toUpperCase()}:</label>
                                     <div className={"switch"}>
                                         <input
                                             className={"switch-input"}
                                             type={"checkbox"}
-                                            id={"switch"}
-                                            name={"private"}
-                                            checked={typeof fieldValue === "boolean" ? fieldValue : false}
-                                            onChange={(e) => e.target.value}
+                                            id={fieldName.toLowerCase()}
+                                            name={fieldName.toLowerCase()}
+                                            checked={!!fieldValue}
+                                            onChange={(e) => handleChange(fieldName, e.target.checked)}
                                         />
                                         <span className={"move"}></span>
                                     </div>
@@ -66,7 +79,8 @@ export const OptionsBlock =
                                     id={fieldName.toLowerCase()}
                                     name={fieldName.toLowerCase()}
                                     value={typeof fieldValue === "string" ? fieldValue : ""}
-                                    onChange={(e) => e.target.value}/>
+                                    onChange={(e) => handleChange(fieldName, e.target.value)}
+                                />
                             </div>)
                     })}
                 </form>

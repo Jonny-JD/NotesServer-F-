@@ -10,12 +10,19 @@ export const CreatePage = (): JSX.Element => {
     const noteContentRef = useRef<HTMLTextAreaElement>(null);
     const navigate = useNavigate();
 
-    let fields;
+    let fields: Record<string, string | boolean>[];
 
     if (user == null) {
-        fields = ["TAG", "TITLE"];
+        fields = [
+            {tag: ""},
+            {title: ""}
+        ];
     } else {
-        fields = ["TAG", "TITLE", "PRIVATE"];
+        fields = [
+            {tag: ""},
+            {title: ""},
+            {private: false}
+        ];
     }
 
     return (
@@ -32,10 +39,10 @@ export const CreatePage = (): JSX.Element => {
                                       ...data,
                                       author: user ?? null,
                                       content: noteContentRef.current?.value ?? "",
-                                      isPrivate: data.private === "on"
+                                      isPrivate: data.private
                                   };
                                   await api.post("/notes", payload);
-                                  navigate("/notes/my")
+                                  navigate("/notes/discover")
                               }
                               }/>
             </div>

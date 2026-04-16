@@ -15,13 +15,9 @@ export const DiscoverPage = (): JSX.Element => {
         { date: ""},
     ];
 
-
     useEffect(() => {
         init();
     }, [init]);
-
-
-
 
     return (
         <div className={styles.contentWrapper}>
