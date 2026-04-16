@@ -13,8 +13,13 @@ export const EditNotePage = (): JSX.Element => {
     const [note, setNote] = useState<Note | null>(null);
     const [noteText, setNoteText] = useState("");
 
+
     const navigate = useNavigate();
-    const fields = ["TAG", "TITLE", "PRIVATE"];
+    const fields: Record<string, string | boolean> [] = [
+        { tag: note?.tag ?? "" },
+        { title: note?.title ?? "" },
+        { private: note?.isPrivate ?? false },
+    ];
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -32,7 +37,7 @@ export const EditNotePage = (): JSX.Element => {
 
     useEffect(() => {
         if (note) {
-            setNoteText(note.content)
+            setNoteText(note.content);
         }
     }, [note]);
 
@@ -50,7 +55,7 @@ export const EditNotePage = (): JSX.Element => {
             </div>
             <div className={styles.interaction}>
                 <OptionsBlock header={"NOTE OPTIONS:"}
-                              fieldNames={fields}
+                              fields={fields}
                               buttonName={"SAVE"}
                               onSubmit={async (data) => {
                                   const payload = {

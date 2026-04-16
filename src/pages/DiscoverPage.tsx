@@ -8,7 +8,12 @@ import {useNotesPagination} from "../hook/useNotesPagination.ts";
 export const DiscoverPage = (): JSX.Element => {
     const [notesFilter, setNotesFilter] = useState(false);
     const {notes, loadNotes, init} = useNotesPagination();
-    const fields = ["TAG", "TITLE", "AUTHOR", "DATE"];
+    const fields: Record<string, string | boolean> [] = [
+        { tag: "" },
+        { title: "" },
+        { author: "" },
+        { date: ""},
+    ];
 
 
     useEffect(() => {
@@ -28,7 +33,7 @@ export const DiscoverPage = (): JSX.Element => {
             </div>
             <div className={styles.interaction}>
                 {notesFilter && <OptionsBlock header={"FILTER BY:"}
-                                         fieldNames={fields}
+                                         fields={fields}
                                          buttonName={"FILTER"}
                                          onSubmit={(data) => {
                                              console.log(data);

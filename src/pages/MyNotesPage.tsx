@@ -10,7 +10,11 @@ export const MyNotesPage = (): JSX.Element => {
     const [notesFilter, setNotesFilter] = useState(false);
     const {user} = useAuth();
     const {notes, loadNotes, init} = useNotesPagination({authorId: user?.id});
-    const fields = ["TAG", "TITLE", "DATE"];
+    const fields: Record<string, string | boolean> [] = [
+        { tag: "" },
+        { title: "" },
+        { date: ""},
+    ];
 
     useEffect(() => {
         init();
@@ -26,7 +30,7 @@ export const MyNotesPage = (): JSX.Element => {
             </div>
             <div className={styles.interaction}>
                 {notesFilter && <OptionsBlock header={"FILTER BY:"}
-                                              fieldNames={fields}
+                                              fields={fields}
                                               buttonName={"FILTER"}
                                               onSubmit={(data) => {
                                                   console.log(data);

@@ -25,7 +25,7 @@ export const CreatePage = (): JSX.Element => {
             </div>
             <div className={styles.interaction}>
                 <OptionsBlock header={"NOTE OPTIONS:"}
-                              fieldNames={fields}
+                              fields={fields}
                               buttonName={"CREATE"}
                               onSubmit={async (data) => {
                                   const payload = {

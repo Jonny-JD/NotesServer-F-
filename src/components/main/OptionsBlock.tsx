@@ -2,14 +2,15 @@ import React, {type JSX} from "react";
 
 type OptionsBlockProps = {
     header: string;
-    fieldNames: string[];
+    fields: Record<string, string | boolean> [];
     buttonName: string;
     onSubmit: (data: Record<string, unknown>) => void;
 };
 
 
 export const OptionsBlock =
-    ({header, fieldNames, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
+    ({header, fields, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
+
 
         const handleSubmit = (e: React.BaseSyntheticEvent) => {
             e.preventDefault();
@@ -24,39 +25,48 @@ export const OptionsBlock =
             onSubmit(data);
         }
 
+
         return (
             <div className={"filter-block"}>
                 <form id={"form"} onSubmit={handleSubmit}>
                     <span className={"options-form-header"}>{header}</span>
 
-                    {fieldNames.map((item) => {
+                    {fields.map((item) => {
                         let type = "text";
+                        const fieldName = Object.keys(item)[0];
+                        const fieldValue = item[fieldName];
 
-                        if (/.*date.*/.test(item.toLowerCase())) type = item.toLowerCase();
+                        if (/.*date.*/.test(fieldName.toLowerCase())) type = fieldName.toLowerCase();
 
-                        if (item.toUpperCase() === "PRIVATE") {
+                        if (fieldName.toUpperCase() === "PRIVATE") {
                             return (
-                                <div key={item} className={"options-form-cell"}>
-                                    <label className={"options-form-label"} htmlFor={"switch"}>{item}:</label>
+                                <div key={fieldName} className={"options-form-cell"}>
+                                    <label className={"options-form-label"} htmlFor={"switch"}>{fieldName.toUpperCase()}:</label>
                                     <div className={"switch"}>
                                         <input
                                             className={"switch-input"}
                                             type={"checkbox"}
                                             id={"switch"}
-                                            name={"private"}/>
+                                            name={"private"}
+                                            checked={typeof fieldValue === "boolean" ? fieldValue : false}
+                                            onChange={(e) => e.target.value}
+                                        />
                                         <span className={"move"}></span>
                                     </div>
                                 </div>)
                         }
 
                         return (
-                            <div key={item} className={"options-form-cell"}>
-                                <label className={"options-form-label"} htmlFor={item.toLowerCase()}>{item}:</label>
+                            <div key={fieldName} className={"options-form-cell"}>
+                                <label className={"options-form-label"}
+                                       htmlFor={fieldName.toLowerCase()}>{fieldName}:</label>
                                 <input
                                     className={"options-form-input"}
                                     type={type}
-                                    id={item.toLowerCase()}
-                                    name={item.toLowerCase()}/>
+                                    id={fieldName.toLowerCase()}
+                                    name={fieldName.toLowerCase()}
+                                    value={typeof fieldValue === "string" ? fieldValue : ""}
+                                    onChange={(e) => e.target.value}/>
                             </div>)
                     })}
                 </form>
