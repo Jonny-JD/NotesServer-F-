@@ -1,6 +1,6 @@
 import {type JSX, useEffect, useState} from "react";
 import styles from "../styles/pages/NotePage.module.css"
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import type {Note} from "../components/types";
 import api from "../api/axios.ts";
 import userIcon from "../assets/icons/user_icon.svg";
@@ -27,6 +27,7 @@ export const NotePage = (): JSX.Element => {
     const createdAt = note?.createdAt ?? "00.00.00";
     const noteText = note?.content;
     const [isNoteOwner, setIsNoteOwner] = useState<boolean>(false) ;
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -44,7 +45,22 @@ export const NotePage = (): JSX.Element => {
         }
     }, [id, user?.id]);
 
+    const handleDelete =  async () => {
+        if (globalThis.confirm("Are you sure you want to delete this note?")) {
+            try {
+                const response = await api.delete(`/notes/${id}`);
+                if (response.status === 204) {
+                    navigate("/notes/my");
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    }
 
+    const handleEdit = async () => {
+        navigate(`/notes/edit/${id}`);
+    }
 
     return (
         <div className={styles.contentWrapper}>
@@ -80,8 +96,8 @@ export const NotePage = (): JSX.Element => {
                 <div className={styles.noteText}>{noteText}</div>
             </div>
             {isNoteOwner && <div className={styles.interaction}>
-                <button>EDIT</button>
-                <button className={"red-button"}>DELETE</button>
+                <button onClick={handleEdit}>EDIT</button>
+                <button className={"red-button"} onClick={handleDelete}>DELETE</button>
             </div>}
         </div>
     );

@@ -14,6 +14,7 @@ import {CreatePage} from "./pages/CreatePage.tsx";
 import {NotePage} from "./pages/NotePage.tsx";
 import {ErrorPage} from "./pages/ErrorPage.tsx";
 import AuthProvider from "./auth/AuthProvider.tsx";
+import {EditNotePage} from "./pages/EditNotePage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
                     element: <CreatePage/>
                 },
                 {
+                    path: "/notes/edit/:id",
+                    element: <EditNotePage/>
+                },
+                {
                     path: "/notes/:id",
                     element: <NotePage/>
                 },
@@ -57,7 +62,7 @@ const router = createBrowserRouter([
                 errorElement: <ErrorPage/>,
                 children: [
                     {
-                        path: "/my",
+                        path: "/notes/my",
                         element: <MyNotesPage/>
                     },
                     {

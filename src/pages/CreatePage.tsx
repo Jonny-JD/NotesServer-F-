@@ -3,18 +3,21 @@ import styles from "../styles/pages/CreatePage.module.css"
 import {OptionsBlock} from "../components/main/OptionsBlock.tsx";
 import api from "../api/axios.ts";
 import {useAuth} from "../hook/useAuth.ts";
+import {useNavigate} from "react-router-dom";
 
 export const CreatePage = (): JSX.Element => {
     const {user} = useAuth();
     const noteContentRef = useRef<HTMLTextAreaElement>(null);
+    const navigate = useNavigate();
 
-    let fieldNames;
+    let fields;
+
     if (user == null) {
-        fieldNames = ["TAG", "TITLE"];
+        fields = ["TAG", "TITLE"];
+    } else {
+        fields = ["TAG", "TITLE", "PRIVATE"];
     }
-    else {
-        fieldNames = ["TAG", "TITLE", "PRIVATE"];
-    }
+
     return (
         <div className={styles.contentWrapper}>
             <div className={styles.mainContent}>
@@ -22,18 +25,19 @@ export const CreatePage = (): JSX.Element => {
             </div>
             <div className={styles.interaction}>
                 <OptionsBlock header={"NOTE OPTIONS:"}
-                              fieldNames = {fieldNames}
+                              fieldNames={fields}
                               buttonName={"CREATE"}
                               onSubmit={async (data) => {
                                   const payload = {
                                       ...data,
-                                      author: user?? null,
-                                      content: noteContentRef.current?.value?? "",
+                                      author: user ?? null,
+                                      content: noteContentRef.current?.value ?? "",
                                       isPrivate: data.private === "on"
                                   };
                                   await api.post("/notes", payload);
+                                  navigate("/notes/my")
                               }
-                }/>
+                              }/>
             </div>
         </div>
     );

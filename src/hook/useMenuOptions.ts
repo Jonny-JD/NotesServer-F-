@@ -24,7 +24,7 @@ export const useMenuOptions = ():MenuOption[] => {
         },
         {
             label: "MY NOTES",
-            onClick: () =>  navigate("/my"),
+            onClick: () =>  navigate("/notes/my"),
             requiresLogin: true,
         },
         {
