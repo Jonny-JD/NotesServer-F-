@@ -62,7 +62,7 @@ export const EditNotePage = (): JSX.Element => {
                                       ...data,
                                       author: user ?? null,
                                       content: noteContentRef.current?.value ?? "",
-                                      isPrivate: data.private === "on"
+                                      isPrivate: data.private
                                   };
                                   await api.put(`/notes/${id}`, payload);
                                   navigate("/notes/my")
