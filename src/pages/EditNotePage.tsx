@@ -16,9 +16,9 @@ export const EditNotePage = (): JSX.Element => {
 
     const navigate = useNavigate();
     const fields: Record<string, string | boolean> [] = [
-        { tag: note?.tag ?? "" },
-        { title: note?.title ?? "" },
-        { private: note?.isPrivate ?? false },
+        {tag: note?.tag ?? ""},
+        {title: note?.title ?? ""},
+        {private: note?.isPrivate ?? false},
     ];
 
     useEffect(() => {
@@ -26,6 +26,7 @@ export const EditNotePage = (): JSX.Element => {
             try {
                 const response = await api.get(`/notes/${id}`);
                 setNote(response.data);
+                setNoteText(response.data.content);
             } catch (e) {
                 console.error(e);
             }
@@ -34,12 +35,6 @@ export const EditNotePage = (): JSX.Element => {
             fetchNote().catch(e => console.error(e));
         }
     }, [id]);
-
-    useEffect(() => {
-        if (note) {
-            setNoteText(note.content);
-        }
-    }, [note]);
 
 
     return (
@@ -62,7 +57,7 @@ export const EditNotePage = (): JSX.Element => {
                                       ...data,
                                       author: user ?? null,
                                       content: noteContentRef.current?.value ?? "",
-                                      isPrivate: data.private
+                                      isPrivate: data['private'] === true || data['private'] === "on"
                                   };
                                   await api.put(`/notes/${id}`, payload);
                                   navigate("/notes/my")

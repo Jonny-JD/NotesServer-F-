@@ -1,36 +1,32 @@
-
-import { useState, useCallback, useRef } from "react";
-import type {NotePreviewDto} from "../components/types.ts";
+import { useState, useCallback, useRef, useEffect } from "react";
+import type { NotePreviewDto } from "../components/types.ts";
 import api from "../api/axios.ts";
-import { formatISO } from "date-fns"
+import { formatISO } from "date-fns";
 
-type NotesPaginationProps = {
+export type NotesPaginationProps = {
     tag?: string;
     title?: string;
-    authorId?: number;
-}
+    author?: string;
+};
 
-export const useNotesPagination = (props: NotesPaginationProps = {}) => {
+export const useNotesPagination = ({ tag, title, author }: NotesPaginationProps = {}) => {
     const [notes, setNotes] = useState<NotePreviewDto[]>([]);
-    const [hasMore, setHasMore] = useState(true);
     const [loading, setLoading] = useState(false);
     const fromTime = useRef<string>(formatISO(new Date()));
-    const initialized = useRef(false);
+    const loadingRef = useRef(false);
+    const hasMoreRef = useRef(true);
 
-    const loadNotes = useCallback(async () => {
-        if (loading || !hasMore) return;
+    const fetchNotes = useCallback(async (from: string) => {
+        if (loadingRef.current || !hasMoreRef.current) return;
+        loadingRef.current = true;
         setLoading(true);
         try {
             const response = await api.get(`/notes/search`, {
-                params: {
-                    from: fromTime.current,
-                    ...props
-                }
+                params: { from, tag, title, author },
             });
             const newNotes: NotePreviewDto[] = response.data;
 
-            if (newNotes.length < 10) setHasMore(false);
-
+            if (newNotes.length < 10) hasMoreRef.current = false; // ← не стейт
             setNotes((prev) => [...prev, ...newNotes]);
 
             if (newNotes.length > 0) {
@@ -39,15 +35,22 @@ export const useNotesPagination = (props: NotesPaginationProps = {}) => {
         } catch (error) {
             console.log(error);
         } finally {
+            loadingRef.current = false;
             setLoading(false);
         }
-    }, [loading, hasMore, props]);
+    }, [tag, title, author]); // ← hasMore больше не в зависимостях
 
-    const init = useCallback(() => {
-        if (initialized.current) return;
-        initialized.current = true;
-        void loadNotes();
-    }, [loadNotes]);
+    useEffect(() => {
+        const freshFrom = formatISO(new Date());
+        fromTime.current = freshFrom;
+        hasMoreRef.current = true; // ← сброс при смене фильтра
+        setNotes([]);
+        void fetchNotes(freshFrom);
+    }, [fetchNotes]);
 
-    return { notes, hasMore, loading, loadNotes, init };
+    const loadNotes = useCallback(() => {
+        void fetchNotes(fromTime.current);
+    }, [fetchNotes]);
+
+    return { notes, loading, loadNotes };
 };

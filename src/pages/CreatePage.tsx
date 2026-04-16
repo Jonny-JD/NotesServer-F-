@@ -39,7 +39,7 @@ export const CreatePage = (): JSX.Element => {
                                       ...data,
                                       author: user ?? null,
                                       content: noteContentRef.current?.value ?? "",
-                                      isPrivate: data.private
+                                      isPrivate: data['private'] === true || data['private'] === "on"
                                   };
                                   await api.post("/notes", payload);
                                   navigate("/notes/discover")

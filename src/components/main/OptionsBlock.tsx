@@ -44,11 +44,9 @@ export const OptionsBlock =
                     <span className={"options-form-header"}>{header}</span>
 
                     {localFields.map((item) => {
-                        let type = "text";
+                        const type = "text";
                         const fieldName = Object.keys(item)[0];
                         const fieldValue = item[fieldName];
-
-                        if (/.*date.*/.test(fieldName.toLowerCase())) type = fieldName.toLowerCase();
 
                         if (fieldName.toUpperCase() === "PRIVATE") {
                             return (
@@ -78,7 +76,7 @@ export const OptionsBlock =
                                     type={type}
                                     id={fieldName.toLowerCase()}
                                     name={fieldName.toLowerCase()}
-                                    value={typeof fieldValue === "string" ? fieldValue : ""}
+                                    value={typeof fieldValue === "string" ? fieldValue : undefined}
                                     onChange={(e) => handleChange(fieldName, e.target.value)}
                                 />
                             </div>)
