@@ -1,4 +1,4 @@
-import React, {type JSX, useEffect, useState} from "react";
+import React, {type JSX, useState} from "react";
 
 type OptionsBlockProps = {
     header: string;
@@ -11,10 +11,6 @@ type OptionsBlockProps = {
 export const OptionsBlock =
     ({header, fields: initialFields, buttonName, onSubmit}: OptionsBlockProps): JSX.Element => {
         const [localFields, setLocalFields] = useState(initialFields);
-
-        useEffect(() => {
-            setLocalFields(initialFields);
-        }, [initialFields]);
 
         const handleChange = (name: string, value: string | boolean) => {
             setLocalFields(prev => prev.map(item => {

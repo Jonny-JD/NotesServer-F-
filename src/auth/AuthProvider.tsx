@@ -9,6 +9,16 @@ import {NavigationProgress} from "../components/NavigationProgress.tsx";
 const AuthProvider = () => {
 
     const navigate = useNavigate();
+    api.interceptors.response.use(
+        response => response,
+        error => {
+            if (error.response?.status === 401) {
+                setCurrentUser(null);
+                navigate("/");
+            }
+            return Promise.reject(error);
+        }
+    );
 
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem("user");
@@ -44,19 +54,19 @@ const AuthProvider = () => {
         const checkAuth = async () => {
             try {
                 const response = await api.get("/auth/me");
-                if (response.status === 200) {
-                    setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
-                }
-                else {
-                    setCurrentUser(null);
-                    navigate("/");
-                }
-
+                setCurrentUser({
+                    id: response.data.id,
+                    username: response.data.username,
+                    email: response.data.email
+                });
             } catch (e) {
+                setCurrentUser(null);
+                navigate("/");
                 console.error(e);
             }
         };
-        checkAuth().catch(e => console.error(e));
+        checkAuth().finally();
+
     }, [navigate, setCurrentUser]);
 
     const contextValue = useMemo(() => ({

@@ -26,7 +26,7 @@ export const useNotesPagination = ({ tag, title, author }: NotesPaginationProps 
             });
             const newNotes: NotePreviewDto[] = response.data;
 
-            if (newNotes.length < 10) hasMoreRef.current = false; // ← не стейт
+            if (newNotes.length < 10) hasMoreRef.current = false;
             setNotes((prev) => [...prev, ...newNotes]);
 
             if (newNotes.length > 0) {
@@ -38,12 +38,13 @@ export const useNotesPagination = ({ tag, title, author }: NotesPaginationProps 
             loadingRef.current = false;
             setLoading(false);
         }
-    }, [tag, title, author]); // ← hasMore больше не в зависимостях
+    }, [tag, title, author]);
 
     useEffect(() => {
         const freshFrom = formatISO(new Date());
         fromTime.current = freshFrom;
-        hasMoreRef.current = true; // ← сброс при смене фильтра
+        hasMoreRef.current = true;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setNotes([]);
         void fetchNotes(freshFrom);
     }, [fetchNotes]);

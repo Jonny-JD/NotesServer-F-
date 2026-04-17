@@ -6,8 +6,6 @@ import React from "react";
 
 
 export const LoginPage = (): JSX.Element => {
-    //TODO should be logout when started
-
     const {login} = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

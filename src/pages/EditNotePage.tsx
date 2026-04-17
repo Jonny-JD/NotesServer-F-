@@ -49,20 +49,20 @@ export const EditNotePage = (): JSX.Element => {
                 </textarea>
             </div>
             <div className={styles.interaction}>
-                <OptionsBlock header={"NOTE OPTIONS:"}
-                              fields={fields}
-                              buttonName={"SAVE"}
-                              onSubmit={async (data) => {
-                                  const payload = {
-                                      ...data,
-                                      author: user ?? null,
-                                      content: noteContentRef.current?.value ?? "",
-                                      isPrivate: data['private'] === true || data['private'] === "on"
-                                  };
-                                  await api.put(`/notes/${id}`, payload);
-                                  navigate("/notes/my")
-                              }
-                              }/>
+                {note && <OptionsBlock header={"NOTE OPTIONS:"}
+                                       fields={fields}
+                                       buttonName={"SAVE"}
+                                       onSubmit={async (data) => {
+                                           const payload = {
+                                               ...data,
+                                               author: user ?? null,
+                                               content: noteContentRef.current?.value ?? "",
+                                               isPrivate: data['private'] === true || data['private'] === "on"
+                                           };
+                                           await api.put(`/notes/${id}`, payload);
+                                           navigate("/notes/my")
+                                       }
+                                       }/>}
             </div>
         </div>
     );
