@@ -289,6 +289,14 @@ label {
     transition: 0.2s all;
 }
 
+#nprogress .bar {
+    background: var(--cyber-sea-color) !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px var(--cyber-sea-color), 0 0 5px var(--cyber-sea-color) !important;
+}
+
 .options-form-cell {
     display: flex;
     flex-direction: row;

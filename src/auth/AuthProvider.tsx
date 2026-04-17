@@ -3,6 +3,7 @@ import {Outlet, useNavigate} from "react-router-dom";
 import {AuthContext} from "./AuthContext";
 import type {User} from "../components/types.ts";
 import api from "../api/axios.ts";
+import {NavigationProgress} from "../components/NavigationProgress.tsx";
 
 
 const AuthProvider = () => {
@@ -39,6 +40,25 @@ const AuthProvider = () => {
         }
     }, [user]);
 
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await api.get("/auth/me");
+                if (response.status === 200) {
+                    setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
+                }
+                else {
+                    setCurrentUser(null);
+                    navigate("/");
+                }
+
+            } catch (e) {
+                console.error(e);
+            }
+        };
+        checkAuth().catch(e => console.error(e));
+    }, [navigate, setCurrentUser]);
+
     const contextValue = useMemo(() => ({
         user,
         setCurrentUser,
@@ -48,6 +68,7 @@ const AuthProvider = () => {
 
     return (
         <AuthContext.Provider value={contextValue}>
+            <NavigationProgress/>
             <Outlet/>
         </AuthContext.Provider>
     );

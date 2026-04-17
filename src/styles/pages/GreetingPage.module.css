@@ -10,8 +10,9 @@
 .greeting-text {
     border: 20px solid transparent;
     border-image: url("../../assets/mobile/svg/elements/curved_frame.svg") 25 stretch;
-    margin-top: 2rem;
+    margin-top: 3rem;
     width: calc(100vmin - 5rem);
+
 }
 
 p {
