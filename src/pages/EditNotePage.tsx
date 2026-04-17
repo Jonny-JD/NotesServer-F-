@@ -3,8 +3,11 @@ import styles from "../styles/pages/CreatePage.module.css"
 import {OptionsBlock} from "../components/main/OptionsBlock.tsx";
 import api from "../api/axios.ts";
 import {useAuth} from "../hook/useAuth.ts";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import type {Note} from "../components/types.ts";
+import {useMessage} from "../hook/useMessage.ts";
+import {SuccessMessage} from "../components/message/SuccessMessage.tsx";
+import {ErrorMessage} from "../components/message/ErrorMessage.tsx";
 
 export const EditNotePage = (): JSX.Element => {
     const {user} = useAuth();
@@ -12,9 +15,8 @@ export const EditNotePage = (): JSX.Element => {
     const {id} = useParams();
     const [note, setNote] = useState<Note | null>(null);
     const [noteText, setNoteText] = useState("");
+    const {success, setSuccess, error, setError} = useMessage();
 
-
-    const navigate = useNavigate();
     const fields: Record<string, string | boolean> [] = [
         {tag: note?.tag ?? ""},
         {title: note?.title ?? ""},
@@ -48,19 +50,37 @@ export const EditNotePage = (): JSX.Element => {
 
                 </textarea>
             </div>
+            {success && <SuccessMessage message={"Note successfully saved"}/>}
+            {error && <ErrorMessage message={error}/>}
             <div className={styles.interaction}>
                 {note && <OptionsBlock header={"NOTE OPTIONS:"}
                                        fields={fields}
                                        buttonName={"SAVE"}
                                        onSubmit={async (data) => {
+                                           setSuccess(false);
+                                           setError(null);
                                            const payload = {
                                                ...data,
                                                author: user ?? null,
                                                content: noteContentRef.current?.value ?? "",
                                                isPrivate: data['private'] === true || data['private'] === "on"
                                            };
-                                           await api.put(`/notes/${id}`, payload);
-                                           navigate("/notes/my")
+
+                                           await api.put(`/notes/${id}`, payload)
+                                               .then(_ => {
+                                                   if (_.status == 200) {
+                                                       setSuccess(true);
+                                                   }
+                                               }).catch(e => {
+                                                   const data = e.response?.data;
+                                                   setError(
+                                                       data?.errors?.validation ??
+                                                       data?.message ??
+                                                       data?.error ??
+                                                       "Failed to save note"
+                                                   );
+                                               });
+
                                        }
                                        }/>}
             </div>

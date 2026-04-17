@@ -9,16 +9,7 @@ import {NavigationProgress} from "../components/NavigationProgress.tsx";
 const AuthProvider = () => {
 
     const navigate = useNavigate();
-    api.interceptors.response.use(
-        response => response,
-        error => {
-            if (error.response?.status === 401) {
-                setCurrentUser(null);
-                navigate("/");
-            }
-            return Promise.reject(error);
-        }
-    );
+
 
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem("user");
@@ -28,6 +19,21 @@ const AuthProvider = () => {
     const setCurrentUser = useCallback((newUser: User | null) => {
         setUser(newUser);
     }, []);
+
+    useEffect(() => {
+        const interceptor = api.interceptors.response.use(
+            response => response,
+            error => {
+                if (error.response?.status === 401 && !error.config.url?.includes("/auth/")) {
+                    setCurrentUser(null);
+                    navigate("/");
+                }
+                return Promise.reject(error);
+            }
+        );
+
+        return () => api.interceptors.response.eject(interceptor);
+    }, [navigate, setCurrentUser]);
 
     const login = useCallback(async (username: string | null, password: string | null) => {
         const response = await api.post("/auth/login", {username, password});
@@ -61,7 +67,6 @@ const AuthProvider = () => {
                 });
             } catch (e) {
                 setCurrentUser(null);
-                navigate("/");
                 console.error(e);
             }
         };

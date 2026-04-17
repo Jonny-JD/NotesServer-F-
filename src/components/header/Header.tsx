@@ -2,9 +2,9 @@ import headerLineDesktop from "../../assets/desktop/svg/elements/header_line.svg
 import headerLineTablet from "../../assets/tablet/svg/elements/header_line.svg";
 import headerLineMobile from "../../assets/mobile/svg/elements/header_line.svg";
 import logo from "../../assets/logo.svg";
-import type {ReactNode} from "react";
+import type {JSX} from "react";
 
-export const Header = (): ReactNode => {
+export const Header = (): JSX.Element => {
 
     return (
 

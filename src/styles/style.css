@@ -136,6 +136,26 @@ button:active {
     background: var(--main-bg-color);
 }
 
+
+.error-message {
+    color: var(--cyber-shrimp-color);
+    background-color: color-mix(in srgb, var(--cyber-shrimp-color) 10%, transparent);
+    border: 2px solid var(--cyber-shrimp-color);
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-family: "Rajdhani", sans-serif;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    animation: fadeIn 0.3s ease-out;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .footer {
     min-height: 7%;
     position: relative;
@@ -352,6 +372,25 @@ picture {
     align-items: center;
     justify-content: center;
     margin-bottom: 2px;
+}
+
+.success-message {
+    color: var(--cyber-cyan-color);
+    background-color: color-mix(in srgb, var(--cyber-cyan-color) 10%, transparent);
+    border: 2px solid var(--cyber-cyan-color);
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-family: "Rajdhani", sans-serif;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    animation: fadeIn 0.3s ease-out;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .switch-input {

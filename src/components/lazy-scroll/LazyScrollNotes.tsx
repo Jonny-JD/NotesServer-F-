@@ -1,4 +1,3 @@
-import type {ReactNode} from "react";
 import {List, type RowComponentProps} from "react-window";
 import type {NotePreviewDto} from "../types.ts";
 import {NotePreview} from "../NotePreview.tsx";
@@ -25,7 +24,7 @@ interface Props {
     onLoadMore: () => void;
 }
 
-export const LazyScrollNotes = ({notes, onLoadMore}: Props): ReactNode => {
+export const LazyScrollNotes = ({notes, onLoadMore}: Props) => {
     const rowHeight = 100;
 
 

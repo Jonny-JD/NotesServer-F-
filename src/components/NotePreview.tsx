@@ -1,15 +1,15 @@
-import type {ReactNode} from "react";
 import type {NotePreviewDto} from "./types.ts";
 import styles from "../styles/components/NotePreview.module.css"
 import userIcon from "../assets/icons/user_icon.svg";
 import calendarIcon from "../assets/icons/calendar_icon.svg";
 import noteUnderscore from "../assets/note_underscore.svg";
 import {Link} from "react-router-dom";
+import type {JSX} from "react";
 
 
-export const NotePreview = (props: NotePreviewDto): ReactNode => {
+export const NotePreview = (props: NotePreviewDto): JSX.Element => {
     const noteId = props.id;
-    const title = props.title?? "Untitled";
+    const title = props.title ?? "Untitled";
     const author = props.author;
     const createdAt = props.createdAt;
 
