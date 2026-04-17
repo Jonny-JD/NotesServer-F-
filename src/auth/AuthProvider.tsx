@@ -7,8 +7,8 @@ import {NavigationProgress} from "../components/NavigationProgress.tsx";
 
 
 const AuthProvider = () => {
-
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const [user, setUser] = useState(() => {
@@ -58,19 +58,20 @@ const AuthProvider = () => {
 
     useEffect(() => {
         const checkAuth = async () => {
-            try {
-                const response = await api.get("/auth/me");
-                setCurrentUser({
-                    id: response.data.id,
-                    username: response.data.username,
-                    email: response.data.email
-                });
-            } catch (e) {
-                setCurrentUser(null);
-                console.error(e);
-            }
+            await api.get("/auth/me")
+                .then(resp => {
+                    setCurrentUser({
+                        id: resp.data.id,
+                        username: resp.data.username,
+                        email: resp.data.email
+                    });
+                }).catch(() => {
+                    setCurrentUser(null);
+                }).finally(() => {
+                    setIsLoading(false);
+                })
         };
-        checkAuth().finally();
+        checkAuth();
 
     }, [navigate, setCurrentUser]);
 
@@ -79,7 +80,8 @@ const AuthProvider = () => {
         setCurrentUser,
         login,
         logout,
-    }), [user, login, logout, setCurrentUser]);
+        isLoading
+    }), [user, setCurrentUser, login, logout, isLoading]);
 
     return (
         <AuthContext.Provider value={contextValue}>

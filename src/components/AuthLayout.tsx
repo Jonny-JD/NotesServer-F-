@@ -8,10 +8,12 @@ import {RightAside} from "./aside/RightAside.tsx";
 
 
 export const AuthLayout = () => {
-    const {user} = useAuth();
-
+    const {user, isLoading} = useAuth();
 
     const menuOptions: MenuOption[] = useMenuOptions();
+
+    if (isLoading) return null;
+    if (!user) return <Navigate to="/login"/>;
 
     if (!user) {
         return <Navigate to={"/login"}/>
