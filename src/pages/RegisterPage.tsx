@@ -27,9 +27,10 @@ export const RegisterPage = (): JSX.Element => {
                 const data = e.response?.data;
                 setError(
                     data?.errors?.user ??
+                    data?.errors?.validation ??
                     data?.message ??
                     data?.error ??
-                    "Failed to login"
+                    "Failed to register"
                 );
             });
     }

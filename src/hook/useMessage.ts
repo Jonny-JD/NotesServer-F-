@@ -11,7 +11,7 @@ export const useMessage = () => {
             const timeout = setTimeout(() => {
                 setError(null);
                 setSuccess(false);
-            }, 2000);
+            }, 3000);
 
             return () => clearTimeout(timeout);
         }
