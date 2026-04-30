@@ -19,6 +19,8 @@ export default defineConfig({
                 secure: false,
             }
         },
+
+        allowedHosts: ['host.docker.internal'],
     },
 
     resolve: {
