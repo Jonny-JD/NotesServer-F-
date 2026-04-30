@@ -13,7 +13,8 @@ const AuthProvider = () => {
 
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem("user");
-        return storedUser ? JSON.parse(storedUser) : null;
+        const parsed = storedUser ? JSON.parse(storedUser) : null;
+        return parsed?.id ? parsed : null;
     });
 
     const setCurrentUser = useCallback((newUser: User | null) => {
