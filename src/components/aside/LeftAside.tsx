@@ -18,7 +18,7 @@ export const LeftAside = (props: { menuOptions: MenuOption[] }): JSX.Element => 
             <div className={"aside-interaction-buttons"}>
                 {visibleOptions.map((option) => {
                         const isLogout = option.label.toLowerCase() === "logout";
-                        return (<button className={isLogout ? "red-button" : ""}
+                        return (<button data-testid={option.label.toLowerCase()} className={isLogout ? "red-button" : ""}
                                         style={isLogout ? {marginTop: "10vmin"} : {}}
                                         key={option.label}
                                         onClick={(e) => option.onClick(e)}>
