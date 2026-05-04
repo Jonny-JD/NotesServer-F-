@@ -33,7 +33,7 @@ export const useMenuOptions = ():MenuOption[] => {
             requiresLogin: true
         },
         {
-            label: "LOGIN",
+            label: "SIGN IN",
             onClick: () =>  navigate("/login"),
             requiresLogin: false,
             requiresLogout: true

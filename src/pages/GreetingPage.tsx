@@ -21,7 +21,7 @@ export const GreetingPage = (): JSX.Element => {
                 </div>
             </div>
             <div className={styles.interaction}>
-                <button className={styles.connectButton} onClick={() => navigate("/main")}>
+                <button data-testid={"connect-button"} className={styles.connectButton} onClick={() => navigate("/main")}>
                     CONNECT
                 </button>
             </div>
