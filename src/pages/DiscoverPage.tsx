@@ -37,7 +37,7 @@ export const DiscoverPage = (): JSX.Element => {
                     />
                 )}
                 {!notesFilter && (
-                    <button onClick={() => setNotesFilter(true)}>FILTER</button>
+                    <button data-testid={"filter"} onClick={() => setNotesFilter(true)}>FILTER</button>
                 )}
             </div>
         </div>

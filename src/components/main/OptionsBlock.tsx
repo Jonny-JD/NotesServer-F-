@@ -35,7 +35,7 @@ export const OptionsBlock =
 
 
         return (
-            <div className={"filter-block"}>
+            <div className={"options-block"}>
                 <form id={"form"} onSubmit={handleSubmit}>
                     <span className={"options-form-header"}>{header}</span>
 
@@ -78,7 +78,7 @@ export const OptionsBlock =
                             </div>)
                     })}
                 </form>
-                <button type={"submit"} form={"form"}>
+                <button data-testid={buttonName.toLowerCase() + "-submit"} type={"submit"} form={"form"}>
                     {buttonName.toUpperCase()}
                 </button>
             </div>
