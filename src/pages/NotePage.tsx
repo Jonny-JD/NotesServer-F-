@@ -65,23 +65,23 @@ export const NotePage = (): JSX.Element => {
     return (
         <div className={styles.contentWrapper}>
             <div className={styles.noteDetails}>
-                <div className={`${styles.noteHeader} ${styles.noteField}`}>
+                <div data-testid={"note-title"} className={`${styles.noteHeader} ${styles.noteField}`}>
                     {title}
                 </div>
                 <div className={styles.noteDataWrapper}>
-                    <div className={styles.noteField}>
+                    <div data-testid={"note-author"} className={styles.noteField}>
                         <img className={styles.noteIco} src={userIcon} alt={"user_ico"}/>
                         <span>{author}</span>
                     </div>
 
-                    <div className={styles.noteField}>
+                    <div data-testid={"note-date"} className={styles.noteField}>
                         <img className={styles.noteIco} src={calendarIcon} alt={"calendar_ico"}/>
                         <span className={styles.noteDate}>{new Date(createdAt).toDateString()}</span>
                     </div>
                 </div>
             </div>
             <div className={styles.topButtons}>
-                <div className={styles.left}>
+                <div data-testid={"note-tag"} className={styles.left}>
                     <div className={styles.noteField}>
                         <span>tag: {tag}</span>
                     </div>
@@ -93,7 +93,7 @@ export const NotePage = (): JSX.Element => {
                 </div>
             </div>
             <div className={styles.mainContent}>
-                <div className={styles.noteText}>{noteText}</div>
+                <div data-testid={"note-text"} className={styles.noteText}>{noteText}</div>
             </div>
             {isNoteOwner && <div className={styles.interaction}>
                 <button onClick={handleEdit}>EDIT</button>
