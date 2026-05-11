@@ -98,6 +98,7 @@
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    white-space: pre-wrap;
 }
 
 textarea:focus-visible {
