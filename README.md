@@ -71,6 +71,12 @@ npm run build
 
 The contents of the `dist/` folder are served via nginx. The Dockerfile includes an nginx config with SPA fallback for React Router to work correctly.
 
+## Related Repositories
+
+- [NotesServer Backend](https://github.com/Jonny-JD/NotesServer-B-) — Java 21, Spring Boot, PostgreSQL
+- [NotesServer Autotests](https://github.com/Jonny-JD/NotestServer-Test-) — Selenide, JUnit 5, Allure, Kubernetes, Selenium Grid
+- [NotesServer Infrastructure](https://github.com/Jonny-JD/NotesServer-Infrastructure) — Kubernetes (K3s), Helm, Traefik, Let's Encrypt, GitHub Actions
+
 ## About
 
 This project was built for my portfolio. It demonstrates:
