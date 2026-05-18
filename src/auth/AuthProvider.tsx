@@ -9,6 +9,7 @@ import {NavigationProgress} from "../components/NavigationProgress.tsx";
 const AuthProvider = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
+    const [token, setToken] = useState<string>("");
 
 
     const [user, setUser] = useState(() => {
@@ -39,11 +40,13 @@ const AuthProvider = () => {
     const login = useCallback(async (username: string | null, password: string | null) => {
         const response = await api.post("/auth/login", {username, password});
         setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
+        setToken(response.data.token);
     }, [setCurrentUser]);
 
 
     const logout = useCallback(async () => {
         setCurrentUser(null);
+        localStorage.clear();
         await api.post("/auth/logout");
         navigate("/login");
     }, [navigate, setCurrentUser]);
@@ -52,10 +55,12 @@ const AuthProvider = () => {
     useEffect(() => {
         if (user) {
             localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("token", token);
         } else {
             localStorage.removeItem("user");
+            localStorage.removeItem("token");
         }
-    }, [user]);
+    }, [token, user]);
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -68,6 +73,7 @@ const AuthProvider = () => {
                     });
                 }).catch(() => {
                     setCurrentUser(null);
+                    setToken("")
                 }).finally(() => {
                     setIsLoading(false);
                 })
