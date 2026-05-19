@@ -38,24 +38,28 @@ const AuthProvider = () => {
 
     const login = useCallback(async (username: string | null, password: string | null) => {
         const response = await api.post("/auth/login", {username, password});
-        setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
+
+        localStorage.setItem("token", response.data.token);
+
+        const currentUser = {
+            id: response.data.id,
+            username: response.data.username,
+            email: response.data.email
+        };
+
+        localStorage.setItem("user", JSON.stringify(currentUser));
+
+        setCurrentUser(currentUser);
     }, [setCurrentUser]);
 
 
     const logout = useCallback(async () => {
         setCurrentUser(null);
+        localStorage.clear();
         await api.post("/auth/logout");
         navigate("/login");
     }, [navigate, setCurrentUser]);
 
-
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
-        } else {
-            localStorage.removeItem("user");
-        }
-    }, [user]);
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -68,6 +72,7 @@ const AuthProvider = () => {
                     });
                 }).catch(() => {
                     setCurrentUser(null);
+                    localStorage.removeItem("token");
                 }).finally(() => {
                     setIsLoading(false);
                 })

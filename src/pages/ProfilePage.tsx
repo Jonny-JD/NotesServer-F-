@@ -20,7 +20,7 @@ export const ProfilePage = (): JSX.Element => {
     const handleSubmitEmail = async (e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
         try {
-            const response = await api.put<User>("/users", {
+            const response = await api.patch<User>("/users", {
                 id: user?.id,
                 email: newEmail
             });
@@ -38,7 +38,7 @@ export const ProfilePage = (): JSX.Element => {
         }
 
         try {
-            await api.put("/users", {
+            await api.patch("/users", {
                 id: user?.id,
                 currentPassword,
                 newPassword

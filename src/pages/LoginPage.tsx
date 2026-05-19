@@ -27,9 +27,7 @@ export const LoginPage = (): JSX.Element => {
             if (axios.isAxiosError(e)) {
                 const data = e.response?.data;
                 setError(
-                    data?.errors?.validation ??
-                    data?.message ??
-                    data?.error ??
+                    data?.errors[0]??
                     "Invalid username or password"
                 );
             } else {
