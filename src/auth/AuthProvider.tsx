@@ -9,7 +9,6 @@ import {NavigationProgress} from "../components/NavigationProgress.tsx";
 const AuthProvider = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [token, setToken] = useState<string>("");
 
 
     const [user, setUser] = useState(() => {
@@ -39,8 +38,18 @@ const AuthProvider = () => {
 
     const login = useCallback(async (username: string | null, password: string | null) => {
         const response = await api.post("/auth/login", {username, password});
-        setCurrentUser({id: response.data.id, username: response.data.username, email: response.data.email});
-        setToken(response.data.token);
+
+        localStorage.setItem("token", response.data.token);
+
+        const currentUser = {
+            id: response.data.id,
+            username: response.data.username,
+            email: response.data.email
+        };
+
+        localStorage.setItem("user", JSON.stringify(currentUser));
+
+        setCurrentUser(currentUser);
     }, [setCurrentUser]);
 
 
@@ -53,16 +62,6 @@ const AuthProvider = () => {
 
 
     useEffect(() => {
-        if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
-            localStorage.setItem("token", token);
-        } else {
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-        }
-    }, [token, user]);
-
-    useEffect(() => {
         const checkAuth = async () => {
             await api.get("/auth/me")
                 .then(resp => {
@@ -73,7 +72,7 @@ const AuthProvider = () => {
                     });
                 }).catch(() => {
                     setCurrentUser(null);
-                    setToken("")
+                    localStorage.removeItem("token");
                 }).finally(() => {
                     setIsLoading(false);
                 })
